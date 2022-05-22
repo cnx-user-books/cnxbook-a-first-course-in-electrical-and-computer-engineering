@@ -1,0 +1,316 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Moving Averages</title>
+  <metadata>
+  <md:content-id>m21418</md:content-id><md:title>Filtering: Moving Averages</md:title>
+  <md:abstract/>
+  <md:uuid>3fa48190-ec3d-4fb2-8cd4-47c5cb4d18ad</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-387">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Moving averages are generalizations of weighted averages. They are designed to “run along an input sequence, computing weighted averages as they go.” A typical moving average over <emphasis effect="italics">N</emphasis> inputs takes the form</para>
+    
+    <equation id="id2258990"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>w</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msub>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259080">The most current input, <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>, is weighted by <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math>; the next most current input,
+<m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, is weighted by <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> ; and so on. This weighting is illustrated in <link target-id="uid1">Figure 1</link>.
+The sequence of weights, <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> through <m:math overflow="scroll"><m:msub><m:mi>w</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, is called a “window,” a “weighting
+sequence,” or a “filter.” In the example illustrated in Figure 6.8, the current
+value <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is weighted more heavily than the least current value. This is typical
+(but not essential) because we usually want <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> to reflect more of the recent
+past than the distant past.</para>
+    <figure id="uid1"><media id="uid1_media" alt="This is a graph consisting of two curved lines that are horizontal in nature and several vertical lines which arise at from the x axis and end when they reach the curved line. The first curved line begins with an initial positive slope, but after reach the second vertical line takes an extremely negative slope and falls below the x axis. At about the seventh vertical line, the slop again turns positive and rise quickly at first and then plateaus. The other horizontal line begins around the third horizontal line and has a positive slope which gets more and more positive to it almost vertical by the time it ends. The intersection of the first horizontal and the third horizontal line is labeled u_n-(n-1). The intersection of the second horizontal line and the third vertical line is labeled w_N-1. The third line appears to be labeled below the x axis as N-1. The intersections of the final three vertical lines and the second horizontal line are labeled w_2, w_1, and w_0 from left to right.  The intersection of the second and third to last vertical lines and the first horizontal line are labeled U_n-1 and U_n respectively. The second and third from the left vertical line are labeled below the x axis as N-1 and n. The x axis line is labeled k.">
+        <image mime-type="image/png" src="../../media/pic008-eafa.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 226. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic008-0306.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Moving Average</caption></figure>
+<example id="fs-id19288451">
+    <para id="id2259235">When the weights <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>w</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>w</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> are all equal to <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac></m:mstyle></m:math>, then the moving average <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is a “simple moving average”:</para>
+    
+    <equation id="eip-210"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mrow><m:mo>[</m:mo><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>u</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>]</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259401">This is the same as the <link document="m21421">simple average</link>, but now the simple average moves along the sequence of inputs, averaging the <m:math>
+<m:mi>N</m:mi>
+</m:math> most current values.</para></example>
+<exercise id="fs-id4131651"><problem id="fs-id9416302">
+    <para id="id2259417">Evaluate the moving average <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math> for the inputs</para>
+<list id="eip-id20197557" list-type="enumerated" number-style="lower-alpha" mark-prefix="(" mark-suffix=")"><item> <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="{" close=""><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>0</m:mn><m:mo>,</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>u</m:mi><m:mo>,</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi>n</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn><m:mo>;</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math></item>
+    <item> <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="{" close=""><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>0</m:mn><m:mo>,</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi>n</m:mi><m:mo>≤</m:mo><m:mn>0</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>n</m:mi><m:mo>,</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi>n</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math></item></list>
+    <para id="id2259631">Interpret your findings.</para></problem>
+</exercise>
+<exercise id="fs-id18636959">
+<problem id="fs-id11575819">
+    <para id="id2259634">Evaluate the simple moving average <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math> when
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is the sequence</para>
+    <equation id="id2259719">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>a</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258210">Interpret your result.</para></problem>
+</exercise>
+<example id="fs-id19463789">
+    <para id="id2258216">When the weights <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> equal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then the moving average <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> takes the form</para>
+    <para id="id2260128"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>a</m:mi><m:mi>k</m:mi></m:msup><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math>.</para>
+    <para id="id2260201">When <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then <emphasis effect="italics">u<sub>n</sub></emphasis> is weighted more heavily than <m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>;</m:mo></m:mrow></m:msub></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>,
+<m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:msub></m:math> is weighted more heavily than <emphasis effect="italics">u<sub>n</sub></emphasis> ; when <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> is weighted the
+same as <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:msub><m:mo>.</m:mo></m:mrow></m:math></para></example>
+<exercise id="fs-id19588491">
+<problem id="fs-id19222080">
+    <para id="id2260373">Evaluate <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> so that the exponential weighting sequence <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is a valid window (i.e., <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>).</para></problem>
+</exercise>
+<exercise id="fs-id19297487">
+<problem id="fs-id19324180">
+    <para id="id2260509">Compute the moving average <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msup><m:mi>a</m:mi><m:mi>k</m:mi></m:msup><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math> when the input sequence <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is</para>
+    <equation id="id2260603">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>b</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260678">What happens when <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mi>a</m:mi></m:mrow></m:math>? Can you explain this?
+</para></problem>
+</exercise>
+  </content>
+</document>

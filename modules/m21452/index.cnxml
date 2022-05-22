@@ -1,0 +1,601 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Inner Product and Euclidean Norm</title>
+  <metadata>
+  <md:content-id>m21452</md:content-id><md:title>Linear Algebra: Inner Product and Euclidean Norm</md:title>
+  <md:abstract/>
+  <md:uuid>e1e32da9-6004-4d32-a374-e827fcdcfaf1</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-575">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">The inner product <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow></m:math> between vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> is a scalar consisting
+of the following sum of products:</para>
+    <equation id="eip-142"><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>y</m:mi><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:msub><m:mi>y</m:mi><m:mi>n</m:mi></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2258953">This definition seems so arbitrary that we wonder what uses it could possibly have. We will show that the inner product has three main uses:</para>
+<list id="fs-id18068882" list-type="enumerated" number-style="lower-roman"><item>computing length or “norm”,</item>
+    <item>finding angles between vectors and checking for “orthogonality”, and</item>
+    <item>computing the “component of one vector along another” (projection).</item></list>
+    <para id="fs-id18150439">Since the inner product is so useful, we need to know what algebraic operations are permitted when we are working with inner products. The following are some properties of the inner product. Given <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>∈</m:mo><m:mi mathvariant="script">R</m:mi></m:mrow></m:math>,</para>
+<list id="fs-id16195768" list-type="enumerated" number-style="lower-roman"><item><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>)</m:mo></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>a</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow></m:math>; and</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</item></list>
+<exercise id="fs-id17965845">
+<problem id="fs-id4473276">
+    <para id="id2259305">Prove the three preceding properties by using the definition of
+inner product. Is the equation <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mi mathvariant="normal">z</m:mi></m:mrow></m:math> also a true property? Prove
+or give a counterexample.</para></problem>
+</exercise>
+    <para id="id2259362"><emphasis effect="bold">Euclidean Norm.</emphasis> Sometimes we want to measure the length of a
+vector, namely, the distance from the origin to the point specified by the
+vector's coordinates. A vector's length is called the <emphasis effect="italics">norm</emphasis> of the vector. Recall
+from Euclidean geometry that the distance between two points is the square
+root of the sum of the squares of the distances in each dimension. Since we
+are measuring from the origin, this implies that the norm of the vector <emphasis effect="italics">x</emphasis> is</para>
+    <equation id="eip-954"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>∥</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>∥</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:msubsup>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msubsup>
+              <m:mo>+</m:mo>
+              <m:msubsup>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msubsup>
+              <m:mo>+</m:mo>
+              <m:mo>+</m:mo>
+              <m:msubsup>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msubsup>
+            </m:mrow>
+          </m:msqrt>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259460">Notice the use of the double vertical bars to indicate the norm. An
+equivalent definition of the norm, and of the norm squared, can be given in
+terms of the inner product:</para>
+    
+    <equation id="eip-515"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>∥</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>∥</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msqrt>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259504">or</para>
+    <equation id="id2259507">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mrow>
+              <m:mo>∥</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>∥</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<example id="fs-id18005126">
+    <para id="id2259552">The Euclidean norm of the vector</para>
+    <equation id="id2259561"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258195">is <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∥</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>∥</m:mo></m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:msup><m:mn>1</m:mn><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mn>3</m:mn><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mn>5</m:mn><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mn>39</m:mn></m:msqrt><m:mo>.</m:mo></m:mrow></m:math></para></example>
+    <para id="id2259933">An important property of the norm and scalar product is that, for any
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>∈</m:mo><m:mi mathvariant="script">R</m:mi></m:mrow></m:math>,</para>
+    <equation id="eip-879"><m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>=</m:mo><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2259977">So we can take a scalar multiplier outside of the norm if we take its absolute
+value.</para>
+<exercise id="fs-id17365786">
+<problem id="fs-id3593597">
+    <para id="id2260026">Prove <link target-id="eip-879"/>.</para></problem>
+</exercise>
+    <para id="id2260034"><emphasis effect="bold">Cauchy-Schwarz Inequality.</emphasis> Inequalities can be useful engineering
+tools. They can often be used to find the best possible performance of a
+system, thereby telling you when to quit trying to make improvements (or
+proving to your boss that it can't be done any better). The most fundamental
+inequality in linear algebra is the Cauchy-Schwarz inequality. This inequality
+says that the inner product between two vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> is less than or equal
+(in absolute value) to the norm of <m:math>
+<m:mi>x</m:mi>
+</m:math> times the norm of <m:math>
+<m:mi>y</m:mi>
+</m:math>, with equality if and
+only if <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mi>α</m:mi><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math>:</para>
+    <equation id="eip-673"><m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>|</m:mo><m:mo>≤</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2260112">To prove this theorem, we construct a third vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo><m:mi>λ</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>-</m:mo><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math> and measure
+its norm squared:</para>
+    <equation id="eip-243"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi>λ</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:mrow>
+          <m:mo>-</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>λ</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>λ</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>λ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mi>λ</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>≥</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260349">So we have a polynomial in <m:math>
+<m:mi>λ</m:mi>
+</m:math> that is always greater than or equal to 0 (because
+every norm squared is greater than or equal to 0). Let's assume that <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>
+are given and minimize this norm squared with respect to <m:math>
+<m:mi>λ</m:mi>
+</m:math>. To do this, we
+take the derivative with respect to <m:math>
+<m:mi>λ</m:mi>
+</m:math> and equate it to 0:</para>
+    <equation id="eip-469"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mn>2</m:mn><m:mi>λ</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>⇒</m:mo><m:mi>λ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260404">When this solution is substituted into the formula for the norm squared in <link target-id="eip-243"/>, we obtain</para>
+    <equation id="id2260511">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi mathvariant="normal">x</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mi mathvariant="normal">y</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:msup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                    <m:mi mathvariant="normal">x</m:mi>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mfrac>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>≥</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260672">which simplifies to</para>
+    <equation id="eip-283"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:mfrac><m:msup><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mfrac><m:mo>+</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>≥</m:mo><m:mn>0</m:mn><m:mo>⇒</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>≤</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260677">The proof of the Cauchy-Schwarz inequality is completed by taking the positive square root on both sides of <link target-id="eip-283"/>. When <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mi>α</m:mi><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math>, then</para>
+    <equation id="id2260850"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>α</m:mi>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msup>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>|</m:mo>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>)</m:mo>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>α</m:mi>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi>α</m:mi>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">y</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">y</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>,</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    
+    
+    <para id="id2261196">which shows that equality holds in <link target-id="eip-673"/> when <m:math>
+<m:mi>y</m:mi>
+</m:math> is a scalar multiple of 
+<m:math>
+<m:mi>x</m:mi>
+</m:math>.</para>
+<exercise id="fs-id16171996">
+<problem id="fs-id16171998">    
+<para id="id2261211">Use the Cauchy-Schwarz inequality to prove the triangle inequality, which states</para>
+    <equation id="id2261220">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>≤</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>+</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261280">Explain why this is called the <emphasis effect="italics">triangle inequality</emphasis>.
+</para></problem>
+</exercise>
+  </content>
+</document>

@@ -1,0 +1,34 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Numerical Experiment (Frequency Response of First-Order Filter)</title>
+  <metadata>
+  <md:content-id>m21419</md:content-id><md:title>Filtering: Numerical Experiment (Frequency Response of First-Order Filter)</md:title>
+  <md:abstract/>
+  <md:uuid>73e13cd9-67d7-41d6-ab58-2176a3a42698</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-230">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Consider the exponential moving average filter</para>
+    
+    <equation id="eip-466"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:munderover><m:msup><m:mi>a</m:mi><m:mi>k</m:mi></m:msup><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi><m:mo>;</m:mo><m:mspace width="8pt"/></m:mrow></m:msub><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>98</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation>
+<list id="fs-id14547165" list-type="enumerated" number-style="arabic"><item>Write out a few terms of the sum to show how the filter works.</item>
+    <item>Write <emphasis effect="italics">x<sub>n</sub></emphasis> as a recursion and discuss the computer memory required to implement the filter.</item>
+    <item>Compute the complex frequency response <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> for the filter.</item>
+    <item>Write a MATLAB program to plot the magnitude and phase of the complex frequency response <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> versus <emphasis effect="italics">θ</emphasis> for <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>π</m:mi><m:mtext>to</m:mtext><m:mspace width="2pt"/><m:mo>+</m:mo><m:mi>π</m:mi></m:mrow></m:math> in steps of <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>64</m:mn></m:mfrac></m:mstyle></m:math> Do this for two values of <emphasis effect="italics">a</emphasis>, namely, <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>98</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>98</m:mn></m:mrow></m:math>.
+Explain your findings.</item>
+    <item>Write a MATLAB program to pass the following signals through the filter when <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>98</m:mn></m:mrow></m:math>:
+<list id="fs-id13623659" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>δ</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math></item>
+    <item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>64</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>32</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>16</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>8</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>4</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math></item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ξ</m:mi><m:mi>n</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac><m:mi>n</m:mi></m:mrow></m:mstyle></m:math>.</item>
+</list>
+</item>
+</list>
+
+    <para id="id2259777">Plot the outputs for each case and interpret your findings in terms of the complex frequency response <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math>. Repeat step 5 for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>98</m:mn></m:mrow></m:math>. Interpret your findings.</para>
+  </content>
+</document>

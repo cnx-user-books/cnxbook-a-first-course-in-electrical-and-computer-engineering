@@ -1,0 +1,225 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Introduction</title>
+  <metadata>
+  <md:content-id>m21454</md:content-id><md:title>Linear Algebra: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>e7246c23-e6c6-49d8-a44b-092dfac93aa2</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-93">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">We use this chapter to introduce students to the algebraic structure of
+<emphasis effect="italics">vectors</emphasis> and <emphasis effect="italics">matrices</emphasis> and to introduce them to matrix computations. These
+matrix computations are used in the chapters <link document="m21491">"Vector Graphics"</link>, <link document="m21417">"Filtering"</link>, and <link document="m21405">"Binary Codes"</link> to solve problems in
+vector graphics, filtering, and binary coding.</para>
+    <para id="id2258281">Vectors are introduced in <link document="m21467">the section "Vectors"</link>, along with algebraic and geometric interpretations of some fundamental vector operations and properties. <link document="m21452">The section  "Inner Product and Euclidean Norm"</link>, <link document="m21449">the section "Direction Cosines"</link>, and <link document="m21465">the section "Projections"</link> introduce inner products and their applications, including norm, direction cosines, orthogonality, and projections. Some important alternatives to the Euclidean norm are introduced in <link document="m21463">the section "Other Norms"</link>. Matrices are motivated and introduced in <link document="m21457">this section</link>. The notation in these sections can be daunting to the beginner, so we proceed very carefully, using example after example. In <link document="m21466">the section "Solving Linear Systems of Equations"</link> we codify the elimination procedures that students have used in high school to solve linear systems of equations. The MATLAB demonstration in <link document="m21466" target-id="id2260764">Demo 2</link> shows how to use MATLAB to solve linear equations. <link document="m21447">The section "Circuit Analysis"</link> shows how linear algebra and MATLAB can be used to analyze dc circuits. The numerical experiment <link document="m21462">"Circuit Design"</link> gives students practice in building function files in MATLAB and shows how to solve a sequence of linear equations in order to <emphasis effect="italics">design</emphasis> a circuit with desired properties.</para>
+    <para id="id2258951">Occasionally we have placed important results in the problems. We feel that students should not miss the material in 
+<link document="m21467" target-id="fs-id11190200">Exercise 3 in "Vectors"</link>, 
+<link document="m21452" target-id="fs-id16171996">Exercise 3 in "Inner Product and Euclidean Norm"</link>, 
+<link document="m21465" target-id="fs-id4865665">Exercise 3 in "Projections"</link>, 
+<link document="m21457" target-id="fs-id10017751">Exercise 1 in "Matrices"</link>, and 
+<link document="m21457" target-id="fs-id9913918">Exercise 4 in "Matrices"</link>.</para>
+    <section id="uid1">
+      <title>Introduction</title>
+      <para id="id2258965">Linear algebra is a branch of mathematics that is used by engineers and applied scientists to design and analyze complex systems. Civil engineers use linear algebra to design and analyze load-bearing structures such as bridges. Mechanical engineers use linear algebra to design and analyze suspension systems, and electrical engineers use it to design and analyze electrical circuits. Electrical, biomedical, and aerospace engineers use linear algebra to enhance X rays, tomographs, and images from space. In this chapter and the next we study two common problems from electrical engineering and use linear algebra to solve them. The two problems are (i) electrical circuit analysis and (ii) coordinate transformations for computer graphics. The first of these applications requires us to understand the solution of linear systems of equations, and the second requires us to understand the representation of mathematical operators with matrices.</para>
+      <para id="id2258984">Much of linear algebra is concerned with systematic techniques for organizing and solving simultaneous linear equations by elimination and substitution. The following example illustrates the basic ideas that we intend to develop.</para>
+<example id="fs-id23622837">
+      <para id="id2258991">A woman steps onto a moving sidewalk at a large airport and stands while the moving sidewalk moves her forward at 1.2 meters/seconds. At the same time, a man begins walking against the motion of the sidewalk from the opposite end at 1.5 meters/second (relative to the sidewalk). If the moving sidewalk is 85 meters long, how far does each person travel (relative to the ground) before they pass each other?</para>
+      <para id="id2259005">To solve this problem, we first assign a variable to each unknown quantity. Let <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> be the distance traveled by the woman, and let 
+<m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> be the distance traveled by the man. The sum of the two distances is 85 meters, giving us one equation:</para>
+      <equation id="eip-841"><m:math overflow="scroll">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>85</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259071">Our second equation is based on the time required before they pass. Time
+equals distance divided by rate, and the time is the same for both people:</para>
+      <equation id="eip-908"><m:math overflow="scroll">
+          <m:mstyle scriptlevel="0" displaystyle="true">
+            <m:mrow>
+              <m:mfrac>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>.</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>.</m:mo>
+                  <m:mn>5</m:mn>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>.</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>⇒</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>3</m:mn>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>2</m:mn>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+            </m:mrow>
+          </m:mstyle>
+        </m:math>
+      </equation>
+      <para id="id2259175">We may substitute <link target-id="eip-908"/> into <link target-id="eip-841"/> to obtain the result <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>2</m:mn></m:mrow><m:mrow><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:mfrac><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>85</m:mn></m:mrow></m:mstyle></m:math>, or</para>
+      <equation id="eip-227"><m:math overflow="scroll">
+          <m:mrow>
+            <m:mn>5</m:mn>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>85</m:mn>
+            <m:mo>⇒</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>17</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259269">Combining the result from <link target-id="eip-227"/> with that of <link target-id="eip-841"/>, we find that</para>
+      <equation id="eip-81"><m:math overflow="scroll">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>68</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259296">So the man travels 17 meters, and the woman travels 68 meters.</para>
+      <para id="id2259301"><link target-id="eip-841"/> and <link target-id="eip-908"/>  are the key equations of <link target-id="eip-841"/>. They may
+be organized into the “matrix equation”</para>
+      <equation id="eip-359"><m:math overflow="scroll"><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>85</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation>
+      <para id="id2259420">The rules for matrix-vector multiplication are evidently</para>
+      <equation id="id2259424">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mspace width="4.pt"/>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>85</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id2259474">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>3</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="eip-678"><link target-id="eip-908"/> and <link target-id="eip-227"/> may be organized into the matrix equation
+</para><equation id="eip-822"><m:math overflow="scroll"><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>85</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2259533">This equation represents one partially solved form of <link target-id="eip-359"/>, wherein
+we have used the so-called <emphasis effect="italics">Gauss elimination procedure</emphasis> to introduce a zero
+into the matrix equation in order to isolate one variable. The MATLAB
+software contains built-in procedures to implement Gauss elimination on much
+larger matrices. Thus MATLAB may be used to solve large systems of linear
+equations.</para>
+      <para id="id2259656">Before we can apply linear algebra to more interesting physical problems, we need to introduce the mathematical tools we will use.
+</para>
+</example>
+    </section>
+  </content>
+</document>

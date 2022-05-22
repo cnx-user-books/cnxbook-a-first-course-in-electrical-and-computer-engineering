@@ -1,0 +1,103 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Binary Codes: Introduction</title>
+  <metadata>
+  <md:content-id>m21405</md:content-id><md:title>Binary Codes: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>abef6f6b-bb16-49b2-a40a-fac28a96cfb2</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-209">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="eip-700">Acknowledgment: Richard Hamming's book, <emphasis effect="italics">Information Theory and</emphasis><emphasis effect="italics">Coding</emphasis>, Prentice-Hall, New York (1985) and C. T. Mullis's unpublished notes
+have influenced our treatment of binary codes. The numerical experiment was
+developed by Mullis.</para><para id="id2258263">We use this chapter to introduce students to the communication paradigm and to show how arbitrary symbols may be represented by binary codes. These symbols and their corresponding binary codes may be computer instructions, integer data, approximations to real data, and so on.</para>
+    <para id="id2258271">We develop some ad hoc tree codes for representing information and
+then develop Huffman codes for optimizing the use of bits. Hamming codes
+add check bits to a binary word so that errors may be detected and corrected.
+The <link document="m21406">numerical experiment</link> has the students design a Huffman
+code for coding Lincoln's Gettysburg Address.</para>
+    <section id="uid1">
+      <title>Introduction</title>
+      <para id="id2258933">It would be stretching our imagination to suggest that Sir Francis had
+digital audio on his minde (sic) when he wrote the prophetic words</para>
+      
+      
+      
+      
+      
+      <para id="eip-224"><quote id="eip-id1165492046295">
+<title>Sir Francis Bacon, 1623</title>                             
+       ...a man may express and signifie the intentions of
+his minde, at any distance... by... objects... capable of a
+twofold difference onely.
+</quote></para><para id="id2258988">Nonetheless, this basic idea forms the basis of everything we do in digital computing, digital communications, and digital audio/video. In 1832, Samuel F. B. Morse used the very same idea to propose that telegram <emphasis effect="italics">words</emphasis> be coded into <emphasis effect="italics">binary addresses</emphasis> or <emphasis effect="italics">binary codes</emphasis> that could be transmitted over telegraph lines and decoded at the receiving end to unravel the telegram. Morse abandoned his scheme, illustrated in <link target-id="uid2">Figure 1</link>, as too complicated and, in 1838, proposed his fabled Morse code for coding letters (instead of words) into objects (dots, dashes, spaces) capable of a threefold difference onely (sic).</para>
+      
+      <figure id="uid2"><media id="uid2_media" alt="This is block diagram of a generalized Coder-Decoder. On the far left there is the phrase word, w_i with an arrow pointing to the right to a box containing the phrase address generator (or codebook). Below this box there is the phrase (associative memory)(coder). A squiggly points from  the right side of the aforementioned box to the the box on the right. Above this arrow there is the phrase address, a_i=011010; and below the right side of this arrow is the phrase a_i. The arrow ends on the left side of the right box. Inside this box is the phrase: word generator (inverse codebook). Below this box is the phrase (memory)(decoder). From the right side of this box is an  arrow pointing to the right to the phrase w_i.">
+          <image mime-type="image/png" src="../../media/pic001-fa63.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 248. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic001-c183.eps" id="uid2_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Generalized Coder-Decoder</caption></figure>
+      <para id="id2259049">The basic idea of <link target-id="uid2">Figure 1</link> is used today in cryptographic systems,
+where the “address <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>"  is an encyphered version of a message <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> ; in vector
+quantizers, where the “address <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>" is the address of a close approximation to
+data <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> ; in coded satellite transmissions, where the “address <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>"  is a data
+word <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> plus parity check bits for detecting and correcting errors; in digital
+audio systems, where the “address <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>" is a stretch of digitized and coded
+music; and in computer memories, where <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> is an address (a coded version of
+a word of memory) and <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> is a word in memory.</para>
+      <para id="id2259192">In this chapter we study three fundamental questions in the construction of binary addresses or binary codes. First, what are plausible schemes
+for mapping symbols (such as words, letters, computer instructions, voltages, pressures, etc.) into binary codes? Second, what are plausible schemes for coding likely symbols with short binary words and unlikely symbols with long words in order to minimize the number of binary digits (bits) required to represent a message? Third, what are plausible schemes for “coding” binary words into longer binary words that contain “redundant bits” that may be used to detect and correct errors? These are not new questions. They have occupied the minds of many great thinkers. Sir Francis recognized that arbitrary messages had binary representations. Alan Turing, Alonzo Church, and Kurt Goedel studied binary codes for computations in their study of computable numbers and algorithms. Claude Shannon, R. C. Bose, Irving Reed, Richard Hamming, and many others have studied error control codes. Shan-
+non, David Huffman, and many others have studied the problem of efficiently coding information.</para>
+      <para id="id2259222">In this chapter we outline the main ideas in binary coding and illustrate the role that binary coding plays in digital communications. In your subsequent courses in electrical and computer engineering you will study integrated circuits for building coders and decoders and mathematical models for designing good codes.
+</para>
+    </section>
+  </content>
+</document>

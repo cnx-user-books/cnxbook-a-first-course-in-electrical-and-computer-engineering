@@ -1,0 +1,539 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Composition of Transformations</title>
+  <metadata>
+  <md:content-id>m21489</md:content-id><md:title>Vector Graphics: Composition of Transformations</md:title>
+  <md:abstract/>
+  <md:uuid>f12a5667-e121-40df-ba20-5c971ec85c3f</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-335">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Often we will want to perform several operations on an object before we
+display the result. For example, suppose we want to rotate by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac></m:mstyle></m:math> and reduce
+to <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> size in each dimension:</para>
+    
+    <equation id="id2258992"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">G</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>3</m:mn>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi mathvariant="normal">G</m:mi>
+          </m:mrow>
+        </m:mstyle>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>,</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    <para id="id2259062">If there are <m:math>
+<m:mi>n</m:mi>
+</m:math> points in the matrix <m:math>
+<m:mi>G</m:mi>
+</m:math>, it will require <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mi>n</m:mi></m:mrow></m:math> multiplications to
+perform each of these operations, for a total of <m:math overflow="scroll"><m:mrow><m:mn>8</m:mn><m:mi>n</m:mi></m:mrow></m:math> multiplications. However,
+we can save some multiplications by noting that</para>
+    <equation id="id2258196">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>,</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>3</m:mn>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mi mathvariant="normal">G</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259446">where</para>
+    <equation id="id2259450"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">A</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi mathvariant="normal">S</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>,</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>-</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>                 
+   <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mo>(</m:mo>
+                 
+                    <m:mfrac>
+                      <m:mi>π</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mi mathvariant="normal">l</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mo>.</m:mo>
+        
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    
+    <para id="id2259678">In other words, we take advantage of the fact that matrix multiplication is
+associative to combine <m:math>
+<m:mi>S</m:mi>
+</m:math> and <m:math>
+<m:mi>R</m:mi>
+</m:math> into a single operation <m:math>
+<m:mi>A</m:mi>
+</m:math>, which requires
+only 8 multiplications. Then we operate on <m:math>
+<m:mi>G</m:mi>
+</m:math> with <m:math>
+<m:mi>A</m:mi>
+</m:math>, which requires <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mi>n</m:mi></m:mrow></m:math>
+multiplications. By “composing” the two operations, we have reduced the
+total from <m:math overflow="scroll"><m:mrow><m:mn>8</m:mn><m:mi>n</m:mi></m:mrow></m:math> to <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>8</m:mn></m:mrow></m:math> multiplications. Furthermore, we can now build
+operators with complex actions by combining simple actions.</para>
+<example id="fs-id8354582"><para id="id2259782">We can build an operator that stretches objects along a
+diagonal line by composing scaling and rotation. We must</para>
+<list id="fs-id8354663" list-type="enumerated" number-style="lower-roman"><item>rotate the diagonal line to the x-axis with <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math>;</item>
+    <item>scale with <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>; and</item>
+    <item>rotate back to the original orientation with <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</item></list>
+    <para id="id2259863"><link target-id="fs-id8411697">Figure 1</link> shows a square being stretched along a <emphasis effect="italics">45<sup>o</sup></emphasis> line. The composite
+operator that performs this directional stretching is</para>
+    <equation id="id2259885"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi>s</m:mi>
+          <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi mathvariant="normal">R</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>s</m:mi>
+          <m:mo>,</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mo>(</m:mo>
+          <m:mo>-</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>)</m:mo>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd> 
+         <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>s</m:mi>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>s</m:mi>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:msup>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:msup>
+                      <m:mi mathvariant="normal">n</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>s</m:mi>
+<m:mo>-</m:mo>              
+      <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    
+                    <m:mo>(</m:mo>
+                    <m:mi>s</m:mi>
+<m:mo>-</m:mo>                    
+<m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:msup>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>θ</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mi>s</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:msup>
+                      <m:mi mathvariant="normal">n</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2260381">Note that the rightmost operator in a product of operators is applied first.</para>
+<figure id="fs-id8411697" orient="vertical"><media id="uid1_media" alt="Figure one is a series of three two-dimensional graphs displaying the rotations of a square. In the first graph, the square is sitting on the x and y-axis with one vertex at the origin, and a dashed diagonal line labeled 45° indicates a rotation about the line y=x. An arc labeled rotate -π/4 describes the rotation. The second graph shows a square laid diagonally along the x-axis, with one vertex at the origin, and the opposite vertex at a positive spot on the x-axis. The third and fourth vertices lay at a 45 degree angle positively and negatively from the origin. An arrow to the right of the square is labeled, scale. The third is a distorted quadrilateral sitting in the same place as the second square, but slightly stretched horizontally to the right. An arc is labeled, rotate, π/4. The fourth is a shape of the same distortion of that of the third graph, now rotated back to closely resemble the position of the square in the first graph, except that since it is a distorted shape, its vertices are located slightly above and to the right of the original vertices in the shape in the first graph.">
+        <image mime-type="image/png" src="../../media/pic003-1c12.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 232. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic003-c7ec.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    
+    <caption>Rotating and Scaling for Directional Stretching</caption></figure></example>
+  </content>
+</document>

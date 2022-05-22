@@ -1,0 +1,850 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Complex Numbers: Roots of Quadratic Equations</title>
+  <metadata>
+  <md:content-id>m21415</md:content-id><md:title>Complex Numbers: Roots of Quadratic Equations</md:title>
+  <md:abstract/>
+  <md:uuid>6ae702a8-d5d1-4359-9b88-9bf4942e24e8</md:uuid>
+</metadata>
+
+<content>
+    <para id="id2258263">You probably first encountered complex numbers when you studied
+values of <m:math><m:mi>z</m:mi></m:math> (called roots or zeros) for which the following equation is satisfied:</para>
+    <equation id="eip-832"><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mi>b</m:mi><m:mi>z</m:mi><m:mo>+</m:mo><m:mi>c</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2258277">For <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>≠</m:mo><m:mn>0</m:mn></m:mrow></m:math> (as we will assume), this equation may be written as</para>
+    <equation id="eip-3"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></equation><para id="id2258970">Let's denote the second-degree polynomial on the left-hand side of this equation by <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math>:</para>
+    <equation id="eip-634"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2259034">This is called a <emphasis effect="italics">monic polynomial</emphasis> because the coefficient of the highest-power
+term <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>)</m:mo></m:mrow></m:math> is 1. When looking for solutions to the quadratic equation <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo></m:mrow></m:mstyle></m:math><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math>, we are really looking for roots (or zeros) of the polynomial <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math>. The
+fundamental theorem of algebra says that there are two such roots. When we
+have found them, we may factor the polynomial <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math> as follows:</para>
+    <equation id="eip-259"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2259208">In this equation, <emphasis effect="italics">z<sub>1</sub></emphasis> and <emphasis effect="italics">z<sub>2</sub></emphasis> are the roots we seek. The factored form <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> shows clearly that <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, meaning that the
+quadratic equation <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> is solved for <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>. In the process of
+factoring the polynomial <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math>, we solve the quadratic equation and vice versa.</para>
+    <para id="id2259512">By equating the coefficients of <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>,</m:mo><m:msup><m:mi>z</m:mi><m:mn>1</m:mn></m:msup></m:mrow></m:math>, and <emphasis effect="italics">z<sup>0</sup></emphasis> on the left-and right-hand
+sides of <link target-id="eip-259"/>, we find that the sum and the product of the roots <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn></m:msub>
+</m:math>
+and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> obey the equations</para>
+    
+    <equation id="id2259626"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mi>b</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>    
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mi>c</m:mi>
+            <m:mi>a</m:mi>
+          </m:mfrac>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>.</m:mo>       
+      </m:math>
+    </equation>
+    <para id="id2259658">You should always check your solutions with these equations.</para>
+    <para id="id2259665"><emphasis effect="bold">Completing the Square.</emphasis> In order to solve the quadratic equation
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math> (or, equivalently, to find the roots of the polynomial <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi mathvariant="normal">c</m:mi><m:mi>a</m:mi></m:mfrac><m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math>, we “complete the square” on the left-hand side of <link target-id="eip-3"/>:</para>
+    <equation id="eip-63"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></equation><para id="id2259772">This equation may be rewritten as</para>
+    <equation id="eip-957"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2259854">We may take the square root of each side to find the solutions</para>
+    
+<equation id="eip-597"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+                <m:mo>,</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mi>b</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>a</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>±</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>a</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msqrt>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>b</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mo>-</m:mo>
+                <m:mn>4</m:mn>
+                <m:mi>a</m:mi>
+                <m:mi>c</m:mi>
+              </m:mrow>
+            </m:msqrt>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><exercise id="fs-id7919882">
+<problem id="fs-id7919884">
+    <para id="id2260013">With the roots <m:math><m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> defined in Equation 1.29, prove that
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is, indeed, equal to the polynomial <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math>. Check that
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math></para></problem>
+</exercise>
+
+    <para id="id2260206">In the equation that defines the roots <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>, the term 
+<m:math overflow="scroll">
+<m:mrow>
+<m:msup>
+<m:mi>b</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>-</m:mo>
+<m:mn>4</m:mn>
+<m:mi>a</m:mi>
+<m:mi>c</m:mi>
+</m:mrow>
+</m:math> 
+is
+critical because it determines the nature of the solutions for <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>. In
+fact, we may define three classes of solutions depending on <m:math overflow="scroll"><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:math>.</para>
+    <para id="id2260314"><emphasis effect="bold">(i) Overdamped</emphasis> <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow></m:math>. In this case, the roots <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are</para>
+    <equation id="eip-606"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>±</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:msqrt><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260378">These two roots are real, and they are located symmetrically about the point
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>. When <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, they are located symmetrically about 0 at the points
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>±</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac><m:msqrt><m:mrow><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt></m:mrow></m:mstyle></m:math>. (In this case, <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math>) Typical solutions are illustrated in
+<link target-id="uid1"/>.</para>
+    <figure id="uid1"><subfigure id="eip-id8566440">
+<media id="uid1_media" alt="There are three cartesian graphs in this series of images. The first graph has two points on the negative portion of the x axis labeled z_2 and z_1 proceeding to the the left. In between these two points there is another point labeled -b/2a. The second graph is similar except that the point z_2 is located on the positive side of the x-axis while the point z_1 is still present at the far extreme of the negative portion of the y axis. The point -b/2a is located between these points but this time is closer to the origin. The third graph does not contain the point -b/2a, but z_1 is located on the far extreme of the negative portion of the x axis and the point z_2 is located on the far extreme of the positive x axis.">
+        <image mime-type="image/png" src="../../media/pic009-1826.png" id="uid1_onlineimage" width="150"><!-- NOTE: attribute width changes image size online (pixels). original width is 79. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic009-f8b8.eps" id="uid1_printimage" print-width="01in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+<subfigure id="eip-id8566481">
+<media id="uid2_1_media" alt="">
+        <image mime-type="image/png" src="../../media/pic010-d8c4.png" id="uid2_1_onlineimage" width="150"><!-- NOTE: attribute width changes image size online (pixels). original width is 79. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-c8be.eps" id="uid2_1_printimage" print-width="01in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+<subfigure id="eip-id46922261">
+<media id="uid3_media" alt="">
+        <image mime-type="image/png" src="../../media/pic011-b21a.png" id="uid3_onlineimage" width="150"><!-- NOTE: attribute width changes image size online (pixels). original width is 81. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-765b.eps" id="uid3_printimage" print-width="01in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure><caption>Typical Roots in the Overdamped Case; (a) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="4pt"/><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>,
+(b) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="4pt"/><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and (c) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="4pt"/><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math></caption></figure>
+    
+    
+    
+    
+    
+
+<exercise id="fs-id8495042"><problem id="fs-id8495044">
+<para id="id2260705">Compute and plot the roots of the following quadratic equations:</para>
+    <list id="eip-id19526142" type="enumerated" list-type="enumerated" number-style="lower-alpha"><item> <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math>.</item></list>
+    <para id="id2260835">For each equation, check that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> </para>
+</problem>
+</exercise>
+    <para id="id2260915"><emphasis effect="bold">(ii) Critically Damped</emphasis> <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow></m:math>. In this case, the roots <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>
+and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> are equal (we say they are repeated):</para>
+    
+    <equation id="eip-288"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2261025">These solutions are illustrated in <link target-id="uid4"/>.</para>
+    <figure id="uid4"><subfigure id="eip-id6678068">
+<media id="uid4_media" alt="This Cartesian graph contains two points that rather close together. Both points exist on the negative portion of the x axis and are labeled from left to right z_1 and z_2. Above these points is the fraction -b/2a.">
+        <image mime-type="image/png" src="../../media/pic012-cc10.png" id="uid4_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 80. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-f9ed.eps" id="uid4_printimage" print-width="1.50in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+<subfigure id="eip-id6678109">
+<media id="uid5_media" alt="This Cartesian graph contains two points that rather close together. Both points exist on the positive portion of the x axis and are labeled from left to right z_1 and z_2. Above these points is the fraction -b/2a.">
+        <image mime-type="image/png" src="../../media/pic013-d11a.png" id="uid5_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 83. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-d001.eps" id="uid5_printimage" print-width="1.50in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure><caption>Roots in the Critically Damped Case; (a) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and (b)
+<m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math></caption></figure>
+    
+    
+    
+    
+    
+<exercise id="fs-id7828275"><problem id="fs-id7828277">
+<para id="id2261104">Compute and plot the roots of the following quadratic equations:</para>
+<list id="eip-id6576197" list-type="enumerated" number-style="lower-alpha"><item> <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>2</m:mn><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</item>
+</list>
+    <para id="id2261202">For each equation, check that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> </para>
+</problem>
+</exercise>
+    <para id="id2261282"><emphasis effect="bold">(iii) Underdamped</emphasis> <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow></m:math>. The underdamped case is, by
+far, the most fascinating case. When <m:math overflow="scroll"><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>, then the square root in
+the solutions for <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> (<link target-id="eip-597"/>) produces an imaginary number.
+We may write <m:math overflow="scroll"><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:math> as <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mo>(</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi><m:mo>-</m:mo><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>)</m:mo></m:mrow></m:math> and write <m:math overflow="scroll"><m:msub><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub></m:math> as</para>
+    <equation id="id2261449"><m:math overflow="scroll" mode="display">
+<m:mtable>
+        <m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>a</m:mi>
+            </m:mrow>
+          </m:mfrac>
+</m:mtd>
+<m:mtd>       
+   <m:mo>±</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>a</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:msqrt>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mo>(</m:mo>
+              <m:mn>4</m:mn>
+              <m:mi>a</m:mi>
+              <m:mi>c</m:mi>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>b</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msqrt>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>a</m:mi>
+            </m:mrow>
+          </m:mfrac>
+</m:mtd>
+<m:mtd>       
+   <m:mo>±</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>j</m:mi>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>a</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:msqrt>
+            <m:mrow>
+              <m:mn>4</m:mn>
+              <m:mi>a</m:mi>
+              <m:mi>c</m:mi>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>b</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+          </m:msqrt>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>    </equation>
+    
+    <para id="id2258221">These complex roots are illustrated in <link target-id="uid6"/>. Note that the roots are</para>
+    <para id="id2261825">purely imaginary when <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, producing the result</para>
+    <equation id="id2261843">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mo>±</m:mo>
+          <m:mi>j</m:mi>
+          <m:msqrt>
+            <m:mfrac>
+              <m:mi>c</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+          </m:msqrt>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <figure id="uid6"><subfigure id="eip-id23117828">
+<media id="uid6_media" alt="This Cartesian graph contains a line segment that extends from the origin up and to the left into quadrant II. The ending point is labeled x and the line appears to be labeled r. An arch originates on the positive portion of the x axis and ends near the the middle of the line that was just mentioned. This arch is labeled θ. There is a point on the upper end of the positive portion of the y-axis labeled 1/2a sqrt(4ac-b^2). There is also a point in the middle of the negative portion of the x axis labeled -b/2a. Directly below this point there is a marked by an x.">
+        <image mime-type="image/png" src="../../media/pic014-dd59.png" id="uid6_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 131. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic014-050e.eps" id="uid6_printimage" print-width="1.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+<subfigure id="eip-id23434992">
+<media id="uid7_media" alt=" This Cartesian graph contains has a point  just above the origin on the y axis and it is labeled 1/2a sqrt(4ac-b^2). On the positive portion of the x axis there is a point. Above and below this point there is an x. At the very end of the x axis is the fraction -b/2a.">
+        <image mime-type="image/png" src="../../media/pic015-90e6.png" id="uid7_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 144. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic015-8efe.eps" id="uid7_printimage" print-width="1.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+
+<subfigure id="eip-id3580043">
+<media id="eip-id3580046" alt="This Cartesian graph has a point on the positive and negative portion of the y axis. Both points are the same distance from the origin. The upper point is labeled sqrt(c/a).">
+        <image mime-type="image/png" src="../../media/pic016-8414.png" id="uid99_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 144. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic016-cc2d.eps" id="uid99_printimage" print-width="1.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure><caption><emphasis effect="italics">Figure 1.12:</emphasis> Typical Roots in the Underdamped Case; (a) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">b</m:mi><m:mo>)</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and (c) <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></caption></figure>
+    
+    
+    
+    
+    <para id="id2261995">In this underdamped case, the roots <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub></m:math> and 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are complex conjugates:</para>
+    
+    <equation id="eip-481"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msubsup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mo>*</m:mo>
+          </m:msubsup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2262059">Thus the polynomial <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>-</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math> also takes the
+form</para>
+    <equation id="id2262150"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>p</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>)</m:mo>
+         </m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+   
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>-</m:mo>
+            <m:msubsup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mo>*</m:mo>
+            </m:msubsup>
+            <m:mo>)</m:mo>
+</m:mtd>
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msup>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mi>z</m:mi>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+
+</m:mtable>   
+      </m:math>
+    </equation>
+    
+    <para id="id2262273"><m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> are related to the original coefficients of the polynomial as
+follows:</para>
+    
+    <equation id="eip-130"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:msub>
+                <m:mi>z</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mi>b</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><equation id="id2262368">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mi>c</m:mi>
+            <m:mi>a</m:mi>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262405">Always check these equations.</para>
+    <para id="id2262409">Let's explore these connections further by using the polar representations for <m:math><m:msub><m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math><m:msub><m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> :</para>
+    
+    <equation id="eip-652"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi>r</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>±</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2262482">Then <link target-id="id2262150"/> for the polynomial <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math> may be written in the “standard
+form”</para>
+    <equation id="id2262503"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>p</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>        
+  <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi>r</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+   
+            <m:mo>(</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi>r</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+   </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>          
+<m:msup>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mi>r</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>c</m:mi>
+          <m:mi>o</m:mi>
+          <m:mi>s</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>θ</m:mi>
+          <m:mi>z</m:mi>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>r</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    
+    <para id="id2262625"><link target-id="eip-130"/> is now</para>
+    
+    <equation id="eip-975"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>2</m:mn>
+<m:mi>r</m:mi>
+<m:mi>cos</m:mi>
+<m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>-</m:mo>
+<m:mfrac>
+<m:mi>b</m:mi>
+<m:mi>a</m:mi>
+</m:mfrac>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mi>r</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mi>c</m:mi>
+            <m:mi>a</m:mi>
+          </m:mfrac>
+       </m:mtd>
+</m:mtr>
+
+
+</m:mtable>
+</m:math></equation>
+    <para id="id2262695">These equations may be used to locate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>±</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math></para>
+    
+    <equation id="id2262757"><m:math overflow="scroll">
+        <m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>r</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msqrt>
+            <m:mfrac>
+              <m:mi>c</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+          </m:msqrt>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mo>±</m:mo>
+          <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>b</m:mi>
+              </m:mrow>
+              <m:msqrt>
+                <m:mrow>
+                  <m:mn>4</m:mn>
+                  <m:mi>a</m:mi>
+                  <m:mi>c</m:mi>
+                </m:mrow>
+              </m:msqrt>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+<exercise id="fs-id7946884">
+<problem id="fs-id7946886">
+    <para id="id2262809">Prove that <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math> may be written as <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>2</m:mn><m:mi>r</m:mi></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mi>z</m:mi><m:mo>+</m:mo><m:msup><m:mi>r</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>
+in the underdamped case.</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id7946959">
+<problem id="fs-id7946961">
+    <para id="id2262889">Prove the relations in <link target-id="id2262757"/>. Outline a graphical
+procedure for locating <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> from the polynomial <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac><m:mi>z</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math>.</para>
+</problem>
+</exercise>
+
+<exercise id="fs-id7947062"><problem id="fs-id7947064">
+    <para id="id2263007">Compute and plot the roots of the following quadratic equations:</para>
+<list id="eip-id17536381" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>-</m:mo><m:mn>2</m:mn><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</item></list>
+    <para id="id2263110">For each equation, check that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mn>2</m:mn><m:mi> Re </m:mi><m:mrow><m:mo>[</m:mo><m:msub><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>b</m:mi><m:mi>a</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>a</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></para></problem>
+</exercise>
+  </content>
+</document>

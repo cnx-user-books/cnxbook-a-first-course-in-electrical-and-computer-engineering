@@ -1,0 +1,892 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: The Function e^jθ and the Unit Circle</title>
+  <metadata>
+  <md:content-id>m21486</md:content-id><md:title>The Functions e^x and e^jθ: The Function e^jθ and the Unit Circle</md:title>
+  <md:abstract/>
+  <md:uuid>9c3d8d5b-fe4d-4269-8486-d6d180eca8f8</md:uuid>
+</metadata>
+
+<content>
+    
+    
+    <note id="eip-663">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="eip-733">Let's try to extend our definitions of the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> to the argument <m:math>
+<m:mi>x</m:mi>
+<m:mo>=</m:mo>
+<m:mi>j</m:mi>
+<m:mi>Θ</m:mi>
+</m:math>. Then <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>Θ</m:mi>
+</m:mrow>
+</m:msup>
+</m:math> is the function</para><equation id="eip-112"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math>
+</equation><para id="id2258962">The complex number <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> is illustrated in <link target-id="uid1"/>. The radius to the
+point <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> is <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:msup><m:mi>θ</m:mi><m:mn>2</m:mn></m:msup><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mfrac><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mstyle></m:math> and the angle is <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>φ</m:mi><m:mo>=</m:mo><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> This means that
+the <m:math overflow="scroll"><m:msup><m:mi>n</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> power of <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> has radius <m:math overflow="scroll"><m:mrow><m:msup><m:mi>r</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:msup><m:mi>θ</m:mi><m:mn>2</m:mn></m:msup><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mfrac><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>n</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math> and angle <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>n</m:mi><m:mi>φ</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math>
+(Recall our study of powers of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>.</m:mo></m:mrow></m:math>) Therefore the complex number <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mstyle></m:math>
+may be written as</para>
+    <equation id="eip-375"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:msup><m:mi>θ</m:mi><m:mn>2</m:mn></m:msup><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mfrac><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>n</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo>[</m:mo><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mi>j</m:mi><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2259596">For <m:math><m:mi>n</m:mi></m:math> large, <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:msup><m:mi>θ</m:mi><m:mn>2</m:mn></m:msup><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup></m:mfrac><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>n</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mn>2</m:mn><m:mo>≅</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>, and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>n</m:mi><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>≅</m:mo><m:mi>n</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>=</m:mo><m:mi>θ</m:mi></m:mrow></m:mstyle></m:math>. Therefore <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mstyle></m:math>
+is approximately</para>
+    <equation id="eip-791"><m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true">
+<m:mrow>
+<m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mn>1</m:mn>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+<m:mfrac>
+<m:mi>θ</m:mi>
+<m:mi>n</m:mi>
+</m:mfrac>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mi>n</m:mi>
+</m:msup>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:mstyle>
+<m:mo>(</m:mo>
+<m:mrow>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>θ</m:mi>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+</m:mrow>
+<m:mo form="prefix">sin</m:mo>
+<m:mi>θ</m:mi>
+<m:mo>)</m:mo>
+<m:mo>.</m:mo>
+</m:math></equation><para id="id2259890"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>( <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi></m:mrow></m:math> sin <emphasis effect="italics">θ</emphasis>).</para>
+    <para id="id2259959">This finding is consistent with our previous definition of <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> !</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one shows a cartesian graph with a labeled line segment beginning at the origin and extending into the first quadrant. The location of the final point of the segment is labeled with a horizontal value, 1, and a vertical value, θ/n. At the end of the line segment, an expression reads, 1 + j * θ/n.">
+        <image mime-type="image/png" src="../../media/pic004-4d82.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 159. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic004-10a4.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Complex Number <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mfrac><m:mi>θ</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math></caption></figure>
+    <para id="id2260014">The series expansion for <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is obtained by evaluating Taylor's formula at <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:math>:</para>
+    
+    <equation id="eip-967"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:munderover><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>n</m:mi><m:mo>!</m:mo></m:mrow></m:mfrac><m:msup><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2260120">When this series expansion for <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is written out, we have the formula</para>
+    <equation id="id2260141"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+
+
+
+</m:mtable>
+      </m:math>
+    </equation>
+    
+    <para id="id2260412">It is now clear that <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math> have the series expansions</para>
+    
+    <equation id="eip-102"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:msubsup>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:msubsup>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2260518">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo form="prefix">sin</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260605">When these infinite sums are truncated at <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then we say that we have N-term approximations for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math>:</para>
+    
+    <equation id="eip-255"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>≅</m:mo>
+          <m:msubsup>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msubsup>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="id2260730">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo form="prefix">sin</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>≅</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:munderover>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>θ</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260820">The ten-term approximations to <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math> are plotted over exact expressions for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math> in <link target-id="uid2"/>. The approximations are very good over
+one period <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>θ</m:mi><m:mo>≤</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:math>, but they diverge outside this interval. For more accurate approximations over a larger range of <m:math overflow="scroll"><m:mrow><m:msup><m:mi>θ</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math>, we would need to use more terms. Or, better yet, we could use the fact that <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math> are periodic
+in <m:math><m:mi>θ</m:mi></m:math>. Then we could subtract as many multiples of <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math> as we needed from <m:math>
+<m:mi>θ</m:mi>
+</m:math>
+to bring the result into the range <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>]</m:mo></m:mrow></m:math> and use the ten-term approximations
+on this new variable. The new variable is called <m:math>
+<m:mi>θ</m:mi>
+</m:math>-modulo <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure two shows a graph with multiple winding lines resembling sinusoidal patterns. The horizontal axis is labeled, angle in radians, and its values range from 0 to 14 in increment of 2. The vertical axis is labeled, sine and cosine, and its values range from -1 to 1 in increments of 0.5. The lines on the graph will be read from left to right. At horizontal point zero, two curves begin, one following closely to a sine curve, beginning at vertical value 0 and increasing to 1, before decreasing to -1 and repeating, and the other following closely to a cosine curve, beginning at 1 and decreasing to -1, then returning to increase to 1 and repeating. These two curves repeat in their predictable pattern to approximately horizontal value 12. At approximately the horizontal value 8, two curves branch off of the more predictable curves and resemble distorted sinusoidal directions. Off of the sine curve at a vertical value of 1 is a curve that begins downward but at a more shallow slope than the sine curve, then increases sharply to terminate at approximately (9.5, 1). Off of the cosine curve at a vertical value of 0, when the cosine curve is moving in a negative direction, the spinoff curve begins downward but at a shallower slope than the cosine curve, and then it sharply begins increasing to its termination point of approximately (9.25, 1)">
+        <image mime-type="image/png" src="../../media/pic005-b376.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 224. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic005-03a8.eps" id="uid2_printimage" print-width="100mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Ten-Term Approximations to <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math></caption></figure>
+<exercise id="fs-id26465916">
+<problem id="fs-id6674307">
+    <para id="id2261070">Write out the first several terms in the series expansions for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math>.</para></problem>
+</exercise>
+    <para id="id2261106"><emphasis effect="bold">Demo 2.1 (MATLAB).</emphasis> Create a MATLAB file containing the following demo MATLAB program that computes and plots two cycles of <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math>
+and sin <emphasis effect="italics">θ</emphasis> versus <emphasis effect="italics">θ</emphasis>. You should observe <link target-id="uid3"/>. Note that two cycles take in <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:math> radians, which is approximately 12 radians.</para>
+    <code id="eip-260" display="block">clg;
+j = sqrt(-1);
+theta = 0:2*pi/50:4*pi;
+s = sin(theta);
+c = cos(theta);
+plot(theta,s);
+elabel('theta in radians');
+ylabel('sine and cosine');
+hold on
+plot(theta,c);
+hold off</code>
+    <figure id="uid3"><media id="uid3_media" alt="Figure three shows a graph with multiple winding lines resembling sinusoidal patterns. The horizontal axis is labeled, angle in radians, and its values range from 0 to 14 in increment of 2. The vertical axis is labeled, sine and cosine, and its values range from -1 to 1 in increments of 0.5. The lines on the graph will be read from left to right. At horizontal point zero, two curves begin, one following closely to a sine curve, beginning at vertical value 0 and increasing to 1, before decreasing to -1 and repeating, and the other following closely to a cosine curve, beginning at 1 and decreasing to -1, then returning to increase to 1 and repeating. These two curves repeat in their predictable pattern to approximately horizontal value 12. ">
+        <image mime-type="image/png" src="../../media/pic006-0156.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 238. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic006-c54e.eps" id="uid3_printimage" print-width="100mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Functions <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math></caption></figure>
+<exercise id="fs-id3967875">
+<problem id="fs-id25380815">
+    <para id="id2261314">(MATLAB) Write a MATLAB program to compute and plot the ten-term approximations to 
+
+<m:math>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>θ</m:mi>
+</m:math> and 
+
+<m:math>
+<m:mo form="prefix">sin</m:mo>
+<m:mi>θ</m:mi>
+</m:math> for 
+
+<m:math>
+<m:mi>θ</m:mi>
+</m:math> running from 0 to 
+
+<m:math overflow="scroll">
+<m:mrow>
+<m:mn>2</m:mn>
+<m:mo>(</m:mo>
+<m:mn>2</m:mn>
+<m:mi>π</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:math> in steps of 
+
+<m:math overflow="scroll">
+<m:mrow>
+<m:mn>2</m:mn>
+<m:mi>π</m:mi>
+<m:mo>/</m:mo>
+<m:mn>50</m:mn>
+</m:mrow>
+</m:math>. Compute and overplot exact expressions for 
+
+<m:math>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>θ</m:mi>
+</m:math> and 
+
+<m:math>
+<m:mo form="prefix">sin</m:mo>
+<m:mi>θ</m:mi>
+</m:math>. You should observe a result like <link target-id="uid2"/>.</para></problem></exercise>
+    <para id="id2261407"><emphasis effect="bold">The Unit Circle.</emphasis> The <emphasis effect="italics">unit circle</emphasis> is defined to be the set of all complex numbers <m:math>
+<m:mi>z</m:mi>
+</m:math> whose magnitudes are 1. This means that all the numbers on the unit circle may be written as <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math>. We say that the unit circle consists of all numbers generated by the function <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> as <m:math>
+<m:mi>θ</m:mi>
+</m:math> varies from 0 to <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>. See <link target-id="uid4"/>.</para>
+    <para id="id2261502"><emphasis effect="bold">A Fundamental Symmetry.</emphasis> Let's consider the two complex numbers <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac></m:mstyle></m:math>, illustrated in 
+<link target-id="uid4"/>. We call <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi><m:mi mathvariant="normal">e</m:mi></m:mrow></m:mstyle></m:math> “reflection of <m:math>
+<m:mi>z</m:mi>
+</m:math> through the unit circle” (and vice versa). Note that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:msub><m:mi>r</m:mi><m:mn>1</m:mn></m:msub></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup></m:mrow></m:mstyle></m:math>. The complex numbers <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mi mathvariant="normal">*</m:mi></m:msubsup></m:mfrac><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math> are illustrated in <link target-id="uid4"/>. The magnitude squared of each is</para>
+    
+    <equation id="eip-188"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msubsup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mo>*</m:mo>
+            </m:msubsup>
+            <m:mo>-</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+    </equation><equation id="eip-523"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub></m:mfrac><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></equation><para id="id2261884">The ratio of these magnitudes squared is</para>
+    
+    <equation id="eip-566"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msup>
+              <m:mi>β</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo>-</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msubsup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mo>*</m:mo>
+                  </m:msubsup>
+                  <m:mo>-</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msubsup>
+                      <m:mi>z</m:mi>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mo>*</m:mo>
+                    </m:msubsup>
+                  </m:mfrac>
+                  <m:mo>-</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msub>
+                      <m:mi>z</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mfrac>
+                  <m:mo>-</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2262165">This ratio may be manipulated to show that it is independent of <m:math>
+<m:mi>θ</m:mi>
+</m:math>, meaning that the points <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:msubsup><m:mi>z</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mfrac></m:mstyle></m:math> maintain a constant relative distance from every point on the unit circle:</para>
+    
+    <equation id="id2262423"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msup>
+              <m:mi>β</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mfrac>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:msubsup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mo>*</m:mo>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>-</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mrow>
+              <m:mrow>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                  </m:mrow>
+                </m:mfrac>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>-</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msubsup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                    <m:mo>*</m:mo>
+                  </m:msubsup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>-</m:mo>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>θ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mfrac>
+              </m:mrow>
+            </m:mfrac>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mo>|</m:mo>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>,</m:mo>
+<m:mtext>independent of</m:mtext>
+          <m:mi>θ</m:mi>
+          <m:mo>!</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2262499">This result will be of paramount importance to you when you study digital
+filtering, antenna design, and communication theory.</para>
+    <figure id="uid4"><media id="uid4_media" alt="Figure four is a cartesian graph with a unit circle and multiple labeled points connected by line segments. A point on the circle labeled e^(jθ) is located in quadrant one. A point inside the circle in quadrant two is labeled z_1. A point located outside the circle in the second quadrant is labeled 1/z_1^*. All points are connected to each other and to the origin with unlabeled line segments. An arc measures the angle between the line segment connecting the origin to e^(jθ), and is labeled θ.">
+        <image mime-type="image/png" src="../../media/pic007-3230.png" id="uid4_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 162. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic007-08eb.eps" id="uid4_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Unit Circle</caption></figure>
+<exercise id="fs-id6472851">
+<problem id="fs-id6472853">
+    <para id="id2262524">Write the complex number <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:math> as <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>φ</m:mi></m:mrow></m:msup></m:mrow></m:math>. What are <m:math><m:mi>r</m:mi></m:math> and
+<m:math>
+<m:mi>φ</m:mi></m:math>?
+</para></problem>
+</exercise>
+  </content>
+</document>

@@ -1,0 +1,865 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Projections</title>
+  <metadata>
+  <md:content-id>m21493</md:content-id><md:title>Vector Graphics: Projections</md:title>
+  <md:abstract/>
+  <md:uuid>58c15c1b-d93c-4312-9528-e4e498ebb32c</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-241">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268">Computer screens and printers are two-dimensional display devices. We
+must somehow convert three-dimensional images to two dimensions in order
+to display them. This task is done by another kind of matrix operator called
+<emphasis effect="italics">a projection</emphasis>.</para>
+    <para id="id2258281">To build a projection, we first choose a <emphasis effect="italics">projection plane</emphasis> in the three-
+dimensional space of the object we wish to view. All points of the object are
+then projected onto the plane. There are many different kinds of projections,
+corresponding to various geometric rules for mapping points in space onto a
+plane. We begin with the <emphasis effect="italics">parallel projection</emphasis> illustrated in <link target-id="uid1">Figure 1</link>, wherein
+the dotted lines between the points and their projections in the plane are all
+parallel to one another. These dotted lines are called <emphasis effect="italics">projectors</emphasis>.</para>
+    <para id="id2258952"><emphasis effect="bold">Range.</emphasis> The projection plane is called the <emphasis effect="italics">range</emphasis> of the projection. We
+will assume for now that the projection plane passes through the origin. If it
+does not, we may later compose the necessary translations with our projection.
+Three points, not all in a line, are required to determine a plane. We will take
+the origin as one of the points and suppose that the other two points are the
+vectors <m:math>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>. From these vectors, we form the matrix</para>
+    <equation id="eip-120"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>=</m:mo><m:mo>[</m:mo><m:msub><m:mi mathvariant="normal">r</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi mathvariant="normal">r</m:mi><m:mn>2</m:mn></m:msub><m:mo>]</m:mo></m:mrow><m:mo>,</m:mo></m:math>
+</equation><para id="id2259002">which determines the range of the projection.</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one shows a rectangular prism hanging in three-dimensional space, and dashed lines showing the projection of the vertices of the object down to the x-y plane.">
+        <image mime-type="image/png" src="../../media/pic010-8b05.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 2180. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-6993.eps" id="uid1_printimage" print-width="92.29mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Oblique Parallel Projection</caption></figure>
+    <para id="id2259058"><emphasis effect="bold">Null-Space.</emphasis> To complete the specification of the parallel projection,
+we must specify the direction of the projectors. The line through the origin in
+this direction is called the <emphasis effect="italics">null-space</emphasis> of the projection. Note that any line in
+the three-dimensional object that is parallel to the null-space will disappear
+to a point when projected. The null-space may be specified by a vector <m:math>
+<m:mi>n</m:mi>
+</m:math>
+pointing in the direction of the projectors.</para>
+    <para id="id2259088"><emphasis effect="bold">Orthogonal Projection.</emphasis> If the null-space is perpendicular to the
+range, we say that the projection is an <emphasis effect="italics">orthogonal projection</emphasis>. The matrix
+operator for orthogonal projection is a function of the range. If we assume
+that <m:math>
+<m:mi>R</m:mi>
+</m:math> is specified in three-dimensional coordinates (not homogeneous!), we
+have the following definition for the orthogonal projection onto the range of
+<m:math>
+<m:mi>R</m:mi>
+</m:math>:</para>
+    
+    <equation id="eip-708"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">P</m:mi><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259452">In homogeneous coordinates, we embed this <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math> projection matrix in the general <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mo>×</m:mo><m:mn>4</m:mn></m:mrow></m:math> transformation:</para>
+    <equation id="eip-640"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">P</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">P</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msup><m:mn>0</m:mn><m:mi>T</m:mi></m:msup></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation>
+<example id="fs-id5648732">
+    <para id="id2259566">Suppose we choose the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> plane as our projection
+plane. Vectors <m:math>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>r</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> can be any two points in the plane (besides the
+origin), so let's take</para>
+    <equation id="id2259621">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">r</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mtext>,</m:mtext>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi mathvariant="normal">r</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259717">Then the range matrix is</para>
+    <equation id="id2259722">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259783">The orthogonal projection looking down on the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> plane from the z-axis is</para>
+    <equation id="id2259804"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">P</m:mi>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfenced separators="" open="[" close="]">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+              <m:mspace width="4.pt"/>
+              <m:mfenced separators="" open="[" close="]">
+                <m:mtable>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                    <m:mtd columnalign="left">
+                      <m:mn>0</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mfenced>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2260090">In homogeneous coordinates,</para>
+    <equation id="id2260096"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">P</m:mi>
+            <m:mi>h</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>·</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation></example>
+<exercise id="fs-id18037755">
+<problem id="fs-id18037757">
+    <para id="id2260226">Let the vectors <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">r</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">r</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> specify the range
+of an orthogonal projection. Find <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">P</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">P</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Compare with <link target-id="fs-id5648732">Example 1</link> and explain any similarities. </para></problem>
+</exercise>
+<example id="fs-id6078978"><para id="id2260376">In the <link document="m21454">chapter on linear algebra</link> you learned that the projection of <m:math>
+<m:mi>w</m:mi>
+</m:math> onto
+<m:math>
+<m:mi>x</m:mi>
+</m:math> is given by</para>
+    <equation id="id2260405">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mo>)</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260459">This is an orthogonal projection of <emphasis effect="italics">w</emphasis> onto a line, but it is closely related to
+the projection into the plane just described. To see the similarity, let's work
+on the expression for <m:math>
+<m:mi>z</m:mi></m:math> a little:</para>
+    
+<equation id="id2260489">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">z</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mrow>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>    
+      <m:mi mathvariant="normal">x</m:mi>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>   
+       <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi mathvariant="normal">x</m:mi>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mi>T</m:mi>
+              </m:msup>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mi>T</m:mi>
+            </m:msup>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+    <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mo>[</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mi>T</m:mi>
+              </m:msup>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>]</m:mo>
+          <m:mi mathvariant="normal">w</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>  
+        <m:mi mathvariant="normal">P</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">w</m:mi>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2260752">So we see that it can be written in the same way as the projection onto
+the plane. The only difference is that the range is now one-dimensional and
+specified by <m:math>
+<m:mi>x</m:mi>
+</m:math> in place of <m:math>
+<m:mi>R</m:mi>
+</m:math>. </para></example>
+    <para id="id2260785"><emphasis effect="bold">Oblique Projection.</emphasis> More generally, we may have a null-space <m:math>
+<m:mi>n</m:mi>
+</m:math> that
+is not perpendicular to the range R. The projection shown in <link target-id="uid1">Figure 1</link> is
+an oblique projection. Once again we start with nonhomogeneous coordinates
+for <m:math>
+<m:mi>n</m:mi></m:math> and <m:math>
+<m:mi>R</m:mi>
+</m:math> and write the <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math> oblique projection as</para>
+    
+    <equation id="eip-356"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">E</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">n</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mo>{</m:mo>
+          <m:msup>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+        </m:mrow>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mi>I</m:mi>
+          <m:mo>-</m:mo>
+          <m:mo>-</m:mo>
+          <m:mi>P</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>n</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>]</m:mo>
+        </m:mrow>
+        <m:mrow>
+          <m:msup>
+            <m:mrow>
+              <m:mi mathvariant="normal">R</m:mi>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+        </m:mrow>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mi>I</m:mi>
+          <m:mo>-</m:mo>
+          <m:mo>-</m:mo>
+          <m:mi>P</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>n</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260976">where</para>
+    <equation id="id2260979">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">P</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">n</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">n</m:mi>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi mathvariant="normal">n</m:mi>
+                <m:mi>T</m:mi>
+              </m:msup>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi mathvariant="normal">l</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi mathvariant="normal">n</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:msup>
+                <m:mi mathvariant="normal">n</m:mi>
+                <m:mi>T</m:mi>
+              </m:msup>
+            </m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">n</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261085">As with the orthogonal projection, we can return to homogeneous coordinates by</para>
+    
+<equation id="eip-579"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">E</m:mi><m:mi>h</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">E</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msup><m:mi mathvariant="normal">O</m:mi><m:mi>T</m:mi></m:msup></m:mtd><m:mtd/><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><exercise id="fs-id17875155">
+<problem id="fs-id17875158">
+    <para id="id2261186">Prove and interpret the following properties of paralle1 projections (both orthogonal and oblique):</para>
+<list id="fs-id18815459" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">P</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi mathvariant="normal">P</m:mi><m:mo>;</m:mo><m:msup><m:mi mathvariant="normal">E</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi mathvariant="normal">E</m:mi></m:mrow></m:math>.</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>P</m:mi><m:mi>R</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>;</m:mo><m:mi>E</m:mi><m:mi>R</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi></m:mrow></m:math>.</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>E</m:mi><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>;</m:mo><m:mi>P</m:mi><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. (First show that <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> when <emphasis effect="italics">n</emphasis> is orthogonal to <m:math overflow="scroll"><m:mrow><m:mi>R</m:mi><m:mo>.</m:mo></m:mrow></m:math>)</item></list></problem>
+</exercise>
+    <para id="id2261359"><emphasis effect="bold">Display from Projections.</emphasis> Even after we have used a projection, the
+image points are in three-dimensional homogeneous coordinates. How then do
+we display them on a two-dimensional display? If we had chosen the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi></m:math> plane
+as the range of our projection, we could let the output device represent the
+<m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi></m:math> plane and ignore the z-coordinate of each point. The z-coordinates of the
+projected image would all be 0 anyway since the projected points would lie in
+the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi></m:math> plane. The fourth coordinate of 1 may also be ignored for display. But
+even if the projection plane is not the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi></m:math> plane, we may perform a rotation to
+align the two planes and again let the output device represent the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi></m:math> plane.</para>
+    <para id="id2261404"><emphasis effect="bold">Perspective Projections.</emphasis> To obtain a perspective projection, we first choose a projection plane as we did for parallel projections. Instead of choosing a null-space parallel to all projectors, we now choose a viewpoint. The projectors all pass through the viewpoint in a perspective projection, as shown in <link target-id="uid2">Figure 2</link>. For a viewpoint at <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>d</m:mi></m:mrow></m:math> on the z-axis and a projection plane coinciding with the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> plane, the three-dimensional homogeneous operator for perspective projection is</para>
+    
+    <equation id="eip-335"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">M</m:mi><m:mrow><m:mo>(</m:mo><m:mi>d</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mi>d</m:mi></m:mfrac></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2261579">The first thing you should notice about the perspective projection <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">M</m:mi><m:mo>(</m:mo><m:mi>d</m:mi><m:mo>)</m:mo></m:mrow></m:math> is
+that it violates the structure given in <link document="m21494" target-id="eip-796">Equation 2 from "Vector Graphics: Three-Dimensional Homogeneous Coordinates"</link> by having the 4,3 position
+equal to <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>d</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> rather than to 0. This means that the fourth coordinates will
+not remain 1 in the new point matrix</para>
+    <equation id="id2261628">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">M</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>d</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <figure id="uid2"><media id="uid2_media" alt="Figure one shows a rectangular prism hanging in three-dimensional space, and a projection point above on the z-axis with dashed lines going through the vertices on the prism and continuing downward to land and make a shape on the x-y plane. Above the graph is an equation that reads, G_new = M(d) G.">
+        <image mime-type="image/png" src="../../media/pic011-a6d9.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 2182. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-111f.eps" id="uid2_printimage" print-width="92.37mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>A Perspective Projection</caption></figure>
+    <para id="id2261698">This situation is interpreted to mean that the new point 
+<m:math overflow="scroll">
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>x</m:mi>
+<m:mo>,</m:mo>
+<m:mi>y</m:mi>
+<m:mo>,</m:mo>
+<m:mi>z</m:mi>
+<m:mo>,</m:mo>
+<m:mi>w</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:math> must be <emphasis effect="italics">renormalized</emphasis> to <m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true">
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mfrac>
+<m:mi>x</m:mi>
+<m:mi>w</m:mi>
+</m:mfrac>
+<m:mo>,</m:mo>
+<m:mfrac>
+<m:mi mathvariant="normal">y</m:mi>
+<m:mi>w</m:mi>
+</m:mfrac>
+<m:mfrac>
+<m:mi>z</m:mi>
+<m:mi>w</m:mi>
+</m:mfrac>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:mstyle>
+</m:math> before the operation is considered complete. Renormalization adds another computational step to the image transformation process. This is undesirable, but we are stuck with it if we wish to include perspective projections in our repertoire of transformations. Note that renormalization is a point-by-point process since <m:math><m:mi>w</m:mi></m:math> may be different for each point.</para>
+    <para id="id2261792">How does renormalization affect composition of operators? We might expect that, each time we perform an operation requiring renormalization, we will be forced to stop and do the renormalization before going on with other operations. In this respect we are fortunate: we may put off the renormalization until all transformations are complete and renormalize once just before displaying the image. Thus we are able to compose perspective projections at will with other transformations.</para>
+<exercise id="fs-id13688796">
+<problem id="fs-id13688798">
+    <para id="id2261803">What is the perspective projection matrix for a viewpoint at infinity, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">M</m:mi><m:mo>(</m:mo><m:mi>∞</m:mi><m:mo>)</m:mo></m:mrow></m:math>? Interpret the result.</para>
+</problem>
+</exercise>
+    <para id="id2261831"><emphasis effect="bold">Generalization of Projections.</emphasis> “Projection” is a technical term in linear algebra. A square matrix of any size is considered a projection if it obeys the property of <link target-id="fs-id17875155">Exercise 2(a)</link>, <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">P</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi mathvariant="normal">P</m:mi></m:mrow></m:math>. All of our geometric projection matrices have this property. We have considered only three-dimensional spaces with a two-dimensional range and a one-dimensional null-space. In general, the dimensionality of the space may be split in any way between range and null-space. If we reinterpret homogeneous coordinates as four-dimensional space, we have projections with three-dimensional range and one-dimensional null-space, but the perspective projection is actually not quite a projection in the technical sense even though <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">M</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>d</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">M</m:mi><m:mrow><m:mo>(</m:mo><m:mi>d</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> because perspective projection also includes renormalization.
+</para>
+  </content>
+</document>

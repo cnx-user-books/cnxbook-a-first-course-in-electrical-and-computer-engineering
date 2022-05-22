@@ -1,0 +1,1012 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Homogeneous Coordinates</title>
+  <metadata>
+  <md:content-id>m21490</md:content-id><md:title>Vector Graphics: Homogeneous Coordinates</md:title>
+  <md:abstract/>
+  <md:uuid>337e12a5-1b02-484a-b24a-b36f7a496e7f</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-97">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">In the previous section we were able to combine rotation and scaling into a single composite operation by matrix multiplication. Unfortunately,
+translation cannot yet be included in the composite operator since we do it by addition rather than by multiplication.</para>
+<example id="fs-id9299988">
+    <para id="id2258270">Suppose we wish to rotate the image <m:math>
+<m:mi>G</m:mi>
+</m:math> by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac></m:mstyle></m:math> about the
+point <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>10</m:mn><m:mo>,</m:mo><m:mn>10</m:mn><m:mo>)</m:mo></m:mrow></m:math>. Our rotation matrix <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> always rotates about the origin,
+so we must combine three transformations to accomplish this:</para>
+<list id="fs-id9331358" list-type="enumerated" number-style="lower-roman"><item>translate the point <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>10</m:mn><m:mo>,</m:mo><m:mn>10</m:mn><m:mo>)</m:mo></m:mrow></m:math> to the origin;</item>
+    <item>rotate <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac></m:mstyle></m:math> radians about the origin; and</item>
+    <item>translate the origin back to <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>10</m:mn><m:mo>,</m:mo><m:mn>10</m:mn><m:mo>)</m:mo></m:mrow></m:math>.</item>
+</list>
+    <para id="id2259060">For step (i), we have <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">b</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">l</m:mi><m:mn>0</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>10</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and</para>
+    <equation id="id2259118">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258193">For step (ii),</para>
+    <equation id="id2258196"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">b</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mn>1</m:mn>
+              <m:mi>T</m:mi>
+            </m:msup>
+            <m:mo>]</m:mo>
+          </m:mrow>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2259576">For step (iii), we can <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">e</m:mi><m:mo>-</m:mo><m:msub><m:mi mathvariant="normal">b</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math> from step (i):</para>
+    <equation id="id2259614"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>π</m:mi>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">R</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mfrac>
+                  <m:mi>π</m:mi>
+                  <m:mn>3</m:mn>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">b</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2259850">In this example we were unable to find a single matrix operator <m:math>
+<m:mi>A</m:mi>
+</m:math> to do the entire job. The total transformation took the form</para></example>
+    <equation id="id2259866">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">b</m:mi>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259922">This is called an <emphasis effect="italics">affine transformation</emphasis> because it involves both multiplication
+by <m:math>
+<m:mi>A</m:mi>
+</m:math> and addition of a constant matrix. This is in contrast to the more
+desirable <emphasis effect="italics">linear transformation</emphasis>, which involves only multiplication by <m:math>
+<m:mi>A</m:mi>
+</m:math>.</para>
+    <para id="id2259959">We will now move toward a modified representation of the image and
+the operators by rewriting the last equation as</para>
+    <equation id="eip-834"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">G</m:mi><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">e</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mi mathvariant="normal">A</m:mi><m:mi mathvariant="normal">b</m:mi><m:mo>]</m:mo></m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">G</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msup><m:mn>1</m:mn><m:mi>T</m:mi></m:msup></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math></equation><para id="id2259964">where in the example we had <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi mathvariant="normal">b</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>-</m:mo><m:mi mathvariant="normal">I</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">b</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mstyle></m:math>.</para>
+<exercise id="fs-id9473187">
+<problem id="fs-id9472585">
+    <para id="id2260129">Show that, for any matrices <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">B</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">C</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">D</m:mi></m:mrow></m:math> of compatible sizes,</para>
+    <equation id="id2260168">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mi mathvariant="normal">D</m:mi>
+          <m:mo>=</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>A</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">B</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">D</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation></problem>
+</exercise>
+    <para id="id2260249">The matrix <m:math overflow="scroll"><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">G</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msup><m:mn>1</m:mn><m:mi>T</m:mi></m:msup></m:mtd></m:mtr></m:mtable></m:mfenced></m:math> looks like</para>
+    <equation id="id2260289">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260391">and the points <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> are called <emphasis effect="italics">homogeneous coordinates</emphasis>. We can modify
+<link target-id="eip-834">Equation 5</link> so that the new point matrix is also in homogeneous coordinates:</para>
+    <equation id="id2260434">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">G</m:mi>
+                    <m:mrow>
+                      <m:mi mathvariant="normal">n</m:mi>
+                      <m:mi mathvariant="normal">e</m:mi>
+                      <m:mi mathvariant="normal">w</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">A</m:mi>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">b</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mi mathvariant="normal">O</m:mi>
+                    <m:mi>T</m:mi>
+                  </m:msup>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">G</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260568">In the new representation, each point in the image has a third coordinate,
+which is always a 1. The homogeneous transformation is a <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math> matrix,</para>
+    <equation id="id2260589">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mi>h</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">A</m:mi>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">b</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mn>0</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:msup>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260656">which is capable of translation, rotation, and scaling all by matrix multi-
+plication. Thus, using homogeneous coordinates, we can build composite
+transformations that include translation.</para>
+    <para id="id2260664">In homogeneous coordinates, we have</para>
+    
+    <equation id="id2260806"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">R</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>s</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>s</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">T</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    
+<example id="fs-id9350298">
+    <para id="id2261023">The composite transformation to triple the size of an
+image and <emphasis effect="italics">then</emphasis> move it 2 units to the left is</para>
+    <equation id="id2261036">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">l</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261249">On the other hand, the composite transformation to move an image 2 units
+to the left and <emphasis effect="italics">then</emphasis> triple its size is</para>
+    <equation id="id2261261">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>6</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261476">In the latter case, the distance of the translation is also tripled.</para></example>
+<exercise id="fs-id9354921">
+<problem id="fs-id9354923">
+    <para id="id2261488">Find a single composite transformation in homogeneous coordinates that rotates an image by angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> about point <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> as in <link target-id="fs-id9299988">Example 1</link>.
+</para></problem>
+</exercise>
+  </content>
+</document>

@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Complex Variables</title>
+  <metadata>
+  <md:content-id>m21384</md:content-id><md:title>An Introduction to MATLAB: Complex Variables</md:title>
+  <md:abstract/>
+  <md:uuid>6c9afbe9-c314-415c-aca2-48d20d7d0da2</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-928">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">The number <m:math overflow="scroll"><m:msqrt><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msqrt></m:math> is predefined in MATLAB and stored in the two variable locations denoted by <code>i</code> and <code>j</code>. This double definition comes from the preference of mathematicians for using <m:math>
+<m:mi>i</m:mi>
+</m:math> and the preference of engineers for using <m:math>
+<m:mi>j</m:mi>
+</m:math> (with <m:math><m:mi>i</m:mi>
+</m:math> denoting electrical current). <code>i</code> and <code>j</code> are variables, and their contents may be changed. If you type <code>j = 5</code>, then this is the value for <code>j</code> and <code>j</code> no longer contains <m:math overflow="scroll"><m:msqrt><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msqrt></m:math>. Type in <code>j = sqrt(-1)</code> to restore the original value. Note the way a complex variable is displayed. If you type <code>i</code>, you should get the answer</para>
+    <code id="eip-873" display="block">i =
+    0+1.0000i.</code>
+    <para id="id2259118">The same value will be displayed for <code>j</code>. Try it. Using <code>j</code>, you can now
+enter complex variables. For example, enter <code>z1 = 1+2*j</code> and <code>z2 = 2+1.5*j</code>.
+As <code>j</code> is a variable, you have to use the multiplication sign <code>*</code>. Otherwise, you
+will get an error message. MATLAB does not differentiate (except in storage)
+between a real and a complex variable. Therefore variables may be added, subtracted, multiplied, or even divided. For example, type in <code>x = 2, z = 4.5*j, and z/x</code>. The real and imaginary parts of <code>z</code> are both divided by <code>x</code>.
+MATLAB just treats the real variable <code>x</code> as a complex variable with a zero
+imaginary part. A complex variable that happens to have a zero imaginary
+part is treated like a real variable. Subtract <code>2*j</code> from <code>z1</code> and display the
+result.</para>
+    <para id="id2259586">MATLAB contains several built-in functions to manipulate complex numbers. For example, <code>real (z)</code> extracts the real part of the complex number <code>z</code>. Type</para>
+    <code id="eip-875" display="block">≫ z = 2+1.5*j, real(z)</code>
+    <para id="id2259637">to get the result</para>
+    <code id="eip-153" display="block">z =
+   2.000+1.500i
+
+ans =
+   2</code>
+    
+    
+    
+    <para id="id2259675">Similarly, <code>imag(z)</code> extracts the imaginary part of the complex number <code>z</code>. The
+functions <code>abs(z)</code> and <code>angle(z)</code> compute the absolute value (magnitude) of
+the complex number <code>z</code> and its angle (in radians). For example, type</para>
+    <code id="eip-503" display="block">≫ z = 2+2*j;
+≫ r = abs(z)
+≫ theta = angle(z)
+≫ z = r*exp(j*theta)</code>
+    
+    
+    
+    <para id="id2259857">The last command shows how to get back the original complex number from
+its magnitude and angle. This is clarified in Chapter 1: Complex Numbers.</para>
+    <para id="id2259865">Another useful function, <code>conj (z)</code>, returns the complex conjugate of
+the complex number <code>z</code>. If <code>z = x+j*y</code> where <code>x</code> and <code>y</code> are real, then <code>conj (z)</code> is
+equal to <code>x-j*y</code>. Verify this for several complex numbers by using the function
+<code>conj (z)</code>.</para>
+  </content>
+</document>

@@ -1,0 +1,34 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Interactive Mode</title>
+  <metadata>
+  <md:content-id>m21390</md:content-id><md:title>An Introduction to MATLAB: Interactive Mode</md:title>
+  <md:abstract/>
+  <md:uuid>830e1796-16d2-4e27-8190-d31b10bc02c5</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-478">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268">In command mode, MATLAB displays a prompt <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>≫</m:mo><m:mo>)</m:mo></m:mrow></m:math> and waits for
+your input. You may type any legal mathematical expression for immediate
+evaluation. Try the following three examples (press “enter” or “return” at
+the end of each line):</para>
+<code id="fs-id1171263537157" display="block">≫ 2+2
+≫ 5^2
+≫ 2*sin(pi/4)
+</code>
+
+    <para id="id2259010">The variable <code>pi = 3.14</code> is built into MATLAB, as are the <code>sin</code> function and
+hundreds of other functions. When you entered each of the preceding lines,
+MATLAB stored the results in a variable called <code>ans</code> for <emphasis effect="italics">answer</emphasis>. The value of
+<code>ans</code> was then displayed. The last line should have produced the square root
+of 2. We can manipulate <code>ans</code> to find out</para>
+<code id="fs-id1171239802464" display="block">
+≫ ans^2
+</code>
+    <para id="id2259057">The new answer is very close to 2, as expected. Let's see what the roundoff
+error is:</para>
+    <code id="fs-id1171238439491" display="block">
+≫ ans-2
+</code>
+  </content>
+</document>

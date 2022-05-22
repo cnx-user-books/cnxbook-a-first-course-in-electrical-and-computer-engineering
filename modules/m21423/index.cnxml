@@ -1,0 +1,67 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Weighted Averages</title>
+  <metadata>
+  <md:content-id>m21423</md:content-id><md:title>Filtering: Weighted Averages</md:title>
+  <md:abstract/>
+  <md:uuid>55ae3042-543f-495e-9d5d-1c149f433770</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-574">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268">Weighted, tapered, or windowed averages are straightforward generalizations of simple averages. They take the form</para>
+    <equation id="eip-988"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mstyle></m:math>
+</equation><para id="id2258274">with the constraint that the “weights in the window,” <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>, sum to 1:</para>
+    <equation id="eip-131"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2258984">When <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac></m:mrow></m:mstyle></m:math>
+then <m:math>
+<m:mi>x</m:mi>
+</m:math> is the simple average studied in <link document="m21421">the section on "Simple Averages"</link>.</para>
+<example id="fs-id5567819">
+    <para id="id2259062">There are many windows that are commonly used in engineering practice. For <m:math>
+<m:mi>N</m:mi>
+</m:math> odd, the standard triangular window is</para>
+    
+    <equation id="eip-101"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>-</m:mo></m:mrow><m:mfrac><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac><m:mrow><m:mo>|</m:mo></m:mrow><m:mfrac><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:mo>-</m:mo><m:mi>n</m:mi><m:mrow><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259161">This window, illustrated in <link target-id="uid1">Figure 1</link>, weights the input <m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msub></m:math> by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac></m:mstyle></m:math>
+and the inputs <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>N</m:mi>
+</m:msub>
+</m:math> by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mstyle></m:math> The most general triangular window
+takes the form</para>
+    <equation id="eip-14"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mi>α</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>β</m:mi><m:mo>|</m:mo></m:mrow><m:mfrac><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:mo>-</m:mo><m:mi>n</m:mi><m:mrow><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>;</m:mo><m:mrow><m:mi>α</m:mi><m:mo>,</m:mo><m:mi>β</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi>N</m:mi></m:mrow>
+<m:mspace width="5pt"/><m:mtext>odd</m:mtext>
+<m:mo>.</m:mo>
+</m:math> </equation></example>
+    <figure id="uid1"><media id="uid1_media" alt="This graph consist of a x axis dashed at equal distances numbered 1-11 where the space that would be labeled 6 is actually a y- axis like line. Starting above dash 1 there is a line of points proceeding with positive slope  with a point directly above each dashed mark. This line ends at the line from where dash 6 should be. This point is labeled W_n. A similar line of dots descends at a  negative slope from point 6-11. Point 11 is labeled (2/n-1)^2. The x axis is labeled n">
+        <image mime-type="image/png" src="../../media/pic007-2fec.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 1935. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic007-24b3.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Triangular Window</caption></figure>
+<exercise id="fs-id23071625">
+<problem id="fs-id23339451">
+    <para id="id2259629">Determine the constraints on <m:math>
+<m:mi>α</m:mi>
+</m:math> and <m:math>
+<m:mi>β</m:mi>
+</m:math> to make the general triangular window a valid window (i.e., <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msub><m:mi>w</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>). Show that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>α</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac><m:mo>=</m:mo><m:mi>β</m:mi></m:mrow></m:mstyle></m:math> is a valid solution. Propose another solution that you like.</para></problem>
+</exercise>
+<exercise id="fs-id23290212">
+<problem id="fs-id9879442">
+    <para id="id2259729">You are taking three 3-credit courses, one 5-credit course, and one 2-credit course. Write down the weighted average for computing your GPA in a system that awards 4.0 points for an <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>.</m:mo><m:mn>0</m:mn></m:mrow></m:math> points for a <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">B</m:mi><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>, and (horrors!) 0 points for an <m:math><m:mi>F</m:mi>
+</m:math>.</para></problem>
+</exercise>
+  </content>
+</document>

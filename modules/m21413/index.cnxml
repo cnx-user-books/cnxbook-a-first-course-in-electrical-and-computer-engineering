@@ -1,0 +1,114 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Complex Numbers: Numerical Experiment (Quadratic Roots)</title>
+  <metadata>
+  <md:content-id>m21413</md:content-id><md:title>Complex Numbers: Numerical Experiment (Quadratic Roots)</md:title>
+  <md:abstract/>
+  <md:uuid>bc26f4d1-ad69-4b5a-9dfd-ead1bfb93016</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-77">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258263">There is a version of the quadratic equation that will arise over and
+over again in your study of electrical and mechanical systems:</para>
+    <equation id="eip-221"><m:math overflow="scroll"><m:mrow><m:msup><m:mi>s</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>ξ</m:mi><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mi>s</m:mi><m:mo>+</m:mo><m:msubsup><m:mi>ω</m:mi><m:mrow><m:mn>0</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2258268">For reasons that can only become clear as you continue your study of engineering, the parameter <m:math>
+<m:msub>
+<m:mi>ω</m:mi>
+<m:mn>0</m:mn>
+</m:msub></m:math> is called a <emphasis effect="italics">resonant frequency</emphasis>, and the parameter <m:math overflow="scroll"><m:mrow><m:mi>ξ</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow></m:math> is called a <emphasis effect="italics">damping factor</emphasis>. In this experiment, you will begin by</para>
+<list id="fs-id14141798" list-type="enumerated" number-style="arabic"><item> finding the “underdamped” range of values <m:math overflow="scroll"><m:mrow><m:mi>ξ</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow></m:math> for which the roots
+<emphasis effect="italics">s<sub>1</sub></emphasis> and <emphasis effect="italics">s<sub>2</sub></emphasis> are complex;</item>
+    <item> finding the “critically damped” value of <m:math overflow="scroll"><m:mrow><m:mi>ξ</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow></m:math> that makes the roots <emphasis effect="italics">s<sub>1</sub></emphasis>
+and <emphasis effect="italics">s<sub>2</sub></emphasis> equal; and</item>
+    <item> finding the “overdamped” range of values <m:math overflow="scroll"><m:mrow><m:mi>ξ</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow></m:math> for which <emphasis effect="italics">s<sub>1</sub></emphasis> and <emphasis effect="italics">s<sub>2</sub></emphasis>
+are real.</item>
+    <item>For each of these ranges,
+     find the analytical solution for <m:math overflow="scroll"><m:msub><m:mi>s</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub></m:math> as a function of <emphasis effect="italics">ω<sub>0</sub></emphasis> and <emphasis effect="italics">ξ</emphasis>; write
+your solutions in Cartesian and polar forms and present your results
+as
+    <equation id="id2259195"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>s</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mspace width="24pt"/>
+<m:mo>,</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>≤</m:mo>
+                    <m:mi>ξ</m:mi>
+                    <m:mo>≤</m:mo>
+                    <m:msub>
+                      <m:mi>ξ</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mspace width="24pt"/>
+<m:mo>,</m:mo>
+                    <m:mi>ξ</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>ξ</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mspace width="24pt"/>
+<m:mo>,</m:mo>
+                    <m:mi>ξ</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:msub>
+                      <m:mi>ξ</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    where <emphasis effect="italics">ξ<sub>c</sub></emphasis> is the critically damped value of <emphasis effect="italics">ξ</emphasis>. Write a MATLAB program that
+computes and plots <m:math overflow="scroll"><m:msub><m:mi>s</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub></m:math> for <emphasis effect="italics">ω<sub>0</sub></emphasis> fixed at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and <emphasis effect="italics">ξ</emphasis> variable between 0.0 and
+2.0 in steps of 0.1. Interpret all of your findings.</item>
+</list>
+    <para id="id2259383">Now organize the coefficients of the polynomial <m:math overflow="scroll"><m:mrow><m:msup><m:mi>s</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>ξ</m:mi><m:mi>s</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> into the
+array <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>12</m:mn><m:mi>ξ</m:mi><m:mn>1</m:mn><m:mo>]</m:mo></m:mrow></m:math>. Imbed the MATLAB instructions</para>
+    <code id="eip-250" display="block">r=roots([1 2*e 1]);
+plot(real(r(1)),imag(r(1)),'o')
+plot(real(r(2)),imag(r(2)),'o')</code>
+    
+    
+    <para id="id2259857">in a <code>for</code> loop to compute and plot the roots of <m:math overflow="scroll"><m:mrow><m:msup><m:mi>s</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>ξ</m:mi><m:mi>s</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> as <m:math><m:mi>ξ</m:mi></m:math> ranges from
+0.0 to 2.0. Note that <m:math><m:mi>r</m:mi></m:math> is a  <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>×</m:mo><m:mn>2</m:mn></m:mrow></m:math> array of complex numbers. You should
+observe <link target-id="uid2"/>. We call this “half circle and line” the locus of roots for
+the quadratic equation or the “root locus” in shorthand.</para>
+    
+      <figure id="uid2"><media id="uid2_media" alt="This Cartesian graph contains a trident shaped series of plotted dots. The dots start at the coordinant (-4,0) and a line of these dots extends from that point to just about the origin. Around (-1,0) a half circle of dots up and down and to the right. These curves end at (1,0) and (-1,0) respectively. The y axis is labeled imaginary and the x axis is labeled real.">
+          <image mime-type="image/png" src="../../media/pic020-c4ba.png" id="uid2_onlineimage" width="500"/>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic020-03bf.eps" id="uid2_printimage" print-width="03in">
+          </image>
+        </media>
+        
+      
+<caption>Roots of Quadratic Equation</caption></figure>
+  </content>
+</document>

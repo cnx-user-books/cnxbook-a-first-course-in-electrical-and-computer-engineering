@@ -1,0 +1,585 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Two-Dimensional Image Representation</title>
+  <metadata>
+  <md:content-id>m21495</md:content-id><md:title>Vector Graphics: Two-Dimensional Image Representation</md:title>
+  <md:abstract/>
+  <md:uuid>7ccdde31-fc53-43af-afc5-5c3713e9c22a</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-766">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268"><emphasis effect="bold">Point Matrix.</emphasis> To represent a straight-line image in computer memory, we must store a list of all the endpoints of the line segments that comprise the image. If the point <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>i</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>i</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is such an endpoint, we write it as the column vector</para>
+    <equation id="eip-92"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">p</m:mi><m:mi>i</m:mi></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>y</m:mi><m:mi>i</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>
+</equation><para id="id2258964">Suppose there are <m:math>
+<m:mi>n</m:mi>
+</m:math> such endpoints in the entire image. Each point is included
+only once, even if several lines end at the same point. We can arrange the
+vectors <m:math overflow="scroll"><m:mrow>
+<m:msub><m:mi mathvariant="normal">P</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math> into a point matrix:</para>
+    <equation id="id2258197"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">G</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mo>[</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">p</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">p</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">p</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+          <m:mo>.</m:mo>
+          <m:mo>.</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">p</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>]</m:mo>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>y</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>y</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+    <para id="id2259347">We then store the point matrix <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">G</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mn>2</m:mn><m:mi mathvariant="normal">x</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math> as a two-dimensional array in
+computer memory.</para>
+<example id="fs-id15619879"><para id="id2259486">Consider the list of points</para>
+    <equation id="id2259494">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>P</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>,</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+    <m:mrow>
+          <m:msub>
+            <m:mi>P</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>5</m:mn>
+            <m:mo>,</m:mo>
+            <m:mn>5</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>P</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>4</m:mn>
+            <m:mo>,</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>P</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>4</m:mn>
+            <m:mo>,</m:mo>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+</m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable> 
+     </m:math>
+    </equation>
+    <para id="id2259636">The corresponding point matrix is</para>
+    <equation id="eip-848"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>.</m:mo>
+                    <m:mn>5</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>.</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>·</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation></example>
+    <para id="id2259725"><emphasis effect="bold">Line Matrix.</emphasis> The next thing we need to know is which pairs of points
+to connect with lines. To store this information for <m:math>
+<m:mi>m</m:mi>
+</m:math> lines, we will use a line
+matrix, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">H</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mn>2</m:mn><m:mo>×</m:mo><m:mi>m</m:mi></m:mrow></m:msup></m:mrow></m:math>. The line matrix <emphasis effect="italics">does not</emphasis> store line locations directly.
+Rather, it contains references to the points stored in <m:math>
+<m:mi>G</m:mi>
+</m:math>. To indicate a line
+between points <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>j</m:mi>
+</m:msub>
+</m:math>, we store the indices <m:math>
+<m:mi>i</m:mi>
+</m:math> and <m:math>
+<m:mi>j</m:mi>
+</m:math> as a pair. For the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math>
+line in the image, we have the pair</para>
+    <equation id="eip-169"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">h</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>i</m:mi><m:mi>k</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>j</m:mi><m:mi>k</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2259861">The order of <m:math>
+<m:mi>i</m:mi>
+</m:math> and <m:math>
+<m:mi>j</m:mi>
+</m:math> does not really matter since a line from <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> to <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>j</m:mi>
+</m:msub>
+</m:math> is the
+same as a line from <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>j</m:mi>
+</m:msub>
+</m:math> to <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>. Next we collect all the lines <m:math>
+<m:msub>
+<m:mi>h</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> into a line matrix
+<m:math>
+<m:mi>H</m:mi>
+</m:math>:</para>
+    <equation id="eip-875"><m:math overflow="scroll">
+<m:mrow>
+<m:mi mathvariant="normal">H</m:mi>
+<m:mo>=</m:mo>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>i</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>i</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>i</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>i</m:mi>
+<m:mi>m</m:mi>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>j</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>j</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>j</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>j</m:mi>
+<m:mi>m</m:mi>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:mrow>
+<m:mo>.</m:mo>
+</m:math></equation><para id="id2260025">All the numbers in the line matrix <m:math>
+<m:mi>H</m:mi></m:math> will be positive integers since they point
+to columns of <m:math>
+<m:mi>G</m:mi>
+</m:math>. To find the actual endpoints of a line, we look at columns <m:math>
+<m:mi>i</m:mi>
+</m:math>
+and <m:math>
+<m:mi>j</m:mi>
+</m:math> of the point matrix <m:math>
+<m:mi>G</m:mi>
+</m:math>.</para>
+<example id="fs-id16332459">
+    <para id="id2260184">To specify line segments connecting the four points of
+<link target-id="fs-id15619879">Example 1</link> into a quadrilateral, we use the line matrix</para>
+    <equation id="eip-899"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">H</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2260193">Alternatively, we can specify line segments to form a triangle from the first
+three points plus a line from <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> to <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:math> :</para>
+    
+    <equation id="eip-295"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">H</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260370"><link target-id="uid2">Figure 1</link> shows the points <m:math>
+<m:mi>G</m:mi>
+</m:math> connected first by <m:math>
+<m:msub>
+<m:mi>H</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and then by <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">H</m:mi><m:mn>2</m:mn></m:msub><m:mo>.</m:mo></m:mrow></m:math></para></example>
+    
+    <figure id="uid2"><media id="uid1_media" alt="Figure 1 contains two basic cartesian graphs with sets of lines connected at unspecific points. Both graphs are labeled with horizontal axis, x, and vertical axis, y. The first graph contains four line segments joined together by numbered dots that create a quadrilateral. Point one is at the origin. Point two is in the second quadrant, closer to the vertical axis than the horizontal axis. Point three is in the first quadrant, approximately equidistant from both axes. Point four is in the fourth quadrant directly below point three, and is much closer to the horizontal axis than the vertical axis. The second graph contains four line segments, although they are not connected to form a quadrilateral, rather a triangle with one segment connected to a vertex. All four points in the second graph are in the same spots as in the first graph. The line segments connecting one to two, two to three, and three to four are also in the same place, but instead of four connecting directly with one, there is a line segment connecting three with one.">
+        <image mime-type="image/png" src="../../media/pic002-df5f.png" id="uid1_onlineimage" width="550"><!-- NOTE: attribute width changes image size online (pixels). original width is 1048. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic002-a139.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    <caption>Two Sets of Lines</caption></figure>
+    <para id="id2260447"><emphasis effect="bold">Demo 1 (MATLAB)</emphasis>. Use your editor to enter the following MATLAB
+function file. Save it as vgraphl.m.</para>
+    <code id="id2260452" display="block">function vgraphl (points, lines);
+% vgraphl (points, lines) plots the points as *'s and
+% connects the points with specified lines. The points
+% matrix should be 2xN, and the lines matrix should be 2xM.
+% The field of view is preset to (-50,50) on both axes.
+%
+% Written by Richard T. Behrens, October 1989
+%
+m=length(lines);                    % find the number of
+                                    % lines.
+axis([-50 50 -50 50])               % set the axis scales
+axis('square')
+plot(points(1,:),points(2,:),'*')   % plot the points as *
+hold on                             % keep the points...
+for i=i:m                           % while plotting the
+                                    % lines
+    plot([points(1,lines(1,i)) points(1,lines(2,i))],..
+        [points(2,lines(2,lines(1,i)) points(2,lines(2,i))],'-')
+    
+    end
+    
+    hold off
+</code>
+    <para id="id2260690">After you have saved the function file, run MATLAB and type the
+following to enter the point and line matrices. (We begin with the transposes
+of the matrices to make them easier to enter.)</para>
+   
+    <code id="eip-691" display="block">&gt;&gt; G = [
+    0.6052 -0.4728;
+   -0.4366  3.5555;
+   -2.6644  7.9629;
+   -7.2541 10.7547;
+  -12.5091 11.5633;
+  -12.5895 15.1372;
+   -6.5602 13.7536;
+  -31.2815 -7.7994;
+  -38.8314 -9.9874;
+  -44.0593 -1.1537;
+  -38.8314  2.5453;
+  -39.4017  9.4594;
+  -39.3192 15.0932;
+  -45.9561 23.4158]
+
+&gt;&gt; G = G'
+
+&gt;&gt; H = [
+   1   2;
+   2   3;
+   3   4;
+   4   5;
+   4   7;
+   5   6;
+   8   9;
+   9   10;
+   10  11;
+   11  12;
+   12  13;
+   12  14]
+
+&gt;&gt; H = H'</code><para id="id2261298">At this point you should use MATLAB's “save” command to save these
+matrices to a disk file. Type</para>
+    <code id="eip-994" display="block">&gt;&gt; save dippers</code>
+    <para id="id2261317">After you have saved the matrices, use the function <code>VGRAPH1</code> to draw
+the image by typing</para>
+    
+    <code id="eip-13" display="block">≫ vgraph1(G,H)</code><para id="id2261354">The advantage of storing points and lines separately is that an object
+can be moved and scaled by operating only on the point matrix <m:math>
+<m:mi>G</m:mi>
+</m:math>. The
+line information in <m:math>
+<m:mi>H</m:mi>
+</m:math> remains the same since the same pairs of points are
+connected no matter where we put the points themselves.</para>
+    <para id="id2261372"><emphasis effect="italics">Surfaces and Objects.</emphasis> To describe a surface in three dimensions is a
+fairly complex task, especially if the surface is curved. For this reason, we will
+be satisfied with points and lines, sometimes visualizing flat surfaces based on
+the lines. On the other hand, it is a fairly simple matter to group the points
+and lines into distinct <emphasis effect="italics">objects</emphasis>. We can define an object matrix <emphasis effect="italics">K</emphasis> with one
+column for each object giving the ranges of points and lines associated with
+that object. Each column is defined as</para>
+    <equation id="id2261404"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">k</m:mi>
+            <m:mi>i</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+<m:mtd>
+<m:mtext>first</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mtext>point</m:mtext>
+</m:mtd>
+                      </m:mtr>
+      <m:mtr>
+<m:mtd>
+<m:mtext>last</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mtext>point</m:mtext>
+</m:mtd>
+                      </m:mtr>
+      <m:mtr>
+<m:mtd>
+<m:mtext>first</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mtext>line</m:mtext>
+</m:mtd>
+                      </m:mtr>
+      <m:mtr>
+<m:mtd>
+<m:mtext>last</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mtext>line</m:mtext>
+</m:mtd>
+                      </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261617">As with the line matrix <m:math>
+<m:mi>H</m:mi>
+</m:math>, the elements of <m:math>
+<m:mi>K</m:mi>
+</m:math> are integers.</para>
+<example id="fs-id15608177">
+    <para id="id2261647">Consider again <link target-id="id2260447">Demo 1</link>. We could group the points in
+<m:math>
+<m:mi>G</m:mi>
+</m:math> and the lines in <m:math>
+<m:mi>H</m:mi>
+</m:math> into two objects with the matrix</para>
+    <equation id="eip-226"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">K</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>8</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>7</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">l</m:mi><m:mn>4</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>7</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>12</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2261679">The first column of <m:math>
+<m:mi>K</m:mi>
+</m:math> specifies that the first object (Ursa Minor) is made
+up of points 1 through 7 and lines 1 through 6, and the second column of
+<m:math>
+<m:mi>K</m:mi>
+</m:math> defines the second object (Ursa Major) as points 8 through 14 and lines 7
+through 12.</para></example>
+  </content>
+</document>

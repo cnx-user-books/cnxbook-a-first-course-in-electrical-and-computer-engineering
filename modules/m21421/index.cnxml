@@ -1,0 +1,1250 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Simple Averages</title>
+  <metadata>
+  <md:content-id>m21421</md:content-id><md:title>Filtering: Simple Averages</md:title>
+  <md:abstract/>
+  <md:uuid>350ee48b-9ec9-468c-87c3-c35b190515b5</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-518">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">The simplest numerical filter is the simple averaging filter. This filter
+is defined by the equation</para>
+    
+    <equation id="eip-415"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mstyle>
+<m:mo>.</m:mo></m:math></equation><para id="id2258961">The filter output <emphasis effect="italics">x</emphasis> is the average of the <emphasis effect="italics">N</emphasis> filter inputs <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>u</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math> , <emphasis effect="italics">u<sub>N</sub></emphasis>. These
+inputs may be real or complex numbers, and <emphasis effect="italics">x</emphasis> may be real or complex. This
+simple averaging filter is illustrated in <link target-id="uid1">Figure 1</link>.</para>
+    
+    <figure id="uid1"><media id="uid1_media" alt="A box diagram that consist several expressions, arrows and a rectangle. The image starts on the left with the expression u_1,u_2,...u_n. Then an arrow extends to the right and ends at a rectagle box containing the expression 1/N sum_(n=1)^(N) U_n. On the right side of the box a line extends to the right and ends at the expression x.">
+        <image mime-type="image/png" src="../../media/pic003-f538.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 176. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic003-0bf7.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>A Simple Averaging Filter</caption></figure>
+<example id="fs-id14787733">   
+ <para id="id2259086">If the averaging filter is excited by the constant sequence <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>u</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mo>⋯</m:mo><m:mo>=</m:mo><m:msub><m:mi>u</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>u</m:mi></m:mrow></m:math>, then the output is</para>
+    
+    <equation id="eip-24"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:mi>u</m:mi><m:mo>=</m:mo><m:mi>u</m:mi></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259186">The output is, truly, the average of the inputs. Now suppose the filter is
+excited by the linearly increasing sequence</para>
+    
+    <equation id="eip-628"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi>n</m:mi>
+          <m:mo>,</m:mo>
+          <m:mspace width="4pt"/>
+          <m:mi>n</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>...</m:mo>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="italic">N</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259240">This sequence is plotted in <link target-id="uid2">Figure 2</link>. How do we sum such a sequence in
+order to produce the average <m:math>
+<m:mi>x</m:mi>
+</m:math>? For <m:math>
+<m:mi>N</m:mi>
+</m:math> even, the average may be written as</para>
+    
+    <equation id="eip-272"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mi>N</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259404">Each pair-sum in parentheses equals <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and there are <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> such pair-sums,
+so the average is</para>
+    <equation id="eip-477"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2259441">This is certainly a reasonable answer for the average of a linearly increasing
+sequence. See <link target-id="uid2">Figure 2</link>.</para></example>
+    <figure id="uid2"><media id="uid2_media" alt="This Cartesian graph contains several dots in a line. The line starts at the origin and rises with a positive slope. To the right of the line is the expression U_n versus N. Along the left side of the y axis there are two vertical dashes labeled 1 and two and then above these ticks there are three consecutive dots with the expression (N+1)/2 directly above that. The x axis is labeled with dashes labeled 1-8. Below dash 8 is the expression (N) the x axis is labeled n.">
+        <image mime-type="image/png" src="../../media/pic004-f832.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 163. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic004-6d99.eps" id="uid2_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Linearly Increasing Sequence</caption></figure>
+<exercise id="fs-id20295611">
+<problem id="fs-id20295613">
+    <para id="id2259516">Write <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:mi>n</m:mi></m:mrow></m:mstyle></m:math> as a sum of pair-sums for <m:math>
+<m:mi>N</m:mi>
+</m:math> odd. What
+does <m:math>
+<m:mi>x</m:mi>
+</m:math> equal?</para></problem>
+</exercise>
+    <para id="id2259583"><emphasis effect="bold">General Sum Formula.</emphasis> Suppose the input to the simple averaging filter is the polynomial sequence</para>
+    <equation id="eip-355"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>n</m:mi>
+            <m:mi>k</m:mi>
+          </m:msup>
+          <m:mo>,</m:mo>
+          <m:mspace width="4pt"/>
+          <m:mi>n</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>...</m:mo>
+          <m:mo>,</m:mo>
+          <m:mi>N</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259642">where <m:math>
+<m:mi>k</m:mi>
+</m:math> is a non-negative integer such as <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>. The output of the filter is</para>
+    
+    <equation id="eip-158"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msup><m:mi>n</m:mi><m:mi>k</m:mi></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259746">We rewrite <m:math>
+<m:mi>x</m:mi>
+</m:math> as <m:math overflow="scroll"><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> to remind ourselves that we are averaging <m:math>
+<m:mi>N</m:mi>
+</m:math> numbers, each of which is <m:math>
+<m:msup>
+<m:mi>n</m:mi>
+<m:mi>k</m:mi>
+</m:msup>
+</m:math>. For example, when <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>8</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>,</para>
+    
+    <equation id="eip-237"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msubsup><m:mi>x</m:mi><m:mrow><m:mn>8</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mn>8</m:mn></m:munderover><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>8</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mn>4</m:mn><m:mo>+</m:mo><m:mn>9</m:mn><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:mn>64</m:mn><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2260170">Rather than study the average <m:math overflow="scroll"><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math>, we will study the sum <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:mrow></m:math> and divide by <m:math>
+<m:mi>N</m:mi>
+</m:math> at the very end:</para>
+    
+    <equation id="eip-536"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:mi>N</m:mi><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>N</m:mi></m:munderover><m:msup><m:mi>n</m:mi><m:mi>k</m:mi></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2260311">The sum <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> may be rewritten as the sum</para>
+    
+    <equation id="id2260410"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msubsup>
+              <m:mi>S</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msubsup>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:munderover>
+<m:mrow>
+              <m:mo>∑</m:mo>
+</m:mrow>        
+      <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mi>n</m:mi>
+              <m:mi>k</m:mi>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>N</m:mi>
+              <m:mi>k</m:mi>
+            </m:msup>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>        
+  <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>N</m:mi>
+            <m:mi>k</m:mi>
+          </m:msup>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    <para id="id2260455">This result is very important because it tells us that the sum <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math>, viewed as
+a function of <m:math>
+<m:mi>N</m:mi>
+</m:math>, obeys a <emphasis effect="italics">recursion</emphasis> in which <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> is just the sum using one less
+input, namely, <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math>, plus <m:math>
+<m:msup>
+<m:mi>N</m:mi>
+<m:mi>k</m:mi>
+</m:msup>
+</m:math>. Now, since polynomials are the most general
+functions that obey such recursions, we know that <m:math overflow="scroll"><m:msubsup><m:mi>s</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> must be a polynomial
+of order <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> in the variable <m:math>
+<m:mi>N</m:mi>
+</m:math>:</para>
+    
+    <equation id="eip-423"><m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>s</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mi>N</m:mi><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msup><m:mi>N</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260710">Let's check to see that this polynomial really can obey the required recursion.
+First note that <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> is the following polynomial:</para>
+    
+    <equation id="eip-131"><m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>s</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msup><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260847">The term <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> produces <m:math overflow="scroll"><m:mrow><m:mrow><m:msubsup>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mrow>
+            <m:mi>k</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msubsup><m:mo>)</m:mo></m:mrow><m:msup><m:mi>N</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mn>0</m:mn></m:msup><m:mo>+</m:mo><m:mrow><m:msubsup>
+          <m:mo>(</m:mo>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>k</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msubsup><m:mo>)</m:mo></m:mrow><m:msup><m:mi>N</m:mi><m:mi>k</m:mi></m:msup><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mn>1</m:mn></m:msup><m:mo>+</m:mo><m:mo>⋯</m:mo></m:mrow></m:math>. (Remember the binomial expansion?) Therefore the difference between <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> and <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> is</para>
+    
+    <equation id="eip-927"><m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>-</m:mo><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mi>N</m:mi><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>c</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mi>N</m:mi><m:mi>k</m:mi></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2261124">This recursion is general enough to produce the difference <emphasis effect="italics">N<sup>k</sup></emphasis> provided we can solve for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math> , <m:math overflow="scroll"><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> to make <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mo>⋯</m:mo><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. We know that <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, so we know that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, meaning that the polynomial for <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> can really be written as</para>
+    <equation id="eip-316"><m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mi>N</m:mi><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msup><m:mi>N</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation>
+    <para id="id2261432">In order to solve for the coefficients of this polynomial, we propose to
+write out our equation for <m:math overflow="scroll"><m:msubsup><m:mi>s</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> as follows:</para>
+    <equation id="id2261461"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>    
+      <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>2</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mn>2</m:mn>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mn>2</m:mn>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>    
+      <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>s</m:mi>
+            <m:mrow>
+              <m:mn>3</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mn>3</m:mn>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mn>3</m:mn>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd/>
+<m:mtd>
+<m:mo>⋮</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>    
+      <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>k</m:mi>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>k</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>    
+      <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msubsup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2261901">Using the <link document="m21454">linear algebra</link> we learned earlier, we may write these equations
+as the matrix equation</para>
+    <equation id="eip-758"><m:math overflow="scroll">
+<m:mrow>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi mathvariant="normal">l</m:mi>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>2</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>4</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msup>
+<m:mn>2</m:mn>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:msup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi>k</m:mi>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msup>
+<m:mi>k</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msup>
+<m:mi>k</m:mi>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:msup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:msup>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>a</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>a</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>a</m:mi>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>=</m:mo>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msubsup>
+<m:mi>s</m:mi>
+<m:mrow>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:msubsup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msubsup>
+<m:mi>S</m:mi>
+<m:mrow>
+<m:mn>2</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:msubsup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msubsup>
+<m:mi>S</m:mi>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>k</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:msubsup>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:mrow>
+<m:mo>.</m:mo>
+</m:math>
+</equation><para id="id2261908">The terms on the right-hand side of the equal sign are “initial conditions”
+that tell us how the sum <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> begins for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math>. These initial
+conditions must be computed directly. (For example, <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mn>2</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msup><m:mn>1</m:mn><m:mi>k</m:mi></m:msup><m:mo>+</m:mo><m:msup><m:mn>2</m:mn><m:mi>k</m:mi></m:msup><m:mo>.</m:mo></m:mrow></m:math>) Then
+the linear system of <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> equations in <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> unknowns may be solved for
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math>. The solution for <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mi>k</m:mi></m:msubsup></m:math> is then complete, and we may use it to
+solve for <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mi>k</m:mi></m:msubsup></m:math> for arbitrary <m:math>
+<m:mi>N</m:mi>
+</m:math>.</para>
+<example id="fs-id13836077">
+    <para id="id2262458">When <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>, we have the following equation for the
+coefficients <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> in the polynomial <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mi>N</m:mi><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math> :</para><equation id="eip-874"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>8</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>9</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>27</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mn>1</m:mn>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msup>
+                      <m:mn>1</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>+</m:mo>
+                    <m:msup>
+                      <m:mn>2</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msup>
+                    <m:mn>1</m:mn>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>+</m:mo>
+                    <m:msup>
+                      <m:mn>2</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo>+</m:mo>
+                    <m:msup>
+                      <m:mn>3</m:mn>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>14</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>·</m:mo>
+       
+        </m:mrow>
+      </m:math>
+    </equation>
+    </example>
+<exercise id="fs-id19562284">
+<problem id="fs-id19491823">
+    <para id="id2262815">Solve for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math> in the linear equation of <link target-id="fs-id13836077">Example 2</link>. Show
+that <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mi>N</m:mi><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub><m:msup><m:mi>N</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math> obeys the recursion <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>-</m:mo><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:msubsup><m:mo>=</m:mo><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id20794299">
+<problem id="fs-id20677354">
+    <para id="id2262986">(MATLAB) Write a MATLAB program to determine the coefficients <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>a</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> for the polynomial <m:math overflow="scroll"><m:msubsup><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math>. Generate a table of formulas for the averages <m:math overflow="scroll"><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>N</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow></m:msubsup></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mn>5</m:mn></m:mrow></m:math>. Evaluate these formulas for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>,
+4, 8, and 16. </para></problem>
+</exercise>
+    <para id="id2263128"><emphasis effect="bold">Exponential Sums.</emphasis> When the input to an averaging filter is the
+sequence</para>
+    <equation id="eip-748"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mo>,</m:mo></m:math>
+</equation><para id="id2263137">we say that the input is exponential (or geometric). Typical sequences are
+illustrated in Figure 6.5 for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>9</m:mn><m:mo>,</m:mo><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Don't let it throw
+you that we have changed the index to run from 0 to <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> rather than from
+1 to <m:math>
+<m:mi>N</m:mi>
+</m:math>. This change is not fundamentally important, but it simplifies our
+study. The sum of the inputs is</para>
+    
+    <equation id="eip-53"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><figure id="uid3"><media id="uid3_media" alt="">
+        <image mime-type="image/png" src="../../media/pic005-1569.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 218. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic005-1a69.eps" id="uid3_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Exponential Sequences</caption></figure>
+    <para id="id2263338">How do we evaluate this sum? Well, we note that the sum <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub></m:mrow></m:math> is</para>
+    <equation id="id2263360"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>a</m:mi>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>N</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+<m:mrow>
+            <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:munderover>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>N</m:mi>
+          </m:munderover>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mi>k</m:mi>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>a</m:mi>
+              <m:mi>N</m:mi>
+            </m:msup>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>N</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mi>N</m:mi>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2263536">Therefore, provided <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>≠</m:mo><m:mn>1</m:mn></m:mrow></m:math>, the sum <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>N</m:mi>
+</m:msub>
+</m:math> is</para>
+    
+    <equation id="eip-796"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:msup><m:mi>a</m:mi><m:mi>N</m:mi></m:msup></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>a</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo>
+<m:mspace width="10pt"/><m:mi>a</m:mi><m:mo>≠</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2263621">This formula, discovered already in <link document="m21479">the chapter covering the functions <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> and <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math></link>, works for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>≠</m:mo><m:mn>1</m:mn></m:mrow></m:math>. When <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>,
+then <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>N</m:mi></m:mrow></m:math>:</para>
+    <equation id="id2263672"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>N</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>-</m:mo>
+                      <m:msup>
+                        <m:mi>a</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>-</m:mo>
+                      <m:mi>a</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+<m:mo>,</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:mo>≠</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>N</m:mi>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263759">When <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then <m:math overflow="scroll"><m:mrow><m:msup><m:mi>a</m:mi><m:mi>N</m:mi></m:msup><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:math>, and we have the asymptotic formula</para>
+    
+<equation id="eip-134"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>N</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>a</m:mi></m:mrow></m:mfrac><m:mtext>,</m:mtext><m:mspace width="8pt"/><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><exercise id="fs-id19578078">
+<problem id="fs-id12259798">
+    <para id="id2263882">Evaluate <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub></m:mrow></m:mstyle></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>9</m:mn><m:mo>,</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and 1.1
+and for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>8</m:mn><m:mo>,</m:mo><m:mn>16</m:mn></m:mrow></m:math>, and 32. </para></problem>
+</exercise>
+<exercise id="fs-id19713984">
+<problem id="fs-id19713986">
+    <para id="id2264035">Prove that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>a</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> obeys the recursion</para>
+    <equation id="id2264095">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>N</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2264144">Prove that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>N</m:mi></m:mrow></m:math> obeys this recursion for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:msup><m:mi>a</m:mi><m:mi>N</m:mi></m:msup></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math> obeys
+it for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>≠</m:mo><m:mn>1</m:mn></m:mrow></m:math>.</para></problem>
+</exercise>
+    <para id="id2264244"><emphasis effect="bold">Recursive Computation.</emphasis> Every sum of the form</para>
+    <equation id="eip-324"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mstyle></m:math></equation><para id="id2264252">obeys the recursion</para>
+    <equation id="eip-226"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>S</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>u</m:mi><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2264307">This means that when summing numbers you may “use them and discard them.” That is, you do not need to read them, store them, and sum them.</para>
+    <para id="id2264359">You may read <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> to form 
+<m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>
+ and discard
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math>; add <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> to 
+<m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>
+ and discard <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> ; add
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> to <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> ; and continue.</para>
+    
+    <figure id="uid5"><media id="uid5_media" alt="">
+        <image mime-type="image/png" src="../../media/pic006-9c79.png" id="uid5_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 138. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic006-390a.eps" id="uid5_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Recursion <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>S</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math></caption></figure>
+    <para id="id2264547">This is very important for hardware and software implementations of running sums. You need only store the current sum, not the measurements that produced it. Two illustrations of the recursion <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>S</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> are provided in <link target-id="uid5">Figure 4</link>. The diagram on the left is self-explanatory. The diagram on the right says that the sum <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is stored in a memory location, to be added to <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> to produce <m:math overflow="scroll"><m:msub><m:mi>S</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, which is then stored back in the memory location to be added to <m:math overflow="scroll"><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, and so on.
+</para>
+  </content>
+</document>

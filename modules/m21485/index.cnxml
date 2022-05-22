@@ -1,0 +1,631 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: The Function e^x</title>
+  <metadata>
+  <md:content-id>m21485</md:content-id><md:title>The Functions e^x and e^jθ: The Function e^x</md:title>
+  <md:abstract/>
+  <md:uuid>169a23ba-3219-45e8-9eae-9e8116e7fdc2</md:uuid>
+</metadata>
+
+<content>
+    
+   
+      <note id="eip-376">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258934">Many of you know the number <emphasis effect="italics">e</emphasis> as the base of the natural logarithm,
+which has the value 2.718281828459045. . . . What you may not know is that
+this number is actually defined as the limit of a sequence of approximating
+numbers. That is,</para>
+      
+      <equation id="eip-209"><m:math overflow="scroll">
+          <m:mstyle scriptlevel="0" displaystyle="true">
+            <m:mrow>
+              <m:mi>e</m:mi>
+              <m:mo>=</m:mo>
+              <m:munder>
+                <m:mo movablelimits="true" form="prefix">lim</m:mo>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>→</m:mo>
+                  <m:mi>∞</m:mi>
+                </m:mrow>
+              </m:munder>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+            </m:mrow>
+          </m:mstyle>
+        </m:math>
+      </equation><equation id="id2258991">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mi>n</m:mi>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:msup>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>,</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mo>...</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259056">This means, simply, that the sequence of numbers <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mn>1</m:mn></m:msup><m:mo>,</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>,</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mstyle></m:math>,
+. . . , gets arbitrarily close to 2.718281828459045. . . . But why should such
+a sequence of numbers be so important? In the next several paragraphs we
+answer this question.</para>
+<exercise id="fs-id11648875">
+<problem id="fs-id12830468">
+      <para id="id2259145">(MATLAB) Write a MATLAB program to evaluate the expression <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>8</m:mn><m:mo>,</m:mo><m:mn>16</m:mn><m:mo>,</m:mo><m:mn>32</m:mn><m:mo>,</m:mo><m:mn>64</m:mn></m:mrow></m:math> to show that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>n</m:mi></m:msub><m:mo>≈</m:mo><m:mi>e</m:mi></m:mrow></m:math> for large
+<m:math><m:mi>n</m:mi></m:math>.</para></problem>
+</exercise>
+      <para id="id2259502"><emphasis effect="bold">Derivatives and the Number <m:math><m:mi>e</m:mi></m:math></emphasis>. The number <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> arises
+in the study of derivatives in the following way. Consider the function
+</para>
+      <equation id="eip-647"><m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>a</m:mi><m:mi>x</m:mi></m:msup><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math></equation><para id="id2259595">and ask yourself when the derivative of <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math> equals <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math>. The function <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+is plotted in <link target-id="uid2"/> for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>. The slope of the function at point <m:math>
+<m:mi>x</m:mi>
+</m:math> is</para>
+      <equation id="id2259671"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>f</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:mfrac>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munder>
+<m:mrow>
+              <m:mo>lim</m:mo>
+</m:mrow>
+              <m:mrow>
+                <m:mi>Δ</m:mi>
+                <m:mi>x</m:mi>
+                <m:mo>→</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+            </m:munder>
+            <m:mfrac>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi>x</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mi>Δ</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>-</m:mo>
+                <m:msup>
+                  <m:mi>a</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msup>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>Δ</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:mfrac>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:msup>
+<m:mi>α</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+<m:munder><m:mrow>
+<m:mo form="prefix">lim</m:mo></m:mrow>
+<m:mrow>
+      <m:mi>Δ</m:mi>
+                <m:mi>x</m:mi>
+                <m:mo>→</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+            </m:munder>
+<m:mfrac>
+<m:mrow>
+<m:msup>
+<m:mi>α</m:mi>
+<m:mrow>
+<m:mi>Δ</m:mi>
+<m:mi>x</m:mi>
+</m:mrow>
+</m:msup>
+<m:mo>-</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mi>Δ</m:mi>
+<m:mi>x</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+    </m:mtable>
+        </m:math>
+      </equation>
+      
+      
+      <figure id="uid2"><media id="uid2_media" alt="Figure one is a cartesian graph with horizontal axis labeled, x, and containing a labeled curve. The curve begins along the x-axis in the second quadrant to the left of the graph, and begins increasing at an increasing rate to point (0, 1), and further to point (1, a). The curve is labeled f(x) = a^x.">
+          <image mime-type="image/png" src="../../media/pic001-0203.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 1422. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic001-1cfa.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>The Function <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>a</m:mi><m:mi>x</m:mi></m:msup></m:mrow></m:math></caption></figure>
+      <para id="id2259871">If there is a special value for <emphasis effect="italics">a</emphasis> such that</para>
+      <equation id="eip-826"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:munder><m:mfrac><m:mrow><m:msup><m:mi>a</m:mi><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:msup><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle><m:mo>,</m:mo></m:math></equation><para id="id2259883">then <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>d</m:mi><m:mrow><m:mi>d</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac><m:mi>f</m:mi><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math> would equal <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:math>. We call this value of <m:math><m:mi>a</m:mi></m:math> the special (or exceptional) number <m:math><m:mi>e</m:mi></m:math> and write</para>
+      
+      <equation id="id2260038"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mi>x</m:mi>
+            </m:msup>
+          </m:mrow>
+      </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>         
+ <m:mrow>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>x</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mi>x</m:mi>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>      
+  </m:math>
+      </equation>
+      <para id="id2260079">The number <m:math><m:mi>e</m:mi></m:math> would then be <m:math overflow="scroll"><m:mrow><m:mi>e</m:mi><m:mo>=</m:mo><m:mi>f</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>. Let's write our condition that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mrow><m:msup><m:mi>a</m:mi><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:msup><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:mfrac></m:mstyle></m:math>
+converges to 1 as</para>
+      
+      <equation id="eip-483"><m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:msup><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>≅</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow><m:mtext>small</m:mtext>
+</m:math></equation><para id="id2260189">or as</para>
+      <equation id="eip-742"><m:math overflow="scroll"><m:mrow><m:mi>e</m:mi><m:mo>≅</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2260192">Our definition of <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>e</m:mi><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math> amounts to defining <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> and
+allowing <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:math> in order to make <m:math overflow="scroll"><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:math>. With this definition for <m:math><m:mi>e</m:mi></m:math>, it is
+clear that the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mn>x</m:mn>
+</m:msup>
+</m:math> is defined to be <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:mi>e</m:mi><m:mo>)</m:mo></m:mrow><m:mi>x</m:mi></m:msup></m:math> :</para>
+      <equation id="eip-459"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>e</m:mi><m:mi>x</m:mi></m:msup><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>→</m:mo><m:mn>0</m:mn></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mi>x</m:mi><m:mo>/</m:mo><m:mi>Δ</m:mi><m:mi>x</m:mi></m:mrow></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2260393">By letting <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>Δ</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> we can write this definition in the more familiar form</para>
+      
+      <equation id="eip-10"><m:math overflow="scroll">
+          <m:mstyle scriptlevel="0" displaystyle="true">
+            <m:mrow>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mi>x</m:mi>
+              </m:msup>
+              <m:mo>=</m:mo>
+              <m:munder>
+                <m:mo movablelimits="true" form="prefix">lim</m:mo>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mo>→</m:mo>
+                  <m:mi>∞</m:mi>
+                </m:mrow>
+              </m:munder>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>+</m:mo>
+                  <m:mfrac>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:mfrac>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mi>n</m:mi>
+              </m:msup>
+            </m:mrow>
+          </m:mstyle>
+        </m:math>
+      </equation><para id="id2260551">This is our fundamental definition for the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mn>x</m:mn>
+</m:msup>
+</m:math>. When evaluated at
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, it produces the definition of <m:math>
+<m:mi>e</m:mi>
+</m:math> given in <link target-id="eip-209"/>.</para>
+      <para id="id2260594">The derivative of <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mn>x</m:mn>
+</m:msup>
+</m:math> is, of course,</para>
+      <equation id="eip-152"><m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true">
+<m:mrow>
+<m:mfrac>
+<m:mi>d</m:mi>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:mi>x</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+<m:mo>=</m:mo>
+<m:munder>
+<m:mo movablelimits="true" form="prefix">lim</m:mo>
+<m:mrow>
+<m:mi>n</m:mi>
+<m:mo>→</m:mo>
+<m:mi>∞</m:mi>
+</m:mrow>
+</m:munder>
+<m:mi>n</m:mi>
+<m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mn>1</m:mn>
+
+<m:mo>+</m:mo>
+
+<m:mfrac>
+<m:mrow><m:mi>x</m:mi></m:mrow>
+<m:mrow>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:mfrac>
+
+<m:mo>)</m:mo></m:mrow><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mn>1</m:mn><m:mi>n</m:mi></m:mfrac><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mi>x</m:mi></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2260611">This means that Taylor's theorem<footnote id="eip-id22336131">Taylor's theorem says that a function may be completely characterized by all of its derivatives (provided they all exist).</footnote> may be used to find another characterization for 
+<m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> :</para>
+      <equation id="id2260747"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mi>x</m:mi>
+            </m:msup>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mfrac>
+                  <m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mi>d</m:mi>
+                    <m:msup>
+                      <m:mi>x</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                  </m:mrow>
+                </m:mfrac>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msup>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>x</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msup>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>x</m:mi>
+                <m:mi>n</m:mi>
+              </m:msup>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>.</m:mo>
+      </m:mtd>
+</m:mtr>
+
+
+</m:mtable>
+        </m:math>
+      </equation>
+      
+      <para id="id2260889">When this series expansion for <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> is evaluated at <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, it produces the
+following series for <m:math><m:mi>e</m:mi></m:math>:</para>
+      <equation id="eip-51"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>e</m:mi><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:munderover><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>n</m:mi><m:mo>!</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2260932">In this formula, <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi></m:mrow></m:math>! is the product <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>⋯</m:mo></m:mrow><m:mo>(</m:mo>
+<m:mn>2</m:mn>
+<m:mo>)</m:mo>
+<m:mn>1</m:mn>
+</m:math>. Read <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi></m:mrow></m:math>! as "<m:math>
+<m:mi>n</m:mi>
+</m:math>
+factorial.”</para>
+<exercise id="fs-id25407612">
+<problem id="fs-id25407614">
+      <para id="id2261044">(MATLAB) Write a MATLAB program to evaluate the sum</para>
+      <equation id="id2261052">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi>N</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>N</m:mi>
+            </m:munderover>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>!</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2261097">for <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>8</m:mn><m:mo>,</m:mo><m:mn>16</m:mn><m:mo>,</m:mo><m:mn>32</m:mn><m:mo>,</m:mo><m:mn>64</m:mn></m:mrow></m:math> to show that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>N</m:mi></m:msub><m:mo>≅</m:mo><m:mi>e</m:mi></m:mrow></m:math> for large <m:math>
+<m:mi>N</m:mi>
+</m:math>. Compare <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>64</m:mn>
+</m:msub>
+</m:math>
+with <m:math>
+<m:msub>
+<m:mi>f</m:mi>
+<m:mn>64</m:mn>
+</m:msub>
+</m:math> from <link target-id="fs-id11648875"/>. Which approximation do you prefer?</para></problem></exercise>
+      <para id="id2261199"><emphasis effect="bold">Compound Interest and the Function <m:math><m:mstyle mathvariant="doublestruck">
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:mstyle>
+</m:math>.</emphasis> There is an example
+from your everyday life that shows even more dramatically how the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math>
+arises. Suppose you invest <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> dollars in a savings account that offers <m:math>
+<m:mn>100</m:mn>
+<m:mi>x</m:mi>
+</m:math>%
+annual interest. (When <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>01</m:mn></m:mrow></m:math>, this is 1%; when <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>10</m:mn></m:mrow></m:math>, this is 10%
+interest.) If interest is compounded only once per year, you have the simple interest formula for <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>, the value of your savings account after 1 compound
+(in this case, 1 year):</para>
+      
+      
+      <para id="id2261322"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>.
+This result is illustrated in the block diagram of Figure 2.2(a). In this diagram,
+your input fortune <emphasis effect="italics">V<sub>0</sub></emphasis> is processed by the “interest block” to produce your
+output fortune <emphasis effect="italics">V<sub>1</sub></emphasis>. If interest is compounded monthly, then the annual interest
+is divided into 12 equal parts and applied 12 times. The compounding formula
+for <emphasis effect="italics">V<sub>12</sub></emphasis>, the value of your savings after 12 compounds (also 1 year) is</para>
+      <equation id="eip-983"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mn>12</m:mn></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mn>12</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>12</m:mn></m:msup><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2261410">This result is illustrated in <link target-id="id2261612"/>. Can you read the block diagram?
+The general formula for the value of an account that is compounded <emphasis effect="italics">n</emphasis> times
+per year is</para>
+      <equation id="eip-347"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2261474"><m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> is the value of your account after <m:math>
+<m:mi>n</m:mi>
+</m:math> compounds in a year, when the annual
+interest rate is 100x%.</para>
+      <figure id="uid3" orient="vertical"><subfigure id="id2261565">
+          <media id="id2261565_media" alt="Figure two contains two parts, a, and b. Both will be described from left to right. Part a begins with a variable, V_0, followed by an arrow pointing right. At the end of the arrow is a rectangle containing the expression (1 + x). Another arrow pointing right follows, and at the end of this arrow is an equation, V_1 = (1 + x) V_0. Part b begins with an arrow pointing right, labeled above as V_0. At the end of the arrow is a rectangle containing the expression (1 + x/12). After this rectangle is another arrow pointing right, labeled above as V_1. The end of this arrow is followed by a rectangle containing the expression (1 + x/12), and is followed by another arrow pointing to the right. At the end of this arrow are three evenly spaced dots, and is followed by a fourth arrow labeled above as V_11. This arrow is followed by another rectangle containing the expression (1 + x/12). A final arrow then follows, pointing to the right, and labeled above as V_12. Below this chain of rectangle and arrows is an equation that extends the entire length of the diagram, and reads V_12 = (1 + x/12)V_11 = (1 + x/12)^2 V_10 . . . = (1 + x/12)^12 V_0.">
+            <image mime-type="image/png" src="../../media/pic002-a03b.png" id="id2261565_onlineimage" width="600"><!-- NOTE: attribute width changes image size online (pixels). original width is 1279. --></image>
+            <image for="pdf" mime-type="application/postscript" src="../../media/pic002-95ae.eps" id="id2261565_printimage" print-width="90.14mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+            </image>
+          </media>
+        </subfigure>
+        <subfigure id="id2261612">
+          <media id="id2261612_media" alt="">
+            <image mime-type="image/png" src="../../media/pic003-370b.png" id="id2261612_onlineimage" width="600"><!-- NOTE: attribute width changes image size online (pixels). original width is 2149. --></image>
+            <image for="pdf" mime-type="application/postscript" src="../../media/pic003-f9cd.eps" id="id2261612_printimage" print-width="90.97mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+            </image>
+          </media>
+        </subfigure>
+        
+      <caption>Block Diagram for Interest Computations; (a) Simple Annual
+Interest, and (b) Monthly Compounding</caption></figure>
+<exercise id="fs-id10325171">
+<problem id="fs-id3590034">
+      <para id="id2261627">Verify in <link target-id="eip-347"/> that a recursion is at work that terminates at <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>. That is, show that 
+
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true">
+<m:mrow>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mrow>
+<m:mi>i</m:mi>
+<m:mo>+</m:mo>
+<m:mn>1</m:mn>
+</m:mrow></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mstyle></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>
+produces the result <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+      <para id="id2261784">Bankers have discovered the (apparent) appeal of infinite, or continuous, compounding:</para>
+      <equation id="eip-788"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>∞</m:mi></m:msub><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2261789">We know that this is just</para>
+      <equation id="eip-199"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>∞</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mi>x</m:mi></m:msup><m:msub><m:mi>V</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2261859">So, when deciding between <m:math overflow="scroll"><m:mrow><m:mn>100</m:mn><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> % interest compounded daily and <m:math overflow="scroll"><m:mrow><m:mn>100</m:mn><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>%</m:mo></m:mrow></m:math>
+interest compounded continuously, we need only compare</para>
+      <equation id="eip-727"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mn>365</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mn>365</m:mn></m:msup></m:mstyle><m:mspace width="5pt"/>
+<m:mtext>versus</m:mtext>
+<m:mspace width="5pt"/> 
+<m:msup>
+<m:mi>e</m:mi>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn></m:msub>
+</m:msup>
+<m:mo>.</m:mo>
+</m:math>
+</equation><para id="id2261933">We suggest that daily compounding is about as good as continuous compounding. What do you think? How about monthly compounding?</para>
+<exercise id="fs-id5051971">
+<problem id="fs-id5051973">
+      <para id="id2261995">(MATLAB) Write a MATLAB program to compute and plot
+simple interest, monthly interest, daily interest, and continuous interest versus
+interest rate <m:math overflow="scroll"><m:mrow><m:mn>100</m:mn><m:mi>x</m:mi></m:mrow></m:math>. Use the curves to develop a strategy for saving money.
+</para></problem>
+</exercise>
+ 
+  </content>
+</document>

@@ -1,0 +1,148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Introduction</title>
+  <metadata>
+  <md:content-id>m21417</md:content-id><md:title>Filtering: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>f9f2e085-36f9-4497-a94a-003f60009e9d</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-654">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><section id="uid1">
+      <title>Notes to Teachers and Students:</title>
+      <para id="id2258271">Filtering is one of the most important things that electrical and computer engineers do. In this chapter we extend everyday understanding of filters to <emphasis effect="italics">numerical</emphasis> filters. We then study weighted moving averages and exponential averages. We define the important <emphasis effect="italics">test signals</emphasis> for electrical and computer engineering and show how filters respond to them. The idea that filters are characterized by their response to simple test signals is fundamental. In the <link document="m21419">numerical experiment</link>, students explore the <emphasis effect="italics">frequency response</emphasis> of a simple filter, a concept that forms the basis of circuit theory, electronics, optics and lasers, solid-state devices, communications, and control.</para>
+    </section>
+    <section id="uid2"><title>Introduction</title><para id="id2258955">A <emphasis effect="italics">filter</emphasis> is any device that passes material, light, sound, current, velocity, or information according to some rule of selectivity. Material (or mechanical) filters are commonplace in your everyday life:</para>
+<list id="eip-id16578754" list-type="enumerated" number-style="lower-roman"><item>coffee filters pass flavored water while filtering out coffee grounds;</item>
+      <item>Goretex fibers pass small, warm perspiration droplets while filtering out large, cool droplets of rain or snow;</item>
+      <item>fiberglass strands in a furnace filter pass warm air while filtering out particles of dirt and dust;</item>
+      <item>a centrifuge retains material of low density while spinning out (or filtering out) material of high density; and</item>
+      <item>an electrostatic precipitator filters out dust and other effluents by attaching charge to them and using an electric field to move the charged particles to a high potential drain.</item></list>
+
+      <para id="id2258999">The first three of these examples selectively pass material according to size; the last two selectively pass material according to its mass density.</para>
+      <para id="id2259005">Typical filters for light are</para>
+<list id="eip-id16587605" list-type="enumerated" number-style="lower-roman"><item>UV filters on camera lenses and eyeglasses that pass light in the range of visible wavelengths while blocking light in the invisible (but damaging) ultraviolet range;</item>
+      <item>polaroid lenses that pass light that is randomly polarized while blocking out glare that is linearly polarized;</item>
+      <item>green fabrics that reflect green light and absorb other colors;</item>
+      <item>red taillights that pass light in the long wavelength red range and reflect light in the short wavelength violet range (look at the inside of your taillights to see violet); and</item>
+      <item>glacial ice that absorbs all but the blue wavelengths so that it appears blue.</item></list>
+<exercise id="eip-id16166883">
+<problem id="eip-id16166886">
+      <para id="id2259035">List as many examples of natural and man-made sound filters
+as you can.</para></problem>
+</exercise>
+      <para id="id2259049"><emphasis effect="bold">Satellite Television.</emphasis> Among current filters, the tuner in a super-heterodyne receiver is, perhaps, the first example that comes to mind. But satellite TV filters are another fascinating example. A typical C-band satellite has twelve transponders (or repeaters), each of which transmits microwave radiation in a personalized 36 MHz band. (The abbreviation MHz stands for megahertz, or <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>6</m:mn></m:msup></m:math> Hz, or <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>6</m:mn></m:msup></m:math> cycles per second. Other common abbreviations are Hz for 1 Hz, kHz for <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup></m:math> Hz, and GHz for <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>9</m:mn></m:msup></m:math> Hz.) Each transponder actually transmits two channels of information, one vertically polarized and one horizontally polarized. There is an 8 MHz guard band between each band, and the vertical and horizontal channels are offset by 20 MHz. The transmission scheme for the 24 channels is illustrated in <link target-id="uid3">Figure 1</link>. The entire transmission band extends over 540 MHz, from <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>.</m:mo><m:mn>7</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>9</m:mn></m:msup></m:mrow></m:math> Hz to <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mo>.</m:mo><m:mn>24</m:mn><m:mo>×</m:mo><m:msup><m:mn>10</m:mn><m:mn>9</m:mn></m:msup></m:mrow></m:math> Hz. The satellite receiver has two different microwave detectors, one for vertical and one for horizontal polarization, and a microwave tuner to tune into the microwave band of interest.</para>
+<exercise id="fs-id6272508">
+<problem id="fs-id6272574">
+      <para id="id2259177">Check that the transmission scheme of <link target-id="uid3">Figure 1</link> consumes
+540 MHz of bandwidth.</para>
+</problem>
+</exercise>
+<exercise id="fs-id6272587">
+<problem id="fs-id6272589">
+      <para id="id2259186">List as many examples of natural and man-made devices for
+velocity filtering as you can.</para>
+</problem>
+</exercise>
+      <figure id="uid3"><media id="uid3_media" alt="This image consist of two lines. Each line has specific designations. The upper line has two little lines above it. The first line is a double sided arrow labeled 36MHz and the next line that is situated just above and to the right and this line is capped on each end by vertical lines. The actual line is dashed in several places and many of the dashed segments are labeled. The area between the first and second dash from left to righ is labeled V_1, the next dashed section is not labeled. The segment is labeled V_2, the next segment is not labeled, the next segment is labeled V_3. The next segment is interupted with a broken line symbol and then the segment after that, the last segment is labeled V_12. Below this line is the expression 3.7x10^9. The Lin below the upper line is set up very similarly. There are three short lines above the actual line. The first two are capped on each end by arrows and labeled 20MHz and 36 MHz respectively. The next little line is capped on each end by vertical lines and is labled 8MHz. The actual line is dashed into many segments. The first segment has no label, the next is labeled H_1, the next is not labeled, the next is labeled H_2 and the next section is not labeled. The next section is interrupted by a broken line symbol, and the next segmet is labeled H_12.">
+          <image mime-type="image/png" src="../../media/pic001-73cc.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 253. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic001-5202.eps" id="uid3_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Satellite TV– <emphasis effect="italics">V<sub>i</sub></emphasis>, Vertically Polarized Channel <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>;</m:mo><m:msub><m:mi>H</m:mi><m:mi>j</m:mi></m:msub></m:mrow></m:math>, Horizontally Polarized Channel <emphasis effect="italics">j</emphasis></caption></figure>
+      <para id="id2259256"><emphasis effect="bold">An Aside on Hertz and Seconds.</emphasis> The abbreviation Hz stands for hertz, or cycles/second. It is used to describe the frequency of a sinusoidal
+signal. For example, house current is 60 Hz, meaning that it has 60 cycles each second. The inverse of Hz is seconds or, more precisely, seconds/cycle, the period of 1 cycle. For example, the period of 1 cycle for house current is 1/60 second. When we are dealing with sound, electricity, and electromagnetic radiation, we need a concise language for dealing with signals and waves whose frequencies range from 0 Hz (called DC or direct current) to <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>18</m:mn></m:msup></m:math> Hz (visible light). <link target-id="uid4">Table 1</link> summarizes the terms and symbols used to describe the frequency and period of signals that range in frequency from 0 Hz to <m:math overflow="scroll"><m:msup><m:mn>10</m:mn><m:mn>12</m:mn></m:msup></m:math> Hz.</para>
+      
+      <table id="eip-891" summary="table of Sinusoidal Signals"><title>Terms and symbols for Sinusoidal Signals</title>
+<tgroup cols="7"><colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+    <colspec colnum="5" colname="c5"/>
+    <colspec colnum="6" colname="c6"/>
+<colspec colnum="7" colname="c7"/>
+
+
+<thead>
+<row>
+<entry namest="c1" nameend="c3">Frequency</entry>
+<entry namest="c4" nameend="c6">Period</entry>
+<entry/>
+</row>
+<row>
+<entry>Hz</entry>
+<entry>Term</entry>
+<entry>Units</entry>
+<entry>Seconds</entry>
+<entry>Term</entry>
+<entry>Units</entry>
+<entry>Example</entry>
+</row>
+</thead>
+<tbody>
+  <row>
+    <entry>Hz</entry>
+    <entry>hertz</entry>
+    <entry>1 Hz</entry>
+<entry>sec</entry>
+<entry>second</entry>
+<entry>1 sec</entry>
+<entry>battery current: 0 Hz
+<newline/>
+house current: 60 Hz</entry>
+  </row>
+  <row>
+    <entry>kHz</entry>
+    <entry>kilohertz</entry>
+    <entry>10<sup>3</sup> Hz</entry>
+<entry>msec</entry>
+<entry>millisecond</entry>
+<entry>10<sup>-3</sup> sec</entry>
+<entry>midfrequency sound</entry>
+  </row>
+<row>
+    <entry>MHz</entry>
+    <entry>megahertz</entry>
+    <entry>10<sup>6</sup> Hz</entry>
+<entry>µsec</entry>
+<entry>microsecond</entry>
+<entry>10<sup>-6</sup>sec</entry>
+<entry>clock frequencies in microcomputers</entry>
+  </row>
+<row>
+    <entry>GHz</entry>
+    <entry>gigahertz</entry>
+    <entry>10<sup>9</sup> Hz</entry>
+<entry>nsec</entry>
+<entry>nanosecond</entry>
+<entry>10<sup>-9</sup>sec</entry>
+<entry>microwave radiation for satellite communication</entry>
+  </row>
+<row>
+    <entry>THz</entry>
+    <entry>terahertz</entry>
+    <entry>10<sup>12</sup> Hz</entry>
+<entry>psec</entry>
+<entry>picosecond</entry>
+<entry>10<sup>-12</sup> sec</entry>
+<entry>infrared radiation</entry>
+  </row>
+</tbody>
+
+</tgroup>
+</table><para id="id2258196"><emphasis effect="bold">Numerical Filters.</emphasis> Rather amazingly, these ideas extend to the domain of numerical filters, the topic of this chapter. Numerical filters are just
+schemes for weighting and summing strings of numbers. Stock prices are typically averaged with numerical filters. The curves in <link target-id="uid5">Figure 2</link> illustrate the daily closing average for Kellogg's common stock and two moving averages. The 50-day moving average is obtained by passing the daily closing average through a numerical filter that averages the most current 50 days' worth of closing averages. The 200-day moving average for the stock price is obtained by passing the daily closing prices through a numerical filter that averages the most current 200 days' worth of daily closing averages. The daily closing averages show fine-grained variation but tend to conceal trends. The 50-day and 200-day averages show less fine-grained variation but give a clearer picture of trends. In fact, this is one of the key ideas in numerical filtering: by selecting our method of averaging, we can filter out fine-grained variations and pass long-term trends (or vice versa), or we can filter out periodic variations and pass nonperiodic variations (or vice versa). <link target-id="uid5">Figure 2</link> illustrates that moving averages typically lag increasing sequences of numbers and lead decreasing sequences. Can you explain why?</para>
+      <para id="id2258204">We will call any algorithm or procedure for transforming one set of numbers into another set of numbers a <emphasis effect="italics">numerical filter</emphasis> or <emphasis effect="italics">digital filter</emphasis>. Digital filters, consisting of memories and arithmetic logic units (ALUs), are implemented in VLSI circuits and used for communication, control, and instrumentation. They are also implemented in random–or semicustom–logic circuits and in programmable microcomputer systems. The inputs to a digital filter are typically electronic measurements that are produced by A/D (analog-to-digital) conversion of the output of an electrical or mechanical sensor. The outputs of the filter are “processed,” “filtered,” or “smoothed” versions of the measurements. In your more advanced courses in electrical and computer engineering you will study signal processing and system theory, assembly language programming, microprocessor system development, and computer design. In these courses you will study the design and programming of hardware that may be used for digital filtering.</para>
+      <figure id="uid5"><media id="uid5_media" alt="A graph of of the stock market.">
+          <image mime-type="image/png" src="../../media/pic002-526e.png" id="uid5_onlineimage" width="750"><!-- NOTE: attribute width changes image size online (pixels). original width is 366. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic002-55ce.eps" id="uid5_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Dow-Jones Averages (Adapted from the New York Stock Exchange, <emphasis effect="italics">Daily Graphs</emphasis>, William O'Neil and Co., Inc., Los Angeles, California)</caption></figure>
+    </section>
+  </content>
+</document>

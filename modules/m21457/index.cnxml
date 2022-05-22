@@ -1,0 +1,2832 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Matrices</title>
+  <metadata>
+  <md:content-id>m21457</md:content-id><md:title>Linear Algebra: Matrices</md:title>
+  <md:abstract/>
+  <md:uuid>f9ba8554-df1e-4598-a7bb-2e0a57fb6be8</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-860">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">The word <emphasis effect="italics">matrix</emphasis> dates at least to the thirteenth century, when it was used to describe the rectangular copper tray, or matrix, that held individual leaden letters that were packed into the matrix to form a page of composed text. Each letter in the matrix, call it <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">a</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:math>, occupied a unique position <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>i</m:mi><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow></m:math> in the matrix. In modern day mathematical parlance, a matrix is a collection of numbers arranged in a two-dimensional array (a rectangle). We indicate a matrix with a boldfaced capital letter and the constituent elements with double subscripts for the row and column:</para>
+    
+<figure id="uid1"><media id="uid1_media" alt="Figure one is a matrix A describing how the with the notation a_mn, the first letter in the subscript signifies the number of the row, and the second letter in the subscript signifies the number of the column.">
+        <image mime-type="image/png" src="../../media/pic014mi.png" id="uid1_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic014mi.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Matrix</caption></figure>    
+    
+    <para id="id2259484">In this equation <m:math>
+<m:mi>A</m:mi>
+</m:math> is an <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>x</m:mo><m:mi>n</m:mi></m:mrow></m:math> matrix, meaning that <m:math>
+<m:mi>A</m:mi>
+</m:math> has <m:math>
+<m:mi>m</m:mi>
+</m:math> horizontal rows
+and <m:math>
+<m:mi>n</m:mi>
+</m:math> vertical columns. As an extension of the previously used notation, we
+write <m:math>
+<m:mi>A</m:mi> 
+<m:mrow>
+<m:mo>∈</m:mo>
+<m:msup>
+<m:mi mathvariant="script">R</m:mi>
+<m:mrow>
+<m:mi>m</m:mi>
+<m:mo>x</m:mo>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:msup>
+</m:mrow>
+</m:math> to show that <m:math>
+<m:mi>A</m:mi>
+</m:math> is a matrix of size 
+<m:math overflow="scroll">
+<m:mrow>
+<m:mi>m</m:mi>
+<m:mo>x</m:mo>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:math> with 
+<m:math overflow="scroll">
+<m:mrow>
+<m:msub>
+<m:mi mathvariant="normal">a</m:mi>
+<m:mrow>
+<m:mi>i</m:mi>
+<m:mi>j</m:mi>
+</m:mrow>
+</m:msub>
+<m:mo>∈</m:mo>
+<m:mi mathvariant="script">R</m:mi>
+</m:mrow>
+</m:math>.
+The scalar element 
+<m:math overflow="scroll">
+<m:msub>
+<m:mi mathvariant="normal">a</m:mi>
+<m:mrow>
+<m:mi>i</m:mi>
+<m:mi>j</m:mi>
+</m:mrow>
+</m:msub>
+</m:math> is located in the matrix at the 
+<m:math overflow="scroll">
+<m:msup>
+<m:mi>i</m:mi>
+<m:mrow>
+<m:mi mathvariant="normal">t</m:mi>
+<m:mi mathvariant="normal">h</m:mi>
+</m:mrow>
+</m:msup>
+</m:math> row and the 
+<m:math overflow="scroll">
+<m:msup>
+<m:mi>j</m:mi>
+<m:mrow>
+<m:mi mathvariant="normal">t</m:mi>
+<m:mi mathvariant="normal">h</m:mi>
+</m:mrow>
+</m:msup>
+</m:math>
+column. For example, <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mn>23</m:mn>
+</m:msub>
+</m:math> is located in the second row and the third column
+as illustrated in <link target-id="uid1"/>.</para>
+    <para id="id2259685">The <emphasis effect="italics">main diagonal</emphasis> of any matrix consists of the elements <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">a</m:mi><m:mrow><m:mi>i</m:mi><m:mi>i</m:mi></m:mrow></m:msub></m:math>. (The
+two subscripts are equal.) The main diagonal runs southeast from the top left
+corner of the matrix, but it does not end in the lower right corner unless the
+matrix is square <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>m</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    <para id="id2259746">The <emphasis effect="italics">transpose</emphasis> of a matrix <m:math>
+<m:mi>A</m:mi>
+<m:mrow><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math> is another matrix <m:math>
+<m:mi>B</m:mi>
+</m:math> whose
+element in row <m:math>
+<m:mi>j</m:mi>
+</m:math> and column <m:math>
+<m:mi>i</m:mi>
+</m:math> is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>b</m:mi><m:mrow><m:mi>j</m:mi><m:mi>i</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">a</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>i</m:mi><m:mo>≤</m:mo><m:mi>m</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>j</m:mi><m:mo>≤</m:mo><m:mi>n</m:mi></m:mrow></m:math>.
+We write <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">B</m:mi><m:mo>=</m:mo><m:msup><m:mi>A</m:mi><m:mi>T</m:mi></m:msup></m:mrow></m:math> to indicate that <m:math>
+<m:mi>B</m:mi>
+</m:math> is the transpose of <m:math>
+<m:mi>A</m:mi>
+</m:math>. In MATLAB,
+transpose is denoted by <code>A'</code>. A more intuitive way of describing the transpose
+operation is to say that it flips the matrix about its main diagonal so that
+rows become columns and columns become rows.</para>
+<exercise id="fs-id10017751">
+<problem id="fs-id10017753">
+    <para id="id2259940">If <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math>, then <m:math overflow="scroll"><m:mrow><m:msup><m:mi>A</m:mi><m:mi>T</m:mi></m:msup><m:mo>∈</m:mo><m:munder><m:mo>?</m:mo><m:mo>_</m:mo></m:munder></m:mrow></m:math>. Find the transpose of the matrix
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>7</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>9</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>.</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+    <para id="id2260053"><emphasis effect="bold">Matrix Addition and Scalar Multiplication.</emphasis> Two matrices of the same size (in both dimensions) may be added or subtracted in the same way as
+vectors, by adding or subtracting the corresponding elements. The equation <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">A</m:mi><m:mo>±</m:mo><m:mi mathvariant="normal">B</m:mi></m:mrow></m:math> means that for each <emphasis effect="italics">i</emphasis> and <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">c</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">a</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>±</m:mo><m:msub><m:mi>b</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:mrow></m:math>. Scalar multiplication of a matrix multiplies each element of the matrix by the scalar:</para>
+    <equation id="eip-97"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">a</m:mi>
+          <m:mi mathvariant="normal">X</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>11</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>12</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>13</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>              
+  <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>21</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>22</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>23</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>31</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>32</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>33</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>        
+        <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mn>3</m:mn>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>⠇</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>⠇</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>⠇</m:mo>
+                </m:mtd>
+<m:mtd>
+
+</m:mtd>        
+        <m:mtd columnalign="left">
+                  <m:mo>⠇</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mi mathvariant="normal">l</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>a</m:mi>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260455"><emphasis effect="bold">Matrix Multiplication.</emphasis> A vector can be considered a matrix with only one column. Thus we intentionally blur the distinction between <m:math overflow="scroll"><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> and <emphasis effect="italics">R<sup>n</sup></emphasis>. Also a matrix can be viewed as a collection of vectors, each column of the matrix being a vector:</para>
+    <equation id="id2260504"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+<m:mtd/>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">a</m:mi>
+                    <m:mi mathvariant="normal">l</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">a</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>        
+</m:mtd>       
+ <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">a</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+        <m:mtd/>
+        <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+        <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mo>[</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>11</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mn>21</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+        <m:mfenced separators="" open="[" close="]">
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi mathvariant="normal">l</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:msub>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mn>22</m:mn>
+                </m:msub>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mo>|</m:mo>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mi>m</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:msub>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mfenced>
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>a</m:mi>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+     <m:mo>]</m:mo>       
+   <m:mrow>
+       
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mrow>
+      </m:math>
+        </equation>
+    
+    
+    
+    <para id="id2260808">In the transpose operation, columns become rows and vice versa. The transpose of an <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mn>1</m:mn></m:mrow></m:math> matrix, a <emphasis effect="italics">column vector</emphasis>, is a 1 <m:math overflow="scroll"><m:mrow><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:math> matrix, a <emphasis effect="italics">row vector</emphasis>:</para>
+    <equation id="eip-394"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>|</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>;</m:mo><m:mrow><m:msup><m:mi mathvariant="normal">x</m:mi><m:mi>T</m:mi></m:msup><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>]</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math></equation>
+    <para id="id2260963">Now we can define matrix-matrix multiplication in terms of inner products of vectors. Let's begin with matrices <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">B</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:msup></m:mrow></m:math>. To find the product AB, first divide each matrix into column vectors and row vectors as follows:</para>
+    
+<figure id="uid2"><media id="uid2_media" alt="Figure two shows how matrices A and B can be cut into a series of column vectors, and then transposed for multiplication purposes.">
+        <image mime-type="image/png" src="../../media/pic015mi-56d1.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic015mi-8135.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>    
+
+
+<para id="id2261030">Thus <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> is the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column of <emphasis effect="italics">A</emphasis> and
+<m:math overflow="scroll"><m:msubsup><m:mi>α</m:mi><m:mrow><m:mi>j</m:mi></m:mrow><m:mi>T</m:mi></m:msubsup></m:math> is the <m:math overflow="scroll"><m:msup><m:mi>j</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> row of A. For matrix
+multiplication to be defined, the width of the first matrix must match the
+length of the second one so that all rows <m:math overflow="scroll"><m:msubsup><m:mi>α</m:mi><m:mrow><m:mi>i</m:mi></m:mrow><m:mi>T</m:mi></m:msubsup></m:math> and columns <m:math>
+<m:msub>
+<m:mi>b</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> have the same
+number of elements <m:math>
+<m:mi>n</m:mi>
+</m:math>. The matrix product, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>=</m:mo></m:mrow></m:math> AB, is an <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:math> matrix
+defined by its elements as <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">c</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>α</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">b</m:mi><m:mi>j</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. In words, each element of the product
+matrix, <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">c</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:math>, is the inner product of the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> row of the first matrix and the <m:math overflow="scroll"><m:msup><m:mi>j</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math>
+column of the second matrix.</para>
+    <para id="id2261304">For n-vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>, the matrix product <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">x</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math> takes on a special
+significance. The product is, of course, a <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>×</m:mo><m:mn>1</m:mn></m:mrow></m:math> matrix (a scalar). The special
+significance is that <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">x</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math> is the inner product of <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>:</para>
+    
+ <figure id="uid3"><media id="uid3_media" alt="Figure three shows how multiplying the transposed x-column vectors with the y-vectors results in a single vector (x, y) product.">
+        <image mime-type="image/png" src="../../media/pic016mi.png" id="uid3_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic016mi.eps" id="uid3_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>   
+    
+    <para id="id2261513">Thus the notation <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">x</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math> is often used in place of <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Recall from <link document="m21463" target-id="id2260500">Demo 1 from "Linear Algebra: Other Norms"</link>
+that MATLAB uses <code>x'*y</code> to denote inner product.</para>
+    <para id="id2261589">Another special case of matrix multiplication is the <emphasis effect="italics">outer product</emphasis>. Like
+the inner product, it involves two vectors, but this time the result is a matrix:</para>
+
+<figure id="uid4"><media id="uid4_media" alt="Figure four shows the matrix A which results from multiplying matrix x with the transposed matrix of y.">
+        <image mime-type="image/png" src="../../media/pic017mi.png" id="uid4_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic017mi.eps" id="uid4_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>
+    
+<para id="id2261601">In the outer product, the inner products that define its elements are between one-dimensional row vectors of <m:math>
+<m:mi>x</m:mi>
+</m:math> and one-dimensional column vectors of <m:math>
+<m:msup>
+<m:mi>y</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+</m:math>, meaning the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>i</m:mi><m:mo>,</m:mo><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow></m:math> element of <m:math>
+<m:mi>A</m:mi>
+</m:math> is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:msub><m:mi>y</m:mi><m:mi>j</m:mi></m:msub></m:mrow></m:math>.</para>
+<exercise id="fs-id10635543">
+<problem id="fs-id10635545">
+    <para id="id2261686">Find <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">A</m:mi><m:mi mathvariant="normal">B</m:mi></m:mrow></m:math> where <m:math>
+<m:mi>A</m:mi>
+</m:math> and <m:math>
+<m:mi>B</m:mi>
+</m:math> are given by</para>
+<list id="fs-id11813280" list-type="enumerated" number-style="lower-alpha"><item><m:math><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo></m:mrow>
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+          <m:mspace width="4pt"/>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mo>=</m:mo>
+        </m:mrow>
+  
+        <m:mfenced separators="" open="[" close="]">
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mn>0</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>1</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mn>3</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mn>4</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>2</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>2</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>0</m:mn>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mn>2</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>3</m:mn>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mn>1</m:mn>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mfenced>
+<m:mo>;</m:mo>
+      </m:math>
+    
+</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">B</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>7</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>8</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">B</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>7</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>8</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>.</item>
+</list>
+</problem>
+</exercise>
+    <para id="id2262203">There are several other equivalent ways to define matrix multiplication, and a careful study of the following discussion should improve your
+understanding of matrix multiplication. Consider A <m:math overflow="scroll"><m:mrow><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mo>,</m:mo><m:mi mathvariant="normal">B</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:msup></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">A</m:mi><m:mi mathvariant="normal">B</m:mi></m:mrow></m:math> so that <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:msup></m:mrow></m:math>. In pictures, we have</para>
+    <equation id="eip-377"><m:math overflow="scroll">
+<m:mrow>
+<m:mi>m</m:mi>
+<m:mrow>
+<m:mo>[</m:mo>
+<m:mover>
+<m:mi mathvariant="normal">C</m:mi>
+<m:mi>p</m:mi>
+</m:mover>
+<m:mo>]</m:mo>
+</m:mrow>
+<m:mo>=</m:mo>
+<m:mi>m</m:mi>
+<m:mrow>
+<m:mo>[</m:mo>
+<m:mover>
+<m:mi mathvariant="normal">A</m:mi>
+<m:mi>n</m:mi>
+</m:mover>
+<m:mo>]</m:mo>
+</m:mrow>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi>p</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi mathvariant="normal">B</m:mi>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mi>n</m:mi>
+<m:mo>.</m:mo>
+</m:mrow>
+</m:math></equation><para id="id2262313">In our definition, we represent <m:math><m:mi>C</m:mi>
+</m:math> on an entry-by-entry basis as</para>
+    
+    <equation id="eip-668"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">c</m:mi>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mi>i</m:mi>
+              </m:msub>
+              <m:mo>,</m:mo>
+              <m:msub>
+                <m:mi mathvariant="normal">b</m:mi>
+                <m:mi>j</m:mi>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mrow><m:mo>Σ</m:mo></m:mrow>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi mathvariant="normal">a</m:mi>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:msub>
+              <m:mi>b</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2262492">In pictures,</para>
+    
+<figure id="uid5"><media id="uid5_media" alt="Figure 5 shows a specific spot in a matrix, c_ij, that is composed of the multiplication of the transposed column a_i and the column b_j.">
+        <image mime-type="image/png" src="../../media/pic018mi.png" id="uid5_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic018mi.eps" id="uid5_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>
+
+
+    <para id="id2262576">You will prove in <link target-id="fs-id12068295">Exercise 3</link> that we can also represent <m:math>
+<m:mi>C</m:mi>
+</m:math> on a column
+basis:</para>
+    <equation id="eip-732"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">c</m:mi>
+              <m:mi>j</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mrow><m:mo>Σ</m:mo></m:mrow>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi mathvariant="normal">a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>b</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+
+<figure id="uid6"><media id="uid6_media" alt="Figure six shoes how column vector c_j is composed of all of the columns of a_1 through a_n multiplied with the column vector b_j.">
+        <image mime-type="image/png" src="../../media/pic019mi.png" id="uid6_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic019mi.eps" id="uid6_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>    
+    
+    <para id="eip-439">Finally, <m:math>
+<m:mi>C</m:mi>
+</m:math> can be represented as a sum of matrices, each matrix being an
+outer product:</para><equation id="eip-853"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mrow><m:mo>Σ</m:mo></m:mrow>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi mathvariant="normal">a</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:msubsup>
+              <m:mi>β</m:mi>
+              <m:mrow>
+                <m:mi>i</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    
+
+<figure id="uid7"><media id="uid7_media" alt="Figure seven shows how matrix C is composed of the addition of each a-column with a respective transposed b-column.">
+        <image mime-type="image/png" src="../../media/pic020mi.png" id="uid7_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic020mi.eps" id="uid7_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>
+
+
+
+<para id="eip-780">A numerical example should help clarify these three methods.</para><example id="fs-id11251432">
+    <para id="id2263034">Let</para>
+    <equation id="id2263042">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>A</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>B</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263225">Using the first method of matrix multiplication, on an entry-by-entry basis, we have</para>
+    <equation id="id2263232"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>Σ</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mn>4</m:mn>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:msub>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263297">or</para>
+    <equation id="id2263302"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+<m:mo>⋅</m:mo>
+<m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>4</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+          <m:mspace width="4.pt"/>
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>                    
+<m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+<m:mo>(</m:mo>              
+    <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+    <m:mspace width="4pt"/>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+<m:mo>+</m:mo>
+<m:mn>4</m:mn>
+<m:mo>.</m:mo>
+<m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+     <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <para id="id2263649">or</para>
+    <equation id="id2263654">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>12</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>12</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>8</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>14</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>16</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>11</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>13</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">l</m:mi>
+                    <m:mn>9</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">l</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263745">On a column basis,</para>
+    <equation id="id2263750"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mi>j</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>Σ</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mn>4</m:mn>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263809"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">c</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>1</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>2</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>1</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>2</m:mn><m:mo>;</m:mo><m:msub><m:mi mathvariant="normal">c</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>2</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>2</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>3</m:mn><m:mo>+</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mn>1</m:mn></m:mrow><m:mo>;</m:mo>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mn>1</m:mn>
+          <m:mo>+</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mn>1</m:mn>
+          <m:mo>+</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mn>2</m:mn>
+          <m:mo>+</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </para>
+    
+    <para id="id2264255">Collecting terms together, we have</para>
+    <equation id="id2264259"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>[</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>]</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+<m:mo>⋅</m:mo>
+<m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>4</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+          <m:mspace width="4.pt"/>
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>                    
+<m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+<m:mo>(</m:mo>              
+    <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+    <m:mspace width="4pt"/>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+<m:mo>+</m:mo>
+<m:mn>4</m:mn>
+<m:mo>.</m:mo>
+<m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+     <m:mo>]</m:mo>
+        </m:mrow>
+  
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+    
+    
+    <para id="id2264647">On a matrix-by-matrix basis,</para>
+    <equation id="id2264653"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>Σ</m:mo>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mn>4</m:mn>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mi>i</m:mi>
+          </m:msub>
+          <m:msubsup>
+            <m:mi>β</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+            </m:mrow>
+            <m:mi>T</m:mi>
+          </m:msubsup>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <equation id="eip-209"><m:math>
+<m:mi>C</m:mi>
+<m:mo>=</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>3</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>+</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>3</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>+</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>3</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>+</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>3</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>2</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>+</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>3</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>4</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+</m:math></equation><equation id="id2264711"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>+</m:mo>
+        </m:mrow>
+    
+        <m:mfenced separators="" open="[" close="]">
+          <m:mtable>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>3</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>3</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mn>3</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:mfenced>
+          <m:mrow>
+          <m:mo>+</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+        <m:mrow>
+          <m:mo>+</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    
+    </equation>
+    
+    
+    
+    <equation id="id2265205"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>[</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+<m:mo>⋅</m:mo>
+<m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>4</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+          <m:mspace width="4.pt"/>
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mo>(</m:mo>                    
+<m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>4</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+<m:mo>(</m:mo>              
+    <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>⋅</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+    <m:mspace width="4pt"/>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+<m:mo>+</m:mo>
+<m:mn>4</m:mn>
+<m:mo>.</m:mo>
+<m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr> 
+<m:mtd>      
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>⋅</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+     <m:mo>]</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <para id="id2265537">as we had in each of the other cases. Thus we see that the methods are
+equivalent-simply different ways of organizing the same computation! </para></example>
+
+<exercise id="fs-id12068295">
+<problem id="fs-id12068298">
+    <para id="id2265556">Prove that Equations <link target-id="eip-668">9</link>, <link target-id="eip-732">11</link>, and <link target-id="eip-853">13</link> are equivalent definitions of matrix multiplication. That is, if <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">A</m:mi><m:mi mathvariant="normal">B</m:mi></m:mrow></m:math> where <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math> and
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">B</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:msup></m:mrow></m:math>, show that the matrix-matrix product can also be defined by</para>
+    <equation id="id2265650"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mrow><m:mo>∑</m:mo></m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:msub>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2265712">and, if <m:math>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> is the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column of <m:math>
+<m:mi>C</m:mi>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>a</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> is the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column of <m:math>
+<m:mi>A</m:mi>
+</m:math>, then</para>
+    <equation id="id2265818"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">c</m:mi>
+            <m:mi>j</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mrow><m:mo>∑</m:mo></m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2265879">Show that the matrix <m:math>
+<m:mi>C</m:mi></m:math> may also be written as the ‚ "sum of outer products"</para>
+    <equation id="id2265898"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">C</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mrow><m:mo>∑</m:mo></m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msubsup>
+            <m:mi>β</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+            </m:mrow>
+            <m:mi>T</m:mi>
+          </m:msubsup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2265955">Write out the elements in a typical outer product <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">a</m:mi><m:mi>k</m:mi></m:msub><m:msubsup><m:mi>β</m:mi><m:mrow><m:mi>k</m:mi></m:mrow><m:mi>T</m:mi></m:msubsup></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id9913918">
+<problem id="fs-id9913920">
+    <para id="id2265991">Given <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>m</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mo>,</m:mo><m:mi mathvariant="normal">B</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>p</m:mi><m:mo>×</m:mo><m:mi>q</m:mi></m:mrow></m:msup></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">C</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>r</m:mi><m:mo>×</m:mo><m:mi>s</m:mi></m:mrow></m:msup></m:mrow></m:math>, for each of the following postulates, either prove that it is true or give a counterexample showing that it is false:</para>
+<list id="fs-id12104252" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mo>)</m:mo></m:mrow><m:mi>T</m:mi></m:msup><m:mo>=</m:mo><m:mi mathvariant="normal">A</m:mi></m:mrow></m:math>.</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">B</m:mi><m:mi mathvariant="normal">A</m:mi></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>p</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>=</m:mo><m:mi>q</m:mi></m:mrow></m:math>. Is matrix multiplication commutative?</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">B</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">C</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">A</m:mi><m:mi mathvariant="normal">C</m:mi></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>q</m:mi><m:mo>=</m:mo><m:mi>s</m:mi></m:mrow></m:math>. Is matrix multiplication distributive over addition?</item>
+    <item><m:math overflow="scroll"><m:mo>(</m:mo></m:math>AB <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>)</m:mo></m:mrow><m:mi>T</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mi mathvariant="normal">B</m:mi><m:mi>T</m:mi></m:msup><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>p</m:mi></m:mrow></m:math>.</item>
+    <item><m:math>
+<m:mo>(</m:mo>
+<m:mi>A</m:mi>
+<m:mi>B</m:mi>
+<m:mo>)</m:mo>
+<m:mi>C</m:mi>
+<m:mo>=</m:mo>
+<m:mi>A</m:mi>
+<m:mo>(</m:mo>
+<m:mi>B</m:mi>
+<m:mi>C</m:mi>
+<m:mo>)</m:mo>
+</m:math> when <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>p</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>q</m:mi><m:mo>=</m:mo><m:mi>r</m:mi></m:mrow></m:math>. Is matrix multiplication associative?</item></list></problem>
+</exercise>
+<example id="fs-id12074775"><title>Rotation</title><para id="id2266366">We know from <link document="m21412">the chapter on complex numbers</link> that a complex number <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mi>j</m:mi><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> may be rotated by angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> in the complex plane by forming the product</para>
+    <equation id="id2266423"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mi>z</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2266463">When written out, the real and imaginary parts of <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> are</para>
+    
+    <equation id="id2266561"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mrow><m:mo form="prefix">cos</m:mo>
+<m:mi>θ</m:mi>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+</m:mrow>
+<m:mo form="prefix">sin</m:mo>
+<m:mi>θ</m:mi>
+<m:mo>)</m:mo>
+ <m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mi>j</m:mi><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>y</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2266667">If the real and imaginary parts of <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are organized into vectors <m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>
+and
+<m:math>
+<m:msub>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msub></m:math> as in <link document="m21412">the chapter on complex numbers</link>, then rotation may be carried out with the matrix-vector
+multiply</para>
+    <equation id="id2266737"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2266924">We call the matrix <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">i</m:mi><m:mi mathvariant="normal">n</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">i</m:mi><m:mi mathvariant="normal">n</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> a <emphasis effect="italics">rotation matrix</emphasis>.</para> </example>
+<exercise id="fs-id12112112">
+<problem id="fs-id12112114">
+    <para id="id2267050">Let <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> denote a <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mo>×</m:mo><m:mn>2</m:mn></m:mrow></m:math> rotation matrix. Prove and interpret
+the following two properties:</para>
+<list id="fs-id12112154" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>.</m:mo></m:mrow></m:math></item>
+</list>
+</problem>
+</exercise>
+  </content>
+</document>

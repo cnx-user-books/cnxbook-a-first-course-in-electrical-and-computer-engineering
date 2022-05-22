@@ -1,0 +1,1219 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Three-Dimensional Homogeneous Coordinates</title>
+  <metadata>
+  <md:content-id>m21494</md:content-id><md:title>Vector Graphics: Three-Dimensional Homogeneous Coordinates</md:title>
+  <md:abstract/>
+  <md:uuid>4c15d4bb-0eee-4520-9790-438c9bc103d8</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-272">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">We now consider the storage and manipulation of three-dimensional objects. We will continue to use homogeneous coordinates so that translation
+can be included in composite operators. Homogeneous coordinates in three
+dimensions will also allow us to do perspective projections so that we can view
+a three-dimensional object from any point in space.</para>
+    <para id="id2258272"><emphasis effect="bold">Image Representation.</emphasis> The three-dimensional form of the point matrix in homogeneous coordinates is</para>
+    <equation id="id2258281"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mi mathvariant="normal">l</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>        
+        <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+<m:mtd>
+<m:mo>...</m:mo>
+</m:mtd>        
+        <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mo>∈</m:mo>
+          <m:msup>
+            <m:mi mathvariant="script">R</m:mi>
+            <m:mrow>
+              <m:mn>4</m:mn>
+              <m:mo>×</m:mo>
+              <m:mi>n</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259127">The line matrix <m:math>
+<m:mi>H</m:mi>
+</m:math> is exactly as before, pointing to pairs of columns in <m:math>
+<m:mi>G</m:mi>
+</m:math> to
+connect with lines. Any other grouping matrices for objects, etc., are also
+unchanged.</para>
+    <para id="id2259157">Image manipulations are done by a <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mo>×</m:mo><m:mn>4</m:mn></m:mrow></m:math> matrix A. To ensure that the
+fourth coordinate remains a 1, the operator <emphasis effect="italics">A</emphasis> must have the structure</para>
+    
+    <equation id="eip-796"><m:math overflow="scroll"><m:mrow>
+<m:mi>A</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>11</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>12</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>13</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>14</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>21</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>22</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>23</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>24</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>31</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>32</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>33</m:mn></m:msub></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>a</m:mi><m:mn>34</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259599">The new image has point matrix</para>
+    <equation id="id2259602">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>A</m:mi>
+          <m:mi>G</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id18586518">
+<problem id="fs-id18789662">
+    <para id="id2259643">If the coordinates of the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> point in <emphasis effect="italics">G</emphasis> are <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mi>i</m:mi></m:msub><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>, what
+are the coordinates of the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> point in <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">G</m:mi><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">e</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:msub><m:mo>=</m:mo></m:mrow></m:math> AG when A is as given in
+<link target-id="eip-796">Equation 2</link>?</para></problem>
+</exercise>
+<exercise id="fs-id18587714">
+<problem id="fs-id18630001">
+    <para id="id2259777">Write down the point matrix <m:math>
+<m:mi>G</m:mi>
+</m:math> for the unit cube (the cube with
+sides of length 1, with one corner at the origin and extending in the positive
+direction along each axis). Draw a sketch of the cube, numbering the vertices
+according to their order in your point matrix. Now write down the line matrix
+<m:math>
+<m:mi>H</m:mi>
+</m:math> to complete the representation of the cube.</para></problem>
+</exercise>
+    <para id="id2259812"><emphasis effect="bold">Left- and Right-Handed Coordinate Systems.</emphasis> In this book we
+work exclusively with <emphasis effect="italics">right-handed</emphasis> coordinate systems. However, it is worth
+pointing out that there are two ways to arrange the axes in three dimensions.
+<link target-id="uid2">Figure 1(a)</link> shows the usual <emphasis effect="italics">right-handed</emphasis> coordinates, and the <emphasis effect="italics">left-handed</emphasis>
+variation is shown in <link target-id="uid2">Figure 1(b)</link>. All possible choices of labels <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:math>, and <m:math>
+<m:mi>z</m:mi>
+</m:math>
+for the three coordinate axes can be rotated to fit one of these two figures,
+but no rotation will go from one to the other.</para>
+    
+    <figure id="uid2"><subfigure id="eip-id9531128">
+<media id="uid1_media" alt="Figure one contains two three-dimensional coordinate systems, showing the difference between the right-handed and left-handed methods of representing objects in three dimensional space. Part a, or the right-handed method, shows an axis pointing towards the reader labeled, x, an axis pointing to the right labeled y, and an axis pointing up labeled z. Part b, or the left-handed method, shows an axis pointing towards the reader labeled y, an axis pointing to the right labeled x, and an axis pointing up labeled z.">
+        <image mime-type="image/png" src="../../media/pic004-4b54.png" id="uid1_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 119. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic004-952b.eps" id="uid1_printimage" print-width="2.0in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+<subfigure id="eip-id23807081">
+<media id="uid2_media" alt="">
+        <image mime-type="image/png" src="../../media/pic005-4129.png" id="uid2_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 118. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic005-a305.eps" id="uid2_printimage" print-width="2.0in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </subfigure><caption>Three-Dimensional Coordinate Systems; (a) Right-handed, and
+(b) Left-handed</caption></figure>
+    <para id="id2259895">Be careful to sketch a right-handed coordinate system when you are
+solving problems in this chapter. Some answers will not be the same for a
+left-handed system.</para>
+    <para id="id2259901"><emphasis effect="bold">Image Transformation.</emphasis> Three-dimensional operations are a little
+more complicated than their two-dimensional counterparts. For scaling and
+translation we now have three independent directions, so we generalize the
+operators of <link document="m21490" target-id="id2260806">Equation 10 from "Vector Graphics: Homogeneous Coordinates"</link> as</para>
+    
+    <equation id="id2260071"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>s</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>s</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>s</m:mi>
+              <m:mi>z</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>       
+<m:mtd>
+   <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>z</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+
+          <m:mi mathvariant="normal">T</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mi>z</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mi>z</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>    </equation>
+<exercise id="fs-id6105789">
+<problem id="fs-id6105791">
+    <para id="id2260233">Show that <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">T</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:msub><m:mi>t</m:mi><m:mi>x</m:mi></m:msub><m:mo>,</m:mo><m:mo>-</m:mo><m:msub><m:mi>t</m:mi><m:mi>y</m:mi></m:msub><m:mo>,</m:mo><m:mo>-</m:mo><m:msub><m:mi>t</m:mi><m:mi>z</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> is the inverse of <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">T</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>t</m:mi><m:mi>x</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>t</m:mi><m:mi>y</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>t</m:mi><m:mi>z</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo><m:mspace width="4pt"/><m:msup><m:mi mathvariant="normal">T</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow></m:math>
+undoes the work of <m:math>
+<m:mi>T</m:mi>
+</m:math>.</para></problem>
+</exercise>
+    <para id="id2260363">Rotation may be done about any arbitrary line in three dimensions. We
+will build up to the general case by first presenting the operators that rotate
+about the three coordinate axes. <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>x</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> rotates by angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> about the x-axis,
+with positive <m:math>
+<m:mi>θ</m:mi>
+</m:math> going from the y-axis to the z-axis, as shown in <link target-id="uid5">Figure 2</link>. In
+a similar fashion, positive rotation about the y-axis using <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>y</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> goes from <m:math>
+<m:mi>z</m:mi>
+</m:math>
+to <m:math>
+<m:mi>x</m:mi>
+</m:math>, and positive rotation about the z-axis goes from <m:math>
+<m:mi>x</m:mi>
+</m:math> to <m:math>
+<m:mi>y</m:mi>
+</m:math>, just as in two
+dimensions. We have the fundamental rotations</para>
+    <equation id="id2260474"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>x</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>y</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi mathvariant="normal">i</m:mi>
+                    <m:mi mathvariant="normal">n</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2261019">A more general rotation about any line through the origin can be constructed
+by composition of the three fundamental rotations. Finally, by composing
+translation with the fundamental rotations, we can build an operator that
+rotates about any arbitrary line in space.</para>
+    
+    
+    <figure id="uid5"><media id="uid3_1_media" alt="Figure two shows three right-handed three-dimensional graphs showing possible directions of positive rotation. The first shows an arc rotating the y-axis towards the z-axis in a counter-clockwise direction. The arc is labeled R_x (θ). the second shows an arc rotating the z-axis towards the x-axis, moving towards the reader, or looking from the right, in a counter-clockwise direction. The arc is labeled R_y (θ). The third shows an arc rotating the x-axis towards the y-axis, which, looking from above, would be in a counter-clockwise direction. The arc is labeled R_z (θ).">
+        <image mime-type="image/png" src="../../media/pic006-7e91.png" id="uid3_1_onlineimage" width="550"><!-- NOTE: attribute width changes image size online (pixels). original width is 103. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic006-9dfc.eps" id="uid3_1_printimage" print-width="4.0in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    <caption>Directions of Positive Rotation</caption></figure>
+<example id="fs-id4753953">
+    <para id="id2261070">To rotate by angle <m:math>
+<m:mi>φ</m:mi>
+</m:math> about the line <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math>, which lies in the
+<m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi>
+</m:math> plane in <link target-id="uid6">Figure 3</link>, we would</para>
+<list id="fs-id19255274" list-type="enumerated" number-style="lower-roman"><item>rotate <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math> to the x-axis with <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>z</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>;</item>
+    <item>rotate by <m:math>
+<m:mi>φ</m:mi>
+</m:math> about the x-axis with <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>x</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>; and</item>
+    <item>rotate back to <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math> with <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>z</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</item></list>
+    <para id="id2261226">The composite operation would be</para>
+    <equation id="id2261230">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>x</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+</example>
+    <figure id="uid6"><media id="uid6_media" alt="Figure three shows a right-handed three-dimensional graph that contains a line L pointing below the x-y plane. The angle from L to the positive x-axis is measured and labeled θ. Around the line L is an arrow describing rotation about the line, and it is labeled Φ.">
+        <image mime-type="image/png" src="../../media/pic007-ef01.png" id="uid6_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 133. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic007-2284.eps" id="uid6_printimage" print-width="3.0in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Composition of Rotations</caption></figure>
+    <para id="id2261333"><emphasis effect="bold">Direction Cosines.</emphasis> As discussed in the <link document="m21454">chapter on Linear Algebra</link>, a vector <m:math>
+<m:mi>v</m:mi>
+</m:math> may be
+specified by its coordinates <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>)</m:mo></m:mrow></m:math> or by its length and direction. The length
+of <m:math>
+<m:mi>v</m:mi>
+</m:math> is <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">v</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math>, and the direction can be specified in terms of the three <emphasis effect="italics">direction cosines</emphasis> ( <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>z</m:mi></m:msub></m:mrow></m:math>). The angle <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>x</m:mi>
+</m:msub></m:math> is measured between the vector
+<m:math>
+<m:mi>v</m:mi>
+</m:math> and the x-axis or, equivalently, between the vector <m:math>
+<m:mi>v</m:mi>
+</m:math> and the vector <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:msup><m:mrow><m:mo>[</m:mo><m:mn>100</m:mn><m:mo>]</m:mo></m:mrow><m:mi>T</m:mi></m:msup></m:math>. We have</para>
+    <equation id="eip-534"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mo form="prefix">cos</m:mo>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">v</m:mi>
+                <m:mo>,</m:mo>
+                <m:msub>
+                  <m:mi mathvariant="normal">e</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mo>|</m:mo>
+                  <m:mi mathvariant="normal">v</m:mi>
+                  <m:mo>|</m:mo>
+                  <m:mo>|</m:mo>
+                  <m:mo>|</m:mo>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+                <m:msub>
+                  <m:mi mathvariant="normal">e</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:mrow>
+                  <m:mo>|</m:mo>
+                  <m:mo>|</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>x</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">v</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <para id="id2261668">Likewise, <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> is measured between <m:math>
+<m:mi>v</m:mi>
+</m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>[</m:mo><m:mn>010</m:mn><m:mo>]</m:mo></m:mrow><m:mi>T</m:mi></m:msup></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>z</m:mi>
+</m:msub>
+</m:math> is measured
+between <m:math>
+<m:mi>v</m:mi>
+</m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>z</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>[</m:mo><m:mn>001</m:mn><m:mo>]</m:mo></m:mrow><m:mi>T</m:mi></m:msup></m:mrow></m:math>. Thus</para>
+    
+    <equation id="id2261836"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mo form="prefix">cos</m:mo>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">v</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">v</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2261882">The vector</para>
+    
+    <equation id="eip-790"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">u</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mi>z</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2261965">is a unit vector in the direction of <m:math>
+<m:mi>v</m:mi>
+</m:math>, so we have</para>
+    <equation id="eip-0"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">v</m:mi><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">v</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">u</m:mi></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">v</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mfenced separators="" open="{" close="}"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>z</m:mi></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation>
+<exercise id="fs-id19255313">
+<problem id="fs-id19255315">
+    <para id="id2262093">Show that <m:math>
+<m:mi>u</m:mi>
+</m:math> is a unit vector (i.e. 1 <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>).</para></problem>
+</exercise>
+    <para id="id2262134">The direction cosines are useful for specifying a line in space. Instead
+of giving two points <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> on the line, we can give one point <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> plus the
+direction cosines of any vector that points along the line. One such vector is
+the vector from <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> to <m:math>
+<m:msub>
+<m:mi>P</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>.</para>
+    <para id="id2262213"><emphasis effect="bold">Arc tangents.</emphasis> Consider a vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">v</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="{" close="}"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi>x</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>y</m:mi></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> in two dimensions. We
+know that</para>
+    <equation id="id2262258">
+      <m:math overflow="scroll" mode="display">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mo form="prefix">tan</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>y</m:mi>
+              <m:mi>x</m:mi>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <para id="id2262288">for the angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> shown in <link target-id="uid7">Figure 4</link>. If we know <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>, we can find <m:math>
+<m:mi>θ</m:mi>
+</m:math> using
+the arc tangent function</para>
+    
+    <equation id="eip-501"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>y</m:mi><m:mi>x</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><figure id="uid7"><media id="uid7_media" alt="Figure four displays a two-dimensional cartesian graph with labeled quadrants I, II, III, and IV, and a line segment pointing from the origin to a point V in the first quadrant. The angle from the line segment to the x-axis is labeled θ. A dashed line drawn horizontally from point V to its vertical value on the y-axis is labeled y, and a dashed line drawn vertically from point V to its horizontal value on the x-axis is labeled x.">
+        <image mime-type="image/png" src="../../media/pic008-11e9.png" id="uid7_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 149. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic008-dc03.eps" id="uid7_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Tangent and Arc Tangent</caption></figure>
+    <para id="id2262393">In MATLAB,</para>
+    
+    <code id="eip-529" display="block">theta = atan(y/x)</code><para id="id2262443">Unfortunately, the arc tangent always gives answers between <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mrow><m:mo>-</m:mo><m:mi>π</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> corresponding to points <m:math>
+<m:mi>v</m:mi>
+</m:math> in quadrants I and IV. The problem is that the ratio <m:math>
+<m:mfrac>
+<m:mrow>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mo>-</m:mo>
+<m:mi>x</m:mi>
+</m:mrow>
+</m:mfrac>
+</m:math> is the same as the ratio <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mo>-</m:mo><m:mo>-</m:mo><m:mi>x</m:mi><m:mi mathvariant="normal">A</m:mi></m:mrow></m:math> so quadrant III cannot be distinguished from quadrant I by the ratio <m:math overflow="scroll"><m:mfrac>
+<m:mi>y</m:mi>
+<m:mi>x</m:mi>
+</m:mfrac></m:math> Likewise, quadrants II and IV are indistinguishable.</para>
+    <para id="id2262551">The solution is the two-argument arc tangent function. In MATLAB,</para>
+    
+    <code id="eip-595" display="block">theta = atan2(y,x)</code><para id="id2262603">will give the true angle <m:math overflow="scroll"><m:mi>θ</m:mi></m:math>
+
+<m:math><m:mo>-</m:mo><m:mi>π</m:mi></m:math> and <m:math>
+<m:mi>π</m:mi>
+</m:math> in any of the four quadrants.</para>
+<example id="fs-id6322208">
+    <para id="id2262663">Consider the direction vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="{" close="}"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:msub><m:mi>θ</m:mi><m:mi>z</m:mi></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>, as shown
+in <link target-id="uid8">Figure 5</link>. What is the angle <m:math>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> between the projection of <m:math>
+<m:mi>u</m:mi>
+</m:math> into the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math>
+plane and the y-axis? This is important because it is <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>z</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> that will put <m:math>
+<m:mi>u</m:mi>
+</m:math>
+in the <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>-</m:mo><m:mi>z</m:mi></m:mrow></m:math> plane, and we need to know the angle <m:math>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> in order to carry out this
+rotation. First note that it is <emphasis effect="italics">not</emphasis> the same as <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math>. From the geometry of the
+figure, we can write</para>
+    <equation id="eip-864"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo form="prefix">tan</m:mo><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2262910">This gives us a formula for <m:math>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> in terms of the direction cosines of <m:math>
+<m:mi>u</m:mi>
+</m:math>. With
+the two-argument arc tangent, we can write</para>
+    <equation id="eip-217"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mo form="prefix">cos</m:mo></m:mrow><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow><m:mo>,</m:mo><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub><m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>.</m:mo></m:math> </equation></example>
+    <figure id="uid8"><media id="uid8_media" alt="Figure five shows a right-handed three-dimensional graph with one arrow labeled u pointed towards the reader in a positive x, y, and z direction. there are four dashed line segments. The first is a line directly downward from u's highest point to a spot below on the x-y plane. The second is a projection of u onto the x-y plane, or in other words, a dashed line from the origin to the spot on the x-y plane directly below u's highest point. The third and fourth come from that same spot and make a rectangle on the x-y plane by connecting this spot directly to the y-axis and perpendicularly to the x-axis. The ends of these two line segments are labeled cos θ_y and cos θ_x on their respective axes. There are also numerous arcs measuring angles from u to the axes and some of the dashed line segments. One arc from u to the x-axis is labeled θ_x. Another measures the angle projected line segment under u to the y-axis, and is labeled Φ_y. A third measures the angle from u to the positive z-axis and is labeled θ_z. A final arc measures from the y-axis to u and is labeled θ_y.">
+        <image mime-type="image/png" src="../../media/pic009-bf6d.png" id="uid8_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 206. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic009-11b9.eps" id="uid8_printimage" print-width="3.0in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Angles in Three Dimensions</caption></figure>
+<exercise id="fs-id19554987">
+<problem id="fs-id19554989">
+    
+<list id="fs-id19555000" list-type="enumerated" number-style="lower-alpha"><item> Suppose point <m:math>
+<m:mi>p</m:mi>
+<m:mo>'</m:mo>
+</m:math> is in the <m:math>
+<m:mi>y</m:mi>
+<m:mo>-</m:mo>
+<m:mi>z</m:mi>
+</m:math> plane in three dimensions, <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">p</m:mi><m:mo>'</m:mo></m:msup><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:msup><m:mi>y</m:mi><m:mo>'</m:mo></m:msup><m:msup><m:mo>,</m:mo><m:mrow><m:mo>'</m:mo><m:mo>'</m:mo></m:mrow></m:msup><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.
+Find <m:math>
+<m:mi>θ</m:mi>
+</m:math> so that <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>x</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> will rotate <m:math>
+<m:mi>p</m:mi>
+<m:mo>'</m:mo>
+</m:math> to the positive z-axis. (Hint: Use the
+two-argument arc tangent. <m:math>
+<m:mi>θ</m:mi>
+</m:math> will be a function of <m:math><m:mi>y</m:mi><m:mo>'</m:mo></m:math> and <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mo>'</m:mo></m:msup><m:mo>.</m:mo></m:mrow></m:math>)</item>
+    <item>Let <m:math>
+<m:mi>p</m:mi>
+</m:math> be any point in three-dimensional space, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">p</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>. Find <m:math>
+<m:mi>ψ</m:mi>
+</m:math>
+so that <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>z</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>ψ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> rotates <m:math>
+<m:mi>p</m:mi>
+</m:math> into the <m:math>
+<m:mi>y</m:mi>
+<m:mo>-</m:mo>
+<m:mi>z</m:mi>
+</m:math> plane. (Hint: Sketch the situation in
+three-dimensions, then sketch a two-dimensional view looking down at the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi>
+</m:math>
+plane from the positive z-axis. Compare with <link target-id="fs-id6322208">Example 2</link>.)
+    Your answers to parts (a) and (b) can be composed into an operator
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">Z</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">p</m:mi><m:mo>)</m:mo></m:mrow></m:math> that rotates a given point <m:math>
+<m:mi>p</m:mi>
+</m:math> to the positive z-axis, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">Z</m:mi><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">p</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>x</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>z</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>ψ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</item>
+    <item> Let <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math> be a line in three-dimensional space specified by a point 1 <m:math overflow="scroll"><m:mo>=</m:mo></m:math><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>,</m:mo><m:mi>z</m:mi><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> and the direction cosines ( <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>z</m:mi></m:msub></m:mrow></m:math>). Use the following procedure to derive a composite operator <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>φ</m:mi><m:mo>,</m:mo><m:mi mathvariant="script">L</m:mi><m:mo>)</m:mo></m:mrow></m:math> that rotates by angle <emphasis effect="italics">φ</emphasis>
+about the line <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math>:
+<list id="fs-id19276820" list-type="enumerated" number-style="lower-roman"><item>translate 1 to the origin;</item>
+    <item>let <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mo>=</m:mo></m:mrow></m:math>( <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>x</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>z</m:mi></m:msub><m:mo>,</m:mo><m:mn>1</m:mn></m:mrow></m:math>) and use <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">Z</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">u</m:mi><m:mo>)</m:mo></m:mrow></m:math> to align <m:math overflow="scroll"><m:mi mathvariant="script">L</m:mi></m:math> with the z-axis;</item>
+<item> rotate by <m:math>
+<m:mi>φ</m:mi>
+</m:math> about the z-axis;</item>
+    <item>undo step (ii); and</item>
+    <item> undo step (i).
+</item>
+</list></item>
+</list></problem>
+</exercise>
+  </content>
+</document>

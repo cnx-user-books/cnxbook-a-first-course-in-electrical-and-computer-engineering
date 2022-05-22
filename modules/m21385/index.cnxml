@@ -1,0 +1,102 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Editing Files and Creating Functions (Macintosh)</title>
+  <metadata>
+  <md:content-id>m21385</md:content-id><md:title>An Introduction to MATLAB: Editing Files and Creating Functions (Macintosh)</md:title>
+  <md:abstract/>
+  <md:uuid>367b26af-6e7b-40a2-bbdb-401d8a51b1a5</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-93">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">If you quit MATLAB now, all the commands you have typed will be
+lost. This is where the <emphasis effect="italics">Edit</emphasis> window is useful. If you choose <emphasis effect="italics">new</emphasis> from the <emphasis effect="italics">File</emphasis>
+menu, a new window appears with the title <emphasis effect="italics">Edit 1</emphasis>: <emphasis effect="italics">Untitled</emphasis>. In this window,
+you should type in all the commands you would like MATLAB to execute at
+once. When you are finished typing, you may save the file by choosing <emphasis effect="italics">save</emphasis>
+or <emphasis effect="italics">save as</emphasis> in the file menu and by entering a name for the file. If the edit
+window is active (that is, if it appears in front), then choose <emphasis effect="italics">save and go</emphasis> from
+the file menu to save the file and execute it. If the command window is active,
+then you can execute the file by entering its name.</para>
+    <para id="id2258962"><emphasis effect="bold">Editing Files.</emphasis> To test your understanding of file editing, enter the
+following commands in a file named myfile:</para>
+    <code id="id2258971" display="block">
+clear, clg                      %Clear variables and graphics
+j=sqrt(-1);                     %To be sure
+z1=1+.5*j,z2=2+1.5*j            %Enter variables
+z3=z1+z2,z4=z1*z2               %Compute sum and product
+axis([0 4 0 4]),                %First plot
+  axis('square'),plot(z1,'o')
+hold on                         %Allow overplot
+plot(z2,'o'),plot(z3,'+'),      %Other plots
+    plot(z4,'*')
+hold off
+</code>
+    <para id="id2259093">You do not have to type the % sign and the text that follows it. These are
+simply comments in a file. They are ignored by the MATLAB interpreter.
+You should, however, make a habit of adding comments (preceded by %) to
+your file if you want to be able to understand programs that have been written
+long ago.</para>
+    <para id="id2259102">Do not forget to save your file. Such a file is called a <emphasis effect="italics">script file</emphasis>. It
+contains MATLAB commands that could have been entered one by one in the
+command window. You have three ways to execute a script file:</para>
+<list id="fs-id17700844" list-type="enumerated" number-style="lower-roman"><item>with the <emphasis effect="italics">edit</emphasis> window active, choose <emphasis effect="italics">save and go</emphasis> from the <emphasis effect="italics">file</emphasis> menu;</item>
+    <item>with the <emphasis effect="italics">command</emphasis> window active, enter the file name; or</item>
+    <item>with the <emphasis effect="italics">command</emphasis> window active, choose <emphasis effect="italics">run script</emphasis>... from the <emphasis effect="italics">M-file</emphasis> menu. In this case, a menu pops up to ask you which file you want to execute.</item></list>
+    <para id="id2259167">Try each of these three methods in order to get used to their differences.
+<link target-id="uid1">Figure 1</link> shows the plot that you should get.</para>
+    <para id="id2259172"><emphasis effect="bold">Creating Functions.</emphasis> MATLAB puts many commands at your disposal, and you just have to enter their names (with or without arguments)
+to execute them. Some commands are built in to MATLAB, and others are
+contained in files to which you have access (not to modify them, but to see
+how things are done). You can try to display the contents of a command file
+in the command window by entering the command type filename. Enter
+type plot. You should get the message</para>
+    
+    <code id="eip-967" display="block">??? Built-in function.</code><figure id="uid1"><media id="uid1_media" alt="This is an image of an old apple computer screen, with some matlab code in a window in the background and a graph in a window in the foreground.">
+        <image mime-type="image/png" src="../../media/image005-06da.png" id="uid1_onlineimage" width="279"><!-- NOTE: attribute width changes image size online (pixels). original width is 279. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/image005-f624.eps" id="uid1_printimage" print-width="98.55mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>A Typical Graph (©Apple Computer, Inc., used with permission.)</caption></figure>
+    <para id="id2259230">This means that the command <code>plot</code> is a build-in function and thus cannot
+be typed by the user (it is compiled with the program). Similarly, try to type
+the function file containing the command <code>sinh</code> by entering the command <code>type sinh</code>. You should get</para>
+    <code id="id2259264" display="block">
+function y=sinh(x)
+%SINH SINH(X) is the hyperbolic sine of the elements of X.
+y=(exp(x)-exp(-x))/2;
+</code>
+    <para id="id2259295">This is a typical example of a <emphasis effect="italics">function file</emphasis>. It differs from a script file by the
+fact that the first line contains the word <code>function</code>. What it does is make the
+command <code>y = sinh(x)</code> equivalent to the command <code>y=(exp(x)-exp(-x))/2</code> .
+The variable <code>x</code> is the input argument (there could be more than one), and <emphasis effect="italics">y</emphasis>
+is the output argument (there also could be more than one). The second line
+contains comments about the function and its arguments. They can spread
+to several lines. Display them by typing the command <code>help sinh</code>. The third
+line contains the actual function commands (there could also be several lines).</para>
+    <para id="id2259668">As an exercise, enter the function <code>perp(x)</code>:</para>
+    <code id="id2259671" display="block">
+function y=perp(x)
+%PERP PERP(X) is a complex value perpendicular to X.
+j=sqrt(-1);
+y=j*real(x)-imag(x);
+</code>
+    <para id="id2259712">Evaluate <code>perp</code> on various complex numbers. Replace the last line by <code>y = x*j</code>;.
+Do you get the same result? Why?</para>
+    <para id="id2259744">Note that local variables are just that–<emphasis effect="italics">local</emphasis>. Only the input and out-
+put arguments are kept in memory after the function is called and executed.
+For more on functions and multiple arguments, see the MATLAB manual. In
+the previous example, the variable <m:math>
+<m:mi>j</m:mi></m:math> is local. If, before using the function
+<code>perp</code>, you use the same variable <m:math>
+<m:mi>j</m:mi>
+</m:math>, its contents will not be affected by the
+command <code>perp(z)</code>. Verify this.</para>
+    <para id="id2259785">Normally, while a file (script or function) is executed, the commands
+are not displayed on the command window. Just the results are displayed.
+The command <code>echo</code> allows you to view all the instructions. This is useful for
+debugging and demonstrations. It is turned off by typing <code>echo off</code>.
+</para>
+  </content>
+</document>

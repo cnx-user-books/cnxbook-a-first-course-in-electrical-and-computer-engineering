@@ -1,0 +1,396 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Phasors: Lissajous Figures</title>
+  <metadata>
+  <md:content-id>m21471</md:content-id><md:title>Phasors: Lissajous Figures</md:title>
+  <md:abstract/>
+  <md:uuid>89820f09-d431-4d1a-9e32-7e2fcef74f57</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-153">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258257">Lissajous figures are figures that are turned out on the face of an oscilloscope when sinusoidal signals with different amplitudes and different phases are applied to the time base (real axis) and deflection plate (imaginary axis) of the scope. The electron beam that strikes the phosphorous face then had position</para>
+    <equation id="eip-485"><m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mi>x</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mi>φ</m:mi><m:mi>x</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mi>j</m:mi><m:msub><m:mi>A</m:mi><m:mi>y</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2258266">In this representation, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mi>x</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mi>φ</m:mi><m:mi>x</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is the “x-coordinate of the point,” and
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mi>y</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is the “y-coordinate of the point.” As time runs from 0 to
+infinity, the point <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> turns out a trajectory like that of <link target-id="uid1"/>. The
+figure keeps overwriting itself because <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> repeats itself every <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>ω</m:mi></m:mfrac></m:mstyle></m:math> seconds. Do
+you see why?</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a cartesian graph with horizontal axis labeled Re and vertical axis labeled Im. On the graph is an oval-shaped curve centered about the origin diagonally with its longer portions sticking into the third and first quadrant. In the first quadrant, a point on the oval indicates movement in the counter-clockwise direction with an arrow pointing towards the bottom-left of the screen, and is labeled z(t).">
+        <image mime-type="image/png" src="../../media/pic010-7dba.png" id="uid1_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 155. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-c8f0.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Lissajous Figure on Oscilloscope Screen</caption></figure>
+<exercise id="fs-id11383952">
+<problem id="fs-id11383954">
+    <para id="id2259150">Find the intercepts that the Lissajous figure makes with the real and imaginary axes in <link target-id="uid1"/>. At what values of time are these intercepts made?</para>
+</problem>
+</exercise>
+<exercise id="fs-id11360941">
+<problem id="fs-id11360944">
+    <para id="id2259160">Show that the Lissajous figure <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mi>x</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mi>φ</m:mi><m:mi>x</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:msub><m:mi>A</m:mi><m:mi>y</m:mi></m:msub><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is just the rotating phasor <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:msup></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:mi>A</m:mi></m:mrow></m:math>,
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>φ</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mi>φ</m:mi></m:mrow></m:math>, and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:mi>φ</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+    <para id="id2259375"><emphasis effect="bold">Two-Phasor Representation.</emphasis> We gain insight into the shape of the Lissajous figure if we use Euler's formulas to write <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> as follows:</para>
+    <equation id="id2259401"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>z</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:msub>
+              <m:mi>A</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>φ</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>φ</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mfrac>
+            <m:msub>
+              <m:mi>A</m:mi>
+              <m:mi>y</m:mi>
+            </m:msub>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>φ</m:mi>
+                  <m:mi>y</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>φ</m:mi>
+                  <m:mi>y</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>]</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>A</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>A</m:mi>
+                  <m:mi>y</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:msup>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>A</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mi>x</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>A</m:mi>
+                  <m:mi>y</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:msub>
+                      <m:mi>φ</m:mi>
+                      <m:mi>y</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:msup>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2259992">This representation is illustrated in <link target-id="uid2"/>. It consists of two
+<emphasis effect="italics">rotating</emphasis> phasors, with respective phasors <m:math>
+<m:msub>
+<m:mi>B</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>B</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> :</para>
+    <equation id="eip-964"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mrow><m:mi>z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mi>B</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>B</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:msub>
+                <m:mi>A</m:mi>
+                <m:mi>x</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:msub>
+                    <m:mi>φ</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>A</m:mi>
+                <m:mi>y</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:msub>
+                    <m:mi>φ</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+</m:mtd>
+</m:mtr>  
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>B</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:msub>
+                <m:mi>A</m:mi>
+                <m:mi>x</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:msub>
+                    <m:mi>φ</m:mi>
+                    <m:mi>x</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:msub>
+                <m:mi>A</m:mi>
+                <m:mi>y</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:msub>
+                    <m:mi>φ</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a cartesian graph with six arrows beginning at the origin and pointing away in various directions. The first points with a shallow negative slope into the fourth quadrant, and is labeled A_x/2 e^(-jΦ_x). The second extends into the first quadrant with a shallow positive slope and is labeled A_x/2 e^(jΦ_x). The third arrow extends into the first quadrant with a slightly stronger positive slope than the second arrow, and is labeled B_2. Across this arrow is a small direction arrow indicating movement in the clockwise direction. The fourth arrow extends into the first quadrant with a much stronger positive slope than the third and second arrows, and is labeled B_1. Across this arrow is a direction arrow indicating movement in the counter-clockwise direction. The fifth arrow extends into the first quadrant with an even stronger positive slope than the fourth, and is labeled j(A_y/2) e^(-jΦ_y). The sixth and final arrow extends into the second quadrant with a very sharp negative slope, and is labeled  j(A_y/2) e^(jΦ_y)">
+        <image mime-type="image/png" src="../../media/pic011-ed99.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 157. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-3130.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Two-Phasor Representation of a Lissajous Figure</caption></figure>
+    <para id="id2260270">As <m:math>
+<m:mi>t</m:mi>
+</m:math> increases, the phasors rotate past each other where they constructively
+add to produce large excursions of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> from the origin, and then they rotate to
+antipodal positions where they destructively add to produce near approaches
+of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> to the origin.</para>
+    <para id="id2260318">In electromagnetics and optics, the representations of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> given in
+<link target-id="eip-485"/> and <link target-id="eip-964"/> are called, respectively, <emphasis effect="italics">linear</emphasis> and <emphasis effect="italics">circular</emphasis> representations of elliptical polarization. In the linear representation, the <m:math>
+<m:mi>x</m:mi>
+</m:math>- and <m:math>
+<m:mi>y</m:mi>
+</m:math>-components of <m:math><m:mi>z</m:mi></m:math> vary along the horizontal and vertical lines. In the circular representation, two phasors rotate in opposite directions to turn out circular trajectories whose sum produces the same effect.</para>
+<exercise id="fs-id5802888">
+<problem id="fs-id11382383">    
+<para id="id2260368">(MATLAB) Write a MATLAB program to compute and plot
+the Lissajous figure <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>A</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:msub><m:mi>φ</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>φ</m:mi><m:mi>y</m:mi></m:msub><m:mo>=</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>6</m:mn></m:mrow></m:math>.
+Discretize <m:math>
+<m:mi>t</m:mi>
+</m:math> appropriately and choose an appropriate range of values for <m:math>
+<m:mi>t</m:mi>
+</m:math>.
+</para></problem>
+</exercise>
+  </content>
+</document>

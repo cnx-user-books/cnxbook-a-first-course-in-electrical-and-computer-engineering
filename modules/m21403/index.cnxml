@@ -1,0 +1,2606 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Binary Codes: Hamming Codes for Channel Coding</title>
+  <metadata>
+  <md:content-id>m21403</md:content-id><md:title>Binary Codes: Hamming Codes for Channel Coding</md:title>
+  <md:abstract/>
+  <md:uuid>aea8821c-3f07-45d3-bf48-ffcaae98c5da</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-757">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">The idea behind Hamming codes is to intersperse, or append, extra binary digits to a binary code so that errors in transmission of the code over a channel may be detected and corrected. For example, suppose we transmit the code 01101001, and it is received as 01001001. In this transmission, the third most significant bit is received erroneously. Let's define the following “modulo-2 addition” of binary numbers:</para>
+    <equation id="id2258280">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>        
+<m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>⊕</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>⊕</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>      
+  <m:mrow>
+          <m:mn>1</m:mn>
+          <m:mo>⊕</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>      
+  <m:mrow>
+          <m:mn>1</m:mn>
+          <m:mo>⊕</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2259008">Multiplication in modulo-2 arithmetic is simply <m:math overflow="scroll"><m:mrow><m:mn>0</m:mn><m:mo>·</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>·</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>·</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> and 1 <m:math overflow="scroll"><m:mrow><m:mo>·</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Then we can say that the <emphasis effect="italics">error sequence</emphasis> 00100000 is “added” to the <emphasis effect="italics">transmission</emphasis> 01101001 to produce the erroneous reception:</para>
+    
+    <equation id="eip-465"><m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd/>
+<m:mtd><m:mn>01101001</m:mn></m:mtd>
+<m:mtd><m:mtext>transmitted</m:mtext>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mo>⊕</m:mo>
+</m:mtd>
+<m:mtd><m:mn>00100000</m:mn></m:mtd>
+<m:mtd><m:mtext>error</m:mtext>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd><m:mn>01001001</m:mn></m:mtd>
+<m:mtd><m:mtext>received.</m:mtext>
+</m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2259098">Hamming error correcting codes will permit us to receive the erroneous
+transmission and to detect and correct the error. This is obviously of great
+value in transmitting and storing information. (Imagine how upset you would
+be to have the binary code for your checking account confused with that of
+Mrs. Joan Kroc.)</para>
+    <para id="id2259106"><emphasis effect="bold">Choosing the Number of Check Bits.</emphasis> Let's suppose we have <m:math>
+<m:mi>N</m:mi></m:math> bits of information that we wish to transmit and that we wish to intersperse “check bits” that will enable us to detect and correct any single bit error in the transmission. If we use <m:math><m:mi>N</m:mi></m:math>
+ information bits and <m:math><m:mi>n</m:mi>
+</m:math> check bits, then we will transmit a code word containing <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>+</m:mo><m:mi>n</m:mi></m:mrow></m:math> bits. The <m:math>
+<m:mi>n</m:mi>
+</m:math> check bits can code <m:math>
+<m:msup>
+<m:mn>2</m:mn>
+<m:mi>n</m:mi>
+</m:msup>
+</m:math> events, and we want these events to indicate whether or not any errors occurred and, if so, where they occurred. Therefore we require</para>
+    
+    <para id="id2259223">where <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>+</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the number of single error events that can occur and +1 is the number of no-error events. For example, when <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow></m:math>, we require <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> so that <m:math overflow="scroll"><m:mrow><m:msup><m:mn>2</m:mn><m:mn>3</m:mn></m:msup><m:mo>≥</m:mo><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>+</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math>.</para>
+    <para id="id2259309">How many check bits do you require to code seven bits of information for single error correction?</para>
+    <para id="id2259318"><emphasis effect="bold">Code Construction.</emphasis> Let's suppose we have constructed an <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> Hamming code consisting of <m:math>
+<m:mi>N</m:mi>
+</m:math> information bits and <m:math>
+<m:mi>n</m:mi>
+</m:math> check bits (or parity bits). We denote the information bits by <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mi>N</m:mi></m:msub></m:mrow></m:math> and the check bits by <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>. These bits may be interspersed. When <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math>, then a typical array of bits within a code word would be one of the following:</para>
+    <equation id="eip-590"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced> 
+</m:mtd>
+<m:mtd>
+<m:mtext>or</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>.</m:mo>
+</m:math></equation>
+    <para id="id2259907">The first ordering is “natural” (as we will see), and the second is “systematic” (a term that is used to describe any code whose head is information and whose tail is check). If a single error occurs in an <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> code, then the received code word will be the modulo-2 sum of the code word and the error word that contains a 1 in its <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> position:</para>
+    <equation id="eip-208"><m:math overflow="scroll"><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi mathvariant="normal">l</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>⊕</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">l</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2259959">We would like to operate on this received code word in such a way that the location of the error bit can be determined. If there were no code word, then an obvious solution would be to premultiply the error word by the <emphasis effect="italics">parity check</emphasis> matrix</para>
+    <equation id="eip-412"><m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+<m:mo>=</m:mo>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>2</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>3</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>4</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>5</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>6</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo>(</m:mo>
+<m:mn>7</m:mn>
+<m:mo>)</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>.</m:mo>
+</m:math></equation>
+    
+    
+    <para id="id2260184">The <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column of <m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+</m:math> is just the binary code for <m:math>
+<m:mi>i</m:mi>
+</m:math>. When <m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi></m:msup>
+</m:math> premultiplies an error word, the error bit picks out the column that codes the error position:</para>
+    <para id="eip-174"><figure id="eip-id2413376"><media id="eip-id1170570562407" alt="">
+<image mime-type="image/png" src="../../media/pic015mi-4d5b.png" width="500"/>
+<image for="pdf" mime-type="application/postscript" src="../../media/pic015mi-06c3.eps" width="3.5"/>
+</media>
+</figure></para>
+    
+    
+    
+    
+    
+    
+    <para id="id2260464">If the error word contains no error bits, then the product is 0, indicating no errors.</para>
+    <para id="id2260468">This seems like a good idea, but what about the effect of the code word? In <link target-id="fs-id12100609">Exercise 1</link>, you are asked to show that the effect of the parity check matrix <m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+</m:math> applied to the modulo-2 sum of a code word <m:math>
+<m:mi>x</m:mi>
+</m:math> and an error word <m:math>
+<m:mi>e</m:mi>
+</m:math> is</para>
+    
+    <equation id="eip-863"><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>⊕</m:mo><m:mi mathvariant="normal">e</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi><m:mo>⊕</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">e</m:mi></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260579">In this equation all sums and products obey the rules of modulo-2 arithmetic.</para>
+<exercise id="fs-id12100609">
+<problem id="fs-id12100611">
+    <para id="id2260584">Let <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>⊕</m:mo><m:mi mathvariant="normal">e</m:mi></m:mrow></m:math> denote the modulo-2 sum of a code word <m:math>
+<m:mi>x</m:mi>
+</m:math> and
+an error word <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">e</m:mi><m:mo>;</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup></m:mrow></m:math> is a parity check matrix. Show that</para>
+    <equation id="id2260650">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>⊕</m:mo>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mi mathvariant="normal">e</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation></problem>
+</exercise>
+    <para id="id2260710">We have designed the parity check matrix <m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+</m:math> so that the <emphasis effect="italics">syndrome</emphasis><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">e</m:mi></m:mrow></m:math> produces a binary code for the error location. (The location of the error is <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">t</m:mi><m:msup><m:mi mathvariant="normal">h</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">e</m:mi></m:mrow></m:math> syndrome for the error word.) The product <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math> will interfere with this syndrome unless
+<m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+<m:mi>x</m:mi>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+<m:mo>.</m:mo>
+</m:math> Therefore we will require that the code word <m:math>
+<m:mi>x</m:mi>
+</m:math> satisfy the constraint</para>
+    
+    
+    <equation id="eip-537"><m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260875">This constraint actually <emphasis effect="italics">defines</emphasis> the Hamming code. Let's illustrate this point
+by applying the constraint to a code word in its “natural format” <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">x</m:mi><m:mi>T</m:mi></m:msup><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    <para id="id2260971"><emphasis effect="bold">Natural Codes.</emphasis> When the information bits and the check bits are
+coded in their natural order <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>, then we may determine the
+check bits by writing <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math> as follows:</para>
+    
+    <equation id="eip-85"><m:math>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>=</m:mo>
+<m:mfenced separators="" open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd></m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:math></equation>
+    <para id="id2261242">We use the rules of modulo-2 arithmetic to write these constraints as</para>
+    
+    <equation id="id2261296"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+    </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    
+    <para id="id2261398">Therefore the check bits <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> are simply the following modulo-2 sums</para>
+    
+    
+    <equation id="id2261500"><m:math overflow="scroll" mode="display">
+<m:mtable>
+        
+
+        
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+        </m:mrow>
+</m:mtd>
+</m:mtr>    
+
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>⊕</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261594">This finding may be organized into the matrix equation</para>
+    
+    <equation id="eip-413"><m:math overflow="scroll"><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi mathvariant="normal">l</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1101</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1011</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1000</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0111</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0100</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0010</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0001</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2261768">This equation shows how the code word <m:math>
+<m:mi>x</m:mi>
+</m:math> is built from the information bits
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>. We call the matrix that defines the construction a <emphasis effect="italics">coder matrix</emphasis>
+and write it as <m:math>
+<m:mi>H</m:mi>
+</m:math>:</para>
+    
+    <equation id="id2261875"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mi>x</m:mi>
+<m:mo>=</m:mo>
+<m:mi>H</m:mi>
+<m:mi>Θ</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msup>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>4</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:msup>
+            <m:mi>Θ</m:mi>
+            <m:mi>T</m:mi>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>4</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <equation id="eip-954"><m:math>
+<m:mi>H</m:mi>
+<m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1101</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1011</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1000</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0111</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0100</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0010</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0001</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:math></equation><para id="id2262029">This summarizes the construction of a Hamming code <m:math>
+<m:mi>x</m:mi>
+</m:math>.</para>
+<exercise id="fs-id12095018">
+<problem id="fs-id12095020">
+    <para id="id2262044">Check to see that the product of the parity check matrix <m:math>
+<m:msup>
+<m:mi>A</m:mi>
+<m:mi>T</m:mi>
+</m:msup>
+</m:math>
+and the coder matrix <m:math>
+<m:mi>H</m:mi>
+</m:math> is <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">H</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. Interpret this result.</para></problem>
+</exercise>
+<exercise id="fs-id12095063"><problem id="fs-id12095065">
+    <para id="id2262108">Fill in the following table to show what the Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math>
+code is:</para>
+    <equation id="id2262135"><m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+
+
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+</m:mtr>
+
+
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+</m:mtr>
+
+
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+<m:mtd>
+</m:mtd>
+
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+</problem>
+</exercise>
+<exercise id="fs-id12072765">
+<problem id="fs-id12072767">
+    <para id="id2262294">Design a Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>11</m:mn><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> code for coding eleven information
+bits against single errors. Show your equations for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> and write out
+the coder matrix <m:math>
+<m:mi>H</m:mi>
+</m:math> for <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">H</m:mi><m:mi>Θ</m:mi><m:mo>.</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+    <para id="id2262391"><emphasis effect="bold">Decoding.</emphasis> To decode a Hamming code, we form the syndrome <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math> for the received (and possibly erroneous) code word <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>⊕</m:mo><m:mi mathvariant="normal">e</m:mi></m:mrow></m:math>. Because <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, the syndrome is</para>
+    
+    <equation id="eip-464"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">s</m:mi><m:mo>=</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">e</m:mi></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2262505">Convert this binary number into its corresponding integer location and change the bit of <m:math>
+<m:mi>y</m:mi>
+</m:math> in that location. If the location is zero, do nothing. Now strip off the information bits. This is the decoding algorithm.</para>
+<exercise id="fs-id12069379">
+<problem id="fs-id12069381">    
+<para id="id2262524">Use the table of Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> codes from <link target-id="fs-id12095063">Exercise 3</link> to construct a table of <emphasis effect="italics">received</emphasis> codes that contain either no bit errors or exactly one bit error. Apply the decoding algorithm to construct <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> and show that all received code words with one or fewer errors are correctly decoded.</para></problem>
+</exercise>
+
+    <para id="id2262609"><emphasis effect="bold">Digital Hardware.</emphasis> The tables you have constructed in <link target-id="fs-id12095063">Exercise 3</link> and <link target-id="fs-id12069379">5</link> for coding and decoding Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> codes may be stored in
+digital logic chips. Their functionality is illustrated in <link target-id="uid3">Figure 1</link>. The coder chip accepts <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> as its address and generates a coded word. The decoder chip accepts <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> as its address and generates a decoded word. In your courses on digital logic you will study circuits for implementing coders and decoders.</para>
+    
+    <figure id="uid3"><media id="uid2_media" alt="On the left of this image are four horizontally oriented lines. They are labeled from top to bottom x_1, x_2, x_3, x_4. These line end on the left side of a rectangle labeled Coder. From the right side of the rectangle extend seven horizontally oriented lines labeled from top to bottom: c_1, c_2, x_1, c_3, x_2, x_3, x_4. To the right of these lines in another set of seven horizontally oriented lines labeled exactly the same extending to the right and ending on the left side of a rectanlge labeled Decoder. From the right side extend four horizontally oriented lines labeled from top to bottom x_1, x_2, x_3, x_4.">
+        <image mime-type="image/png" src="../../media/pic016-24c5.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 130. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic016-a690.eps" id="uid2_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media><caption>Digital Logic for Hamming Code</caption></figure>
+<exercise id="fs-id12147866">
+<problem id="fs-id12147869">
+    <para id="id2262778">Discuss the possibility of detecting a received <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> code word that is neither a valid code word nor a code word with a single error. How would you use such a detector?</para></problem>
+</exercise>
+<exercise id="fs-id12147897">
+<problem id="fs-id12147899">
+    <para id="id2262808">What fraction of received seven-bit words can be correctly decoded as Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> codes?</para></problem>
+</exercise>
+    <para id="id2262836"><emphasis effect="bold">Systematic Codes.</emphasis> Systematic Hamming codes are codes whose information bits lead and whose check bits trail. The format for a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> code is then <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>. The construction of a <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> code word from the information bits may be written as</para>
+    <equation id="id2262949"><m:math overflow="scroll" mode="display">
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>4</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          
+            <m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>11</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>12</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>13</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>14</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>21</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>22</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>23</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>24</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>31</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>32</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>33</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>34</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+</m:math></equation>
+    <para id="id2263110">The coder matrix takes the form</para>
+    <equation id="eip-742"><m:math>
+<m:mi>H</m:mi>
+  <m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>11</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>12</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>13</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>14</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>21</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>22</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>23</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>24</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>31</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>32</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>33</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>34</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mi>I</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mo>_____</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mi>C</m:mi>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>.</m:mo>
+</m:math></equation>
+    
+    <para id="id2263379">The problem is to find the matrix <emphasis effect="italics">C</emphasis> that defines the construction of check bits. The constraint <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> produces the constraint <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">H</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> so that <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">H</m:mi><m:mi>Θ</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. The constraints <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mi>T</m:mi></m:msup><m:mi mathvariant="normal">H</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> may be written out as</para>
+    <para id="id2263504"><equation id="eip-id10690330">
+<m:math overflow="scroll">
+          <m:mfenced separators="" open="{" close="}">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+  <m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>11</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>12</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>13</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>14</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>21</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>22</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>23</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>24</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>31</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>32</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>33</m:mn>
+</m:msub></m:mtd>
+<m:mtd>
+<m:msub>
+<m:mi>c</m:mi>
+<m:mn>34</m:mn>
+</m:msub></m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>.</m:mo>
+</m:math>
+</equation></para>
+    
+    
+    
+    <para id="id2263843">These constraints produce all the equations we need (twelve equations in
+twelve unknowns) to determine the <m:math overflow="scroll"><m:msub><m:mi>c</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:math>.</para>
+<exercise id="fs-id12004166">
+<problem id="fs-id12004168">
+    <para id="id2263865">Solve <link target-id="eip-id10690330">Equation 19</link> for the <m:math overflow="scroll"><m:msub><m:mi>c</m:mi><m:mrow><m:mi>i</m:mi><m:mi>j</m:mi></m:mrow></m:msub></m:math>. Show that the coder matrix
+for a systematic Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> code is</para>
+    <equation id="id2263911"><m:math>
+<m:mi>H</m:mi>
+<m:mo>=</m:mo>
+<m:mfenced open="[" close="]">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>.</m:mo>
+</m:math></equation></problem>
+</exercise>
+<exercise id="fs-id12085335">
+<problem id="fs-id12085338">
+    <para id="id2263956">Show that the coder matrix of <link target-id="fs-id12147897">Exercise 7</link> is a permutation of the coder matrix in <link target-id="eip-954">Equation 14</link>. (That is, the rows are reordered.)</para></problem>
+</exercise>
+<exercise id="fs-id12085352">
+<problem id="fs-id12085354">
+    <para id="id2263968">(MATLAB) Write a MATLAB program that builds Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> codes from information bits <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> and decodes Hamming <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow></m:math> codes <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> to obtain information bits <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>4</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>. Synthesize all seven-bit binary codes and show that your decoder correctly decodes correct codes and one-bit error codes. 
+</para></problem>
+</exercise>
+  </content>
+</document>

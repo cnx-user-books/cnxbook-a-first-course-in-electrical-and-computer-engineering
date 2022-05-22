@@ -1,0 +1,74 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Editing Files and Creating Functions (PC)</title>
+  <metadata>
+  <md:content-id>m21387</md:content-id><md:title>An Introduction to MATLAB: Editing Files and Creating Functions (PC)</md:title>
+  <md:abstract/>
+  <md:uuid>0c4682a5-350a-49f9-ad43-79832c8ebd18</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-295">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">You should write a MATLAB program whenever you anticipate exe-
+cuting some sequence of statements several times or again in a later session.
+On an IBM PC, you may use any text editor to write a program, as long as
+the file can be saved in ASCII format without the control codes used by most
+word processors. Applicable text editors include Edix, Wordstar, XTree Pro,
+and Turbo Pascal's editor.</para>
+    <para id="id2258273"><emphasis effect="bold">Editing Files.</emphasis> If you have enough memory, you can run your editor
+without leaving MATLAB by using the exclamation point (!), like this:</para>
+    <code id="eip-963" display="block">≫ !EDIX</code>
+    <para id="id2258936">The exclamation point may be used to execute any DOS command or program
+from MATLAB. When the command or program finishes, your MATLAB
+variables are just as you left them. Use your editor to write program lines
+just as you would type them in MATLAB's command mode. Then save the
+file with extension <code>.m</code> in the directory where you will run MATLAB. Such
+MATLAB programs are called m-files. You may run your m-file by typing the
+file name (without the <code>.m</code> extension) at the MATLAB command prompt <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>≫</m:mo><m:mo>)</m:mo></m:mrow></m:math>.</para>
+    <para id="id2258997"><emphasis effect="bold">Script Files.</emphasis> There are two kinds of m-files, called <emphasis effect="italics">script files</emphasis> and
+<emphasis effect="italics">functions</emphasis>. Running a script file is exactly like typing the commands it contains
+at the <m:math overflow="scroll"><m:mo>≫</m:mo></m:math> prompt. Your m-file will automatically be a script file unless you
+specify otherwise, as described later. Practice by entering, saving, and running
+<code>plotsin.m</code> as listed next:</para>
+    <code id="id2259039" display="block">t = -6:.2:6;
+y = sin(t);
+plot(t,y)
+title('SINE')
+pause
+grid
+xlabel('t')
+ylabel('sin(t)')
+</code>
+    <para id="id2259121">When the pause is executed, you will need to press a key to go on. If you type
+whos after running <code>plotsin</code>, you will see that the variables <code>t</code> and <code>y</code> remain
+in memory. Comments are important to a script file. They are marked with
+the symbol %. Anything following this symbol on a line is assumed to be a
+comment and is ignored by the MATLAB program interpreter.</para>
+    <para id="id2259167"><emphasis effect="bold">Functions.</emphasis> Functions differ from script files in that they have designated input and output variables. Any other variables used within a function are local variables, which do not remain after the function terminates and which have no effect on variables outside the function. Many of the functions supplied with MATLAB are actually m-files. A good example is <code>triu.m</code>:</para>
+    <code id="eip-892" display="block">≫ type triu</code>
+    <para id="id2259244">The word function at the beginning of the file makes it a function rather than
+a script file. The function name in this line must match the file name. The
+input variables of <code>triu</code> are <code>x</code> and <code>k</code>, meaning that the first input argument
+will be referred to as <code>x</code> and the second as <code>k</code> within the function. Likewise,
+the function line designates <code>y</code> as the output. There is nothing special about
+the variable names <code>x</code>,<code>k</code>, and <code>y</code> when the function is used. It is only that
+whatever inputs and output you use will be referred to as <code>x</code>,<code>k</code>, and <code>y</code> inside
+the function. The variables <code>m</code>,<code>n</code>,<code>j</code>, and <code>i</code> are created temporarily when <code>triu</code>
+runs and disappear when it terminates. They are local variables and have no
+effect on variables with the same names outside the function. In contrast, a
+script file has no local variables and does no substitution of input and output
+variable names.</para>
+    <para id="id2259661">As an exercise, enter and save the function <code>perp.m</code>:</para>
+    <code id="id2259681" display="block">      function y=perp(x)
+      % PERP(x) is a complex number perpendicular to x.
+      j = sqrt(-1);
+      y = j*real(x)-imag(x);
+</code>
+    <para id="id2259721">Evaluate <code>perp</code> on various complex numbers. Replace the last line by <code>y = x*j;</code>. Do you get the same result? Why?</para>
+    <para id="id2259752"><emphasis effect="bold">Printing Files and Graphics.</emphasis> To display an m-file on the screen,
+use the instruction <code>≫ type filename</code>. To make a copy at a printer, use
+the DOS command <code>≫ !print filename.m</code>. Graphics hardcopy is available
+through the commands meta and <code>gpp</code>. See the MATLAB manual for more
+information.
+</para>
+  </content>
+</document>

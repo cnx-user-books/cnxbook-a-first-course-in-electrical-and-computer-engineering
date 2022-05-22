@@ -1,0 +1,1036 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Direction Cosines</title>
+  <metadata>
+  <md:content-id>m21449</md:content-id><md:title>Linear Algebra: Direction Cosines</md:title>
+  <md:abstract/>
+  <md:uuid>0a46e16f-ca2c-49c4-aa64-8ea03e6038af</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-906">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263"><emphasis effect="bold">Unit Vectors.</emphasis> Corresponding to every vector <m:math>
+<m:mi>x</m:mi>
+</m:math> is a <emphasis effect="italics">unit vector</emphasis>
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math>
+pointing in the same direction as <m:math>
+<m:mi>x</m:mi>
+</m:math>. The term <emphasis effect="italics">unit vector</emphasis> means that the
+norm of the vector is 1:</para>
+    <equation id="id2258962">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259001">The question is, given <m:math>
+<m:mi>x</m:mi>
+</m:math>, how can we find <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math>? The first part of the answer is
+that <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> will have to be a positive scalar multiple of <m:math>
+<m:mi>x</m:mi>
+</m:math> in order to point in the
+same direction as <m:math><m:mi>x</m:mi>
+</m:math>, as shown in <link target-id="uid1"/>. Thus</para>
+    
+    <equation id="eip-508"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi>α</m:mi>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><figure id="uid1"><media id="uid1_media" alt="A Cartesian graph with a line originating at the origin and extending up and to the left. The line actually consist of two arrows in a line. The first arrow ends in a point. Below the point is the expression U_x. From the arrow point to the y axis is an arch. The arch ends at the y axis and to the left of the point where it end is the number 1. Another proceeds from where the previous arrow ended and proceeds along the same slope, ends in an point and up and to the left of the point is an X.">
+        <image mime-type="image/png" src="../../media/pic004-465d.png" id="uid1_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 145. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic004-d99e.eps" id="uid1_printimage" print-width="3in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Unit Vector <emphasis effect="italics">u<sub>x</sub></emphasis></caption></figure>
+    <para id="id2259140">But what is <m:math>
+<m:mi>α</m:mi>
+</m:math>? We need to choose <m:math>
+<m:mi>α</m:mi>
+</m:math> so that the norm of <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> will be 1:</para>
+    <equation id="id2259180">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259216">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mi>α</m:mi>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259242">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mi>α</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259275">
+      <m:math overflow="scroll" mode="display">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>α</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <para id="id2259312">We have dropped the absolute value bars on <m:math>
+<m:mi>α</m:mi>
+</m:math> because <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> is positive. The
+<m:math>
+<m:mi>α</m:mi>
+</m:math> that does the job is 1 over the norm of <m:math>
+<m:mi>x</m:mi>
+</m:math>. Now we can write formulas for
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> in terms of <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>x</m:mi></m:math> in terms of <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> :</para>
+    <equation id="id2259423">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259471">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259515">So the vector <m:math>
+<m:mi>x</m:mi>
+</m:math> is its direction vector <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math>, scaled by its Euclidean norm.</para>
+    <para id="id2259548"><emphasis effect="bold">Unit Coordinate Vectors.</emphasis> There is a special set of unit vectors called the unit coordinate vectors. The <emphasis effect="italics">unit coordinate vector</emphasis><m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> is a unit vector in <m:math>
+<m:msup>
+<m:mo>∇</m:mo>
+<m:mi>n</m:mi>
+</m:msup>
+</m:math> that points in the positive direction of the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> coordinate axis. <link target-id="uid2"/> shows the three unit coordinate vectors in <m:math>
+<m:msup>
+<m:mo>∇</m:mo>
+<m:mn>3</m:mn>
+</m:msup></m:math>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure 2 is a three-dimensional graph describing the coordinate vectors. The axis pointing out towards the screen is labeled x_1, the axis pointing to the right is labeled x_2 and the axis pointing up is labeled x_3. There are three vectors in the diagram, and each follow an axis, are labeled with an e and the corresponding subscript of the axis on which they are drawn, and are of length 1.">
+        <image mime-type="image/png" src="../../media/pic005-a3dd.png" id="uid2_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 173. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic005-22f5.eps" id="uid2_printimage" print-width="3in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Unit Coordinate Vectors in <emphasis effect="italics">R<sup>3</sup></emphasis></caption></figure>
+    <para id="id2259902">For three-dimensional space,<m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mn>3</m:mn>
+</m:msup>
+</m:math>, the unit coordinate vectors are</para>
+    <equation id="id2259922"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260061">More generally, in n-dimensional space, there are <m:math>
+<m:mi>n</m:mi>
+</m:math> unit coordinate vectors
+given by</para>
+    <figure id="fs-id8648198"><media id="fs-id16288748" alt="Figure 3 is a vector e_1 with arrows pointing to a specific entry in the vector, designating the i-th element, and to the last entry in the vector, designating a total of n elements.">
+<image mime-type="image/png" src="../../media/pic006mi.png" id="fs-id16288748_onlineimage" width="300"/>
+<image for="pdf" mime-type="application/postscript" src="../../media/pic006mi.eps" id="fs-id16288748_printimage" print-width="2in"/>
+</media></figure>
+    <para id="id2260229">You should satisfy yourself that this definition results in vectors with a norm
+of l.</para>
+<exercise id="fs-id9948170">
+<problem id="fs-id9948172">
+    <para id="id2260234">Find the norm of the vector au where <m:math>
+<m:mi>u</m:mi>
+</m:math> is a unit vector.</para></problem>
+</exercise>
+<exercise id="fs-id11465961">
+<problem id="fs-id11465963">
+    <para id="id2260252">Find the unit vector <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub></m:math> in the direction of</para>
+<list id="fs-id16701288" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>.</m:mo></m:mrow></m:math></item>
+</list>
+</problem>
+</exercise>
+    <para id="fs-id9924975"><emphasis effect="bold">Direction Cosines.</emphasis> We often say that vectors “have magnitude and direction.” This is more or less obvious from <link document="m21467" target-id="uid2">"Linear Algebra: Vectors"</link>, where the three-dimensional vector <m:math>
+<m:mi>x</m:mi>
+</m:math> has length <m:math overflow="scroll"><m:msqrt><m:mrow><m:msubsup><m:mi>x</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>x</m:mi><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>x</m:mi><m:mrow><m:mn>3</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:math> and points in a direction defined by the components <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math>. It is perfectly obvious from <link target-id="id2259471"/> where <m:math>
+<m:mi>x</m:mi>
+</m:math> is written as <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">u</m:mi><m:mi mathvariant="normal">x</m:mi></m:msub></m:mrow></m:math>. But perhaps there is another representation for a vector that places the notion of magnitude and direction in even clearer evidence.</para>
+    <para id="id2260587"><link target-id="uid3"/> shows an arbitrary vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math> and the three-dimensional
+<emphasis effect="italics">unit coordinate vectors</emphasis><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math>. The inner product between the vector <m:math>
+<m:mi>x</m:mi>
+</m:math> and
+the unit vector <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> just reads out the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> component of <m:math>
+<m:mi>x</m:mi>
+</m:math>:</para>
+    <equation id="eip-11"><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub><m:mo>,</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2260719">Since this is true even in <m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mi>n</m:mi>
+</m:msup>
+</m:math>, any vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> has the following representation in terms of unit vectors:</para>
+    <equation id="eip-982"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <figure id="uid3"><media id="uid3_media" alt="Figure four is a three-dimensional graph with four vectors and measured angles between the vectors. Along the axis that moves towards the screen is the vector e_1, [1 0 0]. Along the axis moving up the page is the vector e_3, [0 0 1]. The angle between e_1 and e_3 is labeled θ_1. A third vector is drawn along the axis that moves to the right, and is labeled e_2 [0 1 0]. The angle between e_2 and e_3 is labeled θ_2. A fourth and final vector is drawn in the positive e_1 e_2 and e_3 directions, and is labeled x. The magnitude of x is labeled as ||x||. The angle between x and e_3 is labeled as θ_3. The angle between the projection of x onto the e_1 e_2 axis and the vector e_1 is labeled Φ.">
+        <image mime-type="image/png" src="../../media/pic007-2596.png" id="uid3_onlineimage" width="350"><!-- NOTE: attribute width changes image size online (pixels). original width is 179. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic007-3d7a.eps" id="uid3_printimage" print-width="3in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Three-Dimensional Unit Vectors</caption></figure>
+    <para id="id2260959">Let us now generalize our notion of an angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> between two vectors to
+<m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mi>n</m:mi>
+</m:msup>
+</m:math> as follows:</para>
+    <equation id="eip-268"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260994">The celebrated Cauchy-Schwarz inequality establishes that <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mo>≤</m:mo></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>≤</m:mo><m:mn>1</m:mn></m:mrow></m:math>.
+With this definition of angle, we may define the angle <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> that a vector makes
+with the unit vector <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> to be</para>
+    <equation id="eip-91"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2261125">But the norm of <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> is 1, so</para>
+    <equation id="eip-251"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mo form="prefix">cos</m:mo>
+            <m:msub>
+              <m:mi>θ</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:msub>
+                  <m:mi mathvariant="normal">e</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <para id="id2261322">When this result is substituted into the representation of <emphasis effect="italics">x</emphasis> in <link target-id="eip-982"/>,
+we obtain the formula</para>
+    <equation id="id2261338"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">x</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>(</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>)</m:mo>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261603">This formula really shows that the vector <m:math>
+<m:mi>x</m:mi>
+</m:math> has “magnitude” <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> and direction <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mi>n</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> and that the magnitude and direction are sufficient to determine <m:math>
+<m:mi>x</m:mi>
+</m:math>. We call ( <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>, cos <m:math overflow="scroll"><m:mrow><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>, cos <m:math>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>) the <emphasis effect="italics">direction cosines</emphasis> for the vector <m:math>
+<m:mi>x</m:mi>
+</m:math>. In the three-dimensional case, they are illustrated in <link target-id="uid3"/>.</para>
+<exercise id="fs-id12976227">
+<problem id="fs-id15077330">
+    <para id="id2261772">Show that <link target-id="eip-268"/> agrees with the usual definition of an
+angle in two dimensions.</para></problem>
+</exercise>
+<exercise id="fs-id16542497">
+<problem id="fs-id15317864">
+    <para id="id2261781">Find the cosine of the angle between <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> where</para>
+<list id="fs-id10333729" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>4</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math></item>
+</list></problem>
+</exercise>
+    <para id="id2262094">If we compare <link target-id="id2259471"/> and <link target-id="id2261338"/> we see that the direction vector
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> is composed of direction cosines:</para>
+    <equation id="eip-401"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>⋮</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi mathvariant="normal">c</m:mi>
+                    <m:mi mathvariant="normal">o</m:mi>
+                    <m:mi mathvariant="normal">s</m:mi>
+                    <m:msub>
+                      <m:mi>θ</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262314">With this definition we can write <link target-id="id2261338"/> compactly as</para>
+    <para id="id2262318">Here <m:math>
+<m:mi>x</m:mi>
+</m:math> is written as the product of its magnitude <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> and its direction vector
+<m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math>. Now we can give an easy procedure to find a vector's direction angles:</para>
+    <para id="id2262416">(i) find <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math>;</para>
+    <para id="id2262440">(ii) calculate <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi mathvariant="normal">u</m:mi><m:mi mathvariant="normal">x</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mi mathvariant="normal">x</m:mi><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>; and</para>
+    <para id="id2262492">(iii) take the arc cosines of the elements of <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math>.</para>
+    <para id="id2262515">Step (iii) is often unnecessary; we are usually more interested in the direction
+vector (unit vector) <emphasis effect="italics">u<sub>x</sub></emphasis>. Direction vectors are used in materials science in
+order to study the orientation of crystal lattices and in electromagnetic field
+theory to characterize the direction of propagation for radar and microwaves.
+You will find them of inestimable value in your courses on electromagnetic
+fields and antenna design.</para>
+<exercise id="fs-id13551517">
+<problem id="fs-id13551519">
+    <para id="id2262544">Sketch an arbitrary unit vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math>. Label the direction
+cosines and the components of <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">u</m:mi><m:mo>.</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">S</m:mi></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-id12384889"> 
+<problem id="fs-id10790786">   
+<para id="id2262598">Compute the norm and the direction cosines for the vector
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>.</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+<exercise id="fs-id13412369">
+<problem id="fs-id13412371">
+    <para id="id2262655">Prove that the direction cosines for any vector satisfy the
+equality</para>
+    <equation id="id2262664">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msup>
+            <m:mrow/>
+            <m:mtext>2</m:mtext>
+          </m:msup>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262746">What does this imply about the number of scalars needed to determine a vector
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> ?</para></problem>
+</exercise>
+<exercise id="fs-id16290666">
+<problem id="fs-id3860940">
+    <para id="id2262791">Astronomers use right ascension, declination, and distance to
+locate stars. On <link target-id="uid3"/> these are, respectively, <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:mi>φ</m:mi><m:mo>,</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>-</m:mo><m:msub><m:mi>θ</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:mstyle></m:math>, and <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math>.
+Represent <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math> in terms of <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> only. (That is, find
+equations that give <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> in terms of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <emphasis effect="italics">x<sub>3</sub></emphasis>, and find
+equations that give <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <emphasis effect="italics">x<sub>3</sub></emphasis> in terms of <m:math overflow="scroll"><m:mrow><m:mi>φ</m:mi><m:mo>,</m:mo><m:msub><m:mi>θ</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+<exercise id="fs-id16942362">
+<problem id="fs-id16942365">
+    <para id="id2263111">(MATLAB) Write a MATLAB function that accepts any vector
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> and computes its norm and direction cosines. Make <emphasis effect="italics">x</emphasis> an input
+variable, and make <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> and <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> output variables.</para></problem>
+</exercise>
+<exercise id="fs-id3546890">
+<problem id="fs-id3546892">
+    <para id="id2263196">Let <m:math>
+<m:mi>x</m:mi>
+</m:math> and 
+<m:math>
+<m:mi>y</m:mi>
+</m:math> denote two vectors in 
+<m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mi>n</m:mi>
+</m:msup>
+</m:math> with respective direction
+cosines ( 
+<m:math overflow="scroll">
+<m:mrow>
+<m:mo form="prefix">cos</m:mo>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mrow>
+<m:mo>,</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:mrow>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>,</m:mo>
+<m:mo>...</m:mo>
+</m:mrow>
+<m:mo>,</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:msub>
+<m:mi>θ</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>) and ( 
+<m:math overflow="scroll">
+<m:mrow>
+<m:mo form="prefix">cos</m:mo>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mrow>
+<m:mo>,</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:mrow>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mo>,</m:mo>
+<m:mo>...</m:mo>
+</m:mrow>
+<m:mo>,</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:msub>
+<m:mi>φ</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>). Prove that
+<m:math>
+<m:mi>ψ</m:mi>
+</m:math>, the angle between 
+<m:math>
+<m:mi>x</m:mi>
+</m:math> and 
+<m:math>
+<m:mi>y</m:mi>
+</m:math>, is</para>
+    <equation id="id2263387">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>ψ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi>φ</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi>φ</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:msub>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:msub>
+            <m:mi>φ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263513">Specialize this result to <m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:math> for insight.</para></problem>
+</exercise>
+<exercise id="fs-id13469508">
+<problem id="fs-id13469510">
+    <para id="id2263535">Compute the angle between the vectors <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:math>.
+Sketch the result.
+</para></problem>
+</exercise>
+  </content>
+</document>

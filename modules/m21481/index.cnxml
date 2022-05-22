@@ -1,0 +1,117 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: Numerical Experiment (Approximating e^jθ)</title>
+  <metadata>
+  <md:content-id>m21481</md:content-id><md:title>The Functions e^x and e^jθ: Numerical Experiment (Approximating e^jθ)</md:title>
+  <md:abstract/>
+  <md:uuid>959d3d8a-44e3-4915-97b8-047d36b872ba</md:uuid>
+</metadata>
+
+<content>
+    
+    <note id="eip-306">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268">We have demonstrated that the function <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> has two representations:</para>
+<list id="fs-id19220451" list-type="enumerated" number-style="arabic"><item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> ; and</item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>n</m:mi></m:munderover><m:mfrac><m:msup><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mi>k</m:mi></m:msup><m:mrow><m:mi>k</m:mi><m:mo>!</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>.</item></list>
+    <para id="id2259098">In this experiment, you will write a MATLAB program to evaluate the two
+functions <m:math>
+<m:msub>
+<m:mi>f</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> for twenty values of <m:math>
+<m:mi>n</m:mi>
+</m:math>:</para>
+   <list id="fs-id17734941" list-type="enumerated" number-style="arabic"><item>
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mn>20</m:mn></m:mrow></m:math>; and</item>
+    <item>
+
+<m:math overflow="scroll">
+<m:mrow>
+
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+
+<m:mo>=</m:mo>
+
+<m:munderover>
+<m:mrow><m:mo>∑</m:mo></m:mrow>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mi>n</m:mi>
+</m:mrow>
+</m:munderover>
+
+<m:mfrac>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>j</m:mi>
+<m:mi>θ</m:mi>
+<m:msup>
+<m:mo>)</m:mo>
+<m:mi>k</m:mi>
+</m:msup>
+</m:mrow>
+
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mi>!</m:mi>
+</m:mrow>
+</m:mfrac>
+
+<m:mo>,</m:mo>
+
+<m:mi>n</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+<m:mo>,</m:mo>
+<m:mn>2</m:mn>
+<m:mo>,</m:mo>
+<m:mo>...</m:mo>
+<m:mo>,</m:mo>
+<m:mn>20</m:mn>
+
+
+<m:mi>k</m:mi>
+</m:mrow>
+</m:math>.</item></list>
+    <para id="id2259541">Choose <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>4</m:mn><m:mo>(</m:mo><m:mo>=</m:mo><m:mi mathvariant="normal">p</m:mi><m:mi mathvariant="normal">i</m:mi><m:mo>/</m:mo><m:mn>4</m:mn><m:mo>)</m:mo></m:mrow></m:math>. Use an implicit <code>for</code> loop to draw and plot a circle
+of radius 1. Then use an implicit for loop to compute and plot <m:math>
+<m:msub>
+<m:mi>f</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> and an
+explicit for loop to compute and plot <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mn>100</m:mn></m:mrow></m:math>. You should
+observe plots like those illustrated in <link target-id="uid1"/>. Interpret them.</para>
+    <figure id="uid1"><subfigure id="eip-id1166227055843">
+<media id="uid1_media" alt="Figure one part a is a cartesian graph with horizontal axis labeled, real, and vertical axis labeled imaginary. Both axes range in value from 0 to 1 in increments of .2. A large curve beginning at the top-left corner of the graph, (0, 1), begins decreasing at a decreasing rate in a bowed curve until it is nearly vertical and terminates at the bottom-right corner of the graph, (1, 0). In the middle of this curve are a number of small dots, starting approximately at (0.6, 0.7). They are closely spaced together and follow a path that is slightly positive in slope. The dots then become more spread out and the last dot is placed at (1, 0.8).">
+<image mime-type="image/png" src="../../media/pic015-5898.png" id="uid1_onlineimage" width="300"/>
+<image for="pdf" mime-type="application/postscript" src="../../media/pic015-7632.eps" id="uid1_printimage" print-width="110mm"/>
+</media>
+</subfigure>
+
+<subfigure id="eip-id6169696">
+<media id="uid2_media" alt="Figure one part b is a cartesian graph with horizontal axis labeled, real, and vertical axis labeled imaginary. Both axes range in value from 0 to 1 in increments of .2. A large curve beginning at the top-left corner of the graph, (0, 1), begins decreasing at a decreasing rate in a bowed curve until it is nearly vertical and terminates at the bottom-right corner of the graph, (1, 0). In the middle of this curve are a number of small dots, starting approximately at (0.6, 0.7). They are closely spaced together around that point except for one at (0.6, 0.8) and one at (1, 0.8).">
+<image mime-type="image/png" src="../../media/pic016-f715.png" id="uid2_onlineimage" width="300"/>
+<image for="pdf" mime-type="application/postscript" src="../../media/pic016-2b3f.eps" id="uid2_printimage" print-width="110mm"/>
+</media>
+</subfigure><caption>Plots for Convergence;(a) of <emphasis effect="italics">f<sub>n</sub></emphasis>, and (b) of <emphasis effect="italics">S<sub>n</sub></emphasis></caption></figure>
+  </content>
+</document>

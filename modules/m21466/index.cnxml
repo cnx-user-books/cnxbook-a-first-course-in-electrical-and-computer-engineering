@@ -1,0 +1,1771 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Solving Linear Systems of Equations</title>
+  <metadata>
+  <md:content-id>m21466</md:content-id><md:title>Linear Algebra: Solving Linear Systems of Equations</md:title>
+  <md:abstract/>
+  <md:uuid>6a5b7105-7655-4019-ae14-a578b03794e4</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-786">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">We are now equipped to set up systems of linear equations as matrix-
+vector equations so that they can be solved in a standard way on a computer.
+Suppose we want to solve the equations from <link document="m21454" target-id="fs-id23622837">Example 1 from "Linear Algebra: Introduction"</link> for <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> using
+a computer. Recall that Equations <link document="m21454" target-id="eip-841">1</link> and <link document="m21454" target-id="eip-908">2</link> from <link document="m21454">Linear Algebra: Introduction</link> are</para>
+    
+    <equation id="id2258971"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>85</m:mn>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mfrac>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>5</m:mn>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259024">The first step is to arrange each equation with all references to <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> in the
+first column, all references to <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> in the second column, etc., and all constants
+on the right-hand side:</para>
+    
+    <equation id="id2259090"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>85</m:mn>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+
+
+
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+          <m:mn>3</m:mn>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+          <m:mn>2</m:mn>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259139">Then the equations can be converted to a single matrix-vector equation. The coefficients form a matrix, keeping their same relative positions, and the variables and constants each form a vector:</para>
+    <equation id="eip-938"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>.</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>85</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id14934116">
+<problem id="fs-id5950509">
+    <para id="id2259260">Verify by the rules of matrix multiplication that the system of
+equations in <link target-id="id2259090">2</link> in equivalent to the matrix equation in <link target-id="eip-938">3</link>.</para>
+</problem>
+</exercise>    
+<para id="id2259270"><link target-id="eip-938">Equation 3</link> is of the general form</para>
+    
+    <equation id="eip-419"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>A</m:mi>
+          <m:mi>x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">b</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259293">where in this case</para>
+    <equation id="eip-394"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo> , </m:mo><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi mathvariant="normal">l</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">b</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>85</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2259297">Given any <m:math>
+<m:mi>A</m:mi> <m:mrow><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">b</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math>, MATLAB can solve <link target-id="eip-419">Equation 4</link> for
+<m:math>
+<m:mi>x</m:mi>
+</m:math> (as long as a solution exists). Key ideas in the solution process are the
+<emphasis effect="italics">identity</emphasis> matrix and the <emphasis effect="italics">inverse</emphasis> of a matrix.</para>
+    <para id="id2259512">When the matrix A is the <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>×</m:mo><m:mn>1</m:mn></m:mrow></m:math> matrix <m:math>
+<m:mi>a</m:mi>
+</m:math>, the vector <m:math>
+<m:mi>x</m:mi>
+</m:math> is the l-vector <m:math>
+<m:mi>x</m:mi>
+</m:math>,
+and the vector <m:math>
+<m:mi>b</m:mi>
+</m:math> is the l-vector <m:math>
+<m:mi>b</m:mi>
+</m:math>, then the matrix equation <m:math>
+<m:mi>A</m:mi>
+<m:mi>x</m:mi>
+<m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">b</m:mi></m:mrow></m:math> becomes
+the scalar equation</para>
+    <equation id="eip-362"><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mi>b</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2259593">The scalar <m:math overflow="scroll"><m:msup><m:mi>a</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> is the inverse of the scalar <m:math>
+<m:mi>a</m:mi>
+</m:math>, so we may multiply on both sides
+of <link target-id="eip-362">Equation 6</link> to obtain the result</para>
+    
+    <equation id="id2258212"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>x</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mi>b</m:mi>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+ <m:mrow>
+          <m:mn>1</m:mn>
+          <m:mi>x</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mi>b</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259955">We would like to generalize this simple idea to the matrix equation <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">b</m:mi></m:mrow></m:math>
+so that we can find an inverse of the matrix <m:math>
+<m:mi>A</m:mi>
+</m:math>, called <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math>, and write</para>
+    
+    <equation id="eip-154"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>(</m:mo>
+<m:mi>A</m:mi>
+<m:mi>x</m:mi>
+<m:mo>)</m:mo>
+<m:mrow><m:mo>=</m:mo><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mi mathvariant="normal">b</m:mi></m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi>I</m:mi>
+          <m:mi>x</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mi mathvariant="normal">b</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+
+    
+
+
+</m:mtable>
+</m:math>
+</equation>
+    <para id="id2260090">In this equation the matrix <m:math>
+<m:mi>I</m:mi>
+</m:math> is the identity matrix</para>
+    <equation id="eip-971"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]">
+<m:mtable><m:mtr><m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd><m:mo>...</m:mo></m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd><m:mo>...</m:mo></m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd><m:mo>...</m:mo></m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mo>⋱</m:mo>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mo>⋮</m:mo>
+</m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd columnalign="left">
+<m:mn>0</m:mn>
+</m:mtd>
+<m:mtd><m:mo>...</m:mo></m:mtd>
+<m:mtd columnalign="left">
+<m:mn>1</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:mo>.</m:mo>
+</m:mrow>
+</m:math>
+</equation><para id="id2260094">It is clear that the identity matrix <m:math>
+<m:mi>I</m:mi>
+</m:math> and the inverse of a matrix, <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math>, play a
+key role in the solution of linear equations. Let's study them in more detail.</para>
+    <para id="id2260294"><emphasis effect="bold">The Matrix Identity.</emphasis> When we multiply a scalar by 1, we get back
+that same scalar. For this reason, the number 1 is called the <emphasis effect="italics">multiplicative</emphasis><emphasis effect="italics">identity</emphasis> element. This may seem trivial, but the generalization to matrices is
+more interesting. The question is, is there a matrix that, when it multiplies
+another matrix, does not change the other matrix? The answer is yes. The
+matrix is called the <emphasis effect="italics">identity matrix</emphasis> and is denoted by <m:math><m:mi>I</m:mi>
+</m:math>. The identity matrix is
+always square, with whatever size is appropriate for the matrix multiplication.
+The identity matrix has l's on its main diagonal and <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">0</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> everywhere else. For
+example,</para>
+    <equation id="id2260348"><m:math overflow="scroll" mode="display">
+<m:msub>
+<m:mi>I</m:mi>
+<m:mn>5</m:mn>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mo>[</m:mo>
+        <m:mtable>
+<m:mtr>
+<m:mtd><m:mn>1</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>1</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>1</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>1</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>0</m:mn></m:mtd>
+<m:mtd><m:mn>1</m:mn></m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>]</m:mo>
+<m:mo>.</m:mo>
+</m:math></equation>
+    
+    <para id="id2260397">The subscript 5 indicates the size. In terms of the unit coordinate vectors <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>,
+we can also write the <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>n</m:mi></m:mrow></m:math> identity matrix as</para>
+    <equation id="eip-683"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">I</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+<m:mtd/>                
+<m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">e</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">e</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+<m:mtd><m:mo>...</m:mo></m:mtd>        
+        <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi mathvariant="normal">e</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+<m:mtd/>                
+<m:mtd columnalign="left">
+                  <m:mo>|</m:mo>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260534">For any matrix <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mo>×</m:mo><m:mi>p</m:mi></m:mrow></m:msup></m:mrow></m:math>, we have</para>
+    <equation id="eip-762"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">I</m:mi><m:mi>n</m:mi></m:msub><m:mi mathvariant="normal">A</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2260566">For <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, we obtain the following special form for any vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> :</para>
+    <equation id="eip-969"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">I</m:mi><m:mi>n</m:mi></m:msub><m:mi mathvariant="normal">x</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2260636">This last equation can be written as the sum</para>
+    
+    <equation id="eip-690"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>n</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2260723">This is a special case of one of the results you proved in <link document="m21457" target-id="fs-id12068295">Exercise 3 from "Linear Algebra: Matrices"</link>. <link target-id="uid1">Figure 1</link> illustrates <link target-id="eip-690">Equation 14</link> and shows how the vector <m:math>
+<m:mi>x</m:mi>
+</m:math> can be broken into component vectors <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math>, each of which lies in the direction of one coordinate axis. The values of the <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>x</m:mi><m:mrow><m:mi>i</m:mi></m:mrow><m:mo>'</m:mo></m:msubsup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> are the coordinates of <m:math>
+<m:mi>x</m:mi></m:math>, and their magnitudes are also the lengths of the component vectors.</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a three-dimensional graph with four vectors pointing in various directions. The axis pointing out towards the screen is labeled e_1, the axis pointing to the right is labeled e_2, and the axis pointing up is labeled e_3. One vector points up along the e_3 axis and is labeled e_3 x_3. Another points along the e_1 axis towards the screen and is labeled x_1 e_1. A final vector points out into the positive x_1, x_2, x_3 direction and is labeled x. ">
+        <image mime-type="image/png" src="../../media/pic021-2bf3.png" id="uid1_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 217. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic021-5175.eps" id="uid1_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Breaking a Vector into Components</caption></figure>
+<exercise id="fs-id13603232">
+<problem id="fs-id13547576">
+    <para id="id2260818">Use <link target-id="eip-969">Equation 13</link> and the rules for matrix multiplication to
+show that <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> may also be written as</para>
+    <equation id="id2260850"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mrow><m:mo>∑</m:mo></m:mrow>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>i</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation>
+</problem>
+</exercise>
+    <para id="id2260918">This verifies <link document="m21449" target-id="eip-982">Equation 11 from "Linear Algebra: Direction Cosines"</link>.</para>
+    <para id="id2260923">When the product of two numbers is 1 (the
+identity element), we say that they are inverses of each other, like 2 and 0.5.
+Likewise, we say that two <emphasis effect="italics">square</emphasis> matrices are <emphasis effect="italics">inverses</emphasis> of each other if their
+product is the identity matrix:</para>
+    <equation id="eip-239"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>A</m:mi>
+          <m:mi>B</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">I</m:mi>
+          <m:mo>⇔</m:mo>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260988">An interesting and useful result is implied by this definition. Take the first
+form of <link target-id="eip-239">Equation 16</link> and multiply by <m:math>
+<m:mi>B</m:mi>
+</m:math> from the left:</para>
+    <equation id="id2261004">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd/>
+<m:mtd>        
+<m:mrow>
+          <m:mi>A</m:mi>
+          <m:mi>B</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">I</m:mi>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mo>⇒</m:mo>
+ </m:mtd>   
+<m:mtd>  
+      <m:mrow>
+          <m:mi>B</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>A</m:mi>
+          <m:mi>B</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mi mathvariant="normal">I</m:mi>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>      
+        <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi>B</m:mi>
+          <m:mi>A</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi>B</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">B</m:mi>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>      
+   <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>      
+  <m:mrow>
+          <m:mi>B</m:mi>
+          <m:mi>A</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">I</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+    </equation>
+    <para id="id2261143">We emphasize that the inference made in the last step here is only valid when
+<m:math>
+<m:mi>B</m:mi>
+</m:math> and <m:math>
+<m:mi>A</m:mi>
+</m:math> are square matrices. The result means that, even though matrix
+multiplication is not commutative in general, we have a special case where it
+is commutative. If <m:math>
+<m:mi>A</m:mi>
+</m:math> and <m:math>
+<m:mi>B</m:mi>
+</m:math> are inverses of each other, then</para>
+    <equation id="eip-303"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>A</m:mi>
+          <m:mi>B</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">B</m:mi>
+          <m:mi mathvariant="normal">A</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">I</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id13042068">
+<problem id="fs-id13612903">
+    <para id="id2261206">Prove that the inverse of the 2 <m:math overflow="scroll"><m:mrow><m:mo>×</m:mo><m:mn>2</m:mn></m:mrow></m:math> rotation matrix <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> is
+<m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">R</m:mi><m:mi>T</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para></problem>
+</exercise>
+    <para id="id2261269">Matrices that are not square do not have inverses. In fact, not all
+square matrices have inverses. So it becomes an important issue to determine
+which matrices do have inverses. If a matrix has an inverse, the inverse is
+unique. If a square matrix has no inverse, it is called a <emphasis effect="italics">singular</emphasis> matrix. The
+<emphasis effect="italics">determinant</emphasis> of a square matrix is a scalar computed from the numbers in the
+matrix. It tells us whether a matrix will have an inverse or not. A matrix
+is singular if and only if its determinant is zero.<footnote id="uid2"> It is not important now to understand how the determinant is defined
+and computed from the elements of a matrix. In your more advanced courses
+you will study the determinant in some detail.</footnote> In MATLAB, the notation
+<code>det(A)</code> is used to compute the determinant. Whenever the matrix A in <link target-id="eip-419">Equation 4</link> is singular, it means one of two things about the system of equations represented: either the equations are inconsistent and there is no solution, or the equations are dependent and there are infinitely many solutions.</para>
+    <para id="id2261330"><emphasis effect="bold">Solving 
+<m:math overflow="scroll">
+<m:mrow>
+<m:mi>A</m:mi>
+<m:mi>x</m:mi>
+<m:mo>=</m:mo>
+<m:mi mathvariant="normal">b</m:mi></m:mrow></m:math>.</emphasis> Let's now study ways to solve the matrix equation
+<m:math>
+<m:mi>A</m:mi>
+<m:mi>x</m:mi><m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">b</m:mi></m:mrow></m:math>. We will assume that a unique solution for <m:math>
+<m:mi>x</m:mi>
+</m:math> exists. Thus a unique
+matrix <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> exists with the property <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">I</m:mi></m:mrow></m:math>. The trick is to find it. Here
+is one procedure.</para>
+    <para id="id2261437">For convenience, rewrite the matrix equation Ax <m:math overflow="scroll"><m:mrow><m:mo>=</m:mo><m:mi mathvariant="normal">b</m:mi></m:mrow></m:math> as</para>
+    <equation id="eip-109"><m:math overflow="scroll"><m:mo>[</m:mo><m:mrow><m:mi>A</m:mi><m:mi mathvariant="normal">b</m:mi></m:mrow><m:mo>]</m:mo><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">x</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2261456">The matrix <m:math>
+<m:mo>[</m:mo>
+<m:mi>A</m:mi><m:mi>b</m:mi>
+<m:mo>]</m:mo><m:mrow><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mrow><m:mi>n</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:msup></m:mrow></m:math> is called the <emphasis effect="italics">augmented matrix</emphasis> for the system
+of equations. The augmented matrix may be viewed as a systematic way of
+writing all the information necessary to solve the equations.</para>
+    <para id="id2261571">The advantage of <link target-id="eip-109">Equation 19</link> is that we may premultiply both sides
+by any matrix <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> (of compatible size), and the right-hand side remains zero
+(although this is equivalent to multiplying on both sides of <link target-id="eip-419">Equation 4</link>,
+which some may prefer). We can repeat this operation as often as we like
+with matrices <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math>, etc. The general result is</para>
+    <equation id="eip-958"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mi>m</m:mi>
+            </m:msub>
+            <m:mo>⋯</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mi>m</m:mi>
+            </m:msub>
+            <m:mo>⋯</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi mathvariant="normal">C</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi mathvariant="normal">x</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261746">Now suppose that we have found a sequence of matrices <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math> , <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mi>m</m:mi>
+</m:msub>
+</m:math>
+that transforms the matrix <m:math>
+<m:mi>A</m:mi>
+</m:math> to the identity matrix:</para>
+    <para id="id2261790"><m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">C</m:mi><m:mi>m</m:mi></m:msub><m:mo>⋯</m:mo><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>1</m:mn></m:msub><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">I</m:mi><m:mo>.</m:mo></m:mrow></m:math>
+The augmented matrix equation in <link target-id="eip-958">20</link> simplifies to</para>
+    <equation id="eip-332"><m:math>
+<m:mo>[</m:mo>
+<m:mi>I</m:mi>
+<m:mrow><m:msub><m:mi mathvariant="normal">C</m:mi><m:mi>m</m:mi></m:msub><m:mo>⋯</m:mo><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>1</m:mn></m:msub><m:mi mathvariant="normal">b</m:mi></m:mrow><m:mo>]</m:mo> <m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">x</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo></m:mrow></m:math></equation>
+    <para id="id2261932">which can be multiplied out to reveal that the solution for <emphasis effect="italics">x</emphasis> is</para>
+    
+    <equation id="eip-83"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mi>m</m:mi>
+          </m:msub>
+          <m:mo>⋯</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mi mathvariant="normal">b</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2262001">The method may be summarized as follows:</para>
+<list id="fs-id4113935" list-type="enumerated" number-style="lower-roman"><item>form the augmented matrix <m:math>
+<m:mo>[</m:mo>
+<m:mi>A</m:mi>
+<m:mi>b</m:mi>
+<m:mo>]</m:mo>
+</m:math> for the system;</item>
+    <item>premultiply <m:math>
+<m:mo>[</m:mo>
+<m:mi>A</m:mi>
+<m:mi>b</m:mi>
+<m:mo>]</m:mo>
+</m:math> by a sequence of selected matrices <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math>, designed to take <m:math>
+<m:mi>A</m:mi>
+</m:math> to 
+<m:math>
+<m:mi>I</m:mi>
+</m:math>; and</item>
+    
+    <item>when <m:math>
+<m:mi>A</m:mi>
+</m:math> is transformed to <m:math>
+<m:mi>I</m:mi>
+</m:math>, <m:math>
+<m:mi>b</m:mi>
+</m:math> will be transformed to <m:math>
+<m:mi>x</m:mi>
+</m:math>, so the solution will appear as the last column of the transformed augmented matrix.</item></list>
+    <para id="id2262085">We may also conclude that the product of the matrices <emphasis effect="italics">C<sub>i</sub></emphasis> must be the inverse
+of A since <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> is the unique matrix for which <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">I</m:mi></m:mrow></m:math>. In solving for <emphasis effect="italics">x</emphasis>
+by this method, we have found <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> implicitly as the product <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">C</m:mi><m:mi>m</m:mi></m:msub><m:mo>⋯</m:mo><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi mathvariant="normal">C</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.
+</para>
+
+<example id="fs-id3989338">
+<para id="fs-id3989340">
+Consider the equation</para>
+<equation id="id2258263_2"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>6</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259007">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>A</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">b</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259040">The augmented matrix for this equation is</para>
+    <equation id="id2259045"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>A</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>6</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>5</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259119">Now if we could add <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>/</m:mo><m:mn>3</m:mn></m:mrow></m:math> times the first row to the second row, we would
+get 0 in the lower left corner. This is the first step in transforming A to the
+identity I. We can accomplish this row operation with the matrix</para>
+    <equation id="id2259144"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259205"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>A</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>6</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>10</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259297_2">Now adding <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>3</m:mn><m:mo>/</m:mo><m:mn>10</m:mn></m:mrow></m:math> times the new second row to the first row will introduce
+0 in the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math> position, bringing us closer still to the identity. Thus</para>
+    <equation id="id2258197"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259638"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>A</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>57</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>10</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259744">We now complete the transformation to identity by normalizing each row to
+get the needed l's:</para>
+    <equation id="id2259749"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+<m:mo>/</m:mo>
+<m:mn>3</m:mn>
+                    </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+<m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+<m:mn>3</m:mn>
+<m:mo>/</m:mo>                    
+<m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259812"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>A</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">b</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>19</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259927">According to the last column, the solution is</para>
+    <equation id="id2259933"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>19</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259983">We note in passing that the inverse of <m:math>
+<m:mi>A</m:mi>
+</m:math> is the product of the <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">C</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math>, so</para>
+    <para id="id2260010"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mi mathvariant="normal">A</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>       
+   <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi mathvariant="normal">C</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mi mathvariant="normal">l</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>3</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>5</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>5</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>3</m:mn>
+                    <m:mo>/</m:mo>
+                    <m:mn>10</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>·</m:mo>
+        </m:mtd>
+</m:mtr>
+
+
+</m:mtable>
+</m:math></para>
+    </example>
+    <para id="id2260357">The method we have just used, combined with a particular way of
+choosing the <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> matrices, is called <emphasis effect="italics">Gauss elimination</emphasis>. Gauss elimination
+requires less computation than finding the inverse of A because only the
+effect of <m:math overflow="scroll"><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math> on the specific vector <m:math>
+<m:mi>b</m:mi>
+</m:math> is computed. MATLAB can solve
+for <m:math>
+<m:mi>x</m:mi>
+</m:math> by either method, as shown in Demo 4.2. For hand computations, we
+suggest choosing the <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> matrices so that <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> produces <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> everywhere below
+the diagonal in the first column, <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> produces <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> below the diagonal in the
+second column, and so on up to <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">C</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>. Then <m:math>
+<m:msub>
+<m:mi>C</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> produces <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> above the
+diagonal in the <m:math overflow="scroll"><m:msup><m:mi>n</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column, <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">C</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> produces <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> above the diagonal in column
+<m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>, etc. The last one, <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">C</m:mi><m:mrow><m:mn>2</m:mn><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, normalizes the diagonal elements to l's. We
+have assumed for simplicity that no <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> on the diagonal will be encountered
+in hand computations.</para>
+<exercise id="fs-id3971666">
+<problem id="fs-id3971668">
+    <para id="id2260706">Check that <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">A</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">I</m:mi></m:mrow></m:math> in <link target-id="fs-id3989338">Example 1</link></para></problem>
+</exercise>
+<exercise id="fs-id3996049">
+<problem id="fs-id3996051">
+    <para id="id2260744">Augment <link target-id="eip-938">Equation 3</link> as in <link target-id="eip-109">Equation 19</link> and use the technique of Gauss elimination to solve for <m:math>
+<m:mi>x</m:mi>
+</m:math>.</para></problem>
+</exercise>
+    <para id="id2260764"><emphasis effect="bold">Demo 1 (MATLAB).</emphasis> From the command level of MATLAB, solve the
+matrix equation of <link document="m21454" target-id="fs-id23622837">Example 1 from "Linear Algebra: Introduction"</link> by typing</para>
+    <code id="eip-301" display="block">&gt;&gt; A = [1 1;0.3 -1.2]
+&gt;&gt; b = [85;0]</code>
+    
+    <para id="id2260844">You have entered the matrices A and <emphasis effect="italics">b</emphasis>, which describe the problem. You
+can now solve for <emphasis effect="italics">x</emphasis> by finding the inverse of <emphasis effect="italics">A</emphasis> and multiplying <emphasis effect="italics">b</emphasis>:</para>
+    <code id="eip-933" display="block">&gt;&gt; x = inv(A) * b</code>
+    <para id="id2260917">In this example the inverse is computed quickly because <emphasis effect="italics">A</emphasis> is a small matrix.
+For a large (say, <m:math overflow="scroll"><m:mrow><m:mn>30</m:mn><m:mo>×</m:mo><m:mn>30</m:mn></m:mrow></m:math>) matrix, the answer would take longer to compute,
+and the more efficient method of Gauss elimination would reduce waiting time.
+You can use Gauss elimination in MATLAB by typing</para>
+    <code id="eip-76" display="block">&gt;&gt; x = A \ b</code>
+    <para id="id2260978">You should get the same answer. Now type the MATLAB code required to compute <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi></m:mrow></m:math> and to show <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo></m:mrow></m:math></para>
+<exercise id="fs-id3987014">
+<problem id="fs-id3987017">
+    <para id="id2261016">(MATLAB) Write the following system of equations as <m:math overflow="scroll"><m:mrow><m:mi>A</m:mi><m:mi>x</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">b</m:mi></m:mrow></m:math>
+and solve using MATLAB:</para>
+    <equation id="id2261043">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mn>3</m:mn>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mn>2</m:mn>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>-</m:mo>
+          <m:mn>6</m:mn>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2261112">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mn>4</m:mn>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>7</m:mn>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:mn>5</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2261148">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mn>6</m:mn>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation>
+</problem>
+</exercise>
+  </content>
+</document>

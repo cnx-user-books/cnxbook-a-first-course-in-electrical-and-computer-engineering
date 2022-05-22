@@ -1,0 +1,122 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Loops and Control</title>
+  <metadata>
+  <md:content-id>m21392</md:content-id><md:title>An Introduction to MATLAB: Loops and Control</md:title>
+  <md:abstract/>
+  <md:uuid>d76be833-e2da-485d-a38d-50153cea6385</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-131">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">MATLAB has control statements like those in most computer languages. We will only study the <code>for</code> loop here. See the MATLAB manual
+for details on <code>if</code> and <code>while</code> statements.</para>
+    <para id="id2258269">What for loops do is allow a statement or a group of statements to be
+repeated. For example,</para>
+    <code id="eip-872" display="block">for i = 1:n,x(i) = 0,end</code>
+    <para id="id2258962">assigns the value 0 to the first <code>n</code> elements of the array <code>x</code>. If <code>n</code> is less than 1,
+the instruction is still valid but nothing will be done. If <code>n</code> is not defined, then
+the following message will appear:</para>
+    <code id="id2259009" display="block">??? Undefined function or variable.
+Symbol in question==&gt;n
+</code>
+    <para id="id2259030">If <code>n</code> contains a real value, the integer part of <code>n</code> is used. If <code>n</code> is a complex
+number, the integer part of the real part is taken. (This should, however, be
+avoided.) If <code>x</code> is not declared earlier or is of smaller dimension than <code>n</code>, then
+extra memory is allocated.</para>
+    <para id="id2259090">The command end must follow the command for. If it is not present,
+MATLAB will wait for remaining statements until you type <emphasis effect="italics">t</emphasis><emphasis effect="italics">he</emphasis> command
+end, and nothing will be executed in the meantime.</para>
+    <para id="id2258197">More than one statement may be included in the loop. The statement <code>1:n</code> is the way to specify all the integer values between 1 and <code>n</code>. A
+step different than 1 may be specified. For example, the statement <code>for i=1:2:5,x(i)=1,end</code> is equivalent to <code>x(1)=1,x(5)=1</code>. Negative steps
+are also allowed, as in <code>i=n:-1:1</code>.</para>
+    <para id="id2259525">We may use a <code>for</code> loop to draw a circle of radius 1. Type</para>
+    <code id="eip-493" display="block">≫ j=sqrt(-1);
+≫ n=360;
+≫ for i=1:n,circle(1)=exp(2*j*i*pi/n);end;
+≫plot(circle)</code>
+    
+    
+    
+    <para id="id2259700">Note how easy it is to plot a curve. But also note how slowly the for loop
+is executed. MATLAB is not very good at executing things one by one. It
+prefers, by far, a vector-oriented statement. Using the range specification as
+in the <code>for</code> loop, it is possible to speed up the process by replacing the explicit
+<code>for</code> loop by an implicit <code>for</code> loop using the colon, like this:</para>
+    
+    <code id="eip-309" display="block">≫ circle = exp((2*j*pi/n)*[1:n]);</code><para id="id2259812">Note how much faster this command is executed. In general, <code>for</code> loops should
+be avoided as much as possible. For example, the first <code>for</code> loop you typed
+could have been replaced by the command <code>x=zeros(1,n);</code>, which is much
+more efficient. The function <code>zeros</code> fills the variable with 0's to the specified
+size. Similarly, the function <code>ones</code> fills the variable with 1's. The size can also
+be determined by the size of the argument. If <code>A</code> is a matrix of size <code>m,n</code>, then
+the command <code>B=ones(a)</code> fills the matrix <code>B</code> with 1's and forces the matrix <code>B</code>
+to have exactly the same size as the matrix <code>A</code>.</para>
+    <para id="id2260022"><emphasis effect="bold">Avoiding <code>for</code> Loops.</emphasis> Since <code>for</code> loops are very inefficient in MATLAB
+(they are computed sequentially, adding several more computations for every
+loop), it is preferable to use the matrix capabilities of MATLAB to replace
+<code>for</code> loops and speed up processing time.</para>
+    
+<list id="fs-id1170684166036" list-type="enumerated" number-style="lower-roman"><item>Replace the for loop<newline/>
+    
+<code id="eip-822" display="block">≫ for i = 1:10,
+≫    x(i) = i;
+≫ end;</code><newline/>
+
+with<newline/>
+
+<code id="eip-751" display="block">≫ x = 1:10</code><newline/>
+
+to get<newline/>
+
+<code id="eip-969" display="block">x = [1 2 3 4 5 6 7 8 9 10]</code>
+</item>
+
+<item>Replace the <code>for</code> loop<newline/>
+
+<code id="eip-432" display="block">≫ z = something;
+≫ for i = 1:10,
+≫   x(i) = z*i;
+≫ end;</code><newline/>
+
+with<newline/>
+
+<code id="eip-987" display="block">≫ z = something
+≫ x = z*(1:10);</code><newline/>
+
+to get<newline/>
+
+<code id="eip-801" display="block">x = [z 2*z 3*z ... 10*z]</code></item>
+
+<item>Replace the <code>for</code> loop<newline/>
+
+<code id="eip-16" display="block">≫ z = something;
+≫ x(1) = z;
+≫ for i = 2:10.
+≫    x(i) = z*x(i-1);
+≫ end;</code><newline/>
+
+with<newline/>
+
+<code id="eip-798" display="block">≫ z = something;
+≫ x = z.^(1:10);</code><newline/>
+
+to get<newline/>
+
+<code id="eip-41" display="block">x = [z z**2 z**3 ... z**10]</code></item>
+
+<item>Replace the <code>for</code> loop<newline/>
+
+<code id="eip-252" display="block">≫ for i = 0:2:100,
+≫    x(i) = 1.0*exp(j*2*pi*i/100);
+≫ end;</code><newline/>
+
+with<newline/>
+
+<code id="eip-75" display="block">≫ x = 1.0*exp(j*2*pi*(0:2:100)/100);</code><newline/>
+
+to get<newline/>
+
+<code id="eip-743" display="block">x = [exp(0) exp(j*4*pi/100) ... exp(j*200*pi/100)]</code></item></list>
+
+</content>
+</document>

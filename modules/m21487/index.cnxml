@@ -1,0 +1,324 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: The Euler and De Moivre Identities</title>
+  <metadata>
+  <md:content-id>m21487</md:content-id><md:title>The Functions e^x and e^jθ: The Euler and De Moivre Identities</md:title>
+  <md:abstract/>
+  <md:uuid>83296c13-9f51-4a6a-87c7-d9f93c040810</md:uuid>
+</metadata>
+
+<content>
+    
+    <note id="eip-961">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258268">The Euler and De Moivre identities are the fundamental identities for
+deriving trigonometric formulas. From the identity <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and the conjugate identity <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>-</m:mo><m:mi>j</m:mi></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math>, we have the Euler identities for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi></m:mrow></m:math>:</para>
+    
+    <equation id="id2259108"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mrow>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mo form="prefix">sin</m:mo>
+          <m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mrow>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>2</m:mn>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:mfrac>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2259160">These identities are illustrated in <link target-id="uid1"/>.</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a cartesian graph with multiple labeled points connected by line segments.  Three points along with the origin with lines connecting them create a square, sitting diagonally with diagonal resting on the horizontal axis. The point in the fourth quadrant is labeled e^(-jθ). The point opposite the origin, and sitting on the horizontal axis in the positive direction, is labeled e^(jθ) + e^(-jθ). The point in the first quadrant, completing the square, is labeled e^(jθ). This point's horizontal and vertical values are labeled, measuring cosθ in the horizontal direction and sinθ in the vertical direction. A fourth point located on the vertical axis is labeled e^(jθ) - e^(-jθ). This point is connected to the vertex of the square that is located in the first quadrant.">
+        <image mime-type="image/png" src="../../media/pic008-ab87.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 162. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic008-cf2b.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Euler's Identities</caption></figure>
+    <para id="id2259182">The identity <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi><m:mo>+</m:mo><m:mi>j</m:mi></m:mrow><m:mo form="prefix">sin</m:mo> <m:mi>θ</m:mi>
+</m:math> also produces the De Moivre identity:</para>
+    <equation id="id2259226"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>j</m:mi>
+              <m:mspace width="4.pt"/>
+              <m:mi>s</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>n</m:mi>
+              <m:mspace width="4.pt"/>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>n</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>n</m:mi>
+<m:mi>θ</m:mi>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+
+<m:mo form="prefix">sin</m:mo>
+<m:mi>n</m:mi>
+<m:mi>θ</m:mi>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+<m:mo>.</m:mo>
+</m:math></equation>
+    
+    <para id="id2258191">When the left-hand side of this equation is expanded with the binomial expansion, we obtain the identity</para>
+    <equation id="eip-69"><m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true"><m:mrow>
+<m:munderover>
+<m:mo>∑</m:mo>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mrow>
+<m:mi>n</m:mi>
+</m:munderover>
+<m:mfenced separators="" open="(" close=")"><m:mtable>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi>n</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd columnalign="left">
+<m:mi>k</m:mi>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:mfenced>
+<m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>θ</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mrow>
+<m:mi>n</m:mi>
+<m:mo>-</m:mo>
+<m:mi>k</m:mi>
+</m:mrow>
+</m:msup>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>j</m:mi>
+</m:mrow>
+</m:mrow>
+</m:mstyle>
+<m:mo form="prefix">sin</m:mo>
+<m:msup>
+<m:mrow>
+<m:mi>θ</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mi>k</m:mi>
+</m:msup>
+<m:mo>=</m:mo>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>n</m:mi>
+<m:mi>θ</m:mi>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+<m:mo form="prefix">sin</m:mo>
+<m:mi>n</m:mi>
+<m:mi>θ</m:mi>
+<m:mo>.</m:mo></m:math></equation>
+    <para id="id2259720"><emphasis effect="bold">Binomial Coefficients and Pascal's Triangle.</emphasis> The binomial coefficients <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>k</m:mi></m:mrow><m:mi>n</m:mi></m:msubsup><m:mo>)</m:mo></m:mrow></m:math> in <link target-id="eip-69"/> are shorthand for the number</para>
+    <equation id="id2259746"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfenced separators="" open="(" close=")">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>n</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mi>k</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>!</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>!</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>!</m:mo>
+<m:mo>'</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mspace width="4.pt"/>
+          <m:mi>k</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>,</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mo>...</m:mo>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>n</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259835">This number gives the coefficient of <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msup><m:msup><m:mi>y</m:mi><m:mi>k</m:mi></m:msup></m:mrow></m:math> in the expansion of <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:math>. How do we know that there are <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>k</m:mi></m:mrow><m:mi>n</m:mi></m:msubsup><m:mo>)</m:mo></m:mrow></m:math> terms of the form <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msup><m:msup><m:mi>y</m:mi><m:mi>k</m:mi></m:msup></m:mrow></m:math>? One way to answer this question is to use Pascal's triangle, illustrated in <link target-id="uid2"/>. Each node on Pascal's triangle shows the number of routes that terminate at that node. This number is always the sum of the number of routes that terminate at the nodes just above the node in question. If we think of a left-hand path as an occurrence of an <m:math>
+<m:mi>x</m:mi>
+</m:math> and a right-hand path as an occurrence of a 
+<m:math>
+<m:mi>y</m:mi>
+</m:math>, then we see that Pascal's triangle keeps track of the number of occurrences of <m:math overflow="scroll"><m:mrow><m:msup><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msup><m:msup><m:mi>y</m:mi><m:mi>k</m:mi></m:msup></m:mrow></m:math>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a series of connected points forming pascal's triangle. From a top vertex, a point extends to the left and right at 45 degree angles. These lines continue only for a short distance, where they stop at a point and split to form two new lines at 45 degree angles to the left and right. This continues through four steps, forming a series of triangles and squares. Every line drawn towards the right is labeled, y, and every line drawn towards the left is labeled x. The points on the outside of the figure are labeled 1, and the points on the inside of the figure are labeled with the addition of the numbers to their upper-right and upper-left, 2 in the center, 3, and 3 below the 2, and 4, 6, 4 on the inside of the bottom row.">
+        <image mime-type="image/png" src="../../media/pic009-232a.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 257. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic009-b7c2.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Pascal's Triangle and the Binomial Coefficients</caption></figure>
+<exercise id="fs-id9028485">
+<problem id="fs-id5740235">
+    <para id="id2260011">Prove <m:math overflow="scroll"><m:mrow><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>k</m:mi></m:mrow><m:mi>n</m:mi></m:msubsup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow><m:mrow><m:mi>n</m:mi></m:mrow></m:msubsup><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id11812095">
+<problem id="fs-id4475948">
+    <para id="id2260061">Find an identity for <m:math overflow="scroll"><m:mrow><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msubsup><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:msubsup><m:mo>(</m:mo><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow><m:mi>k</m:mi></m:msubsup><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para></problem></exercise>
+
+<exercise id="fs-id8292784">
+<problem id="fs-id23221670">
+    <para id="id2260121">Find “half-angle” formulas for <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mn>2</m:mn><m:mi>θ</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mn>2</m:mn><m:mi>θ</m:mi></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id25174466">
+<problem id="fs-id20032725">
+    <para id="id2260161">Show that</para>
+<list id="fs-id19477950" list-type="enumerated" number-style="upper-alpha"><item> <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mn>3</m:mn><m:mi>θ</m:mi><m:mo>=</m:mo><m:msup><m:mo form="prefix">cos</m:mo><m:mn>2</m:mn></m:msup><m:mi>θ</m:mi><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:msup><m:mrow/><m:mtext>2</m:mtext></m:msup><m:mi>θ</m:mi></m:mrow></m:math>;</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mn>3</m:mn><m:mi>θ</m:mi><m:mo>=</m:mo><m:mn>34</m:mn><m:mo form="prefix">cos</m:mo><m:msup><m:mrow/><m:mtext>2</m:mtext></m:msup><m:mi>θ</m:mi></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mi>θ</m:mi><m:mo>-</m:mo><m:msup><m:mo form="prefix">sin</m:mo><m:mn>3</m:mn></m:msup><m:mi>θ</m:mi></m:mrow></m:math>.</item></list>
+</problem>
+</exercise>
+<exercise id="fs-id12332809">
+<problem id="fs-id17549933">
+    <para id="id2260303">Use <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msup><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mi>j</m:mi><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mi>j</m:mi><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>
+to prove</para>
+<list id="fs-id15984244" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:msub><m:mi>θ</m:mi><m:mn>2</m:mn></m:msub><m:mo form="prefix">cos</m:mo><m:msub><m:mi>θ</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math>.</item></list>
+</problem>
+</exercise>
+  </content>
+</document>

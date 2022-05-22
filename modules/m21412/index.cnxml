@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Complex Numbers: Introduction</title>
+  <metadata>
+  <md:content-id>m21412</md:content-id><md:title>Complex Numbers: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>c45c5003-5a71-436e-92e0-447f6bdd95fd</md:uuid>
+</metadata>
+
+<content>
+    
+    <note id="eip-299">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><section id="fs-id10378951">
+<title>Notes to Teachers and Students:</title>
+    <para id="id2258274">When we teach complex numbers to beginning engineering students, we
+encourage a <emphasis effect="italics">geometrical picture</emphasis> supported by an <emphasis effect="italics">algebraic structure</emphasis>. Every
+algebraic manipulation carried out in a lecture is accompanied by a care-fully drawn picture in order to fix the idea that geometry and algebra go
+hand-in-glove to complete our understanding of complex numbers. We assign
+essentially every problem for homework.</para>
+    <para id="id2258942">We use the MATLAB programs in this chapter to illustrate the theory
+of complex numbers and to develop skill with the MATLAB language. The
+ <link document="m21413">numerical experiment</link> introduces students to <emphasis effect="italics">the</emphasis> basic quadratic
+equation of electrical and computer engineering and shows how the roots of
+this quadratic equation depend on the coefficients of the equation.</para>
+    <para id="id2258957"><link document="m21414"> “Representing Complex Numbers in a Vector Space,”</link> is a
+little demanding for freshmen but easily accessible to sophomores. It may be
+covered for additional insight, skipped without consequence, or covered after
+<link document="m21454">Chapter 4</link>. <link document="m21410">“An Electric Field Computation,”</link> is well beyond
+most freshmen, and it is demanding for sophomores. Nonetheless, an expert
+in electromagnetics might want to cover the section <link document="m21410">"An electric Field Computation"</link> for the insight it brings to
+the use of complex numbers for representing two-dimensional real quantities.</para>
+</section>
+    <section id="uid1">
+      <title>Introduction</title>
+      <para id="id2258979">It is hard to overestimate the value of complex numbers. They first
+arose in the study of roots for quadratic equations. But, as with so many
+other great discoveries, complex numbers have found widespread application
+well outside their original domain of discovery. They are now used throughout
+mathematics, applied science, and engineering to represent the harmonic nature of vibrating systems and oscillating fields. For example, complex numbers
+may be used to study</para>
+      <list id="fs-id21199347" list-type="enumerated" number-style="lower-roman"><item>traveling waves on a sea surface;</item>
+      <item>standing waves on a violin string;</item>
+      <item>the pure tone of a Kurzweil piano;</item>
+      <item>the acoustic field in a concert hall;</item>
+      <item>the light of a He-Ne laser;</item>
+      <item>the electromagnetic field in a light show;</item>
+      <item>the vibrations in a robot arm;</item>
+      <item>the oscillations of a suspension system;</item>
+      <item>the carrier signal used to transmit AM or FM radio;</item>
+      <item>the carrier signal used to transmit digital data over telephone lines; and</item>
+      <item>the 60 Hz signal used to deliver power to a home.</item></list>
+      <para id="id2259038">In this chapter we develop the algebra and geometry of complex numbers.
+In <link document="m21469">Chapter 3</link> we will show how complex numbers are used to build phasor
+representations of power and communication signals.
+</para>
+    </section>
+  </content>
+</document>

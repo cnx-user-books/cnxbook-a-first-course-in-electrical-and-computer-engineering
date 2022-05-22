@@ -1,0 +1,107 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Phasors: Numerical Experiment (Interference Patterns)</title>
+  <metadata>
+  <md:content-id>m21473</md:content-id><md:title>Phasors: Numerical Experiment (Interference Patterns)</md:title>
+  <md:abstract/>
+  <md:uuid>90450c83-63af-46d7-bec4-c70396ce1238</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-34">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258257">Let's add two sinusoids whose amplitudes and frequencies are identical
+and whose phases are different:</para>
+    <equation id="id2258266">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>x</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>A</m:mi>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>φ</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mi>A</m:mi>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>φ</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>ψ</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258977">Show analytically that this sum has the phasor representation</para>
+    <equation id="id2258984">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>X</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>2</m:mn>
+          <m:mi>A</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>c</m:mi>
+          <m:mi>o</m:mi>
+          <m:mi>s</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>ψ</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mo>[</m:mo>
+              <m:mi>φ</m:mi>
+              <m:mo>+</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>ψ</m:mi>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>]</m:mo>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259057">Interpret this finding. Then write a MATLAB program that computes
+and plots complex <emphasis effect="italics">X</emphasis> on the complex plane as <emphasis effect="italics">ψ</emphasis> varies from 0 to <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math> and that
+plots magnitude, <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mo>|</m:mo></m:mrow></m:math>, and phase, <m:math>
+<m:mo>arg</m:mo>
+<m:mi>X</m:mi>
+</m:math>, versus the phase angle <m:math>
+<m:mi>ψ</m:mi>
+</m:math>. (You will
+have to choose <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>ψ</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mo>,</m:mo><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>, for a suitable <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>.</m:mo></m:mrow></m:math>) When do you
+get constructive interfelence and when do you get destructive interference?
+Now compute and plot <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> versus <m:math>
+<m:mi>t</m:mi>
+</m:math> (you will need to discretize <m:math>
+<m:mi>t</m:mi>
+</m:math>) for several
+interesting values of <m:math>
+<m:mi>ψ</m:mi>
+</m:math>. Explain your interference results in terms of the
+amplitude and phase of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> and the magnitude and phase of <m:math>
+<m:mi>X</m:mi>
+</m:math>. Use the
+subplots discussed in <link document="m21391">"An Introduction to MATLAB"</link> to plot all of your results together.</para>
+  </content>
+</document>

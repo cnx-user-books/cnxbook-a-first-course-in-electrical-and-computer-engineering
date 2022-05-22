@@ -1,0 +1,1257 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Test Sequences</title>
+  <metadata>
+  <md:content-id>m21422</md:content-id><md:title>Filtering: Test Sequences</md:title>
+  <md:abstract/>
+  <md:uuid>8c8757db-80c6-4155-979c-c294deea5434</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-268">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">When we design a filter, we design it for a purpose. For example, a
+moving average filter is often designed to pass relatively constant data while
+averaging out relatively variable data. In an effort to clarify the behavior of
+a filter, we typically analyze its response to a standard set of test signals. We
+will call the <emphasis effect="italics">impulse</emphasis>, the <emphasis effect="italics">step</emphasis>, and the <emphasis effect="italics">complex exponential</emphasis> the standard test
+signals.</para>
+    <para id="id2258932"><emphasis effect="bold">Unit Pulse Sequence.</emphasis> The unit pulse sequence is the sequence</para>
+    <equation id="id2258940">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>δ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≠</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259020">This sequence, illustrated in <link target-id="uid1">Figure 1</link>, consists of all zeros except for a
+single one at <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>. If the unit pulse sequence is passed through a moving
+average filter (whether finite or not), then the output is called the <emphasis effect="italics">unit pulse response</emphasis>:</para>
+    
+    <equation id="id2259110"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>h</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+</m:mtd>
+<m:mtd>       
+     <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+<m:mrow>
+              <m:mo>∑</m:mo>
+</m:mrow>        
+      <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>w</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>δ</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+    <figure id="uid1"><media id="uid1_media" alt="This Cartesian graph is relatively simple. The positive portion of the x axis is marked with dashed dots spaced equidistant from each other. The first three are labeled 1, 2, and 3. There are three more dots to the right of those dots. The x axis is labeled n. The y axis only has one dashed point and the it is labeled 1.">
+        <image mime-type="image/png" src="../../media/pic010-ce51.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 135. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-1ee7.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Unit Pulse Sequence</caption></figure>
+    <para id="id2259148">(Note that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>δ</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> unless <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>.</m:mo></m:mrow></m:math>) So the unit pulse sequence may be used to read out the weights of a moving average filter. It is common practice to use <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> (the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> weight) and <m:math>
+<m:msub>
+<m:mi>h</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> (the <m:math overflow="scroll"><m:msup><m:mi>k</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> impulse response) interchangeably.</para>
+<exercise id="fs-id19661833">
+<problem id="fs-id19661835">
+    <para id="id2259266">Find the unit pulse response for the finite moving average <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>w</m:mi><m:mi>k</m:mi></m:msub><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math>. Caution: You must consider <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>n</m:mi><m:mo>≤</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>≥</m:mo><m:mi>N</m:mi></m:mrow></m:math>.</para>
+</problem>
+</exercise>
+<exercise id="fs-id25059765">
+<problem id="fs-id25679713">
+    <para id="id2259623">Find the unit pulse response for the recursive filter <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo></m:mrow><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>.</para></problem>
+</exercise>
+    <para id="id2259688"><emphasis effect="bold">Unit Step Sequence.</emphasis> The unit step sequence is the sequence</para>
+    <equation id="id2259695">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>ξ</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259776">This sequence is illustrated in <link target-id="uid2">Figure 2</link>. When this sequence is applied to a moving average filter, the result is the <emphasis effect="italics">unit step response</emphasis></para>
+    <equation id="id2259788"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>g</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>h</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+    
+    <para id="id2259868">The unit step response is just the sequence of partial sums of the unit pulse response.</para>
+    <figure id="uid2"><media id="uid2_media" alt="This Cartesian graph has three dashed dots on the negative portion of the x acis. The origin is labeled 0. On the poisitive side of the x axis there are four dashes. The third dash is labeled 3 and the x axis is labeled n. On the positive portion of the y-axis there is a single dashed dot labeled 1. To the right of this dashed dot there are four dots that are directly above the dashes on the positive portion of the x axis. Just above and to the right of the dots is the expression ξ_n vs n. Directly below this this symbol are three more dots. These dots are slightly above and to the right of the dashes on the x axis.">
+        <image mime-type="image/png" src="../../media/pic011-2847.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 142. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-1213.eps" id="uid2_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Unit Step Sequence</caption></figure>
+<exercise id="fs-id25085190">
+<problem id="fs-id25085192">
+    <para id="id2259890">Find the unit step response for the finite moving average filter <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>w</m:mi><m:mi>k</m:mi></m:msub><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:mstyle></m:math>. Specialize your general result to the special case where <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac></m:mrow></m:mstyle></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id25057837">
+<problem id="fs-id25057839">
+    <para id="id2260023">Find the unit step response for the recursive filter <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>.</para></problem>
+</exercise>
+    <para id="id2260080"><emphasis effect="bold">Complex Exponential Sequence.</emphasis> The complex exponential sequence is the sequence</para>
+    <equation id="fs-id25089992">
+      <m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>,</m:mo>
+          <m:mspace width="4pt"/>
+          <m:mi>k</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>±</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>±</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>...</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260144">This sequence, illustrated in <link target-id="uid3">Figure 3</link>, is a “discrete-time phasor” that
+“ratchets” counterclockwise (CCW) as <m:math>
+<m:mi>k</m:mi>
+</m:math> moves to <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> and clockwise (CW)
+as <m:math>
+<m:mi>k</m:mi>
+</m:math> moves to <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Each time the phasor ratchets, it turns out an angle
+of <m:math>
+<m:mi>θ</m:mi>
+</m:math>. Why should such a sequence be a useful test sequence? There are two
+reasons.</para>
+    <figure id="uid3"><media id="uid3_media" alt="This is a circle divided in to many slices. The bottom left is the size of a quarter of the circle. Above this section is a 1/8th sized portion and the rest of the circle is divided into 1/16th sized portions. The right half of the circle has mathematical expression associated with the different slices. The second slice from the top is labeled e^{j2θ} the next slice has an arch capped on either end with horizontal lines and the actual arch is labeled θ. The next few slices proceeding down are labeled e^{jθ}, then e^{j0}, then e^{-jθ}, and finally e^{-j2θ}.">
+        <image mime-type="image/png" src="../../media/pic012-e6e2.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 154. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-bdf9.eps" id="uid3_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Discrete-Time Phasor</caption></figure>
+    <para id="id2260224"><emphasis effect="bold">(i) <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>k</m:mi>
+<m:mi>θ</m:mi>
+</m:mrow>
+</m:msup>
+</m:math> represents (or codes)</emphasis> <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:math>. The real part of the sequence <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is the cosinusoidal sequence <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:math>:</para>
+    
+    <equation id="eip-195"><m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>]</m:mo><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260335">Therefore the discrete-time phasor <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> represents (or codes) <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:math> in the
+same way that the continuous-time phasor <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:math> codes <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:math>. If the moving
+average filter</para>
+    
+    <equation id="eip-483"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>h</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2260497">has real coefficients, we can get the response to a cosinusoidal sequence by
+taking the real part of the following sum:</para>
+    <equation id="id2260503"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+<m:mrow>
+            <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>h</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>θ</m:mi>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mi> Re </m:mi>
+            <m:mo>[</m:mo>
+            <m:munderover>
+<m:mrow>         
+     <m:mo>∑</m:mo>
+</m:mrow>        
+      <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>h</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>)</m:mo>
+                <m:mi>θ</m:mi>
+                
+              </m:mrow>
+            </m:msup>
+<m:mo>]</m:mo>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi> Re </m:mi>
+          <m:mo>[</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>n</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:munderover>
+<m:mrow>        
+    <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>h</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>]</m:mo>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2260704">In this formula, the sum</para>
+    <equation id="eip-128"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:munderover><m:msub><m:mi>h</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260710">is called the <emphasis effect="italics">complex frequency response</emphasis> of the filter and is given the symbol</para>
+    <equation id="eip-534"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>H</m:mi><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mi>∞</m:mi></m:munderover><m:msub><m:mi>h</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2260769">This complex frequency response is just a complex number, with a magnitude
+<m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math> and a phase arg <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math>. Therefore the output of the moving average
+filter is</para>
+    <equation id="id2260900"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>n</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>H</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi> Re </m:mi>
+          <m:mo>[</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>n</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>|</m:mo>
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>|</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mo form="prefix">arg</m:mo>
+              <m:mi>H</m:mi>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msup>
+          <m:mo>]</m:mo>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mo>|</m:mo>
+            <m:mi>H</m:mi>  
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mi>θ</m:mi>
+            <m:mo>+</m:mo>
+            <m:mo form="prefix">arg</m:mo>
+            <m:mi>H</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>    
+</m:mtable>
+</m:math>
+</equation>
+    
+    
+    <para id="id2261127">This remarkable result says that the output is also cosinusoidal, but its amplitude is <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math> rather than 1, and its phase is <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi>r</m:mi><m:mi>g</m:mi><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> rather than 0. In the examples to follow, we will show that the complex “gain” <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> can be highly selective in <m:math>
+<m:mi>θ</m:mi>
+</m:math>, meaning that cosines of some angular frequencies are passed with little attenuation while cosines of other frequencies are dramatically attenuated. By choosing the filter coefficients, we can design the frequency selectivity we would like to have.</para>
+    <para id="id2261236"><emphasis effect="bold">(ii) <m:math overflow="scroll"><m:msup><m:mtext mathvariant="italic">e</m:mtext><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> is a sampled data version of 
+<m:math>
+<m:msup>
+<m:mrow>
+<m:mi>e</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math>.</emphasis> The discrete-time phasor <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> can be produced physically by sampling the continuous-time phasor
+<m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> at the periodic sampling instants <m:math overflow="scroll"><m:mrow><m:msub><m:mi>t</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>T</m:mi></m:mrow></m:math>:</para>
+    
+    <equation id="id2261410"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>t</m:mi>
+              <m:mo>=</m:mo>
+              <m:mi>k</m:mi>
+              <m:mi>T</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>T</m:mi>
+            </m:mrow>
+          </m:msup>
+</m:mtd>
+</m:mtr>           
+
+
+<m:mtr>
+<m:mtd>
+
+          <m:mi>θ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mi>T</m:mi>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    <para id="id2261431">The dimensions of <m:math>
+<m:mi>θ</m:mi>
+</m:math> are radians, the dimensions of <m:math>
+<m:mi>ω</m:mi>
+</m:math> are radians/second, and
+the dimensions of <m:math>
+<m:mi>T</m:mi>
+</m:math> are seconds. We call <m:math>
+<m:mi>T</m:mi></m:math> the sampling interval and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mstyle></m:math> the
+sampling rate or sampling frequency. If the original angular frequency of the
+phasor <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> is increased to <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>ω</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo>(</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:mstyle></m:math>, then the discrete-time phasor remains
+<m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> :</para>
+    <equation id="eip-48"><m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>[</m:mo><m:mi>ω</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mo>)</m:mo><m:mo>]</m:mo><m:mi>t</m:mi></m:mrow></m:msup><m:msub><m:mrow><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>T</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>k</m:mi><m:mi>T</m:mi><m:mo>+</m:mo><m:mi>k</m:mi><m:mi>m</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2261565">This means that all continuous-time phasors of the form <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mo>[</m:mo><m:mi>ω</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mo>)</m:mo><m:mo>]</m:mo><m:mi>t</m:mi></m:mrow></m:msup></m:math> “hide
+under the same alias” when viewed through the sampling operation. That
+is, the sampled-data phasor cannot distinguish the frequency <m:math overflow="scroll"><m:mrow><m:mi>ω</m:mi></m:mrow></m:math> from the frequency <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>ω</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac></m:mrow></m:mstyle></m:math>. In your subsequent courses you will study aliasing in more
+detail and study the Nyquist rule for sampling:</para>
+    <equation id="eip-711"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>T</m:mi><m:mo>≤</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>Ω</m:mi></m:mfrac></m:mrow></m:mstyle><m:mspace width="5pt"/><m:mo>;</m:mo><m:mspace width="5pt"/><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>≥</m:mo><m:mfrac><m:mi>Ω</m:mi><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math></equation><para id="id2261771">This rule says that you must sample signals at a rate <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:mstyle></m:math> that exceeds the
+
+<emphasis effect="italics">bandwidth</emphasis>
+
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>Ω</m:mi><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:mfrac></m:mstyle></m:math> of the signal.</para>
+<example id="fs-id15856151">
+    <para id="id2261883">Let's pass the cosinusoidal sequence <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo></m:mrow></m:math> cos <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mi>θ</m:mi></m:mrow></m:math> through the finite moving average filter</para>
+    
+    <equation id="id2261988"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mrow><m:mo>∑</m:mo></m:mrow>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>h</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>h</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:mspace width="4.pt"/>
+          <m:mi>k</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>,</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mo>...</m:mo>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>N</m:mi>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2262050">We know from our previous result that the output is</para>
+    
+    <equation id="eip-565"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow></m:mrow><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>[</m:mo><m:mi>n</m:mi><m:mi>θ</m:mi><m:mo>+</m:mo><m:mo form="prefix">arg</m:mo><m:mi>H</m:mi><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>]</m:mo></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2262141">The complex frequency response for this example is</para>
+    
+    <equation id="id2262223"><m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:mi>H</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+</m:mtd>
+
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>N</m:mi>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:mfrac>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>N</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+          </m:mfrac>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2262283">(Do you see your old friend, the finite sum formula, at work?) Let's try to
+manipulate the result into a more elegant form:</para>
+    <equation id="id2262290"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>    
+      <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:mfrac>
+            <m:mrow>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>N</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                  <m:mi>θ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>N</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>-</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>N</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>)</m:mo>
+                    <m:mi>θ</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>]</m:mo>
+              </m:mrow>
+            </m:mrow>
+            <m:mrow>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>θ</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:msup>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mi>j</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>-</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>θ</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:msup>
+                <m:mo>]</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:mfrac>
+       </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mo>[</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>]</m:mo>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>N</m:mi>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2262570">The magnitude of the function <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> is</para>
+    <equation id="eip-879"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi></m:mrow><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mo>=</m:mo></m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mtext>,</m:mtext><m:mrow><m:mo>|</m:mo><m:mfrac><m:mrow><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mfrac><m:mo>|</m:mo></m:mrow></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2262602">At <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, corresponding to a “DC phasor,” <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> equals 1; at <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac></m:mrow></m:mstyle></m:math><m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>|</m:mo></m:mrow></m:math>. The magnitude of the complex frequency response is plotted in
+<link target-id="uid4">Figure 4</link>.</para>
+    <figure id="uid4"><media id="uid4_media" alt="This Cartesian graph contains a series of arches progressing along the x axis. The first arch starts at the far left end of the negative portion of the x axis and returns to the x axis about halfway to the origin. This point is labeled -2π/N. The next arch begins at this same point and returns to the x axis the same distance away from the origin as it left  but now on the positive side of the x axis. This point is labeled 2π/N. At about the peak of this arch on the negative side of the x axis is the mark 1. The third arch begins at point 2π/N and ends at a point labeled 2(2π/N). There is one final arch that starts at the last point and an unlabeled point. The x axis is labeled θ.">
+        <image mime-type="image/png" src="../../media/pic013-7fbb.png" id="uid4_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 260. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-7ef1.eps" id="uid4_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Frequency Selectivity of a Moving Average Filter</caption></figure>
+    <para id="id2262819">This result shows that the moving average filter is frequency selective, passing
+low frequencies with gain near 1 and high frequencies with gain near 0.</para></example>
+<exercise id="fs-id25083572">
+<problem id="fs-id25938210">
+    <para id="id2262825">Compute the phase of the complex frequency response</para>
+    <equation id="id2262834">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mo>[</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>]</m:mo>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>N</m:mi>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+</problem>
+</exercise>
+<exercise id="fs-id24951284">
+<problem id="fs-id24981567">
+    <para id="id2262944">Choose the filter length <m:math>
+<m:mi>N</m:mi>
+</m:math> for the filter <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>h</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mo>,</m:mo><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>, so that a 60 Hz cosine, sampled at the rate <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>180</m:mn></m:mrow></m:mstyle></m:math>, is perfectly zeroed
+out as it comes through the filter.</para>
+</problem>
+</exercise>
+<exercise id="fs-id24981656">
+<problem id="fs-id24981658">
+    <para id="id2263040">(MATLAB) Write a MATLAB program to compute and plot
+the magnitude <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math> and the phase arg <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> versus <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>&lt;</m:mo><m:mi>θ</m:mi><m:mo>&lt;</m:mo><m:mi>π</m:mi></m:mrow></m:math> when</para>
+    <equation id="id2263126">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>θ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mo>[</m:mo>
+              <m:mo>(</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+              <m:mo>/</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>]</m:mo>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>N</m:mi>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mi>θ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263237">Choose suitable increments for <m:math>
+<m:mi>θ</m:mi>
+</m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id24959978">
+<problem id="fs-id24959980">
+    <para id="id2263252">Compute the complex frequency response <m:math overflow="scroll"><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:math> for the recursive filter <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>.
+</para></problem>
+</exercise>
+  </content>
+</document>

@@ -1,0 +1,167 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Binary Codes: Numerical Experiment (Huffman Codes)</title>
+  <metadata>
+  <md:content-id>m21406</md:content-id><md:title>Binary Codes: Numerical Experiment (Huffman Codes)</md:title>
+  <md:abstract/>
+  <md:uuid>e1c9b623-4386-4ceb-a0f2-792a388e6774</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-741">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263"><link target-id="id2259187">The paragraph below</link> contains Lincoln's Gettysburg Address. Ignore special symbols like periods and ignore the distinction between lowercase and uppercase letters. Compute the relative frequency of occurrence for each of the 26 letters of the alphabet. Write a MATLAB program to generate a binary tree for the Huffman code of the Gettysburg Address. When you have generated the code, compute the average code word length</para>
+    <equation id="id2258273"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>L</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+<m:mrow>
+            <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mn>26</m:mn>
+          </m:munderover>
+          <m:mfrac>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msub>
+            <m:mi>l</m:mi>
+            <m:mi>i</m:mi>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2258967">where 
+<m:math>
+<m:mfrac>
+<m:mrow>
+<m:msub>
+<m:mi>n</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:mrow>
+<m:mrow>
+<m:mi>N</m:mi>
+</m:mrow>
+</m:mfrac>
+</m:math>
+is the relative frequency for symbol <m:math>
+<m:mi>i</m:mi>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>l</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> is the code word length
+for symbol <m:math><m:mi>i</m:mi>
+</m:math>. Compare <m:math>
+<m:mi>L</m:mi>
+</m:math> with the entropy</para>
+    
+    <equation id="id2259032"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>H</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+<m:munderover>
+<m:mrow>
+          <m:mo>∑</m:mo>
+</m:mrow>
+<m:mrow>
+<m:mi>i</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mn>26</m:mn>
+</m:mrow>
+</m:munderover>        
+  <m:mfrac>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msub>
+            <m:mo form="prefix">log</m:mo>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mfrac>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:mo>=</m:mo>
+    <m:munderover>
+<m:mrow>
+          <m:mo>∑</m:mo>
+</m:mrow>
+<m:mrow>
+<m:mi>i</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+<m:mrow>
+<m:mn>26</m:mn>
+</m:mrow>
+</m:munderover>      <m:mfrac>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:mi>N</m:mi>
+          </m:mfrac>
+          <m:msub>
+            <m:mo form="prefix">log</m:mo>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mfrac>
+            <m:mi>N</m:mi>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <para id="id2259147">and compare <m:math>
+<m:mi>L</m:mi>
+</m:math> to <m:math overflow="scroll"><m:mrow><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:mn>26</m:mn></m:mrow></m:math>. Interpret your findings.</para>
+    
+    <para id="id2259187"><title>Gettysburg Address</title><preformat id="eip-id1165701318211" display="block">
+Fourscore and seven years ago, our fathers brought forth upon this
+continent a new nation, conceived in liberty and dedicated to the proposition
+that all men are created equal. Now we are engaged in a great civil war,
+testing whether that nation or any nation so conceived and so dedicated can
+long endure. We are met on a great battlefield of that war. We have come
+to dedicate a portion of that field as a final resting-place for those who have
+given their lives that that nation might live. It is altogether fitting and proper
+that we should do this. But in a larger sense, we cannot dedicate, we cannot
+consecrate, we cannot hallow this ground. The brave men, living and dead,
+who struggled here have consecrated it far above our power to add or detract.
+The world will little note nor long remember what we say here, but it can
+never forget what they did here. It is for us the living rather to be dedicated
+here to the unfinished work which they who fought here have thus far so nobly
+advanced. It is rather for us to be here dedicated to the great task remaining
+before us–that from these honored dead we take increased devotion to that
+cause for which they gave the last full measure of devotion–that we here
+highly resolve that these dead should not have died in vain, that this nation
+under God shall have a new birth of freedom, and that government of the
+people, by the people, for the people shall not perish from the Earth.
+              -Abraham Lincoln, November 19, 1863
+</preformat></para>
+    
+  </content>
+</document>

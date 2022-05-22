@@ -1,0 +1,2042 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Phasors: Sinusoidal Steady State and the Series RLC Circuit</title>
+  <metadata>
+  <md:content-id>m21475</md:content-id><md:title>Phasors: Sinusoidal Steady State and the Series RLC Circuit</md:title>
+  <md:abstract/>
+  <md:uuid>e85dd48f-e315-4019-9311-a673ba7331a0</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-844">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258257">Phasors may be used to analyze the behavior of electrical and mechanical systems that have reached a kind of equilibrium called <emphasis effect="italics">sinusoidal steady state</emphasis>. In the sinusoidal steady state, every voltage and current (or force and velocity) in a system is sinusoidal with angular frequency <m:math><m:mi>ω</m:mi></m:math>. However, the amplitudes and phases of these sinusoidal voltages and currents are all different. For example, the voltage across a resistor might lead the voltage across a capacitor by <m:math overflow="scroll"><m:msup><m:mn>90</m:mn><m:mo>∘</m:mo></m:msup></m:math> ( <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> radians) and lag the voltage across an inductor by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mn>90</m:mn><m:mo>∘</m:mo></m:msup><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac><m:mi>r</m:mi><m:mi>a</m:mi><m:mi>d</m:mi><m:mi>i</m:mi><m:mi>a</m:mi><m:mi>n</m:mi><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math>.</para>
+    <para id="id2259012">In order to make our application of phasors to electrical systems concrete, we consider the series <emphasis effect="italics">RLC</emphasis> circuit illustrated in <link target-id="uid1"/>. The arrow labeled <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> denotes a current that flows in response to the voltage applied,and the + and - on the voltage source indicate that the polarity of the applied voltage is positive on the top and negative on the bottom. Our convention is that current flows from positive to negative, in this case clockwise in the circuit.</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a circuit diagram. It is rectangular in shape. On the top of the rectangle is a resistor portion, indicated by sharp zig-zagged lines and the R label. On the right side of the rectangle is a capacitor, signified by a break in the rectangle with the ends of the broken rectangle drawn with small horizontal line segments, and the label C. On the bottom of the rectangle is an inductor portion, signified by a squiggly line and the label L. On the left side of the rectangle is a voltage source portion, signified by a circle breaking the path of the rectangle with a small zig-zag line inside the circle, the label V(t), and a plus sign above the circle and a minus sign below the circle.">
+        <image mime-type="image/png" src="../../media/pic012-e9c4.png" id="uid1_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 252. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-23eb.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Series <emphasis effect="italics">RLC</emphasis> Circuit</caption></figure>
+    <para id="id2259066">We will assume that the voltage source is an audio oscillator that pro-
+duces the voltage</para>
+    <equation id="eip-926"><m:math overflow="scroll"><m:mrow><m:mi>V</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>A</m:mi><m:mo form="prefix">cos</m:mo><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo><m:mo>.</m:mo></m:mrow></m:math></equation><para id="id2259071">We represent this voltage as the complex signal</para>
+    
+    <equation id="eip-811"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>↔</m:mo>
+          <m:mi>A</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>φ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2258211">and give it the phasor representation</para>
+    <equation id="eip-462"><m:math overflow="scroll"><m:mrow><m:mi>V</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>↔</m:mo><m:mi>V</m:mi></m:mrow><m:mo>;</m:mo><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>φ</m:mi></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></equation>
+    <para id="id2259453">We then describe the voltage source by the phasor <emphasis effect="italics">V</emphasis> and remember that we can always compute the actual voltage by multiplying by <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> and taking the real part:</para>
+    <equation id="eip-451"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mi>V</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>}</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id5822899">
+<problem id="fs-id5822901">
+    <para id="id2259531">Show that <m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mrow><m:mo>[</m:mo><m:mi>V</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>A</m:mi><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>φ</m:mi></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></para></problem>
+</exercise>
+    <para id="id2259616"><emphasis effect="bold">Circuit Laws.</emphasis> In your circuits classes you will study the Kirchhoff laws that govern the low frequency behavior of circuits built from resistors <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>R</m:mi><m:mo>)</m:mo></m:mrow></m:math>, inductors <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>L</m:mi><m:mo>)</m:mo></m:mrow></m:math>, and capacitors <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>C</m:mi><m:mo>)</m:mo></m:mrow></m:math>. In your study you will learn that the voltage dropped across a resistor is related to the current that flows through it by the equation</para>
+    
+    <equation id="eip-461"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi>R</m:mi>
+          <m:mi>i</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259710">You will learn that the voltage dropped across an inductor is proportional to
+the derivative of the current that flows through it, and the voltage dropped
+across a capacitor is proportional to the integral of the current that flows
+through it:</para>
+    
+    <equation id="eip-99"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>V</m:mi>
+              <m:mi>L</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>i</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:mstyle>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mrow>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>C</m:mi>
+          </m:mfrac>
+          <m:mo>∫</m:mo>
+          <m:mi>i</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>d</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259821"><emphasis effect="bold">Phasors and Complex Impedance.</emphasis> Now suppose that the current in the preceding equations is sinusoidal, of the form</para>
+    
+    <equation id="eip-622"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>i</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>B</m:mi>
+<m:mspace width="2pt"/>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>θ</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259873">We may rewrite <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> as</para>
+    <equation id="eip-714"><m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi> Re </m:mi><m:mrow><m:mo>{</m:mo><m:mi>I</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>}</m:mo></m:mrow></m:mrow></m:math>
+</equation><para id="id2259892">where <m:math><m:mi>I</m:mi>
+</m:math> is the phasor representation of <m:math overflow="scroll"><m:mrow><m:mi>i</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+<exercise id="fs-id3482337">
+<problem id="fs-id3482339">
+    <para id="id2259961">Find the phasor <m:math>
+<m:mi>I</m:mi>
+</m:math> in terms of 
+<m:math>
+<m:mi>B</m:mi>
+</m:math> and 
+<m:math>
+<m:mi>θ</m:mi>
+</m:math> in <link target-id="eip-714"/>.</para></problem>
+</exercise>
+    <para id="id2259994">The voltage dropped across the resistor is</para>
+    <equation id="id2259997"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>R</m:mi>
+          <m:mi>i</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi>R</m:mi>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:mi>I</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>}</m:mo>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:mi>R</m:mi>
+          <m:mi>I</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>}</m:mo>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2260110">Thus the phasor representation for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is</para>
+    <equation id="eip-328"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>↔</m:mo><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow><m:mo>;</m:mo><m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub><m:mo>=</m:mo><m:mi>R</m:mi><m:mi>I</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation>
+    <para id="id2260194_1">We call <emphasis effect="italics">R</emphasis> the <emphasis effect="italics">impedance</emphasis> of the resistor because <emphasis effect="italics">R</emphasis> is the scale constant that
+relates the “phasor voltage <emphasis effect="italics">V<sub>R</sub></emphasis>' to the “phasor current <emphasis effect="italics">I</emphasis>.”</para>
+    <para id="id2260243">The voltage dropped across the inductor is</para>
+    <equation id="eip-776"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>V</m:mi>
+              <m:mi>L</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>i</m:mi>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:mi>I</m:mi>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    <para id="id2260357">The derivative may be moved through the <m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo>
+<m:mspace width="3pt"/>
+<m:mo>]</m:mo></m:mrow></m:math> operator (see <link target-id="fs-id5611274"/>)
+to produce the result</para>
+    <equation id="id2260361"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>L</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>L</m:mi>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>I</m:mi>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>}</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>ω</m:mi>
+          <m:mi>L</m:mi>
+          <m:mi>I</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>}</m:mo>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    
+    
+<para id="eip-194">Thus the phasor representation of <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>L</m:mi>
+</m:msub>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:math></para><equation id="eip-644"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>L</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>↔</m:mo><m:msub><m:mi>V</m:mi><m:mi>L</m:mi></m:msub></m:mrow><m:mo>;</m:mo><m:mrow><m:msub><m:mi>V</m:mi><m:mi>L</m:mi></m:msub><m:mo>=</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>L</m:mi><m:mi>I</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation><para id="eip-119">We call <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>L</m:mi></m:mrow></m:math> the impedance of the inductor because <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>L</m:mi></m:mrow></m:math> is the complex scale
+constant that relates “phasor voltage <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>L</m:mi>
+</m:msub>
+</m:math>' to “phasor current <m:math>
+<m:mi>I</m:mi>
+</m:math>.”</para><exercise id="fs-id5611274">
+<problem id="fs-id4344454">    
+<para id="id2260601">Prove that the operators <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>d</m:mi><m:mrow><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac></m:mstyle></m:math> and <m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo><m:mo>]</m:mo></m:mrow></m:math> commute:</para>
+    <equation id="id2260644">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfrac>
+            <m:mi>d</m:mi>
+            <m:mrow>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>}</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>}</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation>
+</problem>
+</exercise>
+    <para id="id2260721">The voltage dropped across the capacitor is</para>
+    <equation id="eip-990"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>V</m:mi>
+              <m:mi>C</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+            <m:mo>∫</m:mo>
+            <m:mi>i</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+            <m:mo>∫</m:mo>
+            <m:mi> Re </m:mi>
+            <m:mrow>
+              <m:mo>{</m:mo>
+              <m:mi>I</m:mi>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>}</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    <para id="eip-224">The integral may be moved through the <m:math overflow="scroll"><m:mrow><m:mi> Re </m:mi><m:mo>[</m:mo>
+<m:mspace width="3pt"/>
+<m:mo>]</m:mo></m:mrow></m:math> operator to produce the result</para><equation id="id2260838"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>C</m:mi>
+          </m:mfrac>
+          <m:mi> Re </m:mi>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mfrac>
+              <m:mi>I</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>}</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:mfrac>
+            <m:mi>I</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>C</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>}</m:mo>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2260547">Thus the phasor representation of <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>C</m:mi>
+</m:msub>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:math>
+is</para>
+    <equation id="eip-906"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>C</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>↔</m:mo><m:msub><m:mi>V</m:mi><m:mi>C</m:mi></m:msub></m:mrow><m:mo>;</m:mo><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>C</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>I</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math></equation>
+    
+    <para id="eip-974">We call <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mstyle></m:math> the <emphasis effect="italics">impedance</emphasis> of the capacitor because <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mstyle></m:math> is the complex scale
+constant that relates “phasor voltage <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>C</m:mi>
+</m:msub>
+</m:math>" to “phasor current <m:math>
+<m:mi>I</m:mi>
+</m:math>.”</para>
+    
+    
+    
+    
+    <para id="eip-959"><emphasis effect="bold">Kirchhoff's Voltage Law.</emphasis> Kirchhoff's voltage law says that the voltage dropped in the series combination of <m:math>
+<m:mi>R</m:mi></m:math>, <m:math><m:mi>L</m:mi>
+</m:math>, and <m:math>
+<m:mi>C</m:mi>
+</m:math> illustrated in <link target-id="uid1"/> equals the voltage generated by the source (this is one of two fundamental conservation laws in circuit theory, the other being a conservation law for current):</para><equation id="eip-356"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>L</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="eip-670">If we replace all of these voltages by their complex representations, we have</para><equation id="eip-12"><m:math>
+<m:mi>Re</m:mi>
+<m:mo>{</m:mo>
+<m:mi>V</m:mi>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>ω</m:mi>
+<m:mi>t</m:mi>
+</m:mrow>
+</m:msup>
+<m:mo>}</m:mo>
+<m:mo>=</m:mo>
+<m:mi>Re</m:mi>
+<m:mo>{</m:mo>
+<m:mo>(</m:mo>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>L</m:mi>
+</m:msub>
+<m:mo>+</m:mo>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>C</m:mi>
+</m:msub>
+<m:mo>)</m:mo>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>ω</m:mi>
+<m:mi>t</m:mi>
+</m:mrow>
+</m:msup>
+<m:mo>}</m:mo>
+<m:mo>.</m:mo>
+</m:math></equation><para id="eip-961">An obvious solution is</para><equation id="eip-646"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>V</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>L</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>C</m:mi>
+          </m:msub>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mo>(</m:mo>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>L</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+            <m:mi>I</m:mi>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation><para id="id2261404-1">where <emphasis effect="italics">I</emphasis> is the phasor representation for the current that flows in the circuit.
+This solution is illustrated in <link target-id="uid2"/>, where the phasor voltages <m:math overflow="scroll"><m:mrow><m:mi>R</m:mi><m:mi>I</m:mi><m:mo>,</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>L</m:mi><m:mi>I</m:mi></m:mrow></m:math>,
+and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac><m:mi>I</m:mi></m:mrow></m:mstyle></m:math> are forced to add up to the phasor voltage <m:math>
+<m:mi>V</m:mi>
+</m:math>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a cartesian graph with a circle and four line segments beginning at the origin. There are two line segments that begin at the origin and extend past the edge of the circle out into the first quadrant of the graph. The lower segment is labeled RI, and the second is labeled V. A third segment extends past the circe into the second quadrant, and is labeled jωLI. A fourth segment extends into the fourth quadrant, but is much shorter than the other segments and does not reach the edge of the circle. It is labeled 1/(jωC) I.">
+        <image mime-type="image/png" src="../../media/pic013-29ab.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 151. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-94e0.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Phasor Addition to Satisfy Kirchhoff's Law</caption></figure>
+<exercise id="fs-id5293584">
+<problem id="fs-id5293586">
+    <para id="id2261492">Redraw <link target-id="uid2"/> for <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>R</m:mi><m:mo>=</m:mo><m:mi>ω</m:mi><m:mi>L</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+    <para id="eip-637"><emphasis effect="bold">Impedance.</emphasis> We call the complex number <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>R</m:mi><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>L</m:mi><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math> the complex
+impedance for the series <emphasis effect="italics">RLC</emphasis> network because it is the complex number that
+relates the phasor voltage <m:math>
+<m:mi>V</m:mi>
+</m:math> to the phasor current <m:math>
+<m:mi>I</m:mi>
+</m:math>:</para><equation id="id2261608"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>Z</m:mi>
+          <m:mi>I</m:mi>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi>Z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>R</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>ω</m:mi>
+          <m:mi>L</m:mi>
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>C</m:mi>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation><para id="eip-276">The complex number <m:math>
+<m:mi>Z</m:mi>
+</m:math> depends on the numerical values of resistance <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>R</m:mi><m:mo>)</m:mo></m:mrow></m:math>, inductance <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>L</m:mi><m:mo>)</m:mo></m:mrow></m:math>, and capacitance <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>C</m:mi><m:mo>)</m:mo></m:mrow></m:math>, but it also depends on the angular frequency <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>)</m:mo></m:mrow></m:math> used for the sinusoidal source. This impedance may be manipulated as follows to put it into an illuminating form:</para><equation id="eip-220"><m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mi>Z</m:mi>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mi>R</m:mi>
+<m:mo>+</m:mo>
+<m:mi>j</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ω</m:mi>
+<m:mi>L</m:mi>
+<m:mo>-</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mrow>
+<m:mi>ω</m:mi>
+<m:mi>C</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mo>)</m:mo>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi>R</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:msqrt>
+            <m:mfrac>
+              <m:mi>L</m:mi>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+          </m:msqrt>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>ω</m:mi>
+            <m:msqrt>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:msqrt>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>ω</m:mi>
+                <m:msqrt>
+                  <m:mrow>
+                    <m:mi>L</m:mi>
+                    <m:mi>C</m:mi>
+                  </m:mrow>
+                </m:msqrt>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation>
+    
+    
+    
+    
+    
+    <para id="eip-162">The parameter <m:math>
+<m:msub>
+<m:mi>ω</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mrow>
+<m:msqrt>
+<m:mi>L</m:mi>
+<m:mi>C</m:mi>
+</m:msqrt>
+</m:mrow>
+</m:mfrac>
+</m:math>
+is a parameter that you will learn to call an "undamped natural frequency" in your more advanced circuits courses. With it, we may write the impedance as</para><equation id="eip-478"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>Z</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>L</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>ω</m:mi>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+              </m:mfrac>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mi>ω</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="eip-178">The frequency <m:math>
+<m:mfrac>
+<m:mrow>
+<m:mi>ω</m:mi>
+</m:mrow>
+<m:mrow>
+<m:msub>
+<m:mi>ω</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:mrow>
+</m:mfrac>
+</m:math>
+is a normalized frequency that we denote by <m:math>
+<m:mi>ν</m:mi>
+</m:math>. Then the impedence, as a function of normalized frequency, is</para><equation id="eip-270"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>Z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>L</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>ν</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    
+    
+    
+    
+    <para id="eip-779">When the normalized frequency equals one <m:math>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+<m:mo>)</m:mo>
+</m:math>, then the impedance is entirely real and <m:math>
+<m:mi>Z</m:mi>
+<m:mo>=</m:mo>
+<m:mi>R</m:mi>
+</m:math>. The circuit looks like it is a single resistor.</para><equation id="eip-952-1"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+                 <m:mrow>
+<m:mo>|</m:mo>        
+    <m:mi>Z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+<m:mo>|</m:mo>            
+<m:mo>=</m:mo>
+            <m:mi>R</m:mi>
+<m:mo>[</m:mo>
+<m:mn>1</m:mn>            
+<m:mo>+</m:mo>
+            <m:mo>(</m:mo>
+<m:mfrac>
+<m:mrow>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>L</m:mi>
+</m:mrow>   
+<m:mrow>
+<m:mi>R</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:msup>
+<m:mo>)</m:mo>
+<m:mn>2</m:mn>
+</m:msup>
+
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>ν</m:mi>
+              </m:mfrac>
+<m:msup>
+              <m:mo>)</m:mo>
+        <m:mn>2</m:mn>
+</m:msup>
+<m:msup>
+<m:mo>]</m:mo>
+<m:mrow>
+<m:mn>1</m:mn>
+<m:mo>/</m:mo>
+<m:mn>2</m:mn>
+</m:mrow>
+</m:msup>
+    </m:mrow>
+            <m:mo>.</m:mo>
+        
+           </m:mtd>
+</m:mtr>
+
+
+
+<m:mtr>
+<m:mtd>
+<m:mo form="prefix">arg</m:mo> <m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>Z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mo form="prefix">tan</m:mo><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mfrac><m:mrow><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mi>L</m:mi></m:mrow><m:mi>R</m:mi></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>ν</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:mstyle>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2262213-12">The impedance obeys the following symmetries around <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>:</para>
+    
+    
+    <equation id="eip-151"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:mi>Z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>Z</m:mi>
+              <m:mo>*</m:mo>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>ν</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mo>|</m:mo>
+<m:mi>Z</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+<m:mo>|</m:mo>
+<m:mo>=</m:mo>
+<m:mo>|</m:mo>
+<m:mi>Z</m:mi>
+<m:mo>(</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mi>ν</m:mi>
+</m:mfrac>
+<m:mo>)</m:mo>
+<m:mo>|</m:mo>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd>
+<m:mrow>
+          <m:mi>a</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>g</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>Z</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mo>-</m:mo>
+          <m:mi>a</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>g</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>Z</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>ν</m:mi>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="eip-727">In the next paragraph we show how this impedance function influences the current that flows in the circuit.</para><para id="eip-133"><emphasis effect="bold">Resonance.</emphasis> The phasor representation for the current that flows the current that flows in the series <emphasis effect="italics">RLC</emphasis> circuit is </para><equation id="id2262482"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>I</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mi>V</m:mi>
+            <m:mrow>
+              <m:mi>Z</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mi>Z</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mo form="prefix">arg</m:mo>
+              <m:mi>Z</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:msup>
+          <m:mi>V</m:mi>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="eip-976">The function <m:math>
+<m:mi>H</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mrow>
+<m:mi>Z</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+</m:mfrac>
+</m:math>
+displays a "resonance phenomenon." that is, <m:math>
+<m:mo>|</m:mo>
+<m:mi>H</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+<m:mo>|</m:mo>
+</m:math>
+peaks at <m:math>
+<m:mi>ν</m:mi>
+<m:mo>=</m:mo>
+<m:mn>1</m:mn>
+</m:math> and decreases to zero and 
+<m:math>
+<m:mi>ν</m:mi>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:math>
+and
+<m:math>
+<m:mi>ν</m:mi>
+<m:mo>=</m:mo>
+<m:mi>∞</m:mi>
+</m:math>:</para><equation id="id2262687">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mi>H</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>R</m:mi>
+                  </m:mfrac>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>ν</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mi>∞</m:mi>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <para id="eip-920">When <m:math>
+<m:mo>|</m:mo>
+<m:mi>H</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+<m:mo>|</m:mo>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:math>, no current flows.</para><para id="id2262818">The function <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math> is plotted against the normalized frequency <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>ω</m:mi><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub></m:mfrac></m:mstyle></m:math> in Figure 3.14. The resonance peak occurs at <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, where <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>|</m:mo><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mn>1</m:mn><m:mi>R</m:mi></m:mfrac></m:mstyle></m:math> meaning that the circuit looks purely resistive. Resonance phenomena
+underlie the frequency selectivity of all electrical and mechanical networks.</para>
+    <figure id="uid3"><media id="uid3_media" alt="Figure three is a bell curve plotted on a cartesian graph. The curve is centered at a horizontal value of 1, and its tails extend past 10 to the right and 0.1 to the left. The curve's maximum value is labeled as 1/R. To the right of the graph is an equation that reads v = ω/ω_0. Above the graph is a title that reads, | H (v) | versus v.">
+        <image mime-type="image/png" src="../../media/pic014-5dc8.png" id="uid3_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 225. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic014-a258.eps" id="uid3_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Resonance in a Series <emphasis effect="italics">RLC</emphasis> Circuit</caption></figure>
+<exercise id="fs-id3396683">
+<problem id="fs-id3396685">
+    <para id="id2262961">(MATLAB) Write a MATLAB program to compute and plot <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>|</m:mo></m:mrow></m:math> and <m:math overflow="scroll">
+<m:mo form="prefix">arg</m:mo><m:mrow><m:mi>H</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> versus <m:math>
+<m:mi>ν</m:mi>
+</m:math> for <m:math>
+<m:mi>ν</m:mi>
+</m:math> ranging from 0.1 to 10 in steps of 0.1. Carry out your computations for <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mfrac><m:mi>L</m:mi><m:mi>R</m:mi></m:mfrac><m:mo>=</m:mo><m:mn>10</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>1</m:mn></m:mrow></m:mstyle></m:math>, and 0.01, and overplot
+your results.</para></problem>
+</exercise>
+    
+    
+    <para id="id2263081"><emphasis effect="bold">Circle Criterion and Power Factor.</emphasis> Our study of the impedance
+<m:math overflow="scroll"><m:mrow><m:mi>Z</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> and the function <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>H</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>Z</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math> brings insight into the resonance of an
+<emphasis effect="italics">RLC</emphasis> circuit and illustrates the ffequency selectivity of the circuit. But there
+is more that we can do to illuminate the behavior of the circuit.</para>
+    <equation id="eip-526"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>V</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>R</m:mi>
+            <m:mi>I</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mi>L</m:mi>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>ω</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+            <m:mi>I</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    <para id="eip-91">This equation shows how voltage is divided between resistor voltage <emphasis effect="italics">RI</emphasis> and inductor-capacitor voltage <m:math>
+<m:mi>j</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ω</m:mi>
+<m:mi>L</m:mi>
+<m:mo>-</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mrow>
+<m:mi>ω</m:mi>
+<m:mi>C</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mo>)</m:mo>
+<m:mi>I</m:mi>
+<m:mo>.</m:mo>
+</m:math> </para><equation id="id2263294">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>R</m:mi>
+          <m:mi>I</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:msub>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mi>L</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mi>ω</m:mi>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+            </m:mfrac>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mi>ω</m:mi>
+            </m:mfrac>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mi>I</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263361">or</para>
+    
+    <equation id="eip-864"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>V</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>R</m:mi>
+            <m:mi>I</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mi>L</m:mi>
+              </m:mrow>
+              <m:mi>R</m:mi>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>ν</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>R</m:mi>
+            <m:mi>I</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <para id="eip-184">In order to simplify our notation, we can write this equation as</para>
+    <equation id="eip-754"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi>V</m:mi>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>k</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2263478">where <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> is the phasor voltage <m:math overflow="scroll"><m:mrow><m:mi>R</m:mi><m:mi>I</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the real variable</para>
+    
+    
+    
+    <equation id="eip-332"><m:math>
+<m:mi>k</m:mi>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>)</m:mo>
+<m:mo>=</m:mo>
+<m:mfrac>
+<m:mrow>
+<m:msub>
+<m:mi>ω</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+<m:mi>L</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mi>R</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mo>(</m:mo>
+<m:mi>ν</m:mi>
+<m:mo>-</m:mo>
+<m:mfrac>
+<m:mn>1</m:mn>
+<m:mi>ν</m:mi>
+</m:mfrac>
+<m:mo>)</m:mo>
+<m:mo>.</m:mo>
+</m:math></equation><para id="id2263586"><link target-id="eip-754"/> brings very important geometrical insights. First, even though
+the phasor voltage <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> in the <emphasis effect="italics">RLC</emphasis> circuit is complex, the terms <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> and
+<m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> are out of phase by <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> radians. This means that, for every allowable value of <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math>, the corresponding <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> must add in a right triangle to produce the source voltage <m:math>
+<m:mi>V</m:mi>
+</m:math>. This is illustrated in <link target-id="eip-id28278539"/>. As the frequency <m:math>
+<m:mi>ν</m:mi>
+</m:math> changes, then <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> changes, producing other values of <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> and <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> that sum to <m:math>
+<m:mi>V</m:mi>
+</m:math>. Several such solutions for <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> and <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> are illustrated in Figure 3.15(b). From the figure we gain the clear impression that the phasor voltage <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>&gt;R</m:mi>
+</m:msub>
+</m:math> lies on a circle of radius <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>V</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> centered at <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>V</m:mi><m:mn>2</m:mn></m:mfrac></m:mstyle></m:math> Let's try this solution,</para>
+    <equation id="eip-467"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>V</m:mi>
+            <m:mi>R</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mfrac>
+            <m:mi>V</m:mi>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+          <m:mo>+</m:mo>
+          <m:mfrac>
+            <m:mi>V</m:mi>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ψ</m:mi>
+            </m:mrow>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfrac>
+            <m:mi>V</m:mi>
+            <m:mn>2</m:mn>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ψ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>,</m:mo>
+       </m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation><para id="eip-36">and explore its consequences. When this solution is substituted into <link target-id="eip-754"/>, the result is</para>
+    
+    <equation id="eip-268"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>V</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>V</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>ψ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>k</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mfrac>
+              <m:mi>V</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>ψ</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    
+    <para id="eip-107">or</para><equation id="eip-815"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>ψ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>k</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>ν</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <figure id="uid6"><subfigure id="eip-id28278539">
+<media id="uid51_media" alt="Figure four part a is a cartesian graph with three line segments. Two segments point out from the origin, one moving far into the first quadrant, with a label V at its end, and another moving a smaller distance into the fourth quadrant, with a label V_R at its end. A third line segment connects beginning from the end of the line segment in the fourth quadrant and ending at the end of the line segment in the first quadrant. The third line segment is labeled jk(v) V_R.">
+        <image mime-type="image/png" src="../../media/pic015-880b.png" id="uid51_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 170. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic015-3b19.eps" id="uid51_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+
+<subfigure id="eip-id29033979">
+<media id="uid6_media" alt="Figure four part b is a cartesian graph consisting of an assortment of line segments mostly encompassed by a circle whose center is somewhere in the first quadrant and its edge passing through the origin. Inside the circle, from the origin, are five line segments that extend to the edge of the circle at various unevenly spaced points on the edge of the circle. Out of these five segments, the segment with the strongest positive slope is labeled V_R, and the segment with the second-strongest negative slope is labeled V_R. The middle of the five segments extends furthest to the right, and its end at the edge of the circle is labeled V. Two more line segments from this point follow, both connecting this end point to the end points of the line segments labeled V_R. Both of these line segments are labeled jk(v)V_R. A final line segment is drawn tangent to the circle and passing through the origin from the second quadrant into the fourth.">
+        <image mime-type="image/png" src="../../media/pic016-3dd8.png" id="uid6_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 196. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic016-aec2.eps" id="uid6_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </subfigure><caption>The Components of <m:math overflow="scroll"><m:mrow><m:mi>V</m:mi><m:mo>;</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">a</m:mi><m:mo>)</m:mo></m:mrow></m:math> Addition of <emphasis effect="italics">V<sub>R</sub></emphasis> and <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> to
+Produce <emphasis effect="italics">V</emphasis>, and (b) Several Values of <emphasis effect="italics">V<sub>R</sub></emphasis> and <m:math overflow="scroll"><m:mrow><m:mi>j</m:mi><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub></m:mrow></m:math> that Produce <emphasis effect="italics">V</emphasis></caption></figure>
+    
+    <para id="eip-195">If we multiply the left-hand side by its complex conjugate and the right-hand side by its complex conjugate, we obtain the identity</para><equation id="eip-992"><m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mo>=</m:mo><m:mn>2</m:mn><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>[</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:msup><m:mi>k</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:mo>]</m:mo><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id226431611">This equation tells us how the angle <m:math>
+<m:mi>ψ</m:mi>
+</m:math> depends on <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> and, conversely, how
+<m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:math> depends on <m:math><m:mi>ψ</m:mi></m:math>:</para>
+    <equation id="id2264428">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>ψ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>k</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>ν</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>k</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi>ν</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2264493">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msup>
+            <m:mi>k</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>ν</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mi>ψ</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mi>ψ</m:mi>
+            </m:mrow>
+          </m:mfrac>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2264316">The number <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi></m:mrow></m:math> lies between <m:math overflow="scroll"><m:mo>-</m:mo><m:mn>1</m:mn></m:math>
+and <m:math><m:mo>+</m:mo><m:mn>1</m:mn></m:math>, so a circular solution does indeed
+work.</para>
+<exercise id="fs-id5510957">
+<problem id="fs-id5510959">
+    <para id="id2264590">Check <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>≤</m:mo><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi><m:mo>≤</m:mo><m:mn>1</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi><m:mo>&lt;</m:mo><m:mi>k</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi><m:mo>&lt;</m:mo><m:mi>k</m:mi><m:mo>&lt;</m:mo><m:mi>∞</m:mi></m:mrow></m:math>
+for <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>≤</m:mo><m:mi>ψ</m:mi><m:mo>≤</m:mo><m:mi>π</m:mi></m:mrow></m:math>. Sketch <m:math><m:mi>k</m:mi>
+</m:math> versus <m:math><m:mi>ψ</m:mi></m:math> and <m:math><m:mi>ψ</m:mi></m:math> versus <m:math><m:mi>k</m:mi></m:math>.</para></problem>
+</exercise>
+    
+    <para id="id2264728">The equation <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>V</m:mi><m:mi>R</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>V</m:mi><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ψ</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math> is illustrated in <link target-id="uid7"/>. The angle
+that <m:math>
+<m:msub>
+<m:mi>V</m:mi>
+<m:mi>R</m:mi>
+</m:msub>
+</m:math> makes with <m:math>
+<m:mi>V</m:mi>
+</m:math> is determined from the equation</para>
+    <equation id="eip-689"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>φ</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>π</m:mi>
+            <m:mo>-</m:mo>
+            <m:mi>ψ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>π</m:mi>
+            <m:mo>⇒</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>ψ</m:mi>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><figure id="uid7"><media id="uid7_media" alt="Figure five is a cartesian graph containing five line segments and one circle. The circle is centered somewhere in the first quadrant a point of its edge on the origin of the graph. At the origin is also a tangent line to this circle that begins in the second quadrant and moves with a constant negative slope to the fourth quadrant. Inside the graph are the other four line segments. Two begin from the origin, one extending with a strong positive slope to the edge of the circle at a spot in the first quadrant. This segment has an arrow pointing away from the origin, and is labeled V_R. The other extends with a shallower positive slope and stops at approximately (not designated) the center of the circle. The angle between these two line segments from the origin is measured as Φ. The third line segment continues from the same point that the second ends from (approximately the center of the circle) and with the same slope extends to the opposite side of the circle, with the end of this segment marked by an arrow pointing away from the origin and labeled V. Also from the center of the circle is a segment that meets the end of the first segment at the end of the circle near the top of the figure, thus having a negative slope. The angle between this line segment and the line segment from the center to the far-right edge of the circle is measured as ψ. The angle between the last described line segment and the first line segment from the origin towards the top of the circle is also labeled Φ.">
+        <image mime-type="image/png" src="../../media/pic017-de7b.png" id="uid7_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 158. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic017-3ad3.eps" id="uid7_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Voltages <emphasis effect="italics">V</emphasis> and <emphasis effect="italics">V<sub>R</sub></emphasis>, and the Power Factor <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>φ</m:mi></m:mrow></m:math></caption></figure>
+    
+    <para id="eip-831">In the study of power systems, <m:math>
+<m:mo form="prefix">cos</m:mo>
+<m:mi>φ</m:mi>
+</m:math> is a "power factor" that determines how much power is delivered to the resistor. We may denote the power factor as</para><equation id="eip-607"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>η</m:mi><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>φ</m:mi><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mfrac><m:mi>ψ</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id22649281">But <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi></m:mrow></m:math> may be written as</para>
+    <equation id="eip-814"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>η</m:mi><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mi>φ</m:mi><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mfrac><m:mi>ψ</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2264928">But <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi></m:mrow></m:math> may be written as</para>
+    
+    
+    
+    <equation id="eip-286"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mi>ψ</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mi>φ</m:mi>
+        <m:mrow>
+          <m:mo>-</m:mo>
+          <m:mo>-</m:mo>
+          <m:mo form="prefix">sin</m:mo>
+          <m:msup>
+            <m:mrow/>
+            <m:mtext>2</m:mtext>
+          </m:msup>
+          <m:mi>φ</m:mi>
+</m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mi>φ</m:mi>
+          <m:mo>-</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>-</m:mo>
+            <m:msup>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mn>2</m:mn>
+          <m:msup>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mi>φ</m:mi>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mn>2</m:mn>
+          <m:msup>
+            <m:mi>η</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation><para id="id2265164">Therefore the square of the power factor <emphasis effect="italics">η</emphasis> is</para>
+    <equation id="eip-297"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msup><m:mi>η</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>1</m:mn><m:mo>+</m:mo><m:msup><m:mi>k</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math>
+</equation><para id="id2265179">The power factor is a maximum of 1 for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, corresponding to <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>=</m:mo><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mo>)</m:mo></m:mrow></m:math>. It is a minimum of 0 for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>±</m:mo><m:mi>∞</m:mi></m:mrow></m:math>, corresponding to <m:math overflow="scroll"><m:mrow><m:mi>ν</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>∞</m:mi></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>∞</m:mi><m:mo>)</m:mo></m:mrow></m:math>.</para>
+<exercise id="fs-id5275222">
+<problem id="fs-id5275224">
+    <para id="id2265374">With <m:math>
+<m:mi>k</m:mi>
+</m:math> defined as <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>k</m:mi><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mi>L</m:mi></m:mrow><m:mrow><m:mi>R</m:mi></m:mrow></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>-</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>ν</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow></m:mstyle></m:math>, plot <m:math overflow="scroll"><m:mrow><m:msup><m:mi>k</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>ν</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>ψ</m:mi></m:mrow></m:math>, and <m:math>
+<m:msup>
+<m:mi>η</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:math> versus <m:math>
+<m:mi>ν</m:mi>
+</m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id5917069">
+<problem id="fs-id5917071">
+    <para id="id2265523">Find the value of <m:math>
+<m:mi>ν</m:mi>
+</m:math> that makes the power factor <m:math overflow="scroll"><m:mrow><m:mi>η</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>707</m:mn></m:mrow></m:math>.</para></problem>
+</exercise>
+  </content>
+</document>

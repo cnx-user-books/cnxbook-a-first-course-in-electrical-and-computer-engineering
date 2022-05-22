@@ -1,0 +1,250 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Preface to "A First Course in Electrical and Computer Engineering"</title>
+  <metadata>
+  <md:content-id>m21476</md:content-id><md:title>Preface to "A First Course in Electrical and Computer Engineering"</md:title>
+  <md:abstract/>
+  <md:uuid>21bd43b9-257d-4199-ab46-a92c648428c6</md:uuid>
+</metadata>
+
+<content>
+    <note id="fs-id12411710">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note>
+    
+   
+<para id="eip-465">This book was written for an experimental freshman course at the University of Colorado. The course is now an elective that the majority of our electrical and computer engineering students take in the second semester of their freshman year, just before their first circuits course. Our department decided to offer this course for several reasons:</para><list id="id2258934" display="block" list-type="enumerated">
+      <item id="uid1">we wanted to pique student' interest in engineering by acquainting them
+with engineering teachers early in their university careers and by providing
+with exposure to the types of problems that electrical and computer engineers
+are asked to solve;
+</item>
+      <item id="uid2">we wanted students entering the electrical and computer engineering
+programs to be prepared in complex analysis, phasors, and linear
+algebra, topics that are of fundamental importance in our discipline;
+</item>
+      <item id="uid3">we wanted students to have an introduction to a software application
+tool, such as MATLAB, to complete their preparation for practical
+and efficient computing in their subsequent courses and in their professional careers;
+</item>
+      <item id="uid4">we wanted students to make early contact with advanced topics like
+vector graphics, filtering, and binary coding so that they would gain a
+more rounded picture of modern electrical and computer engineering.
+</item>
+    </list>
+    
+    <para id="eip-378">In order to introduce this course, we had to sacrifice a second semester of Pascal programming. We concluded that the sacrifice was worth making because we found that most of our students were prepared for high-level language computing after just one semester of programming.</para><para id="id2259007">We believe engineering educators elsewhere are reaching similar conclusions about their own students and curriculums. We hope this book helps
+create a much needed dialogue about curriculum revision and that it leads to
+the development of similar introductory courses that encourage students to
+enter and practice our craft.</para>
+    <para id="id2259016">Students electing to take this course have completed one semester of calculus, computer programming, chemistry, and humanities. Concurrently with
+this course, students take physics and a second semester of calculus, as well as
+a second semester in the humanities. By omitting the advanced topics marked
+by asterisks, we are able to cover <link document="m21412">Complex Numbers</link> through <link document="m21454">Linear Algebra</link>, plus two of the three
+remaining chapters. The book is organized so that the instructor can select
+any two of the three. If every chapter of this book is covered, including the
+advanced topics, then enough material exists for a two-semester course.</para>
+    <para id="id2259029">The first three chapters of this book provide a fairly complete coverage
+of complex numbers, the functions <emphasis effect="italics">e<sup>x</sup></emphasis> and <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>, and phasors. Our department
+philosophy is that these topics must be understood if a student is to succeed
+in electrical and computer engineering. These three chapters may also be
+used as a supplement to a circuits course. A measured pace of presentation,
+taking between sixteen and eighteen lectures, is sufficient to cover all but the
+advanced sections in <link document="m21412">Complex Numbers</link> through <link document="m21469">Phasors</link>.</para>
+    <para id="id2259077">The chapter on <link document="m21454">"linear algebra"</link> is prerequisite for all subsequent chapters.
+We use eight to ten lectures to cover it. We devote twelve to sixteen lectures
+to cover topics from <link document="m21491">Vector Graphics</link> through <link document="m21405">Binary Codes</link>. (We assume a semester consisting
+of 42 lectures and three exams.) The <link document="m21491">chapter on vector graphics</link> applies the linear algebra learned
+in the <link document="m21454">previous chapter</link> to the problem of translating, scaling, and rotating
+images. <link document="m21417">"Filtering"</link> introduces the student to basic ideas in averaging and
+filtering. The chapter on <link document="m21405">"Binary Codes"</link> covers the rudiments of binary coding, including Huffman
+codes and Hamming codes.</para>
+    <para id="id2259090">If the users of this book find <link document="m21491">"Vector Graphics"</link> through <link document="m21405">"Binary Codes"</link> too confining, we encourage them to supplement the essential material in <link document="m21412">"Complex Numbers"</link> through <link document="m21454">"Linear Algebra"</link>
+with their own course notes on additional topics. Within electrical and computer engineering there are endless possibilities. Practically any set of topics that can be taught with conviction and enthusiasm will whet the student's
+appetite. We encourage you to write to us or to our editor, Tom Robbins,
+about your ideas for additional topics. We would like to think that our book
+and its subsequent editions will have an open architecture that enables us to
+accommodate a wide range of student and faculty interests.</para>
+    <para id="id2259104">Throughout this book we have used MATLAB programs to illustrate key
+ideas. MATLAB is an interactive, matrix-oriented language that is ideally
+suited to circuit analysis, linear systems, control theory, communications, linear algebra, and numerical analysis. MATLAB is rapidly becoming a standard
+software tool in universities and engineering companies. (For more information about MATLAB, return the attached card in the back of this book to The
+MathWorks, Inc.) MATLAB programs are designed to develop the student's
+ability to solve meaningful problems, compute, and plot in a high-level applications language. Our students get started in MATLAB by working through
+<link document="m21391">“An Introduction to MATLAB,”</link> while seated at an IBM PC
+(or look-alike) or an Apple Macintosh. We also have them run through the
+demonstration programs in <link document="m21412">"Complex Numbers"</link>. Each week we give three classroom
+lectures and conduct a one-hour computer lab session. Students use this lab
+session to hone MATLAB skills, to write programs, or to conduct the numerical experiments that are given at the end of each chapter. We require that
+these experiments be carried out and then reported in a short lab report that
+contains (i) introduction, (ii) analytical computations, (iii) computer code,
+(iv) experimental results, and (v) conclusions. The quality of the numerical
+results and the computer graphics astonishes students. Solutions to the chapter problems are available from the publisher for instructors who adopt this text for classroom use.</para>
+    <para id="id2259140">We wish to acknowledge our late colleague Richard Roberts, who encouraged us to publish this book, and Michael Lightner and Ruth Ravenel, who
+taught <link document="m21454">"Linear Algebra"</link> and <link document="m21491">"Vector Graphics"</link> and offered helpful suggestions on the manuscript.
+We thank C. T. Mullis for allowing us to use his notes on binary codes to
+guide our writing of <link document="m21405">"Binary Codes"</link>. We thank Cédric Demeure and Peter Massey
+for their contributions to the writing of <link document="m21391">"An Introduction to MATLAB"</link> and <link document="m21477">"The Edix Editor"</link>. We thank Tom Robbins,
+our editor at Addison-Wesley, for his encouragement, patience, and many
+suggestions. We are especially grateful to Julie Fredlund, who composed this
+text through many drafts and improved it in many ways. We thank her for
+preparing an excellent manuscript for production.</para>
+    <para id="id2259164"><preformat id="foo">L. L. Scharf
+R. T. Behrens
+Boulder, Colorado</preformat></para>
+    <section id="uid5">
+      <title>To the Teacher:</title>
+      <para id="id2259177">An incomplete understanding of complex numbers and phasors handicaps
+students in circuits and electronics courses, and even more so in advanced
+courses such as electromagnetics. optics, linear systems, control, and communication systems. Our faculty has decided to address this problem as early
+as possible in the curriculum by designing a course that drills complex numbers and phasors into the minds of beginning engineering students. We have
+used power signals, musical tones, Lissajous figures, light scattering, and <emphasis effect="italics">RLC</emphasis>
+circuits to illustrate the usefulness of phasor calculus. <link document="m21454">"Linear Algebra"</link> through <link document="m21405">"Binary Codes"</link>
+introduce students to a handful of modern ideas in electrical and computer
+engineering. The motivation is to whet students' appetites for more advanced
+problems. The topics we have chosen – linear algebra, vector graphics, filtering, and binary codes – are only representative.</para>
+      <para id="id2259215">At first glance, many of the equations in this book look intimidating to
+beginning students. For this reason, we proceed at a very measured pace. In
+our lectures, we write out in agonizing detail every equation that involves a
+sequence or series. For example, the sum 
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>z</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> 
+is written out as</para>
+      <equation id="id2259266">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>z</m:mi>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo>⋯</m:mo>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>,</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259314">and then it is evaluated for some specific value of <emphasis effect="italics">z</emphasis> before we derive the
+analytical result <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:msup><m:mi>z</m:mi><m:mi>N</m:mi></m:msup></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>-</m:mo><m:mi>z</m:mi></m:mrow></m:mfrac></m:mstyle></m:math> Similarly, an infinite sequence like <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munder><m:mo movablelimits="true" form="prefix">lim</m:mo><m:mrow><m:mi>n</m:mi><m:mo>→</m:mo><m:mi>∞</m:mi></m:mrow></m:munder><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mfrac><m:mi>x</m:mi><m:mi>n</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mstyle></m:math> is written out as</para>
+      <equation id="id2258212">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:mfrac>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:mfrac>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>3</m:mn>
+            </m:msup>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mo>...</m:mo>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mn>1</m:mn>
+                <m:mo>+</m:mo>
+                <m:mfrac>
+                  <m:mi>x</m:mi>
+                  <m:mn>100</m:mn>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>100</m:mn>
+            </m:msup>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mo>...</m:mo>
+            <m:mo>,</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2259775">and then it is evaluated for some specific <emphasis effect="italics">x</emphasis> and for several values of <emphasis effect="italics">n</emphasis> before
+the limit is derived. We try to preserve this practice of pedantic excess until
+it is clear that every student is comfortable with an idea and the notation for
+coding the idea.</para>
+    </section>
+    <section id="uid6">
+      <title>To the Student:</title>
+      <para id="id2259809">These are exciting times for electrical and computer engineering. To celebrate its silver anniversary, the National Academy of Engineering announced
+in February of 1990 the top ten engineering feats of the previous twenty-five
+years. The Apollo moon landing, a truly Olympian and protean achievement,
+ranked number one. However, a number of other achievements in the top
+ten were also readily identifiable as the products of electrical and computer
+engineers:</para>
+      <list id="id2259820" display="block" list-type="enumerated">
+        <item id="uid7">communication and remote sensing satellites,
+</item>
+        <item id="uid8">the microprocessor,
+</item>
+        <item id="uid9">computer-aided design and manufacturing (CADCAM),
+</item>
+        <item id="uid10">computerized axial tomography (CAT scan),
+</item>
+        <item id="uid11">lasers, and
+</item>
+        <item id="uid12">fiber optic communication.
+</item>
+      </list>
+      <para id="id2259894">As engineering students, you recognize these achievements to be important
+milestones for humanity; you take pride in the role that engineers have played
+in the technological revolution of the twentieth century.</para>
+      <para id="id2259901">So how do we harness your enthusiasm for the grand enterprise of engineering? Historically, we have enrolled you in a freshman curriculum of mathematics, science, and humanities. If you succeeded, we enrolled you in
+an engineering curriculum. We then taught you the details of your profession
+and encouraged your faith that what you were studying is what you must
+study to be creative and productive engineers. The longer your faith held,
+the more likely you were to complete your studies. This seems like an imperious approach to engineering education, even though mathematics, physics,
+and the humanities are the foundation of engineering, and details are what
+form the structure of engineering. It seems to us that a better way to stimulate
+your enthusiasm and encourage your faith is to introduce you early in your
+studies to engineering teachers who will share their insights about some of the
+fascinating advanced topics in engineering, while teaching you the mathematical and physical principles of engineering. But you must match the teacher's commitment with your own commitment to study. This means that you must
+attend lectures, read texts, and work problems. You must be inquisitive and
+skeptical. Ask yourself how an idea is limited in scope and how it might be
+extended to apply to a wider range of problems. For, after all, one of the great
+themes of engineering is that a few fundamental ideas from mathematics and
+science, coupled with a few principles of design, may be applied to a wide
+range of engineering problems. Good luck with your studies.</para>
+    </section>
+  </content>
+</document>

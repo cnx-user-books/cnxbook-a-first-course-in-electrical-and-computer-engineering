@@ -1,0 +1,52 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Variables</title>
+  <metadata>
+  <md:content-id>m21397</md:content-id><md:title>An Introduction to MATLAB: Variables</md:title>
+  <md:abstract/>
+  <md:uuid>fabc6fd7-01f5-4615-a536-a439273cebf8</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-162">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Any result you wish to keep for a while may be assigned to a variable
+other than <code>ans</code>:</para>
+    <code id="eip-504" display="block">≫ x = pi/7
+≫ cos(x)
+≫ y = sin(x)^2+cos(x)^2;
+≫ y</code>
+    
+    
+    
+    <para id="id2259035">A semicolon (;) at the end of the line suppresses printing of the result, as when
+we calculated <m:math>
+<m:mi>y</m:mi>
+</m:math> in the next-to-last line just shown. This feature is especially
+useful when writing MATLAB programs where intermediate results are not
+of interest and when working with large matrices.</para>
+    <para id="id2259055">MATLAB supports the dynamic creation of variables. You can create
+your own variables by just assigning a value to a variable. For example, type <code>x = 3.5+4.2</code>. Then the real variable <code>x</code> contains the value <code>7.7</code>. Variable names
+must start with an alphabetical character and be less than nineteen characters
+long. If you type <code>x = -3*4.0</code>, the content <code>7.7</code> is replaced by the value <code>-12</code>.
+Some commands allow you to keep track of all the variables that you have
+already created in your session. Type <code>who</code> or <code>whos</code> to get the list and names
+of the variables currently in memory (<code>whos</code> gives more information than <code>who</code>).
+To clear all the variables, type in <code>clear</code>. To clear a single variable (or several)
+from the list, follow the command <code>clear</code> by the name of the variable you want
+to delete or by a list of variable names separated by spaces. Try it now.</para>
+    <para id="id2259143">MATLAB is case sensitive. In other words, <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>X</m:mi>
+</m:math> are two different variables. You can control the case sensitivity of MATLAB by entering the command <code>casesen</code>, which toggles the sensitivity. The command <code>casesen</code> on enforces case sensitivity, and <code>casesen off</code> cancels it.</para>
+    <para id="id2258196">If one line is not enough to enter your command, then finish the first line with two dots <m:math overflow="scroll"><m:mo>(</m:mo></m:math>. . <m:math overflow="scroll"><m:mo>)</m:mo></m:math> and continue on the next line. You can enter more than one command per line by separating them with commas if you want the result displayed or with semicolons if you do not want the result displayed. For example, type</para>
+    <code id="eip-771" display="block">≫ theta = pi/7; x = cos(theta); y = sin(theta);
+≫ x,y</code>
+    
+    <para id="id2259551">to first compute <code>theta</code>,<code>cos(theta)</code>, and <code>sin(theta)</code> and then to print <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>.</para>
+    
+  </content>
+</document>

@@ -1,0 +1,140 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Graphics</title>
+  <metadata>
+  <md:content-id>m21388</md:content-id><md:title>An Introduction to MATLAB: Graphics</md:title>
+  <md:abstract/>
+  <md:uuid>ba8f9240-5d92-4727-94e0-ce115ff391b7</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-704">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">In <link document="m21412">"Complex Numbers"</link>, you learn that complex variables can be represented as points in the plane. MATLAB makes it easy for you to plot complex variables in a graph. Type <code>z1 = 1+.5*j;plot(z1,'o')</code>. The graph window should be activated and the point <code>z1</code> displayed by a 'o'. You must specify the symbol for display, and the authorized symbols for point display are <code>'.', 'o', '+',</code>
+and <code>'*'</code>. When you are displaying a curve (to come later), no type is necessary. MATLAB automatically adjusts the scale on a graph to accommodate the value of the point being plotted. In this case, the range is <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> for the real part and <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>]</m:mo></m:mrow></m:math> for the imaginary part.</para>
+    <para id="id2259294">Let's now plot a second complex number by typing <code>z2 = 2+1.5*j; plot(za,'o')</code>. Note that the second <code>plot</code> command erases the first <code>plot</code> and changes the scaling to <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>4</m:mn><m:mo>]</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>]</m:mo></m:mrow></m:math>. Sometimes you may want to have the points plotted on the same graph. To achieve this, you have to use the command hold on after the first plot. Try the following:</para>
+    <code id="eip-35" display="block">≫ plot(z2,'o')
+≫ hold on
+≫ plot(z1,'o')
+≫ hold off</code>
+    
+    
+    
+    <para id="id2259494">The advantage in using the <code>hold</code> command is that there is no limit to the number of plot commands you can type before the hold is turned off, and
+these plots may involve the same variable plotted over a range of values. You can also use different point displays. A disadvantage of the <code>hold</code> command is that the scaling is enforced by the first plot and is not adjusted for subsequent plots. This is why we plot the point <code>z2</code> first. Try reversing the order of the plots and see what happens. This means that points outside the scaling will not be displayed. The command <code>hold off</code> permits erasing the current graph for the next <code>plot</code> command.</para>
+    <para id="id2259508">You can freeze the scaling of the graph by using the command <code>axis</code>. MATLAB gives you the message</para>
+    <code id="id2259513" display="block">Axis scales frozen
+ans =
+   0 4 0 3
+</code>
+    
+    
+    <para id="id2259538">This freezes the current axis scaling for subsequent plots. Similarly, if you type axis a second time, MATLAB resumes the automatic scaling feature and prints the message</para>
+    <code id="id2259544" display="block">Axis scales auto-ranged
+ans =
+   0 4 0 3</code>
+    
+    
+    <para id="id2259572">The axis scaling can also be manually enforced by using the command</para>
+    <code id="eip-433" display="block">≫ axis([xmin xmax ymin ymax])</code>
+    <para id="id2259588">where <code>(xmin, ymin)</code> is the lower left corner and <code>(xmax, ymax)</code> is the upper
+right corner of the graph. This scaling remains in effect until the next <code>axis</code>
+command is entered (with or without arguments).</para>
+    <para id="id2259595">Another way to plot several complex numbers on the same graph is
+to display them as a curve. For this purpose, you have to store the numbers
+in a vector. For example, type <code>z1 = z1,z(2) = z2,plot(z)</code>. Note that
+the two points are at the two extremes of the line plotted on the graph. If
+you specify a symbol, then no line is drawn, just the extreme points. Try
+<code>plot(z,'o')</code> .</para>
+    <para id="id2259676">If you examine your current graph carefully, you will notice that the
+unit lengths on the <emphasis effect="italics">x</emphasis> and <emphasis effect="italics">y</emphasis> axes are not quite the same. In fact, MATLAB
+adjusts the length of an axis to conform to the overall size of the graph window.
+What this means is that a <emphasis effect="italics">45<sup>o</sup></emphasis> line will actually be displayed at an angle
+depending on the overall aspect ratio of the graph window. To ensure that
+the aspect ratio is equal to 1, you may enter the command <code>axis('square')</code>.
+MATLAB will then enforce an aspect ratio equal to 1, regardless of the aspect
+ratio for the outside graph window. This ensures that circles appear as circles
+and not as ellipses. MATLAB will make the square graph as large as possible
+to fit within the graph window. To go back to the default ratio, just type in <code>axis('normal')</code>.</para>
+    <para id="id2259725">To add labels to your graph, the functions <code>xlabel('text')</code>, <code>ylabel('text')</code>, and <code>title('text')</code> are useful and self-explanatory. The argument <code>text</code> contains a string of characters. Add the label <code>Real</code> on the horizontal axis and the label <code>Imaginary</code> on the vertical axis of your graph. The command <code>grid</code> draws a grid on your graph. The grid does not remain in effect for the next plots. Try it.</para>
+    <para id="id2259742"><emphasis effect="bold">The plot Instruction.</emphasis> The plot instruction in MATLAB is very
+versatile. It can be used to plot several different types of data. Its syntax is
+<code>plot(x,y,' symbol and/or color')</code> or <code>plot(y,'symbol and/or color')</code>. The
+instruction will plot a vector of data versus another vector of data. The first
+vector is referenced to the horizontal axis and the second to the vertical axis.
+If only one vector is used, then it is plotted with reference to the vertical
+axis while the horizontal axis is automatically forced to be the index of the
+vector for the corresponding data point. The notation inside the apostrophes
+is optionally used to designate whether each element of the vector is to be
+plotted as a single point with a certain symbol or as a curve with a straight
+line drawn between each data value. The colors can also be specified. Possible symbols are <code>(*,o,+,.)</code>, and colors are <code>(r,g,b,w)</code> (red, green, blue, and
+white). Complex valued vectors are plotted by making the horizontal axis the
+real part of the vector and the vertical axis the imaginary part. Warning: A
+complex valued vector will automatically be plotted correctly on the complex
+plane (instead of real versus imaginary) <emphasis effect="italics">only</emphasis> if every element of the vector is complex valued. Try <code>plot (x,y,'*')</code> , <code>plot (x,'*')</code>, <code>plot (y,'*')</code>, <code>plot (y,x,'*')</code> and <code>plot (z,'*')</code>, <code>plot (Real (z), Imag (z),'*')</code> to
+clarify your understanding of plot. Use <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mo>[</m:mo><m:mn>1357</m:mn><m:mo>]</m:mo><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mo>[</m:mo><m:mn>2468</m:mn><m:mo>]</m:mo><m:mo>,</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>j</m:mi><m:mo>,</m:mo><m:mn>3</m:mn><m:mo>+</m:mo><m:mn>3</m:mn><m:mi>j</m:mi><m:mo>]</m:mo></m:mrow></m:math>.</para>
+    <para id="id2260158">We may summarize as follows:</para>
+    <table id="eip-49" summary="summary of different MATLAB plot commands">
+<tgroup cols="2"><tbody>
+  <row>
+    <entry><code>plot(x,'*r')</code></entry>
+    <entry>(red star—points with the values of <code>x</code> on vertical and indicies on horizontal)</entry>
+  </row>
+  <row>
+    <entry><code>plot(y)</code></entry>
+    <entry>(line—connected curve of the value of <code>y</code> on vertical and the value of <code>x</code> on horizontal)</entry>
+  </row>
+  <row>
+    <entry><code>plot(x,y,'og')</code></entry>
+    <entry>(line—connected curve of the value of <code>y</code> on vertical and the value of <code>x</code> on horizontal)</entry>
+  </row>
+  <row>
+    <entry><code>plot(x,y,'og')</code></entry>
+    <entry>(circle—points of the value of <code>y</code> on vertical and the value of <code>x</code> on horizontal)</entry>
+  </row>
+  <row>
+    <entry><code>plot(real(z),imag(z))</code></entry>
+    <entry>(line—connectedplot of <code>z</code> on the complex plane)</entry>
+  </row>
+  <row>
+    <entry><code>plot(real(z),imag(z),'+b')</code></entry>
+    <entry>(blue plus—points of <code>z</code> on the complex plane). </entry>
+  </row>
+</tbody>
+</tgroup>
+</table>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <figure id="uid1"><media id="uid1_media" alt="There are three squares arranged vertically in this image. The first square is subdived into four equal squares with a number present in each square. From left to right the numbers read 1, 2, and then on the lower row, 3 and 4. Number 3 is contained within a smaller box with in the subdivided box. To the left of this box is the phrase subplot(223). The box directly below this one is subdivided in to two vertical rectangles. The upper rectangle contains the number 1 and the lower rectangle contains a small square with the number 2 contained within that square. To the left of this row is the phrase subplot(212). The lowest square is subdivided into two horizontal rectangles. The left rectangle contains a small square with the number 1 contained within this square. The right rectangle contains the number 2. To the left of this square this is the phrase subplot(121).">
+        <image mime-type="image/png" src="../../media/image004-f728.png" id="uid1_onlineimage" width="275"><!-- NOTE: attribute width changes image size online (pixels). original width is 45. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/image004-948b.eps" id="uid1_printimage" print-width="65.00mm">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </figure>
+    <para id="id2260372"><emphasis effect="bold">Subplots.</emphasis> It is possible to split the graphics screen up into several
+separate smaller graphs rather than just one large graph. As many as four
+subplots can be created. The MATLAB instruction <code>subplot (mnp)</code> signifies
+which of the smaller graphs is to be accessed with the next plot statement.
+The mnp argument consists of three digits. The <code>m</code> and <code>n</code> are the numbers of
+rows (<code>m</code>) and columns (<code>n</code>) into which the screen should be divided. The <code>p</code>
+designates which of the matrix elements is to be used. For example,</para>
+    <para id="id2260432"><emphasis effect="bold">Help and Demos.</emphasis> MATLAB has on-line help and a collection of
+demonstrations. For a list of available functions, type</para>
+    <code id="eip-241" display="block">≫ help</code>
+    <para id="id2260457">For help on a specific function, <code>sin</code> for example, type</para>
+    <code id="eip-590" display="block">≫ help sin</code>
+    <para id="id2260472">To learn how to use colon (;, a very important and versatile character) in MATLAB, type</para>
+    <code id="eip-27" display="block">≫ help :</code>
+    <para id="id2260488">The demos will also help you become more familiar with MATLAB and its capabilities. To run them, type</para><code id="eip-695" display="block">≫ demo</code>
+  </content>
+</document>

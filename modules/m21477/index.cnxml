@@ -1,0 +1,69 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Edix Editor</title>
+  <metadata>
+  <md:content-id>m21477</md:content-id><md:title>The Edix Editor</md:title>
+  <md:abstract/>
+  <md:uuid>04a6699e-aa8f-4580-985f-b9c05197f56b</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-452">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">On a PC, creating and editing m-files is done outside of MATLAB.
+The Edix editor is one of the visual types of editors. It can be accessed either
+from DOS by using <code>&gt; edix filename.m</code> or from MATLAB by using <code>≫ !edix filename.m</code>. The latter will return you back to MATLAB after you quit the
+editor. MATLAB script files must end with a <code>.m</code> extension. They are also
+called m-files. Once in the Edix editor, a help list of the editor's commands
+can be displayed on the screen by typing “Alt-h.” (Note: The “Alt” key must
+be held down while the "h" key is depressed.) Pressing the “space” key will
+get you out of the help system.</para>
+    <para id="id2259052">A new file is created by calling the Edix editor with a file name that
+has not been previously used. If the file name already exists on disc, then that
+file is retrieved and displayed on the screen and is ready to be edited. Since
+Edix is a visual editor, changes are made by moving the cursor to wherever
+something needs to be typed in or deleted. Once changes have been made to
+a file, then that file needs to be saved (written to disc) by typing “Alt-w.”
+When all editing is finished, you may exit from the Edix editor by typing
+“Alt-x.” Following are some useful Edix editor commands:</para>
+    <table id="eip-793" summary="Edix commands with a description of their function">
+<tgroup cols="2"><tbody>
+  <row>
+    <entry>Alt-h(F7)</entry>
+    <entry>help-list of all the Edix commands;</entry>
+  </row>
+  <row>
+    <entry>Alt-w</entry>
+    <entry>saves (writes) the file to disc;</entry>
+  </row>
+  <row>
+    <entry>Alt-x</entry>
+    <entry>exits the Edix editor;</entry>
+  </row>
+  <row>
+    <entry>Alt-d</entry>
+    <entry>deletes the current line;</entry>
+  </row>
+  <row>
+    <entry>Alt-m (F8)</entry>
+    <entry>the first time used, marks the beginning of a block of lines to be edited; the second time, marks the end of a block of lines to be edited and highlights this block in white; the third time, "un-marks" the highlighted block;</entry>
+  </row>
+  <row>
+    <entry>Alt-c</entry>
+    <entry>makes a copy of the highlighted block at the current cursor location (can be repeated);</entry>
+  </row>
+  <row>
+    <entry>Alt-m</entry>
+    <entry>(moves the highlighted block to the current cursor location (can be repeated);</entry>
+  </row>
+  <row>
+    <entry>(F5)</entry>
+    <entry>put the cursor at the beginning of the line; and</entry>
+  </row>
+  <row>
+    <entry>(F6)</entry>
+    <entry>puts the cursor at the end of the line.</entry>
+  </row>
+</tbody>
+</tgroup>
+</table>
+  </content>
+</document>

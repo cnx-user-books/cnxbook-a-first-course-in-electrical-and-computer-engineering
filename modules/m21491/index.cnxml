@@ -1,0 +1,285 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Introduction</title>
+  <metadata>
+  <md:content-id>m21491</md:content-id><md:title>Vector Graphics: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>8d84b424-9e94-468a-8cf0-02da9ac21b0f</md:uuid>
+</metadata>
+
+<content>
+<note id="eip-323">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="eip-285"><title>Acknowledgements</title><emphasis effect="italics">Fundamentals of Interactive Computer Graphics</emphasis> by
+J. D. Foley and A. Van Dam, ©1982 Addison-Wesley Publishing Company,
+Inc., Reading, Massachusetts, was used extensively as a reference book during
+development of this chapter. Star locations were obtained from the share-
+ware program “Deep Space” by David Chandler, who obtained them from
+the “Skymap” database of the National Space Science Data Center.</para><section id="fs-id10927523">
+    <title>Notes to Teachers and Students:</title>
+    <para id="id2258266">In this chapter we introduce matrix data structures that may be used
+to represent two- and three-dimensional images. The <link document="m21495" target-id="id2260447">demonstration program</link> shows students how to create a function file for creating images from these data structures. We then show how to use matrix
+transformations for translating, scaling, and rotating images. Projections are
+used to project three-dimensional images onto two-dimensional planes placed
+at arbitrary locations. It is precisely such projections that we use to get perspective drawings on a two-dimensional surface of three-dimensional objects. The <link document="m21492">numerical experiment</link> encourages students to manipulate
+a star field and view it from several points in space.</para>
+    <para id="id2258281">Once again we consider certain problems essential to the chapter development. For this chapter be sure not to miss the following exercises: <link document="m21409" target-id="fs-id19339158">Exercise 2 in "Two-Dimensional Image Transformations"</link>, <link document="m21490" target-id="fs-id9473187">Exercise 1 in "Homogeneous Coordinates"</link>, <link document="m21490" target-id="fs-id9354921">Exercise 2 in "Homogeneous Coordinates"</link>, <link document="m21494" target-id="fs-id19554987"> Exercise 5 in "Three-Dimensional Homogeneous Coordinates"</link>,
+and <link document="m21493" target-id="fs-id17875155">Exercise 2 in "Projections"</link>.</para>
+</section>
+    <section id="uid1">
+      <title>Introduction</title>
+      <para id="id2258939">Pictures play a vital role in human communication, in robotic manufacturing, and in digital imaging. In a typical application of digital imaging, a CCD camera records a digital picture frame that is read into the memory of a digital computer. The digital computer then manipulates this frame (or array) of data in order to crop, enlarge or reduce, enhance or smooth, translateor rotate the original picture. These procedures are called <emphasis effect="italics">digital picture processing</emphasis> or <emphasis effect="italics">computer graphics</emphasis>. When a sequence of picture frames is processed and displayed at video frame rates (30 frames per second), then we have an animated picture.</para>
+      
+      <para id="id2258984">In this chapter we use the linear algebra we developed in <link document="m21454">The chapter on Linear Algebra</link>
+to develop a rudimentary set of tools for doing computer graphics on line
+drawings. We begin with an example: the rotation of a single point in the
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> plane.</para>
+<example id="fs-id40350984">
+      <para id="id2259008">Point <m:math>
+<m:mi>P</m:mi>
+</m:math> has coordinates <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> in the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> plane as
+shown in <link target-id="uid2">Figure 1</link>. Find the coordinates of the point <m:math>
+<m:mi>P</m:mi>
+<m:mo>'</m:mo>
+</m:math>, which is rotated
+<m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac></m:mstyle></m:math> radians from <m:math>
+<m:mi>P</m:mi>
+</m:math>.</para>
+      <figure id="uid2"><media id="uid2_media" alt="Figure one is a two-dimensional cartesian graph with two line segments, P, and P' drawn out into the first quadrant. The horizontal axis is labeled x and the vertical axis is labeled y. Line segment P reaches point (3, 1). The angle from the x-axis to line segment P is labeled θ. Line segment P' reaches point (x', y'), which is a higher y-value than P and a lower x-value than P. The angle between P and P' is measured as π/6. Both lines are labeled as length r.">
+          <image mime-type="image/png" src="../../media/pic001-12ab.png" id="uid2_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 170. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic001-6e8f.eps" id="uid2_printimage" print-width="2.75in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Rotating a Single Point in the <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo>)</m:mo></m:mrow></m:math> Plane</caption></figure>
+      <para id="id2259376">To solve this problem, we can begin by converting the point <m:math>
+<m:mi>P</m:mi>
+</m:math> from
+rectangular coordinates to polar coordinates. We have</para>
+      
+      <equation id="id2259429"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mi>r</m:mi>
+            <m:mo>=</m:mo>
+            <m:msqrt>
+              <m:mrow>
+                <m:msup>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mo>+</m:mo>
+                <m:msup>
+                  <m:mi>y</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:msqrt>
+            <m:mo>=</m:mo>
+            <m:msqrt>
+              <m:mn>10</m:mn>
+            </m:msqrt>
+          </m:mrow>
+      </m:mtd>
+</m:mtr>
+
+
+
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mi>θ</m:mi>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mo form="prefix">tan</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>y</m:mi>
+                <m:mi>x</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≈</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>3217</m:mn>
+            <m:mspace width="4.pt"/>
+            <m:mi>r</m:mi>
+            <m:mi>a</m:mi>
+            <m:mi>d</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>a</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+      <para id="id2259494">The rotated point <m:math>
+<m:mi>P</m:mi>
+<m:mo>'</m:mo>
+</m:math> has the same radius <m:math>
+<m:mi>r</m:mi>
+</m:math>, and its angle is <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>θ</m:mi><m:mo>+</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac></m:mrow></m:mstyle></m:math>. We now
+convert back to rectangular coordinates to find <m:math>
+<m:mi>x</m:mi>
+<m:mo>'</m:mo>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+<m:mo>'</m:mo>
+</m:math> for point <m:math>
+<m:mi>P</m:mi>
+<m:mo>'</m:mo>
+</m:math>:</para>
+      <equation id="id2259588"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:msup>
+              <m:mi>x</m:mi>
+              <m:mo>'</m:mo>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi>r</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi>c</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>s</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>+</m:mo>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>6</m:mn>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≈</m:mo>
+            <m:msqrt>
+              <m:mn>10</m:mn>
+            </m:msqrt>
+            <m:mo form="prefix">cos</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>8453</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≈</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>10</m:mn>
+            <m:mspace width="4.pt"/>
+          </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:msup>
+              <m:mi>y</m:mi>
+              <m:mo>'</m:mo>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi>r</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mi>s</m:mi>
+            <m:mi>i</m:mi>
+            <m:mi>n</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>θ</m:mi>
+              <m:mo>+</m:mo>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>6</m:mn>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≈</m:mo>
+            <m:msqrt>
+              <m:mn>10</m:mn>
+            </m:msqrt>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>8453</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≈</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>37</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+
+      </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+      
+      <para id="id2259753">So the rotated point <m:math><m:mi>P</m:mi>
+<m:mo>'</m:mo>
+</m:math> has coordinates (2.10, 2.37).</para></example>
+      <para id="id2259773">Now imagine trying to rotate the graphical image of some complex
+object like an airplane. You could try to rotate all 10,000 (or so) points in the
+same way as the single point was just rotated. However, a much easier way
+to rotate all the points together is provided by linear algebra. In fact, with a
+single linear algebraic operation we can rotate and scale an entire object and
+project it from three dimensions to two for display on a flat screen or sheet
+of paper.</para>
+      <para id="id2259784">In this chapter we study <emphasis effect="italics">vector graphics</emphasis>, a linear algebraic method
+of storing and manipulating computer images. Vector graphics is especially
+suited to moving, rotating, and scaling (enlarging and reducing) images and
+objects within images. Cropping is often necessary too, although it is a little
+more difficult with vector graphics. Vector graphics also allows us to store
+objects in three dimensions and then view the objects from various locations
+in space by using projections.</para>
+      <para id="id2259808">In vector graphics, pictures are drawn from straight lines.<footnote id="uid3">It is possible to extend these techniques to deal with some types of
+curves, but we will consider only straight lines for the sake of simplicity.</footnote> A curve
+can be approximated as closely as desired by a series of short, straight lines.
+Clearly some pictures are better suited to representation by straight lines
+than are others. For example, we can achieve a fairly good representation of
+a building or an airplane in vector graphics, while a photograph of a forest
+would be extremely difficult to convert to straight lines. Many computer-
+aided design (CAD) programs use vector graphics to manipulate mechanical
+drawings.</para>
+      <para id="id2259832">When the time comes to actually display a vector graphics image, it
+may be necessary to alter the representation to match the display device. Personal computer display screens are divided into thousands of tiny rectangles
+called <emphasis effect="italics">picture elements</emphasis>, or <emphasis effect="italics">pixels</emphasis>. Each pixel is either off (black) or on (perhaps with variable intensity and/or color). With a CRT display, the electron
+beam scans the rows of pixels in a raster pattern. To draw a line on a pixel
+display device, we must first convert the line into a list of pixels to be illuminated. Dot matrix and laser printers are also pixel display devices, while
+pen plotters and a few specialized CRT devices can display vector graphics
+directly. We will let MATLAB do the conversion to pixels and automatically
+handle cropping when necessary.</para>
+      <para id="id2259859">We begin our study of vector graphics by representing each point in
+an image by a vector. These vectors are arranged side-by-side into a matrix
+<m:math>
+<m:mi>G</m:mi>
+</m:math> containing all the points in the image. Other matrices will be used as
+operators to perform the desired transformations on the image points. For
+example, we will find a matrix <m:math>
+<m:mi>R</m:mi>
+</m:math>, which functions as a rotation: the matrix
+product <m:math overflow="scroll"><m:mrow><m:mi>R</m:mi><m:mi>G</m:mi></m:mrow></m:math> represents a rotated version of the original image <m:math>
+<m:mi>G</m:mi>
+</m:math>.
+</para>
+    </section>
+  </content>
+</document>

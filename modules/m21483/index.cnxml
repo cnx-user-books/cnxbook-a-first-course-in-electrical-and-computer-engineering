@@ -1,0 +1,933 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: Second-Order Differential and Difference Equations</title>
+  <metadata>
+  <md:content-id>m21483</md:content-id><md:title>The Functions e^x and e^jθ: Second-Order Differential and Difference Equations</md:title>
+  <md:abstract/>
+  <md:uuid>b196aa24-cad1-4732-b62c-e91d25e62d44</md:uuid>
+</metadata>
+
+<content>
+    
+    
+    
+    <note id="eip-441">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="eip-259">With our understanding of the functions <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math>,
+<m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mrow>
+<m:mi>j</m:mi>
+<m:mi>Θ</m:mi>
+</m:mrow>
+</m:msup>
+</m:math>, and the quadratic equation <m:math>
+<m:msup>
+<m:mi>z</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+<m:mo>+</m:mo>
+<m:mfrac>
+<m:mi>b</m:mi>
+<m:mi>a</m:mi>
+</m:mfrac>
+<m:mi>z</m:mi>
+<m:mo>+</m:mo>
+<m:mfrac>
+<m:mi>c</m:mi>
+<m:mi>a</m:mi>
+</m:mfrac>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:math>, we can undertake a rudimentary study of differential and difference equations. </para><para id="eip-892"><emphasis effect="bold">Differential Equations.</emphasis> In your study of circuits and systems you will encounter the homogeneous differential equation</para><equation id="eip-348"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:msup><m:mi>d</m:mi><m:mn>2</m:mn></m:msup><m:mrow><m:mi>d</m:mi><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mfrac><m:mi>d</m:mi><m:mrow><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation>
+    <para id="id2259326">Because the function <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>s</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> reproduces itself under differentiation, it is plausible
+to assume that <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>s</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:math> is a solution to the differential equation. Let's
+try it:</para>
+    
+    <equation id="id2259494"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>d</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:msup>
+                  <m:mi>t</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>s</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mrow>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>s</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>s</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+    </m:mtd>
+</m:mtr>
+    
+<m:mtr>
+<m:mtd>
+
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>s</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259554">If this equation is to be satisfied for all <m:math>
+<m:mi>t</m:mi>
+</m:math>, then the polynomial in <m:math>
+<m:mi>s</m:mi>
+</m:math> must be
+zero. Therefore we require</para>
+    
+    <equation id="eip-117"><m:math overflow="scroll"><m:mrow><m:msup><m:mi>s</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mi>s</m:mi><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259620">As we know from our study of this quadratic equation, the solutions are</para>
+    <equation id="eip-300"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>s</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mn>2</m:mn></m:mfrac><m:mo>±</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msqrt><m:mrow><m:msubsup><m:mi>a</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>-</m:mo><m:mn>4</m:mn><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msqrt></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2259625">This means that our assumed solution works, provided <m:math overflow="scroll"><m:mrow><m:mi>s</m:mi><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> or <m:math>
+<m:msub>
+<m:mi>s</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>. It is a fundamental result from the theory of differential equations that the most general solution for <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is a linear combination of these assumed solutions:</para>
+    
+    <equation id="eip-768"><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub><m:mi>t</m:mi></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mi>A</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:msub><m:mi>s</m:mi><m:mn>2</m:mn></m:msub><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259829">If <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>a</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup><m:mo>-</m:mo><m:mn>4</m:mn><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> is less than zero, then the roots <m:math>
+<m:msub>
+<m:mi>s</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> and 
+<m:math>
+<m:msub>
+<m:mi>s</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are complex:</para>
+    
+    <equation id="eip-155"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>s</m:mi><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:mfrac><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:mn>2</m:mn></m:mfrac><m:mo>±</m:mo><m:mi>j</m:mi><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msqrt><m:mrow><m:mn>4</m:mn><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msubsup><m:mi>a</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259971">Let's rewrite this solution as</para>
+    
+    <equation id="eip-889"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>s</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi>σ</m:mi>
+          <m:mo>±</m:mo>
+          <m:mi>j</m:mi>
+          <m:mi>ω</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260007">where <emphasis effect="italics">σ</emphasis> and <emphasis effect="italics">ω</emphasis> are the constants</para>
+    
+    <equation id="eip-24"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mi>σ</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    <equation id="eip-698"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msqrt><m:mrow><m:mn>4</m:mn><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msubsup><m:mi>a</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2260110">With this notation, the solution for <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is</para>
+    
+    <equation id="eip-157"><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>A</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>σ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>+</m:mo><m:msub><m:mi>A</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>σ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi mathvariant="normal">t</m:mi><m:mi>ω</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260224">If this solution is to be real, then the two terms on the right-hand side must
+be complex conjugates. This means that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:msubsup><m:mi>A</m:mi><m:mrow><m:mn>1</m:mn></m:mrow><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> and the solution for <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is</para>
+    <equation id="id2260274"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+         <m:mi>x</m:mi>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>σ</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msubsup>
+            <m:mi>A</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mo>*</m:mo>
+          </m:msubsup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>σ</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              
+                <m:mi>J</m:mi>
+                
+              
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+    <m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>          
+<m:mn>2</m:mn>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>σ</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>ω</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>}</m:mo>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    
+    <para id="id2260424">The constant <m:math>
+<m:msub>
+<m:mi>A</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> may be written as <m:math overflow="scroll"><m:mrow><m:msub><m:mi>A</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mi>A</m:mi><m:mo>|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>φ</m:mi></m:mrow></m:msup></m:mrow></m:math>. Then the solution for <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+is</para>
+    <equation id="eip-280"><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mn>2</m:mn><m:mo>|</m:mo><m:mi>A</m:mi><m:mo>|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>σ</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>ω</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>φ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260495">This “damped cosinusoidal solution” is illustrated in <link target-id="uid1"/>.</para>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a graph with unlabeled axes, with the horizontal axis  ranging in value from 0 to 10 in increments of one, and the vertical axis ranging in value from -20 to 20 in increments of 5. There are three curves on this graph. The first begins at the upper-left corner of the graph, at (0, 20), and is drawn decreasing from left to right at a decreasing rate, until, by (8, 0) it is nearly indiscernible from the horizontal axis, where it continues and terminates at (10, 0). The second curve is a mirror image of the first across the horizontal axis, beginning in the lower-left corner of the graph and continuing to the right until it is horizontal along the axis. The third curve seems to follow a wave-like pattern that is bound by the two curves above and below. The curve begins at (0, 10) and starts in a positive direction, then moves right with five peaks and troughs to the right until it is nearly a horizontal line by the far right of the graph. Along these graphs is an expression that reads 2*abs(A)*exp(sigma*t), and the entire graph has a small label that reads |A|=10">
+        <image mime-type="image/png" src="../../media/pic013-b85b.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 305. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-1c92.eps" id="uid1_printimage" print-width="03in"/>
+      </media>
+      
+    <caption>The Solution to a Second-Order Differential Equation</caption></figure>
+<exercise id="fs-id19163893">
+<problem id="fs-id10298872">
+    <para id="id2260570">Find the general solutions to the following differential equations:</para>
+<list id="fs-id16461969" list-type="enumerated" number-style="lower-alpha"><item> <m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true"><m:mrow>
+<m:mfrac>
+<m:mrow>
+<m:msup>
+<m:mi>d</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:msup>
+<m:mi>t</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+</m:mfrac>
+<m:mi>X</m:mi>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mi>d</m:mi>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:mi>t</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mi>x</m:mi>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mrow>
+</m:mstyle>
+</m:math>;</item>
+    <item> <m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true"><m:mrow>
+<m:mfrac>
+<m:mrow>
+<m:msup>
+<m:mi>d</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:msup>
+<m:mi>t</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+</m:mfrac>
+<m:mi>x</m:mi>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mfrac>
+<m:mi>d</m:mi>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:mi>t</m:mi>
+</m:mrow>
+</m:mfrac>
+<m:mi>x</m:mi>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>-</m:mo>
+<m:mn>2</m:mn>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mrow>
+</m:mstyle>
+</m:math>;</item>
+    <item><m:math overflow="scroll">
+<m:mstyle scriptlevel="0" displaystyle="true"><m:mrow>
+<m:mfrac>
+<m:mrow>
+<m:msup>
+<m:mi>d</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+<m:mrow>
+<m:mi>d</m:mi>
+<m:msup>
+<m:mi>t</m:mi>
+<m:mn>2</m:mn>
+</m:msup>
+</m:mrow>
+</m:mfrac>
+<m:mi>x</m:mi>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mi>t</m:mi>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>+</m:mo>
+<m:mn>2</m:mn>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mrow>
+</m:mstyle>
+</m:math>.</item>
+</list>
+</problem>
+</exercise>
+    <para id="id2260774"><emphasis effect="bold">Difference Equations.</emphasis> In your study of digital filters you will encounter homogeneous difference equations of the form</para>
+    <equation id="eip-959"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation>
+    <para id="id2260850">What this means is that the <emphasis effect="italics">sequence</emphasis><m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>}</m:mo></m:mrow></m:math> obeys a <emphasis effect="italics">homogeneous recursion</emphasis>:</para>
+    <equation id="id2260884">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>-</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260951">A plausible guess at a solution is the geometric sequence <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math>. With this guess, the difference equation produces the result</para>
+    
+    <equation id="eip-9"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msup>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+    </m:mtd>
+</m:mtr>
+</m:mtable>    
+  </m:math>
+    </equation>
+    <para id="id2261119">If this guess is to work, then the second-order polynomial on the left-hand side must equal zero:</para>
+    <para id="id2261126">
+      <m:math overflow="scroll">
+        <m:mrow>
+          <m:mn>1</m:mn>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+      </m:math>
+    </para>
+    <equation id="id2261182"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mn>1</m:mn>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>-</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mrow>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mi>z</m:mi>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>a</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>    
+
+  </m:math>
+    </equation>
+    <para id="id2261226">The solutions are</para>
+    <equation id="eip-431"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mrow>
+                <m:mn>1</m:mn>
+                <m:mo>,</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>±</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:msqrt>
+              <m:mrow>
+                <m:mn>4</m:mn>
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msubsup>
+                  <m:mi>a</m:mi>
+                  <m:mrow>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:msubsup>
+              </m:mrow>
+            </m:msqrt>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mi>r</m:mi>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261337">The general solution to the difference equation is a linear combination of the
+assumed solutions:</para>
+    <equation id="id2261342"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+       
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msubsup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msubsup>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msubsup>
+                <m:mi>z</m:mi>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+                <m:mo>*</m:mo>
+              </m:msubsup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msup>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msubsup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msubsup>
+          <m:mo>+</m:mo>
+          <m:msubsup>
+            <m:mi>A</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mo>*</m:mo>
+          </m:msubsup>
+          <m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msubsup>
+                <m:mi>z</m:mi>
+                <m:mrow>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+                <m:mo>*</m:mo>
+              </m:msubsup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msup>
+       </m:mtd>
+</m:mtr>
+
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mn>2</m:mn>
+          <m:mi> Re </m:mi>
+          <m:mo>{</m:mo>
+          <m:msub>
+            <m:mi>A</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msubsup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:msubsup>
+          <m:mo>}</m:mo>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mo>|</m:mo>
+            <m:mi>A</m:mi>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mi>r</m:mi>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mo form="prefix">cos</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>φ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>.</m:mo>
+       
+</m:mtd>
+</m:mtr>    
+
+
+</m:mtable>
+      </m:math>
+    </equation>
+    
+    
+    
+    <para id="id2261568">This general solution is illustrated in <link target-id="uid2"/>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a graph with unlabeled axes, with the horizontal axis  ranging in value from 0 to 10 in increments of one, and the vertical axis ranging in value from -20 to 20 in increments of 5. There are two curves on this graph. The first begins at the upper-left corner of the graph, at (0, 20), and is drawn decreasing from left to right at a decreasing rate, until, by (8, 0) it is nearly indiscernible from the horizontal axis, where it continues and terminates at (10, 0). The second curve is a mirror image of the first across the horizontal axis, beginning in the lower-left corner of the graph and continuing to the right until it is horizontal along the axis. Inside these two curves are various vertical lines beginning from the horizontal axis that follow a wave-like pattern, with five positive groups of lines and five negative groups of lines. The figure has an expression near the curves that reads, 2*abs(A)*r.^n). A second expression above the curves reads |A|=10.">
+        <image mime-type="image/png" src="../../media/pic014-4e8c.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 306. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic014-10dd.eps" id="uid2_printimage" print-width="03in"/>
+      </media>
+      
+    <caption>The Solution to a Second-Order Difference Equation</caption></figure>
+<exercise id="fs-id17725857">
+<problem id="fs-id19932344">
+    <para id="id2261586">Find the general solutions to the following difference equations:</para>
+<list id="fs-id18995500" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>-</m:mo><m:mn>2</m:mn><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.
+</item></list>
+</problem>
+</exercise>
+  </content>
+</document>

@@ -1,0 +1,324 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Two-Dimensional Image Transformations</title>
+  <metadata>
+  <md:content-id>m21409</md:content-id><md:title>Vector Graphics: Two-Dimensional Image Transformations</md:title>
+  <md:abstract/>
+  <md:uuid>5f127a98-9212-4c00-9ba3-ad36d4c41129</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-48">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">We now turn our attention to operating on the point matrix <m:math>
+<m:mi>G</m:mi>
+</m:math> to produce the desired transformations. We will consider <list display="inline" mark-suffix=")" mark-prefix="(" list-type="enumerated" number-style="lower-roman"> <item>rotation</item> <item>scaling</item>
+<item>and translation (moving) of objects</item></list>. Rotation and scaling are done by
+matrix multiplication with a square transformation matrix A. If we call the
+transformed point matrix <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">G</m:mi><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">e</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:msub></m:math>, we have</para>
+    <equation id="eip-494"><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>[</m:mo><m:msub><m:mi mathvariant="normal">G</m:mi><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">e</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:msub><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mi mathvariant="normal">A</m:mi><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mi mathvariant="normal">G</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2258968">We call <m:math>
+<m:mi>A</m:mi>
+</m:math> a <emphasis effect="italics">matrix operator</emphasis> because it “operates” on <m:math>
+<m:mi>G</m:mi>
+</m:math> through matrix
+multiplication. In contrast, translation must be done by matrix addition.</para>
+    <para id="id2259043">In a later section you will see that it is advantageous to perform all
+operations by matrix operators and that we can modify our image representation to allow translation to be done with a matrix operator like rotation and
+scaling. We will call the modified representation <emphasis effect="italics">homogeneous coordinates</emphasis>.</para>
+    <para id="id2259057"><emphasis effect="bold">Rotation.</emphasis> We saw in the <link document="m21454">chapter on linear algebra</link> that the matrix that rotates points by
+an angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> is</para>
+    <equation id="eip-659"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">R</m:mi><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">i</m:mi><m:mi mathvariant="normal">n</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">i</m:mi><m:mi mathvariant="normal">n</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">c</m:mi><m:mi mathvariant="normal">o</m:mi><m:mi mathvariant="normal">s</m:mi><m:mi>θ</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259074">When applied to the point matrix <emphasis effect="italics">G</emphasis>, this matrix operator rotates each point
+by the angle <emphasis effect="italics">θ</emphasis>, regardless of the number of points.</para>
+<example id="fs-id14342940">
+    <para id="id2259456">We can use the rotation matrix to do the single point
+rotation of <link document="m21491" target-id="fs-id40350984">the example from "Vector Graphics: Introduction"</link>. We have a point matrix consisting of only the point
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>:</para>
+    <equation id="eip-727"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">G</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow>
+<m:mo>.</m:mo></m:math>
+</equation><para id="id2259484">The necessary transformation matrix is <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:math> with <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac></m:mrow></m:mstyle></m:math> Then the rotated
+point is given by</para><equation id="eip-264"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">G</m:mi>
+              <m:mrow>
+                <m:mi mathvariant="normal">n</m:mi>
+                <m:mi mathvariant="normal">e</m:mi>
+                <m:mi mathvariant="normal">w</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>π</m:mi>
+                <m:mn>6</m:mn>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mi mathvariant="normal">c</m:mi>
+                      <m:mi mathvariant="normal">o</m:mi>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>6</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mi mathvariant="normal">i</m:mi>
+                      <m:mi mathvariant="normal">n</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>6</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mi mathvariant="normal">i</m:mi>
+                      <m:mi mathvariant="normal">n</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>6</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mi mathvariant="normal">c</m:mi>
+                      <m:mi mathvariant="normal">o</m:mi>
+                      <m:mi mathvariant="normal">s</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mn>6</m:mn>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mn>3</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>≈</m:mo>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mo>.</m:mo>
+                      <m:mn>10</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mo>.</m:mo>
+                      <m:mn>37</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mo>·</m:mo>
+  
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation>
+    </example>
+    <para id="id2259803"><emphasis effect="bold">Scaling.</emphasis> An object can be enlarged or reduced in each dimension inde-
+pendently. The matrix operator that scales an image by a factor of <m:math>
+<m:msub>
+<m:mi>s</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> along
+the x-axis and <m:math>
+<m:msub>
+<m:mi>s</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> along the y-axis is</para>
+    <equation id="eip-167"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">A</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">S</m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>s</m:mi><m:mi>x</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>s</m:mi><m:mi>y</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>s</m:mi><m:mi>x</m:mi></m:msub></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>s</m:mi><m:mi>y</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math>
+</equation><para id="id2259841">Most often we take <m:math overflow="scroll"><m:mrow><m:msub><m:mi>s</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>s</m:mi><m:mi>y</m:mi></m:msub></m:mrow></m:math> to scale an image by the same amount in both
+dimensions.</para>
+<exercise id="fs-id20752498">
+<problem id="fs-id20752501">
+    <para id="id2259954">Write out the following matrices. Simplify and give numerical
+answers to two decimal places:</para>
+<list id="fs-id20174418" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow></m:mstyle></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>4</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow></m:mstyle></m:math>;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>.</item></list>
+</problem>
+</exercise>
+<exercise id="fs-id19339158"><title> Reflections</title><problem id="fs-id19339160">
+    <para id="id2260079">What does <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> do? <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo><m:mo>?</m:mo><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>?
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">S</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>?</para></problem>
+</exercise>
+<exercise id="fs-id20665244">
+<problem id="fs-id17091031">
+    <para id="id2260179">Given <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">G</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>5</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>2</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>3</m:mn></m:mfrac></m:mrow></m:mstyle></m:math> find <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">G</m:mi><m:mrow><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">e</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:msub><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">R</m:mi><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo><m:mi mathvariant="normal">G</m:mi></m:mrow></m:math>. Give numerical answers to two decimal places.</para></problem>
+</exercise>
+<exercise id="fs-id19584647">
+<problem id="fs-id9156959">
+    <para id="id2260345">Apply each of the transformations in <link target-id="fs-id20752498">Exercise 1</link> and <link target-id="fs-id19339158">2</link> to
+the image</para>
+    <equation id="id2260354"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mo>;</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">H</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260491">Sketch the original image and each transformation of it.</para></problem>
+</exercise>
+
+    <para id="id2260495"><emphasis effect="bold">Translation.</emphasis> An object can be moved by adding a constant vector <emphasis effect="italics">b</emphasis>
+to every point in the object. For example, <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">b</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>20</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>5</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> will move an object 20 units to the right and 5 units down. We can write this in terms of the point
+matrix as</para>
+    
+    <equation id="eip-358"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">G</m:mi>
+            <m:mrow>
+              <m:mi mathvariant="normal">n</m:mi>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi mathvariant="normal">w</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">G</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">b</m:mi>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:msup>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260604">where 1 (read “the one-vector”) is a vector of <emphasis effect="italics">n</emphasis> l's:</para>
+    
+    <equation id="eip-368"><m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>⋮</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2260665">In MATLAB, 1 may be obtained by <code>ones(n,1)</code>. The outer product of <m:math>
+<m:mi>b</m:mi>
+</m:math> with
+1 in <link target-id="eip-358">Equation 7</link> simply serves to make <m:math>
+<m:mi>n</m:mi>
+</m:math> copies of <m:math>
+<m:mi>b</m:mi>
+</m:math> so that one copy can
+be added to each point in <m:math>
+<m:mi>G</m:mi>
+</m:math>.
+</para>
+  </content>
+</document>

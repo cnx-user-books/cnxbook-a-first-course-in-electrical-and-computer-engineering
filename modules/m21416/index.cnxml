@@ -1,0 +1,618 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Filtering: Exponential Averages and Recursive Filters</title>
+  <metadata>
+  <md:content-id>m21416</md:content-id><md:title>Filtering: Exponential Averages and Recursive Filters</md:title>
+  <md:abstract/>
+  <md:uuid>5b809cf5-fb7a-417a-83ba-5f7084e0fb66</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-258">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Suppose we try to extend our method for computing finite moving averages to infinite moving averages of the form</para>
+    
+    <equation id="id2258972"><m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+</m:mtd>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+     <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>w</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>1000</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1000</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+    </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    <para id="id2259052">In general, this moving average would require infinite memory for the weighting coefficients <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>w</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math> and for the inputs <m:math overflow="scroll"><m:mrow><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>. Furthermore, the hardware for multiplying <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>k</m:mi></m:msub><m:msub><m:mi>u</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:math> would have to be infinitely fast to compute the infinite moving average in finite time. All of this is clearly fanciful and implausible (not to mention impossible). But what if the weights take the exponential form</para>
+    <equation id="id2259152">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>a</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msup>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>?</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259241">Does any simplification result? There is hope because the weighting sequence
+obeys the recursion</para>
+    <equation id="id2259246"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            
+
+<m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+<m:mtd>
+<m:mi>k</m:mi>
+<m:mo>=</m:mo>
+<m:mn>0</m:mn>
+</m:mtd>
+              </m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mi>a</m:mi>
+<m:msub>
+<m:mrow>
+<m:mi>w</m:mi>
+</m:mrow>
+<m:mrow>
+<m:mi>k</m:mi>
+<m:mo>-</m:mo>
+<m:mn>1</m:mn>
+</m:mrow>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:mi>k</m:mi>
+<m:mo>≥</m:mo>
+<m:mn>1</m:mn>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>        
+    </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    
+    <para id="id2259363">This recursion may be rewritten as follows, for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>≥</m:mo><m:mn>1</m:mn></m:mrow></m:math>:</para>
+    <equation id="eip-434"><m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:mi>a</m:mi><m:msub><m:mi>w</m:mi><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi>k</m:mi><m:mo>≥</m:mo><m:mn>1</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation>
+    <para id="id2259432">Let's now manipulate the infinite moving average and use the recursion for the weights to see what happens. You must follow every step:</para>
+
+    <equation id="id2259437">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>        
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>    
+      <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>    
+        <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mi>a</m:mi>
+            <m:msub>
+              <m:mi>w</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>-</m:mo>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>w</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>u</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+          </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>    
+      <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mi>a</m:mi>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>m</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mi>∞</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>m</m:mi>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mi>m</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>    
+      <m:mi>a</m:mi>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+    </equation>
+    <para id="id2259751">This result is fundamentally important because it says that the output of the
+<emphasis effect="italics">infinite exponential moving average</emphasis> may be computed by scaling the previous
+output <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> by the constant <emphasis effect="italics">a</emphasis>, scaling the new input <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math> by <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math>, and adding.
+Only three memory locations must be allocated: one for <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math>, one for <m:math>
+<m:mi>a</m:mi>
+</m:math>, and
+one for <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>. Only two multiplies must be implemented: one for <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> and
+one for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>. A diagram of the recursion is given in <link target-id="uid1">Figure 1</link>. In this
+recursion, the old value of the exponential moving average, <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math>, is scaled
+by <m:math>
+<m:mi>a</m:mi>
+</m:math> and added to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> to produce the new exponential moving average <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+</m:math>.
+This new value is stored in memory, where it becomes <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> in the next step
+of the recursion, and so on.</para>
+    <figure id="uid1"><media id="uid1_media" alt="This diagram is a series of arrows and figures. On the far left there is the expression U_n with an arrow pointing to the right. This arrow ends and above the point of this arrow is the expression W_0. Another arrow proceeds to the right of the previous arrows points. This arrow ends at a circle containing a plus. A line extends to the right of the cirle and above this line is the expression X_n This line ends at a rectangle containg the word memory. Another line extends to the right ending in an arrow point pointing at the expression X_(n-1). Halfway along this last line and another line extends down perpendicularly and then turns at a right angle to the left. This line has an arrow point halfway along its path and about the arrow point is the expression alpha. The line continues after this arrow point and has another right angle so the that the arrow now points up and ends at the circle containing the plus.">
+        <image mime-type="image/png" src="../../media/pic009-6c32.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 205. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic009-1fd6.eps" id="uid1_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Recursive Implementation of an Exponential Moving Average</caption></figure>
+<exercise id="fs-id8649570">
+<problem id="fs-id8649572">
+    <para id="id2260014">Try to extend the recursion of the previous paragraphs to the
+weighted average</para>
+    <equation id="id2260023"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+<m:mrow>
+            <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>N</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:munderover>
+          <m:msup>
+            <m:mi>a</m:mi>
+            <m:mi>k</m:mi>
+          </m:msup>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260086">What goes wrong?</para></problem></exercise>
+<exercise id="fs-id15114799">
+<problem id="fs-id14459678">
+    <para id="id2260092">Compute the output of the exponential moving average <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo></m:mrow></m:math><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>w</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>u</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> when the input is</para>
+    <equation id="id2260158">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>u</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>u</m:mi>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260228">Plot your result versus <m:math>
+<m:mi>n</m:mi>
+</m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id13964126">
+<problem id="fs-id13964128">
+    <para id="id2260242">Compute <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> in the exponential weighting sequence</para>
+    <equation id="id2260263">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>w</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:msup>
+                      <m:mi>a</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                    <m:msub>
+                      <m:mi>w</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mo>≥</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260345">to make the weighting sequence a valid window. (This is a special case of
+<link document="m21418" target-id="fs-id19588491">Exercise 3 from Filtering: Moving Averages</link>.) Assume <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>&lt;</m:mo><m:mi>a</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math></para></problem>
+</exercise>
+  </content>
+</document>

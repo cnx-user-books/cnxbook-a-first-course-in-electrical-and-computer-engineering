@@ -1,0 +1,307 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>An Introduction to MATLAB: Vectors and Matrices</title>
+  <metadata>
+  <md:content-id>m21398</md:content-id><md:title>An Introduction to MATLAB: Vectors and Matrices</md:title>
+  <md:abstract/>
+  <md:uuid>060e5386-bf7e-4666-bfb1-af23036567fe</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-931">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258268">As its name indicates, MATLAB is especially designed to handle matrices. The simplest way to enter a matrix is to use an explicit list. In the
+list, the elements are separated by blanks or commas, and the semicolon (;)
+is used to indicate the end of a row. The list is surrounded by square brackets
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mspace width="5pt"/><m:mo>]</m:mo></m:mrow></m:math>. For example, the statement</para>
+    <code id="eip-24" display="block">≫ A = [1 2 3;4 5 6;7 8 9]</code>
+    <para id="id2258965">results in the output</para>
+    <code id="eip-126" display="block">A = 
+   1 2 3
+   4 5 6
+   7 8 9</code>
+    
+    
+    
+    <para id="id2258989">The variable A is a matrix of size <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math>. Matrix elements can be any MATLAB
+expression. For example, the command</para>
+    <code id="eip-264" display="block">≫ x = [-1.3 sqrt(3) (1+2+3)*4/5]</code>
+    <para id="id2259075">results in the matrix</para>
+    <code id="eip-132" display="block">x = 
+   -1.3000  1.7321  4.8000</code>
+    
+    <para id="id2259101">We call a matrix with just one row or one column a vector, and a <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>×</m:mo><m:mn>1</m:mn></m:mrow></m:math>
+matrix is a scalar. Individual matrix elements can be referenced with indices
+that are placed inside parentheses. Type <code>x(5) = abs(x(1))</code> to produce the
+new vector</para>
+    <code id="eip-173" display="block">x = 
+   -1.3000  1.7321  4.8000  0.000  1.3000</code>
+    
+    <para id="id2259186">Note that the size of <code>x</code> has been automatically adjusted to accommodate the
+new element and that elements not referenced are set equal to 0 (here <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>)</m:mo></m:mrow></m:math>).
+New rows or columns can be added very easily. Try typing <code>r = [10 11 12],A = [A;r]</code>. Dimensions in the command must coincide. Try <code>r = [13 14],A = [A;r]</code>.</para>
+    <para id="id2259545">The command <code>size(A)</code> gives the number of rows and the number of
+columns of <code>A</code>. The output from <code>size(A)</code> is itself a matrix of size <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>×</m:mo><m:mn>2</m:mn></m:mrow></m:math>. These
+numbers can be stored if necessary by the command <code>[m n] = size(A)</code>. In our
+previous example, <code>A = [A;r]</code> is a <m:math overflow="scroll"><m:mrow><m:mn>4</m:mn><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math> matrix, so the variable <code>m</code> will contain
+the number 4 and <code>n</code> will contain the number 3. A vector is a matrix for which
+either <code>m</code> or <code>n</code> is equal to 1. If <code>m</code> is equal to 1, the matrix is a row vector; if <code>n</code> is
+equal to 1, the matrix is a column vector. Matrices and vectors may contain
+complex numbers. For example, the statement</para>
+    <code id="eip-586" display="block">≫ A = [1 2;3 4]+j*[5 6;7 8]</code>
+    <para id="id2259744">and the statement</para>
+    <code id="eip-789" display="block">≫ A = [1+5*j 2+6*j;3+7*j 4+8*j]</code>
+    <para id="id2259824">are equivalent, and they both produce the matrix</para>
+    <code id="eip-375" display="block">A =
+   1.0000+5.0000i    2.0000+6.0000i
+   3.0000+7.0000i    4.0000+8.0000i</code>
+    
+    
+    <para id="id2259942">Note that blanks must be avoided in the second expression for <code>A</code>. Try typing</para>
+    <code id="eip-290" display="block">≫A = [1 + 5*j 2 + 6*j 2 + 6*j;3 +7*j 4 + 8*j]</code>
+    <para id="id2260025">What is the size of <code>A</code> now?</para>
+    <para id="id2260029">MATLAB has several built-in functions to manipulate matrices. The
+special character, ', for prime denotes the transpose of a matrix. The statement <code>A = [ 1 2 3;4 5 6;7 8 9]'</code> produces the matrix</para>
+    <code id="eip-413" display="block">A = 
+   1 4 7 
+   2 5 8
+   3 6 9</code>
+    
+    
+    
+    <para id="id2260080">The rows of <code>A'</code> are the column of <code>A</code>, and vice versa. If <code>A</code> is a complex matrix, then <code>A</code> is its complex conjugate transpose or hermitian transpose. For an “unconjugate” transpose, use the two-character operator dot-prime (. '). Matrix and vector variables can be added, subtracted, and multiplied as regular variables if the sizes match. Only matrices of the same size can be added or subtracted. There is, however, an easy way to add or subtract a common scalar from each element of a matrix. For example, <code>x = [1 2 3 4],x = x-1</code> produces the output</para>
+    <code id="eip-216" display="block">x = 
+   1 2 3 4
+
+x = 
+   0 1 2 3</code>
+    
+    
+    
+    <para id="id2260222">As discussed in <link document="m21454">the chapter on linear algebra</link>, multiplication of two matrices is only valid if the inner sizes of the matrices are equal. In other words, <code>A*B</code> is valid if the second size of <code>A</code> (number of columns) is the same as the first size of <code>B</code> (number of rows). Let <m:math overflow="scroll"><m:msub><m:mi mathvariant="normal">a</m:mi><m:mrow><m:mi>i</m:mi><m:mo>,</m:mo><m:mi>j</m:mi></m:mrow></m:msub></m:math> represent the element of <code>A</code> in the <m:math overflow="scroll"><m:msup><m:mi>i</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> row and the <m:math overflow="scroll"><m:msup><m:mi>j</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> column. Then the matrix <code>A*B</code> consists of elements</para>
+    
+    <equation id="eip-197"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">A</m:mi>
+              <m:mi mathvariant="normal">B</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+<m:mrow>
+            <m:mo>∑</m:mo>
+</m:mrow>        
+    <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>n</m:mi>
+          </m:munderover>
+          <m:msub>
+            <m:mi mathvariant="normal">a</m:mi>
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>k</m:mi>
+            </m:mrow>
+          </m:msub>
+          <m:msub>
+            <m:mi>b</m:mi>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>j</m:mi>
+            </m:mrow>
+          </m:msub>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2260424">where <m:math>
+<m:mi>n</m:mi>
+</m:math> is the number of columns of <code>A</code> and the number of rows of <code>B</code>. Try
+typing <code>A = [1 2 3;4 5 6];B = [7;8;9]; A*B</code>. You should get the result</para>
+    <code id="eip-105" display="block">ans =
+    50
+    112</code>
+    
+    
+    <para id="id2260525">The inner product between two column vectors <code>x</code> and <code>y</code> is the scalar defined as the product <code>x'*y</code> or equivalently as <code>y'*x</code> For example, <code>x = [1;2],y = [3;4],x'*y</code>, leads to the result</para>
+    <code id="eip-983" display="block">ans =
+    11</code>
+    
+    <para id="id2260677">Similarly, for row vectors the inner product is defined as <code>x*y'</code>. The Euclidean
+norm of a vector is defined as the square root of the inner product between
+a vector and itself. Try to compute the norm of the vector <code>[1 2 3 4]</code>. You
+should get <code>5.4772</code>. The outer product of two column (row) vectors is the
+matrix <code>x*y' (x'*y)</code>.</para>
+    <para id="id2260766">Any scalar can multiply or be multiplied by a matrix. The multiplication is then performed element by element. Try <code>A = [1 2 3;4 5 6;7 8 9];A*2</code>. You should get</para>
+    <code id="eip-732" display="block">ans =
+    2  4  6
+    8 10 12
+   14 26 28</code>
+    
+    
+    
+    <para id="id2260843">Verify that <code>2*A</code> gives the same result.</para>
+    <para id="id2260863">The inverse of a matrix is computed by using the function <code>inv(A)</code> and
+is only valid if <code>A</code> is square. If the matrix is singular, meaning that it has no
+inverse, a message will appear. Try typing <code>inv(A)</code>. You should get</para>
+    <code id="id2260870" display="block">Warning: Matrix is close to singular or badly scaled.
+   Results may be inaccurate. RCOND=2.937385e-18
+
+ans =
+     1.0e+16*
+     0.3152  -0.6304   0.3152
+    -0.6304   1.2609  -0.6304
+     0.3152  -0.6304   0.3152  
+</code>
+    
+    
+    
+    
+    
+    
+    
+    <para id="id2260952">The inverse of a matrix may be used to solve a linear system of equations. For example, to solve the system</para>
+    
+    <para id="id2261112">you could type <code>A = [1 2 3;1 -2 4;0 -2 1]; b = [2;7;3]; inv(A)*b</code> and
+get</para>
+    <code id="eip-350" display="block">ans =
+    1
+   -1
+    1</code>
+    
+    <equation id="id2260957"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mspace width="4.pt"/>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msub>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="[" close="]">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>7</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mn>3</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <para id="id2261240">Check to see that this is the correct answer by typing <code>A*[1;-1;1]</code>. What do
+you see?</para>
+    <para id="id2261277">MATLAB offers another way to solve linear systems, based on Gauss elimination, that is faster than computing the inverse. The syntax is <code>A\b</code> and is valid whenever <code>A</code> has the same number of rows as <code>b</code>. Try it.</para>
+    <para id="id2261312"><emphasis effect="bold">The “Dot” Operator.</emphasis> Sometimes you may want to perform an operation element by element. In MATLAB, these element-by-element operations are called array operations. Of course, matrix addition and subtraction are already element-by-element operations. The operation <code>A</code>. <code>*B</code> denotes the multiplication, element by element, of the matrices <code>A</code> and <code>B</code>. Make two 3 <m:math overflow="scroll"><m:mrow><m:mo>×</m:mo><m:mn>3</m:mn></m:mrow></m:math> matrices, <code>A</code> and <code>B</code>, and try</para>
+    
+    
+    <code id="eip-527" display="block">≫ A*B
+≫ A.*B</code><para id="id2261414">Suppose we want to find the square of each number in <code>A</code>. The proper
+way to specify this calculation is</para>
+    
+    <code id="eip-59" display="block">≫ A_squared=A.^2</code><para id="id2261498">where the period (dot) indicates an “array operation” to be performed on each
+element of <code>A</code>. Without the dot, <code>A</code> is multiplied by <code>A</code> according to the rules of
+matrix multiplication described in Chapter 4, giving a totally different result:</para>
+    
+    <code id="eip-908" display="block">≫ A^2</code><para id="id2261560"><emphasis effect="bold">Subtleties.</emphasis> Because MATLAB can do so many different mathematical
+functions with just a few keystrokes, there are times when a very slight change
+in what you type will lead to a different result. Using the matrix <code>A</code> entered
+earlier, type the following two lines:</para>
+    
+    <code id="eip-986" display="block">≫ 2.^A
+≫ 2 .^A                        %with a space after the 2.</code>
+    <para id="id2261658">In the first case, the dot is “absorbed” by the 2 as a decimal point and the ^ is taken as a matrix exponential. But, when the dot is separated from the 2 by a space, it becomes part of the operator <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>.</m:mo><m:mspace width="4pt"/><m:mo>^</m:mo><m:mo>)</m:mo></m:mrow></m:math> and specifies that 2 should be raised to the power of each element in A. The point is, you should be very careful to type what you mean in an unambiguous way until you are familiar enough with MATLAB to know how the subtle situations wiIl be interpreted. An unambiguous way of typing the preceding lines is</para>
+    <code id="id2261701" display="block">≫ (2.)^A                     %for matrix exponential
+≫ (2).^A                     %for array exponential.</code>
+    
+<!--empty paragraphs get left behind.-->
+  </content>
+</document>

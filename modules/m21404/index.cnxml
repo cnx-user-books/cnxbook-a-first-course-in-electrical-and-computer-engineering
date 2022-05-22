@@ -1,0 +1,991 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Binary Codes: Huffman Codes for Source Coding</title>
+  <metadata>
+  <md:content-id>m21404</md:content-id><md:title>Binary Codes: Huffman Codes for Source Coding</md:title>
+  <md:abstract/>
+  <md:uuid>a7b0773e-0b8d-4a2c-96f1-551a5a05b12c</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-920">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">In 1838, Samuel Morse was struggling with the problem of designing an efficient code for transmitting information over telegraph lines. He reasoned that an efficient code would use short code words for common letters and long code words for uncommon letters. (Can you see the profit motive at work?) In order to turn this reasoned principle into workable practice, Morse rummaged around in the composition trays for typeface in a printshop. He discovered that typesetters use many more <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> than s's. He then formed a table that showed the relative frequency with which each letter was used. His ingenious, variable-length Morse code assigned short codes to likely letters (like “dot” for <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mo>'</m:mo>
+</m:msup>
+</m:math>) and long codes to unlikely letters (like “dash dash dot dot” for <m:math>
+<m:msup>
+<m:mi>z</m:mi>
+<m:mo>'</m:mo>
+</m:msup>
+</m:math>). We now know that Morse came within about 15% of the theoretical minimum for the average code word length for English language text.</para>
+    <para id="id2258976"><emphasis effect="bold">A Variation on Morse's Experiment.</emphasis> In order to set the stage for our study of efficient source codes, let's run a variation on Morse's experiment to see if we can independently arrive at a way of designing codes. Instead of giving ourselves a composition tray, let's start with a communication source that generates five symbols or letters <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>S</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>S</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>S</m:mi><m:mn>4</m:mn></m:msub></m:mrow></m:math>. We run the source for 100 transmissions and observe the following numbers of transmissions for each symbol:</para>
+    <equation id="id2259043">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>        
+          <m:mn>50</m:mn>
+          <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mo>'</m:mo>
+          </m:msubsup>
+          <m:mi mathvariant="normal">s</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mn>20</m:mn>
+          <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mo>'</m:mo>
+          </m:msubsup>
+          <m:mi mathvariant="normal">s</m:mi>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+    <m:mn>20</m:mn>
+ <m:msubsup>
+<m:mi>S</m:mi>
+<m:mrow>
+<m:mn>2</m:mn>
+</m:mrow>
+<m:mo>'</m:mo>
+</m:msubsup>
+<m:mi mathvariant="normal">s</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mn>5</m:mn>
+          <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>3</m:mn>
+            </m:mrow>
+            <m:mo>'</m:mo>
+          </m:msubsup>
+          <m:mi mathvariant="normal">s</m:mi>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mn>5</m:mn>
+          <m:mspace width="4.pt"/>
+          <m:msubsup>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mn>4</m:mn>
+            </m:mrow>
+            <m:mo>'</m:mo>
+          </m:msubsup>
+          <m:mi mathvariant="normal">s</m:mi>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+    <para id="id2259196">We will assume that these “source statistics” are typical, meaning that 1000 transmissions would yield 500 <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>S</m:mi><m:mrow><m:mn>0</m:mn></m:mrow><m:mo>'</m:mo></m:msubsup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math> and so on.</para>
+    <para id="id2259227">The most primitive binary code we could build for our source would use three bits for each symbol:</para>
+    <equation id="id2259232">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>        
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mo>∼</m:mo>
+          <m:mn>000</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>∼</m:mo>
+          <m:mn>001</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>    
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>∼</m:mo>
+          <m:mn>010</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+          <m:mo>∼</m:mo>
+          <m:mn>011</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+          <m:mo>∼</m:mo>
+          <m:mn>100</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mi>x</m:mi>
+          <m:mo>∼</m:mo>
+          <m:mn>101</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+   <m:mi>x</m:mi>
+          <m:mo>∼</m:mo>
+          <m:mn>110</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>     
+     <m:mi>x</m:mi>
+          <m:mo>∼</m:mo>
+          <m:mn>111</m:mn>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    <para id="id2259628">This code is inefficient in two ways. First, it leaves three illegal code words that correspond to no source symbol. Second, it uses the same code word length for an unlikely symbol (like <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:math>) that it uses for a likely symbol (like <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math>). The first defect we can correct by concatenating consecutive symbols into symbol blocks, or composite symbols. If we form a composite symbol consisting of <m:math>
+<m:mi>M</m:mi>
+</m:math> source symbols, then a typical composite symbol is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>4</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>3</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>S</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>. The number of such composite symbols that can be generated is <m:math>
+<m:msup>
+<m:mn>5</m:mn>
+<m:mi>M</m:mi>
+</m:msup>
+</m:math>. The binary code for these <m:math>
+<m:msup>
+<m:mn>5</m:mn>
+<m:mi>M</m:mi>
+</m:msup>
+</m:math> composite symbols must contain <m:math>
+<m:mi>N</m:mi>
+</m:math> binary digits where</para>
+    
+    <equation id="eip-752"><m:math overflow="scroll"><m:mrow><m:msup><m:mn>2</m:mn><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>&lt;</m:mo><m:msup><m:mn>5</m:mn><m:mi>M</m:mi></m:msup><m:mo>&lt;</m:mo><m:msup><m:mn>2</m:mn><m:mi>N</m:mi></m:msup><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mo>≅</m:mo><m:mi>M</m:mi><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:mn>5</m:mn><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation><para id="id2259856">The number of bits per source symbol is</para>
+    
+    <equation id="eip-24"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>N</m:mi><m:mi>M</m:mi></m:mfrac><m:mo>≅</m:mo><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:mn>5</m:mn><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>.</m:mo><m:mn>32</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math></equation><para id="id2259904">This scheme improves on the best variable length code of <link document="m21399" target-id="eip-497">Table 2 from "Binary Codes: From Symbols to Binary Codes"</link> by 0.08
+bits/symbol.</para>
+<exercise id="fs-id1169479803898">
+<problem id="fs-id1169464669689">
+    <para id="id2259909">Suppose your source of information generates the 26 lowercase roman letters used in English language text. These letters are to be concatenated into blocks of length <emphasis effect="italics">M</emphasis>. Complete the following table of <emphasis effect="italics">N</emphasis> (number of bits) versus <emphasis effect="italics">M</emphasis> (number of letters in a block) and show that <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mfrac><m:mi>N</m:mi><m:mi>M</m:mi></m:mfrac></m:mstyle></m:math> approaches <m:math overflow="scroll"><m:mrow><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:mn>26</m:mn></m:mrow></m:math>.</para>
+    <table id="id2259984" summary="table">
+<tgroup cols="7"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+        <colspec colnum="7" colname="c7"/>
+        <thead>
+          <row>
+<entry/>
+           <entry namest="c2" nameend="c7" align="center">
+              <emphasis effect="italics">M</emphasis>
+            </entry>
+            
+  </row>
+</thead>
+<tbody>
+          <row>
+            <entry/>
+            <entry> 1</entry>
+            <entry>2</entry>
+    <entry>3</entry>
+    <entry>4</entry>
+    <entry>5</entry>
+    <entry>6</entry>
+  </row>
+          <row>
+            <entry>
+              <emphasis effect="italics">N</emphasis>
+            </entry>
+            <entry> 5</entry>
+            <entry>10</entry>
+    <entry/>
+    <entry/>
+    <entry/>
+    <entry/>
+  </row>
+          <row>
+            <entry>
+              <m:math overflow="scroll">
+                <m:mrow>
+                  <m:mi>N</m:mi>
+                  <m:mo>/</m:mo>
+                  <m:mi>M</m:mi>
+                </m:mrow>
+              </m:math>
+            </entry>
+            <entry> 5</entry>
+            <entry>5</entry>
+    <entry/>
+    <entry/>
+    <entry/>
+    <entry/>
+  </row>
+        </tbody>
+      
+
+
+
+</tgroup>
+</table>
+</problem>
+</exercise>
+<!--empty paragraphs get left behind.-->
+    <para id="id2260099">Now let's reason, as Morse did, that an efficient code would use short
+codes for likely symbols and long codes for unlikely symbols. Let's pick code
+#5
+from <link document="m21399" target-id="eip-497">Table 2 from "Binary Codes: From Symbols to Binary Codes"</link> for this purpose:</para>
+    <equation id="id2260117"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+       </m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+       </m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+       </m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+       </m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>01</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>001</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0001</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0000</m:mn>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    
+    <para id="id2260182">This is a variable-length code. If we use this code on the 100 symbols that generated our source statistic, the average number of bits/symbol is</para>
+    <equation id="id2260187"><m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mn>100</m:mn>
+          </m:mfrac>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mn>50</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>20</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>20</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>3</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>5</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>4</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>5</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>4</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+          <m:mn>90</m:mn>
+          <m:mtext>bits</m:mtext>
+          <m:mo>/</m:mo>
+<m:mtext>symbol</m:mtext>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id1169485259040">
+<problem id="fs-id1169485987130">
+    <para id="id2260320">Use the source statistics of <link target-id="id2259043">Equation 1</link> to determine the average number of bits/symbol for each code in <link document="m21399" target-id="eip-497">Table 2 from "Binary Codes: From Symbols to Binary Codes"</link>.</para></problem>
+</exercise>
+    <para id="id2260331"><emphasis effect="bold">Entropy.</emphasis> So far, each ad hoc scheme we have tried has produced an improvement in the average number of bits/symbol. How far can this go? The answer is given by Shannon's source coding theorem, which says that the minimum number of bits/symbol is</para>
+    
+    <equation id="eip-347"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:mfrac>
+              <m:mi>N</m:mi>
+              <m:mi>M</m:mi>
+            </m:mfrac>
+            <m:mo>≥</m:mo>
+            <m:mo>-</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>i</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>M</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>p</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mo form="prefix">log</m:mo>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>p</m:mi>
+              <m:mi>i</m:mi>
+            </m:msub>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2260408">where <emphasis effect="italics">p<sub>i</sub></emphasis> is the probability that symbol <emphasis effect="italics">S<sub>i</sub></emphasis> is generated and <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:mo>∑</m:mo><m:msub><m:mi>p</m:mi><m:mi>i</m:mi></m:msub><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:msub><m:mi>p</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:mstyle></m:math> is a fundamental property of the source called <emphasis effect="italics">entropy</emphasis>. For our five-symbol example, the table of <emphasis effect="italics">p<sub>i</sub></emphasis> and <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mo form="prefix">log</m:mo><m:msub><m:mi>p</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:math> is given in <link target-id="eip-523">Table 2</link>. The entropy is 1.861, and the bound on bits/symbol is</para>
+    <equation id="eip-517"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mfrac><m:mi>N</m:mi><m:mi>M</m:mi></m:mfrac><m:mo>≥</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>861</m:mn></m:mrow></m:mstyle><m:mo>.</m:mo></m:math>
+</equation><para id="id2260524">Code <m:math overflow="scroll"><m:mrow><m:mo>#</m:mo><m:mn>5</m:mn></m:mrow></m:math> comes within 0.039 of this lower bound. As we will see in the next paragraphs, this is as close as we can come without coding composite symbols.</para>
+    
+    <table id="eip-523" summary="Source statistics for Five-Symbol Source">
+<tgroup cols="3"><thead>
+  <row>
+    <entry>Symbol</entry>
+    <entry>Probability</entry>
+    <entry>~ Log Probability</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry><m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math></entry>
+    <entry>0.5</entry>
+    <entry>1</entry>
+  </row>
+  <row>
+    <entry><m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math></entry>
+    <entry>0.2</entry>
+    <entry>2.32</entry>
+  </row>
+  <row>
+    <entry><m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math></entry>
+    <entry>02</entry>
+    <entry>2.32</entry>
+  </row>
+  <row>
+    <entry><m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math></entry>
+    <entry>0.05</entry>
+    <entry>4.32</entry>
+  </row>
+  <row>
+    <entry><m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:math></entry>
+    <entry>0.05</entry>
+    <entry>4.32</entry>
+  </row>
+</tbody>
+</tgroup><caption>Source statistics for Five-Symbol Source</caption>
+</table>
+    
+    
+    
+    
+    
+<exercise id="fs-id1169477470206">
+<problem id="fs-id1169480133222">
+    <para id="id2260660">Select an arbitrary page of English text. Build a table of source statistics containing <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> (relative frequencies) and-log <m:math>
+<m:msub>
+<m:mi>p</m:mi>
+<m:mi>i</m:mi>
+</m:msub>
+</m:math> for <m:math>
+<m:mi>a</m:mi>
+</m:math> through <m:math>
+<m:mi>z</m:mi>
+</m:math>. (Ignore distinction between upper and lower case and ignore punctuation and other special symbols.) Compute the entropy <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mo>-</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>i</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mn>26</m:mn></m:munderover><m:msub><m:mi>p</m:mi><m:mi>i</m:mi></m:msub><m:msub><m:mo form="prefix">log</m:mo><m:mn>2</m:mn></m:msub><m:msub><m:mi>p</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+    <para id="id2260802"><emphasis effect="bold">Huffman Codes.</emphasis> In the late <m:math overflow="scroll"><m:mrow><m:mn>1950</m:mn><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math>, David Huffman discovered an algorithm for designing variable-length codes that minimize the average number of bits/symbol. Huffman's algorithm uses a principle of optimality that says, “the optimal code for <m:math>
+<m:mi>M</m:mi>
+</m:math> letters has imbedded in it the optimal code for the <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> letters that result from aggregating the two least likely symbols.” When this principle is iterated, then we have an algorithm for generating the binary tree for a Huffman code:</para>
+<list id="fs-id12279226" list-type="enumerated" number-style="lower-roman"><item>label all symbols as “children”;</item>
+    <item>“twin” the two least probable children and give the twin the sum of the probabilities:
+    <figure id="uid1"><media id="uid1_media" alt="A binary tree labeled (0.10). Two branches extend down from the upper point and end at points labeled (s_4)(0.05) on the left and (S_3)(0.05) on the right.">
+        <image mime-type="image/png" src="../../media/pic011-ba44.png" id="uid1_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 76. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-5639.eps" id="uid1_printimage" print-width="2in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </figure></item>
+    <item>(regard the twin as a child; and</item>
+    <item>repeat steps (ii) and (iii) until all children are accounted for.</item>
+</list>
+    <para id="id2260894">This tree is now labeled with 1's and 0's to obtain the Huffman code. The
+labeling procedure is to label each right branch with a 1 and each left branch
+with a 0. The procedure for laying out symbols and constructing Huffman
+trees and codes is illustrated in the following examples.</para>
+<example id="fs-id12191671">    
+<para id="id2260925">Consider the source statistics</para>
+    <equation id="id2260933"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mtext>Symbol</m:mtext>
+</m:mtd>
+<m:mtd>        
+  <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>
+Probability 
+</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mn>0.5</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+    
+    <para id="id2261014">for which the Huffman algorithm produces the following binary tree and its corresponding code:</para>
+    <figure id="uid2"><media id="uid2_media" alt="">
+        <image mime-type="image/png" src="../../media/pic012-29f8.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 217. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-d3a1.eps" id="uid2_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    </figure>
+</example>
+<example id="fs-id12200370">
+<para id="fs-id12364939">The Huffman code for the source statistics</para>
+    <equation id="id2261036"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mtext>Symbol</m:mtext>
+</m:mtd>
+<m:mtd>       
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>   
+       <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>Probability</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mn>0.75</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.075</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.075</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261116">is illustrated next:</para>
+    <figure id="uid3"><media id="uid3_media" alt="">
+        <image mime-type="image/png" src="../../media/pic013-4cec.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 218. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-8bf1.eps" id="uid3_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </figure>
+</example>
+<exercise id="fs-id1169476042858">
+<problem id="fs-id1169485845333">
+    <para id="id2261132">Generate binary trees and Huffman codes for the following
+source statistics:</para>
+    <equation id="id2261140"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mtext>Symbol</m:mtext>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>5</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>        
+  <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>6</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>7</m:mn>
+          </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>
+Probability</m:mtext>
+<m:mn>1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.20</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.20</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.15</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.15</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>
+Probability</m:mtext>
+<m:mn>2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.3</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.25</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.075</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.075</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.05</m:mn>
+<m:mo>.</m:mo>
+</m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation>
+    
+    </problem>
+</exercise>
+    <para id="id2261259"><emphasis effect="bold">Coding a FAX Machine.</emphasis> Symbols can arise in unusual ways and be defined quite arbitrarily. To illustrate this point, we consider the design of a hypothetical FAX machine. For our design we will assume that a laser scanner reads a page of black and white text or pictures, producing a high voltage for a black spot and a low voltage for a white spot. We will also assume that the laser scanner resolves the page at 1024 lines, with 1024 spots/line. This means that each page is represented by a two-dimensional array, or matrix, of pixels (picture elements), each pixel being 1 or 0. If we simply transmitted these l's and <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">O</m:mi><m:mo>'</m:mo></m:msup><m:mi mathvariant="normal">s</m:mi></m:mrow></m:math>, then we would need <m:math overflow="scroll"><m:mrow><m:mn>1024</m:mn><m:mo>×</m:mo><m:mn>1024</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>059</m:mn><m:mo>,</m:mo><m:mn>576</m:mn></m:mrow></m:math> bits. If these were transmitted over a 9600 baud phone line, then it would take almost 2 minutes to transmit the FAX. This is a long time.</para>
+    <para id="id2261327">Let's think about a typical scan line for a printed page. It will contain long runs of 0's, corresponding to long runs of white, interrupted by short bursts of l's, corresponding to short runs of black where the scanner encounters a line or a part of a letter. So why not try to define a symbol to be “a run of <m:math>
+<m:mi>k</m:mi>
+</m:math> 0's" and code these runs? The resulting code is called a “run length code.” Let's define eight symbols, corresponding to run lengths from 0 to 7 (a run length of 0 is a 1):</para>
+    <equation id="id2261390"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mtext>run length of 0 zeros</m:mtext>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mspace width="4.pt"/>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mtext>run length of 1 zero</m:mtext>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mo>⋮</m:mo>
+</m:mtd>
+<m:mtd/>
+<m:mtd/>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>7</m:mn>
+</m:msub>
+</m:mtd>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:mtext>run legnth of 7 zeros.</m:mtext>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    
+    
+    <para id="id2261550">If we simply used a simple three-bit binary code for these eight symbols, then for each scan line we would generate anywhere from <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>1024</m:mn></m:mrow></m:math> bits (for a scan line consisting of all 1's) to <m:math overflow="scroll"><m:mrow><m:mn>3</m:mn><m:mo>×</m:mo><m:mn>1024</m:mn><m:mo>/</m:mo><m:mn>7</m:mn><m:mo>≅</m:mo><m:mn>400</m:mn></m:mrow></m:math> bits (for a scan line consisting of all 0's). But what if we ran an experiment to determine the relative frequency of the run lengths <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>0</m:mn>
+</m:msub>
+</m:math> through <m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mn>7</m:mn>
+</m:msub>
+</m:math> and used a Huffman code to “run length encode” the run lengths? The following problem explores this possibility and produces an efficient FAX code.</para>
+<exercise id="fs-id1169459669624">
+<problem id="fs-id1169485418677">
+    <para id="id2261654">An experiment conducted on FAXed documents produces the
+following statistics for run lengths of white ranging from 0 to 7:</para>
+    <equation id="id2261663"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+<m:mtext>Symbol</m:mtext>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>3</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>4</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>5</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>6</m:mn>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:msub>
+            <m:mi>S</m:mi>
+            <m:mn>7</m:mn>
+          </m:msub>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+<m:mtext>
+Probability</m:mtext>
+</m:mtd>
+<m:mtd>
+<m:mn>0.01</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.06</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.1</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.2</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.15</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.15</m:mn>
+</m:mtd>
+<m:mtd>
+<m:mn>0.2</m:mn>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261779">These statistics indicate that only 1% of a typical page is black. Construct the Huffman code for this source. Use your Huffman code to code and decode these scan lines:</para>
+    <para id="id2261785"><figure id="eip-id2430875">
+<media id="pg220missingimage" alt="">
+        <image mime-type="image/png" src="../../media/pic014-2600.png" id="faxcode_onlineimage" width="440"/>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic014-d7be.eps" id="faxcode_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+</figure></para></problem>
+</exercise>
+  </content>
+</document>

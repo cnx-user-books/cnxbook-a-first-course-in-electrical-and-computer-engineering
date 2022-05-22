@@ -1,0 +1,620 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Circuit Analysis</title>
+  <metadata>
+  <md:content-id>m21447</md:content-id><md:title>Linear Algebra: Circuit Analysis</md:title>
+  <md:abstract/>
+  <md:uuid>18677dd5-8843-4c20-a61d-ea9afe594c3f</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-113">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2261213">In this section we use the linear algebra we have developed to find the
+voltages and currents in a simple electrical circuit, such as the one shown
+in <link target-id="uid2">Figure 1</link>. There are many reasons why this might be necessary; in this
+example we need to know the current flowing through the lamp to tell whether
+or not it will glow. Too little current will have no visible effect; too much
+current will cause the lamp to burn out. We will apply a few physical laws
+relating the voltages and currents in a circuit, turn these laws into systems of
+linear equations, and solve the equations for the voltages and currents.</para>
+      <figure id="uid2"><media id="uid2_media" alt="The diagram is essentially a rectangle. In the middle of the left side of the rectangle is a circle labeled on the left with a 5 and on the top right and bottom left with a + and - respecitively. On the left side of the top there is a resistor labeled 50. In the middle there of the top side there is a point with a line that bisects the rectangle this line also has a resistor that is labeled 300. On the right side of the top there is a resistor labeled 100. On the right side there is a resistor labeled 2 and to the right of that is the word (lamp).">
+          <image mime-type="image/png" src="../../media/pic023.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 199. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic023.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>A Simple Electrical Circuit</caption></figure>
+      <para id="id2261242"><emphasis effect="bold">Current, Voltage, and Resistance.</emphasis> We will use three physical
+quantities in our analysis of electrical circuits: current, voltage, and resistance.
+<emphasis effect="italics">Current</emphasis> is the flow of electrical charge from one place to another. Electrons
+flowing through a wire or through some other electronic device comprise a
+current. <emphasis effect="italics">Voltage</emphasis> is a difference in electric potential that makes electrons flow.
+Voltage is sometimes called <emphasis effect="italics">electromotive force</emphasis> because it is like a “force”
+that moves electrons. <emphasis effect="italics">Resistance</emphasis> is a property of the device through which
+the electron current flows. The lower the resistance of a device, the more
+easily current can flow through the device.</para>
+      <para id="id2261282">The analogy of water flowing through pipes can help you develop intuition about electrical circuits. In this analogy, electrical current corresponds to the flow rate of water. Voltage corresponds to the pressure that forces the water to flow, and resistance is the friction of flow. A small pipe would impede the flow of water more than would a large pipe, so the small pipe would correspond to a higher resistance. While this analogy can be helpful, keep in mind that electricity is not water. All analogies break down at some point.</para>
+      <para id="id2261295">We measure electrical current in <emphasis effect="italics">amperes</emphasis>. The standard symbol for current is <m:math>
+<m:mi>i</m:mi>
+</m:math>, and the direction of positive flow is indicated by an arrow on the circuit diagram. The arrow is for reference only; if the true current is in the opposite direction, we get negative values for <m:math>
+<m:mi>i</m:mi>
+</m:math>. Because electrons are negatively charged, current is defined as flowing in the opposite direction as electron motion. But to reduce confusion, you should learn to think in terms of current rather than electron motion.</para>
+      <para id="id2261330">A point in a circuit where several devices are connected together is called a <emphasis effect="italics">node</emphasis>. The conservation law for current says that “what flows in must flow out of a node,” a principle known as <emphasis effect="italics">Kirchhoff</emphasis>'<emphasis effect="italics">s current law</emphasis>. Kirchhoff's current law states that <emphasis effect="italics">the sum of all currents leaving a node is zero</emphasis>. In this law, a current entering the node is considered to be a negative current leaving the node.</para>
+      <para id="id2261363">Voltage is measured in <emphasis effect="italics">volts</emphasis> and is usually written as <m:math>
+<m:mi>v</m:mi>
+</m:math> (or <m:math>
+<m:mi>e</m:mi>
+</m:math>). Since voltage is a difference in potential between two points (nodes), we can show it on a circuit diagram with a <m:math overflow="scroll"><m:mrow><m:mo>+</m:mo><m:mi mathvariant="normal">a</m:mi><m:mi mathvariant="normal">n</m:mi><m:mi mathvariant="normal">d</m:mi></m:mrow></m:math> a –sign to indicate which two nodes we are comparing and which one of the nodes is considered negative. As with current, the markings are for reference only and we may end up with a negative value of <m:math>
+<m:mi>v</m:mi>
+</m:math>.</para>
+      <para id="id2261434">In an electrical circuit, one node is usually chosen as a <emphasis effect="italics">reference node</emphasis> and is considered to have a voltage of zero. Then the voltage at every other node is measured with respect to the reference node. This saves us the trouble of always specifying pairs of nodes for voltage measurements and marking + and – signs for each voltage. Other names for the reference node are <emphasis effect="italics">common</emphasis> and <emphasis effect="italics">ground</emphasis>.</para>
+      <para id="id2261503">A <emphasis effect="italics">constant voltage source</emphasis> is a device that always forces the voltage between its two terminals to be a constant value. In <link target-id="uid2">Figure 1</link> the circle at the left represents a constant voltage source of 5 volts, so that the voltage at the upper <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>+</m:mo><m:mo>)</m:mo></m:mrow></m:math> end is <emphasis effect="italics">always</emphasis> exactly 5 volts higher than the voltage at the lower (-) end. A voltage source is something like a battery, but idealized. Real batteries do not maintain a constant output voltage under all conditions.</para>
+      <para id="id2261540">Resistance is measured in <emphasis effect="italics">ohms</emphasis> and is denoted by <m:math>
+<m:mi>R</m:mi>
+</m:math>. A resistor is shown as a zig-zag line in circuit diagrams and labeled with the value of its resistance in ohms. In this chapter we will consider only devices whose resistance is positive and the same in both directions. <emphasis effect="italics">Ohm's law</emphasis>, also called the <emphasis effect="italics">resistor law</emphasis>, relates the voltage and current in a resistor. For the resistor shown in <link target-id="uid3">Figure 2</link>, with reference directions assigned to <m:math>
+<m:mi>v</m:mi>
+</m:math> and <m:math>
+<m:mi>i</m:mi>
+</m:math> as shown, Ohm's law is</para>
+      <equation id="eip-925"><m:math overflow="scroll">
+          <m:mrow>
+            <m:mi>v</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>i</m:mi>
+            <m:mi>R</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2261620">Note that current flows from + to - through the resistor.</para>
+      
+      <figure id="uid3"><media id="uid3_media" alt="This diagram consist of resistor with an arrow on the top labeled i and below the resistor is an arch with a v in the middle and on left end of the arch is a + and on the right is a -. Above the arch but below the resistor is the expression R.">
+          <image mime-type="image/png" src="../../media/pic024.png" id="uid3_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 137. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic024.eps" id="uid3_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Ohm's Law</caption></figure>
+<example id="fs-id18415900">
+      <para id="id2261695">Ohm's law and Kirchhoff's current law are the only principles we need to write equations that will allow us to find the voltages
+and currents in the resistive circuit of <link target-id="uid2">Figure 1</link>. We begin by choosing a reference node and assigning variables to the voltages at every other node (with respect to the reference node). These choices are shown in <link target-id="uid4">Figure 3</link>.</para>
+      <figure id="uid4"><media id="uid4_media" alt="The diagram is essentially a rectangle. In the middle of the left side of the rectangle is a circle labeled on the left with a 5 and on the top right and bottom left of the circle with a + and - respecitively. At the top left corner there is the expression v_1. On the left side of the top there is a resistor labeled 50. In the middle there of the top side there is a point labeled v_2 with a line that bisects the rectangle this line also has a resistor that is labeled 300. On the right side of the top there is a resistor labeled 100. The top right corner is labeled 1/3. On the right side there is a resistor labeled 2 and to the right of that is the word (lamp). Below the bottom side the is the phrase reference node.">
+          <image mime-type="image/png" src="../../media/pic025.png" id="uid4_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 200. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic025.eps" id="uid4_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>Assigning Node Voltages</caption></figure>
+      <para id="id2261726">The constant voltage source forces <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> to be exactly 5 volts higher than the reference node. Thus</para>
+      
+      <equation id="eip-902"><m:math overflow="scroll">
+          <m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>5</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+     </equation><para id="id2261768">Next we write equations by applying Kirchhoff's current law to each
+node in the circuit (except the reference node and <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math>, whose voltages we
+already know). At the node labeled <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> are three paths for leaving current.
+The current leaving through the 50 ohm resistor can be found by Ohm's law,
+where the voltage across that resistor is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>v</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> :</para>
+      <equation id="id2261831">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>50</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mi>v</m:mi>
+              <m:mi>R</m:mi>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>50</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2261885">For current leaving through the 300 ohm resistor, the voltage is <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>. Pay careful
+attention to the sign; since we are interested in the current <emphasis effect="italics">leaving</emphasis> the node
+labeled <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>, Figure 4.14 indicates that to apply Ohm's law we should take the
+voltage as <m:math overflow="scroll"><m:mrow><m:mo>+</m:mo><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo></m:mrow></m:math> reference <m:math overflow="scroll"><m:mrow><m:mo>=</m:mo><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>. So</para>
+      <equation id="id2261980">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>300</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mn>300</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2262011">For the 100 ohm resistor, we can write</para>
+      <equation id="id2262017">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>100</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>100</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2262064">According to Kirchhoff's current law, the sum of these three leaving currents is zero:</para>
+      
+<equation id="id2262071">
+        <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mrow>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>50</m:mn>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mn>300</m:mn>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>100</m:mn>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+          <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>      
+          <m:mrow>
+            <m:mn>6</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+  </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+   <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mrow>
+            <m:mo>-</m:mo>
+            <m:mn>6</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mn>10</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:mn>3</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+      <para id="id2262305">Notice that when we wrote the equation for the node labeled <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>, the variable
+<m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> had <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">a</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">s</m:mi><m:mi mathvariant="normal">i</m:mi><m:mi mathvariant="normal">g</m:mi><m:mi mathvariant="normal">n</m:mi></m:mrow></m:math> each time it occurred in the equation, while the others had a
+-sign. This is always the case, and watching for it can help you avoid sign
+errors. Now we apply Kirchhoff's current law at the node labeled <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> to get the equation</para>
+      <equation id="id2262391">
+<m:math>
+<m:mtable>
+<m:mtr>
+<m:mtd/>
+<m:mtd>      
+          <m:mrow>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>100</m:mn>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd> 
+         <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>       
+          <m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>3</m:mn>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>v</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mn>50</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd> 
+         <m:mo>⇒</m:mo>
+</m:mtd>
+<m:mtd>       
+          <m:mrow>
+            <m:mn>0</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:mn>1</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:mn>51</m:mn>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+ </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math>
+</equation>
+     <para id="id2262566">Note that this time it is <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> that always shows up with <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">a</m:mi><m:mo>+</m:mo><m:mtext>sign</m:mtext></m:mrow></m:math>.</para>
+      <para id="id2262618">Equations <link target-id="eip-902">2</link>, <link target-id="id2262071">6</link>, and <link target-id="id2262391">7</link> give us a system of three equations in
+the three unknown variables <m:math overflow="scroll"><m:mrow><m:msub><m:mi>v</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>, and <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math>. We now write them in matrix
+form as</para>
+      <equation id="fs-id18417080"><m:math overflow="scroll"><m:mrow><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>6</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>10</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mn>51</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>v</m:mi><m:mi mathvariant="normal">l</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>v</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>v</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>5</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>·</m:mo></m:mrow></m:math></equation></example>
+<exercise id="fs-id18417230">
+<problem id="fs-id18417299">
+      <para id="id2262826">(MATLAB) Use MATLAB to solve <link target-id="fs-id18417080">Equation 8</link>. You should
+find</para>
+      <equation id="id2262835">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>5</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>0000</m:mn>
+            <m:mspace width="4.pt"/>
+            <m:mi>v</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>l</m:mi>
+            <m:mi>t</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id2262876">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>0178</m:mn>
+            <m:mspace width="4.pt"/>
+            <m:mi>v</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>l</m:mi>
+            <m:mi>t</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id2262916">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mn>3</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+            <m:mn>0592</m:mn>
+            <m:mspace width="4.pt"/>
+            <m:mi>v</m:mi>
+            <m:mi>o</m:mi>
+            <m:mi>l</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id2262956">What is the determinant of the coefficient matrix <m:math>
+<m:mi>A</m:mi>
+</m:math>? Is the solution unique?</para></problem>
+</exercise>
+      <para id="id2262975">We can determine the current flowing through the lamp from <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>3</m:mn>
+</m:msub>
+</m:math> to ground in <link target-id="fs-id18415900">Example 1</link> by Ohm's law:</para>
+      
+      <equation id="eip-765"><m:math overflow="scroll">
+          <m:mstyle scriptlevel="0" displaystyle="true">
+            <m:mrow>
+              <m:mi>i</m:mi>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mi>v</m:mi>
+                <m:mi>R</m:mi>
+              </m:mfrac>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mn>2</m:mn>
+              </m:mfrac>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>.</m:mo>
+              <m:mn>0296</m:mn>
+<m:mspace width="5pt"/>
+<m:mtext>ampere.</m:mtext>
+            </m:mrow>
+          </m:mstyle>
+        </m:math>
+      </equation><para id="id2263056">The visible effect will, of course, depend on the lamp. Let us assume that
+the specifications for our lamp indicate that 0.05 ampere or more is required
+before it will glow, and more than 0.075 ampere will cause it to burn out. In
+this case, our circuit would not make the lamp glow.</para>
+      
+      <exercise id="eip-67"><problem id="eip-202">
+<para id="eip-id45626429">(MATLAB) Write and solve equations for the circuit in <link target-id="uid5">Figure 4</link>. What are the voltages at the nodes labeled <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> through <m:math>
+<m:msub>
+<m:mi>v</m:mi>
+<m:mn>4</m:mn>
+</m:msub>
+</m:math>? What is the current labeled <m:math>
+<m:msub>
+<m:mi>i</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> ? And <m:math>
+<m:msub>
+<m:mi>i</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>?</para>
+</problem>
+
+</exercise><figure id="uid5"><media id="uid5_media" alt="This diagram consist of two rectangles together creating an L-shape. The left rectangle is the bottom of the L. The upper portion of the left side has a circle with a 7 to the left and + to the top left and a - to the bottom left.The top left corner of this  rectangle is labeled v_1. the top right half of this rectangle contains a resistor labeled 100. Below this resistor is a point labeled v_2 and this is where the upper side of the the second rectangle starts. Below this point is the one side shared by both rectangles and there is a resistor labeled 200. The top left side of the second rectangle has another resistor labeled 50 and the top right side has another circle labeled 10 with a + on the top left side and a minus on the top left. The top right corner of the rectangle is labeled v_4. The right side of the second rectangle has a resistor labeled 300 with an arrow point down from the 300 labeled 1/2. The second rectangle is bisected by another resistor labeled 100 and the upper point at which this line interesects the upper side of the second rectangle is labeled v_3. Below the bottom side is the phrase reference node.">
+          <image mime-type="image/png" src="../../media/pic026.png" id="uid5_onlineimage" width="400"><!-- NOTE: attribute width changes image size online (pixels). original width is 220. --></image>
+          <image for="pdf" mime-type="application/postscript" src="../../media/pic026.eps" id="uid5_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+          </image>
+        </media>
+        
+      <caption>A Resistive Network</caption></figure>
+    
+  </content>
+</document>

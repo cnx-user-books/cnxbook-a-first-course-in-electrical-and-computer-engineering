@@ -1,0 +1,185 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Vectors</title>
+  <metadata>
+  <md:content-id>m21467</md:content-id><md:title>Linear Algebra: Vectors</md:title>
+  <md:abstract/>
+  <md:uuid>3d05d982-e21c-4f8a-ab5a-d3e94186f924</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-944">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">For our purposes, a <emphasis effect="italics">vector</emphasis> is a collection of <emphasis effect="italics">real numbers</emphasis> in a one-
+dimensional array.<footnote id="uid1">In a formal development of linear algebra, the abstract concept of a
+vector space plays a fundamental role. We will leave such concepts to a
+complete course in linear algebra and introduce only the functional techniques
+necessary to solve the problems at hand.</footnote> We usually think of the array as being arranged in a
+column and write</para>
+    <para id="id2258936"><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>|</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> .</para>
+    <para id="id2259017">Notice that we indicate a vector with boldface and the constituent elements
+with subscripts. A real number by itself is called a <emphasis effect="italics">scalar</emphasis>, in distinction from
+a vector or a matrix. We say that <m:math><m:mi>x</m:mi>
+</m:math> is an n-vector, meaning that <m:math>
+<m:mi>x</m:mi>
+</m:math> has <m:math>
+<m:mi>n</m:mi>
+</m:math>
+elements. To indicate that <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> is a real number, we write</para>
+    <equation id="eip-283"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>∈</m:mo>
+          <m:mi mathvariant="script">R</m:mi>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259097">meaning that <m:math>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> is contained in <m:math overflow="scroll"><m:mi mathvariant="script">R</m:mi></m:math>, the set of real numbers. To indicate that
+<m:math>
+<m:mi>x</m:mi>
+</m:math> is a vector of <m:math>
+<m:mi>n</m:mi>
+</m:math> real numbers, we write</para>
+    <equation id="eip-469"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>∈</m:mo>
+          <m:msup>
+            <m:mi mathvariant="script">R</m:mi>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mo>,</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259173">meaning that <m:math>
+<m:mi>x</m:mi>
+</m:math> is contained in <m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mi>n</m:mi>
+</m:msup></m:math>, the set of real n-tuples. Geometrically,
+<m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mi>n</m:mi>
+</m:msup></m:math>is n-dimensional space, and the notation <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> means that <m:math>
+<m:mi>x</m:mi>
+</m:math> is a
+point in that space, specified by the <m:math>
+<m:mi>n</m:mi>
+</m:math> coordinates <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math>. <link target-id="uid2"/>
+shows a vector in <m:math>
+<m:msup>
+<m:mi>R</m:mi>
+<m:mn>3</m:mn>
+</m:msup>
+</m:math>, drawn as an arrow from the origin to the point <m:math>
+<m:mi>x</m:mi>
+</m:math>.
+Our geometric intuition begins to fail above three dimensions, but the linear
+algebra is completely general.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure one shows a vector in R^3, a three-dimensional graph. The axis pointing towards the screen is labeled x_1, the axis pointing to the right is labeled x_2, and the axis pointing up is labeled x_3. An arrow points out into the positive direction of all three axes, up, towards the screen, and to the right. Its endpoint is labeled x, and dashed line segments are drawn back from this point to respective points on the axes and on the x_1 x_2 plane, showing its location.">
+        <image mime-type="image/png" src="../../media/pic001-da0c.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 193. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic001-8365.eps" id="uid2_printimage" print-width="3in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>A Vector in <emphasis effect="italics">R<sup>3</sup></emphasis></caption></figure>
+    <para id="id2259363">We sometimes find it useful to sketch vectors with more than three
+dimensions in the same way as the three-dimensional vector of <link target-id="uid2"/>. We
+then consider each axis to represent more than one dimension, a hyperplane, in
+our n-dimensional space. We cannot show all the details of what is happening
+in n-space on a three-dimensional figure, but we can often show important
+features and gain geometrical insight.</para>
+    <para id="id2259373"><emphasis effect="bold">Vector Addition.</emphasis> Vectors with the same number of elements can be
+added and subtracted in a very natural way:</para>
+    <equation id="eip-866"><m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>|</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>y</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo> ;</m:mo>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi>
+<m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>-</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mtd><m:mtd/></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>-</m:mo><m:msub><m:mi>y</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:mtd><m:mtd/></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>|</m:mo></m:mtd><m:mtd/></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>y</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo>
+</m:math></equation>
+<example id="fs-id20889628">
+    <para id="id2259629">The difference between the vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and the
+vector <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> is the vector <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>. These vectors are illustrated in <link target-id="uid3"/>. You can see that this result is consistent with the definition of
+vector subtraction in <link target-id="eip-866"/>. You can also picture the subtraction in
+<link target-id="uid3"/> by mentally reversing the direction of vector <m:math>
+<m:mi>y</m:mi>
+</m:math> to get <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> and then
+adding it to <m:math>
+<m:mi>x</m:mi>
+</m:math> by sliding it to the position where its tail coincides with the
+head of vector <m:math>
+<m:mi>x</m:mi>
+</m:math>. (The head is the end with the arrow.) When you slide a
+vector to a new position for adding to another vector, you must not change
+its length or direction.</para>
+    </example>
+    <figure id="uid3"><media id="uid3_media" alt="Figure two is a three-dimensional graph containing three vectors. The axis pointing out towards the screen is labeled x_1, the axis pointing to the right is labeled x_2, and the axis pointing up is labeled x_3. One vector y points up along the x_3-axis and is labeled with a 3 by 1 matrix, 0 0 1. A vector z points in the positive x_2 and x_1 direction on the x_2 x_1 plane, and is labeled with a 3 by 1 matrix, 1, 1, 0. A final vector x points in the positive x_1, x_2, and x_3 direction, and is labeled with a 3 by 1 matrix, 1 1 1.">
+        <image mime-type="image/png" src="../../media/pic002-ba7a.png" id="uid3_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 187. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic002-a9f2.eps" id="uid3_printimage" print-width="3in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Subtraction of Vectors</caption></figure>
+<exercise id="fs-id17124305"><problem id="fs-id17124307">
+    <para id="id2259849"> Compute and plot <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> for each of the following
+cases:</para>
+<list id="eip-id25199542" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>.</item>
+</list></problem>
+</exercise>
+
+    <para id="id2260143"><emphasis effect="bold">Scalar Product.</emphasis> Several different kinds of vector multiplication are
+defined.<footnote id="uid4">The division of two vectors is undefined, although three different ‚Äúdivisions‚Äù are defined in MATLAB.</footnote> We begin with the <emphasis effect="italics">scalar product</emphasis>. Scalar multiplication is defined
+for scalar <m:math><m:mi>a</m:mi></m:math> and vector <m:math><m:mi>x</m:mi></m:math> as</para>
+    <equation id="eip-447"><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mo>|</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi>a</m:mi><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow><m:mo>.</m:mo></m:math></equation>
+    <para id="id2260284">If <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then the vector <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math> is "shorter" than the vector <emphasis effect="italics">x</emphasis>; if <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>, then the
+vector <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math> is ‚"longer" than <emphasis effect="italics">x</emphasis>. This is illustrated for a 2-vector in <link target-id="uid5"/>.</para>
+    <figure id="uid5"><media id="uid5_media" alt="Figure three is a two-dimensional cartesian graph with horizontal axis labeled x_1 and vertical axis labeled x_2. A line from the third quadrant moves through the origin into the first quadrant with a shallow positive slope. The lower end in the third quadrant has an arrow pointing away from the origin, and is labeled -2x. An arrow in the first quadrant points away from the origin and is labeled 1/2 x.">
+        <image mime-type="image/png" src="../../media/pic003-e4cd.png" id="uid5_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 211. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic003-e51d.eps" id="uid5_printimage" print-width="3.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Scalar Product <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi>x</m:mi></m:mrow></m:math></caption></figure>
+<exercise id="fs-id17118735">
+<problem id="fs-id17118737">
+    <para id="id2260402">Compute and plot the scalar product <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math> when <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mi mathvariant="normal">l</m:mi><m:mo>/</m:mo><m:mn>4</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> for
+each of the following scalars:</para>
+<list id="fs-id16953034" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>;</m:mo></m:mrow></m:math></item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>;</m:mo></m:mrow></m:math></item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>4</m:mn><m:mo>;</m:mo></m:mrow></m:math></item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>.</m:mo></m:mrow></m:math></item>
+</list></problem>
+</exercise>
+<exercise id="fs-id11190200">
+<problem id="fs-id5755134">
+    <para id="id2260799">Given vectors <m:math overflow="scroll"><m:mrow><m:mi mathvariant="bold">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="bold">y</m:mi><m:mo>,</m:mo><m:mi mathvariant="bold">z</m:mi><m:mo>∈</m:mo><m:msup><m:mi mathvariant="script">R</m:mi><m:mi>n</m:mi></m:msup></m:mrow></m:math> and the scalar <m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>∈</m:mo><m:mi mathvariant="script">R</m:mi></m:mrow></m:math>, prove the
+following identities:</para>
+<list id="fs-id5593811" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">x</m:mi></m:mrow></m:math>. Is vector addition commutative?</item>
+    <item> <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>+</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Is vector addition associative?</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi>a</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">x</m:mi><m:mo>+</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">y</m:mi></m:mrow></m:math>. Is scalar multiplication distributive over vector addition?
+</item>
+</list>
+</problem>
+</exercise>
+  </content>
+</document>

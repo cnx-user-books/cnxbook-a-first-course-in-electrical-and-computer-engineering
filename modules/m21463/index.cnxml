@@ -1,0 +1,375 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Other Norms</title>
+  <metadata>
+  <md:content-id>m21463</md:content-id><md:title>Linear Algebra: Other Norms</md:title>
+  <md:abstract/>
+  <md:uuid>f3f52e15-105e-406c-b2e6-eb2a61597f92</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-854">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">Sometimes we find it useful to use a different definition of distance,
+corresponding to an alternate norm for vectors. For example, consider the
+<emphasis effect="italics">l-norm</emphasis> defined as</para>
+    <equation id="eip-431"><m:math overflow="scroll">
+<m:mrow>
+<m:msub>
+<m:mrow>
+<m:mo>|</m:mo>
+<m:mo>|</m:mo>
+<m:mi mathvariant="normal">x</m:mi>
+<m:mo>|</m:mo>
+<m:mo>|</m:mo>
+</m:mrow>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mrow>
+<m:mo>(</m:mo>
+<m:mo>|</m:mo>
+</m:mrow>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>1</m:mn>
+</m:msub>
+<m:mrow>
+<m:mo>|</m:mo>
+<m:mo>+</m:mo>
+<m:mo>|</m:mo>
+</m:mrow>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mn>2</m:mn>
+</m:msub>
+<m:mrow>
+<m:mo>|</m:mo>
+<m:mo>+</m:mo>
+<m:mo>⋯</m:mo>
+<m:mo>+</m:mo>
+<m:mo>|</m:mo>
+</m:mrow>
+<m:msub>
+<m:mi>x</m:mi>
+<m:mi>n</m:mi>
+</m:msub>
+<m:mrow>
+<m:mo>|</m:mo>
+<m:mo>)</m:mo>
+</m:mrow>
+<m:mo>,</m:mo>
+</m:mrow>
+</m:math>
+</equation><para id="id2258274">where <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mi>i</m:mi></m:msub><m:mrow><m:mo>|</m:mo></m:mrow></m:mrow></m:math>
+is the magnitude of component <emphasis effect="italics">x<sub>i</sub></emphasis>. There is also the <emphasis effect="italics">sup-norm</emphasis>, the
+“supremum” or maximum of the components <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:mrow></m:math> :</para>
+    <equation id="eip-512"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo movablelimits="true" form="prefix">sup</m:mo></m:msub><m:mo>=</m:mo><m:mrow><m:mo movablelimits="true" form="prefix">max</m:mo><m:mo>(</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>,</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>|</m:mo><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2259073">The following examples illustrate what the Euclidean norm, the l-norm, and
+the sup-norm look like for typical vectors.</para>
+<example id="fs-id18983269">
+    <para id="id2259416">Consider the vector <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>3</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi mathvariant="normal">l</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>. Then</para>
+<list id="fs-id20014154" list-type="enumerated" number-style="lower-roman"><item><m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mo>[</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>]</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mn>14</m:mn><m:mo>)</m:mo></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mo>|</m:mo><m:mo>-</m:mo><m:mn>3</m:mn><m:mo>|</m:mo><m:mo>+</m:mo><m:mo>|</m:mo><m:mn>1</m:mn><m:mo>|</m:mo><m:mo>+</m:mo><m:mo>|</m:mo><m:mn>2</m:mn><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow></m:math>; and</item>
+    <item><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo movablelimits="true" form="prefix">sup</m:mo></m:msub><m:mo>=</m:mo><m:mrow><m:mo movablelimits="true" form="prefix">max</m:mo><m:mo>(</m:mo><m:mo>|</m:mo></m:mrow><m:mo>-</m:mo><m:mrow><m:mn>3</m:mn><m:mo>|</m:mo><m:mo>,</m:mo><m:mo>|</m:mo><m:mn>1</m:mn><m:mo>|</m:mo><m:mo>,</m:mo><m:mo>|</m:mo><m:mn>2</m:mn><m:mo>|</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>3</m:mn><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></item>
+</list>
+</example>
+<example id="fs-id18669039">
+    <para id="id2259730"><link target-id="uid1">Figure 1</link> shows the locus of two-component vectors
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> with the property that <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mrow><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, or <m:math overflow="scroll"><m:mrow><m:msub><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo movablelimits="true" form="prefix">sup</m:mo></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mspace width="4pt"/></m:mrow></m:math></para></example>
+    <figure id="uid1"><media id="uid1_media" alt="Figure one is a diagram with a vertical axis labeled x_2 and horizontal axis labeled x_1. A large square centered at the origin with its diagonals on the axes is drawn, and around this is a circle centered at the origin and of the same diameter as the diagonals of the square. In addition, a square centered at the origin with the same width as the diagonal of the first square is the outermost shape of the diagram. The side of the smaller square that lies in the fourth quadrant is labeled locus of x such that  ||x||_1 = 1. The section of the circle that lies in the first quadrant is labeled locus of x such that ||x||_2 = 1. The section of the larger square that lies in the second quadrant is labeled locus of x such that  ||x||_sup = 1.">
+        <image mime-type="image/png" src="../../media/pic012-d27b.png" id="uid1_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 219. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-79b3.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Locus of Two-Dimensional Vectors Whose Various Norms Are 1</caption></figure>
+    <para id="id2259893">The next example shows how the l-norm is an important part of city
+life.</para>
+<example id="fs-id19679579">
+    <para id="id2259897">The city of Metroville was laid out by mathematicians as shown in <link target-id="uid2">Figure 2</link>. A person at the intersection of Avenue 0 and Street <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:math> (point <emphasis effect="italics">A</emphasis>) is clearly two blocks from the center of town (point C). This is consistent with both the Euclidean norm</para>
+    <equation id="id2259929">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi>A</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:msup>
+                <m:mn>0</m:mn>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+          </m:msqrt>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mn>4</m:mn>
+          </m:msqrt>
+          <m:mo>=</m:mo>
+          <m:mn>2</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259989">and the l-norm</para>
+    <equation id="id2259994">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi>A</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>|</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>|</m:mo>
+            <m:mo>+</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>-</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>|</m:mo>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260052">But how far from the center of town is point <m:math>
+<m:mi>B</m:mi>
+</m:math> at the intersection of Avenue-2
+and Street 1? According to the Euclidean norm, the distance is</para>
+    <equation id="id2260068">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi>B</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mrow>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mo>-</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+          </m:msqrt>
+          <m:mo>=</m:mo>
+          <m:msqrt>
+            <m:mn>5</m:mn>
+          </m:msqrt>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a diagram of metroville. North points upward. There are five streets that travel north-south, labeled from left to right, street -2, street -1, street 0, street 1, and street 2. There are also five streets that run east-west labeled from top to bottom, avenue 2, avenue 1, avenue 0, avenue -1, avenue -2. At the intersection of avenue 0 and street -2 is point A. At the intersection of street 0 and avenue 0 is point C. At the intersection of avenue -2 and street 1 is point B.">
+        <image mime-type="image/png" src="../../media/pic013-b833.png" id="uid2_onlineimage" width="450"><!-- NOTE: attribute width changes image size online (pixels). original width is 157. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic013-c324.eps" id="uid2_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Metroville, U.S.A.</caption></figure>
+    <para id="id2260210">While it is true that point <m:math>
+<m:mi>B</m:mi>
+</m:math> is <m:math overflow="scroll"><m:msqrt><m:mn>5</m:mn></m:msqrt></m:math> blocks from <m:math>
+<m:mi>C</m:mi>
+</m:math>, it is also clear that the
+trip would be three blocks by any of the three shortest routes on roads. The
+appropriate norm is the l-norm:</para>
+    <equation id="id2260244">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mrow>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msup>
+            <m:mn>1</m:mn>
+            <m:mi>B</m:mi>
+          </m:msup>
+          <m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>-</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>|</m:mo>
+            <m:mo>+</m:mo>
+            <m:mo>|</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>|</m:mo>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mn>3</m:mn>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation></example>
+    <para id="id2260309">Even more generally, we can define a norm for each value of <m:math>
+<m:mi>p</m:mi>
+</m:math> from 1
+to infinity. The so-called <emphasis effect="italics">p-norm</emphasis> is</para>
+    <equation id="eip-664"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msub>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mi>p</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mi>p</m:mi>
+          </m:msup>
+          <m:mrow>
+            <m:mo>+</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mi>p</m:mi>
+          </m:msup>
+          <m:mrow>
+            <m:mo>+</m:mo>
+            <m:mo>⋯</m:mo>
+            <m:mo>+</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:msup>
+                <m:mo>|</m:mo>
+                <m:mi>p</m:mi>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mn>1</m:mn>
+              <m:mo>/</m:mo>
+              <m:mi>p</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+<exercise id="fs-id4012389">
+<problem id="fs-id4012391">
+    <para id="id2260445">Show that the Euclidean norm is the same as the p-norm with
+<m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math> and that the 1-norm is the p-norm with <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. (It can also be shown
+that the sup-norm is like a p-norm with <m:math overflow="scroll"><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>∞</m:mi><m:mo>.</m:mo></m:mrow></m:math>)</para></problem>
+</exercise>
+    <para id="id2260500"><emphasis effect="bold">DEMO 4.1 (MATLAB).</emphasis> From the command level of MATLAB, type the
+following lines:</para>
+    <code id="eip-899" display="block">&gt;&gt; x = [1;3;-2;4]
+&gt;&gt; y = [0;1;2;-0.5]
+&gt;&gt; x - y</code>
+    
+    
+    <para id="id2260609">Check to see whether the answer agrees with the definition of vector subtraction. Now type</para>
+    <code id="eip-381" display="block">&gt;&gt; a = -1.5
+&gt;&gt; a * x</code>
+    
+    <para id="id2260665">Check the answer to see whether it agrees with the definition of scalar multiplication. Now type</para>
+    
+    <code id="eip-252" display="block">&gt;&gt; x' * y</code><para id="id2260698">This is how MATLAB does the inner product. Check the result. Type</para>
+    <code id="eip-427" display="block">&gt;&gt; norm(y)
+&gt;&gt; sqrt(y' * y)</code>
+    
+    
+    
+    <code id="eip-743" display="block">&gt;&gt; norm(y,1)
+&gt;&gt; norm(y' * y)</code>
+    
+    <para id="id2260819">Now type your own MATLAB expression to find the cosine of the angle between vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>. Put the result in variable <m:math>
+<m:mi>t</m:mi>
+</m:math>. Then find the angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> by typing</para>
+    <code id="eip-945" display="block">&gt;&gt; theta = acos(t)</code>
+    <para id="id2260903">The angle <m:math>
+<m:mi>θ</m:mi>
+</m:math> is in radians. You may convert it to degrees if you wish by multiplying it by <m:math overflow="scroll"><m:mrow><m:mn>180</m:mn><m:mo>/</m:mo><m:mi>π</m:mi></m:mrow></m:math>:</para><code id="eip-689" display="block">&gt;&gt; theta = theta * (180/pi)</code>
+  </content>
+</document>

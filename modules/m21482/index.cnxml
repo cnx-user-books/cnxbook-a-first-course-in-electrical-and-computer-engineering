@@ -1,0 +1,394 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: Roots of Unity and Related Topics</title>
+  <metadata>
+  <md:content-id>m21482</md:content-id><md:title>The Functions e^x and e^jθ: Roots of Unity and Related Topics</md:title>
+  <md:abstract/>
+  <md:uuid>0cd2bb73-ebcc-4bc1-a7c9-cb539c5250f9</md:uuid>
+</metadata>
+
+<content>
+    
+    <note id="eip-766">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.</note><para id="id2258268">The complex number <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:math> is illustrated in <link target-id="uid1"/>. It lies
+on the unit circle at angle <m:math overflow="scroll"><m:mrow><m:mi>θ</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math>. When this number is raised to the
+<m:math overflow="scroll"><m:msup><m:mi>n</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> power, the result is <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:math>. This number is also illustrated in
+<link target-id="uid1"/>. When one of the complex numbers <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:math> is raised to the <m:math overflow="scroll"><m:msup><m:mi>N</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math>
+power, the result is</para>
+    
+    <equation id="eip-78"><m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mi>N</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mo>.</m:mo></m:math></equation><figure id="uid1"><media id="uid1_media" alt="Figure one is a graph of a circle on a cartesian graph with two line segments from the origin to points on the circle. Above the circle is an expression that reads, (e^j2πn/N)^N = e^(j2πn) = 1. The first line segment begins at the origin and terminates at a point on the circle in the second quadrant of the graph. The point is labeled e^(j2πn/N). The second line segment begins at the origin and terminates at a point on the circle in the first quadrant of the graph. The point is labeled e^(j2π/N).">
+        <image mime-type="image/png" src="../../media/pic010-b58c.png" id="uid1_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 179. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-59e8.eps" id="uid1_printimage" print-width="03in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>The Complex Numbers <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:math> and <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:math></caption></figure>
+    <para id="id2259437">We say that <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:math> is one of the <m:math overflow="scroll"><m:msup><m:mi>N</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> roots of unity, meaning that <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:math>
+is one of the values of <emphasis effect="italics">z</emphasis> for which</para>
+    
+    <equation id="eip-862"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>N</m:mi>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259549">There are <emphasis effect="italics">N</emphasis> such roots, namely,</para>
+    
+    <equation id="eip-736"><m:math overflow="scroll">
+        <m:mrow>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mi>j</m:mi>
+              <m:mn>2</m:mn>
+              <m:mi>π</m:mi>
+              <m:mi>n</m:mi>
+              <m:mo>/</m:mo>
+              <m:mi>N</m:mi>
+            </m:mrow>
+          </m:msup>
+          <m:mo>,</m:mo>
+          <m:mspace width="4pt"/>
+          <m:mi>n</m:mi>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>,</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>,</m:mo>
+          <m:mo>...</m:mo>
+          <m:mo>,</m:mo>
+          <m:mi>N</m:mi>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2259620">As illustrated in <link target-id="uid2"/>, the <m:math overflow="scroll"><m:msup><m:mn>12</m:mn><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> roots of unity are uniformly distributed
+around the unit circle at angles <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mn>12</m:mn></m:mrow></m:math>. The sum of all of the <m:math overflow="scroll"><m:msup><m:mi>N</m:mi><m:mrow><m:mi mathvariant="normal">t</m:mi><m:mi mathvariant="normal">h</m:mi></m:mrow></m:msup></m:math> roots of unity is zero:</para>
+    
+    <equation id="eip-839"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi>N</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>N</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>n</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>N</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2259757">This property, which is obvious from <link target-id="uid2"/>, is illustrated in <link target-id="uid3"/>,
+where the partial sums <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math> are plotted for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi></m:mrow></m:math>.</para>
+    <figure id="uid2"><media id="uid2_media" alt="Figure two is a circle with 12 line segments from the origin to points on the circle at every incremental 30-degree mark. Starting from the point horizontal and to the right at the 0-degree mark, the labeled points along the curve at the end of the line segments read as follows (in a counter clockwise direction): e^(j2π 0/12), e^(j2π/12), e^(j2π 2/12), e^(j2π 3/12), e^(j2π 4/12), e^(j2π 5/12), e^(j2π 6/12), e^(j2π 7/12), e^(j2π 8/12), e^(j2π 9/12), e^(j2π 10/12), e^(j2π 11/12).">
+        <image mime-type="image/png" src="../../media/pic011-0818.png" id="uid2_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 215. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-17f8.eps" id="uid2_printimage" print-width="110mm"/>
+      </media>
+      
+    <caption>Roots of Unity</caption></figure>
+    <para id="id2259863">These partial sums will become important to us in our study of phasors and
+light diffraction in <link document="m21469">"Phasors"</link> and in our discussion of filters in <link document="m21417">"Filtering"</link>.</para>
+    <figure id="uid3"><media id="uid3_media" alt="Figure three is a cartesian graph with a dodecagon in the first and second quadrants. The dodecagon is approximately 3.75 units in height. The left vertex of the base of the dodecagon is at the origin, and the base sits along the positive side of the horizontal axis. The angles of the dodecagon are shown to be measured as 2π/12. An arrow from the origin to the fifth vertex of the polygon in the top-right corner, and it is labeled S_5.">
+        <image mime-type="image/png" src="../../media/pic012-8a2c.png" id="uid3_onlineimage" width="500"><!-- NOTE: attribute width changes image size online (pixels). original width is 157. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic012-b5b7.eps" id="uid3_printimage" print-width="03in"/>
+      </media>
+      
+    <caption>Partial Sums of the Roots of Unity</caption></figure>
+    <para id="id2259881"><emphasis effect="bold">Geometric Sum Formula.</emphasis> It is natural to ask whether there is an
+analytical expression for the partial sums of roots of unity:</para>
+    
+    <equation id="eip-101"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>n</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>N</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2259956">We can imbed this question in the more general question, is there an analytical
+solution for the “geometric sum”</para>
+    <equation id="id2259963">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:munderover>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>n</m:mi>
+          </m:msup>
+          <m:mspace width="4.pt"/>
+          <m:mo>?</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260016">The answer is yes, and here is how we find it. If <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, the answer is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math>.
+If <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>≠</m:mo><m:mn>1</m:mn></m:mrow></m:math>, we can premultiply 
+<m:math>
+<m:msub>
+<m:mi>S</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math> by 
+<m:math>
+<m:mi>z</m:mi>
+</m:math> and proceed as follows:</para>
+    <equation id="id2260093"><m:math overflow="scroll" mode="display">
+        <m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi>z</m:mi>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow>
+              <m:mi>k</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:munderover>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mi>n</m:mi>
+              <m:mo>+</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo>∑</m:mo>
+            <m:mrow>
+              <m:mi>m</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:mi>k</m:mi>
+          </m:munderover>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>m</m:mi>
+          </m:msup>
+    </m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+<m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+<m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>z</m:mi><m:mi>m</m:mi></m:msup><m:mo>+</m:mo><m:msup><m:mi>z</m:mi><m:mi>k</m:mi></m:msup><m:mo>-</m:mo><m:mn>1</m:mn></m:mtd>
+</m:mtr>
+
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mi>z</m:mi>
+            <m:mi>k</m:mi>
+          </m:msup>
+          <m:mo>-</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+
+
+</m:mtable>
+</m:math></equation>
+    
+    
+    <para id="id2260271">From this formula we solve for the geometric sum:</para>
+    <equation id="id2260277">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:msub>
+            <m:mi>S</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfenced separators="" open="{" close="">
+            <m:mtable>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>-</m:mo>
+                      <m:msup>
+                        <m:mi>z</m:mi>
+                        <m:mi>k</m:mi>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>-</m:mo>
+                      <m:mi>z</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mo>≠</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>,</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mfenced>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260367">This basic formula for the geometric sum <emphasis effect="italics">S<sub>k</sub></emphasis> is used throughout electromagnetic theory and system theory to solve problems in antenna design and spectrum analysis. Never forget it.</para>
+
+<exercise id="fs-id8035311">
+<problem id="fs-id8561401">
+    <para id="id2260386">Find formulas for <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>n</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math> and for <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>/</m:mo><m:mi>N</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></para></problem>
+</exercise>
+<exercise id="fs-id8046008">
+<problem id="fs-id8046010">
+    <para id="id2260514">Prove <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id8567435">
+<problem id="fs-id7109712">
+    <para id="id2260579">Find formulas for the magnitude and phase of the partial sum <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id8676043">
+<problem id="fs-id8676045">
+    <para id="id2260651">(MATLAB) Write a MATLAB program to compute and plot the partial sum <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi>S</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:msup></m:mrow></m:mstyle></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:mi>N</m:mi></m:mrow></m:math>. You should observe <link target-id="uid3"/>.</para>
+</problem>
+</exercise>
+<exercise id="fs-id8525834">
+<problem id="fs-id8525836">
+    <para id="id2260750">Solve the equation <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math>.</para></problem>
+</exercise>
+<exercise id="fs-id8624365">
+<problem id="fs-id8624367">
+    <para id="id2260792">Find all roots of the equation <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>3</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mi>z</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>3</m:mn><m:mi>z</m:mi><m:mo>-</m:mo><m:mn>15</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.</para>
+</problem>
+</exercise>    
+
+<exercise id="fs-id7966020">
+<problem id="fs-id7966022">
+<para id="id2260840">Find <m:math>
+<m:mi>c</m:mi>
+</m:math> so that <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow></m:math> is a root of the equation <m:math overflow="scroll"><m:mrow><m:msup><m:mi>z</m:mi><m:mn>17</m:mn></m:msup><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mi>z</m:mi><m:mn>15</m:mn></m:msup><m:mo>-</m:mo><m:mi>c</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.
+</para>
+</problem>
+</exercise>
+  </content>
+</document>

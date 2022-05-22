@@ -1,0 +1,68 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Functions e^x and e^jθ: Introduction</title>
+  <metadata>
+  <md:content-id>m21479</md:content-id><md:title>The Functions e^x and e^jθ: Introduction</md:title>
+  <md:abstract/>
+  <md:uuid>9b36dff1-296b-4dbf-ac97-f4102051d154</md:uuid>
+</metadata>
+
+<content>
+<note id="fs-id4225692">
+This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note>
+<section id="fs-id1172038017697">    
+      <title>Notes to Teachers and Students</title>
+    
+    <para id="id2258274">It is essential to write out, term-by-term, every sequence and sum in
+this chapter. This demystifies the seemingly mysterious notation. The example on compound interest shows the value of limiting arguments in everyday
+life and gives <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> some real meaning. The function <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>, covered in <link document="m21486">the section "The Function of e<sup>jθ</sup> and the Unit Circle</link>
+and <link document="m21481">"Numerical Experiment (Approximating e<sup>jθ</sup></link>, must be understood by all students before proceeding to <link document="m21469">"Phasors" </link>.
+The Euler and De Moivre identities provide every tool that students need to
+derive trigonometric formulas. The properties of roots of unity are invaluable
+for the study of phasors in <link document="m21469">"Phasors" </link>.</para>
+    <para id="id2258965">The MATLAB programs in this chapter are used to illustrate sequences
+and series and to explore approximations to <m:math>
+<m:mo>sin</m:mo> 
+<m:mi>θ</m:mi>
+</m:math> and 
+<m:math>
+<m:mo>cos</m:mo>
+<m:mi>θ</m:mi>
+</m:math>. The numerical
+experiment in <link document="m21481">"Numerical Experiment (Approximating e<sup>jθ</sup></link> illustrates, geometrically and algebraically, how
+approximations to <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> converge.</para>
+    <para id="id2259006"><link document="m21483">“Second-Order Differential and Difference Equations”</link> is a
+little demanding for freshmen, but we give it a once-over-lightly to illustrate
+the power of quadratic equations and the functions <emphasis effect="italics">e<sup>x</sup></emphasis> and <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>. This section
+also gives a sneak preview of more advanced courses in circuits and systems.</para>
+</section>
+    <section id="uid1">
+      <title>Introduction</title>
+      <para id="id2259057">It is probably not too strong a statement to say that the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math>
+is the most important function in engineering and applied science. In this
+chapter we study the function <m:math>
+<m:msup>
+<m:mi>e</m:mi>
+<m:mi>x</m:mi>
+</m:msup>
+</m:math> and extend its definition to the function
+<m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math>. This study clarifies our definition of <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> from <link document="m21412">"Complex Numbers"</link> and leads us to
+an investigation of sequences and series. We use the function <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup></m:math> to derive
+the Euler and De Moivre identities and to produce a number of important
+trigonometric identities. We define the complex roots of unity and study
+their partial sums. The results of this chapter will be used in <link document="m21469">"Phasors"</link> when
+we study the phasor representation of sinusoidal signals.
+</para>
+    </section>
+  </content>
+</document>

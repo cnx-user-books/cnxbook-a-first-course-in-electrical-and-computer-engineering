@@ -1,0 +1,121 @@
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10685</md:content-id>
+    <md:title>A First Course in Electrical and Computer Engineering</md:title>
+    <md:language>en</md:language>
+    <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</md:license>
+    <md:uuid>7e991679-d461-4928-a810-bc3e7c0f21fa</md:uuid>
+<md:slug>a-first-course-in-electrical-and-computer-engineering</md:slug>
+</metadata>
+  <col:content>
+    <col:module document="m21796"/>
+    <col:module document="m21476"/>
+    <col:subcollection>
+      <md:title>Complex Numbers</md:title>
+      <col:content>
+        <col:module document="m21412"/>
+        <col:module document="m21411"/>
+        <col:module document="m21408"/>
+        <col:module document="m21415"/>
+        <col:module document="m21414"/>
+        <col:module document="m21410"/>
+        <col:module document="m21413"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>The Functions e^x and e^jΘ</md:title>
+      <col:content>
+        <col:module document="m21479"/>
+        <col:module document="m21485"/>
+        <col:module document="m21486"/>
+        <col:module document="m21487"/>
+        <col:module document="m21482"/>
+        <col:module document="m21483"/>
+        <col:module document="m21481"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Phasors</md:title>
+      <col:content>
+        <col:module document="m21469"/>
+        <col:module document="m21474"/>
+        <col:module document="m21468"/>
+        <col:module document="m21472"/>
+        <col:module document="m21471"/>
+        <col:module document="m21475"/>
+        <col:module document="m21470"/>
+        <col:module document="m21473"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Linear Algebra</md:title>
+      <col:content>
+        <col:module document="m21454"/>
+        <col:module document="m21467"/>
+        <col:module document="m21452"/>
+        <col:module document="m21449"/>
+        <col:module document="m21465"/>
+        <col:module document="m21463"/>
+        <col:module document="m21457"/>
+        <col:module document="m21466"/>
+        <col:module document="m21447"/>
+        <col:module document="m21462"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Vector Graphics</md:title>
+      <col:content>
+        <col:module document="m21491"/>
+        <col:module document="m21495"/>
+        <col:module document="m21409"/>
+        <col:module document="m21489"/>
+        <col:module document="m21490"/>
+        <col:module document="m21494"/>
+        <col:module document="m21493"/>
+        <col:module document="m21492"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Filtering</md:title>
+      <col:content>
+        <col:module document="m21417"/>
+        <col:module document="m21421"/>
+        <col:module document="m21423"/>
+        <col:module document="m21418"/>
+        <col:module document="m21416"/>
+        <col:module document="m21422"/>
+        <col:module document="m21419"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Binary Codes</md:title>
+      <col:content>
+        <col:module document="m21405"/>
+        <col:module document="m21407"/>
+        <col:module document="m21399"/>
+        <col:module document="m21404"/>
+        <col:module document="m21403"/>
+        <col:module document="m21406"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>An Introduction to MATLAB</md:title>
+      <col:content>
+        <col:module document="m21391"/>
+        <col:module document="m21394"/>
+        <col:module document="m21393"/>
+        <col:module document="m21390"/>
+        <col:module document="m21397"/>
+        <col:module document="m21384"/>
+        <col:module document="m21398"/>
+        <col:module document="m21395"/>
+        <col:module document="m21388"/>
+        <col:module document="m21385"/>
+        <col:module document="m21387"/>
+        <col:module document="m21392"/>
+      </col:content>
+    </col:subcollection>
+    <col:module document="m21477"/>
+    <col:module document="m21488"/>
+  </col:content>
+</col:collection>

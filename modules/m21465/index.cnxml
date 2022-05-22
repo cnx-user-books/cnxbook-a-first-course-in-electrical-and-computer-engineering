@@ -1,0 +1,1148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Linear Algebra: Projections</title>
+  <metadata>
+  <md:content-id>m21465</md:content-id><md:title>Linear Algebra: Projections</md:title>
+  <md:abstract/>
+  <md:uuid>9aaeb145-044e-4963-bf24-855fd69bef20</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-844">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263"><emphasis effect="bold">Orthogonality.</emphasis> When the angle between two vectors is <m:math overflow="scroll"><m:mrow><m:mi>π</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>(</m:mo><m:msup><m:mn>90</m:mn><m:mn>0</m:mn></m:msup><m:mo>)</m:mo></m:mrow></m:math>, we
+say that the vectors are <emphasis effect="italics">orthogonal</emphasis>. A quick look at the definition of angle
+(<link document="m21449" target-id="eip-268">Equation 12 from "Linear Algebra: Direction Cosines"</link>) leads to this equivalent definition for orthogonality:</para>
+    <equation id="eip-50"><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>⇔</m:mo><m:mi mathvariant="normal">x</m:mi></m:mrow><m:mspace width="5pt"/>
+<m:mtext>and</m:mtext><m:mspace width="5pt"/>
+<m:mi>y</m:mi><m:mspace width="5pt"/>
+<m:mtext> are orthogonal.</m:mtext>
+</m:math></equation>
+    <para id="id2258988">For example, in <link target-id="eip-id18813477">Figure 1(a)</link>, the vectors <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> are clearly
+orthogonal, and their inner product is zero:</para>
+    <equation id="id2259072">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>3</m:mn>
+          <m:mo>(</m:mo>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>6</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2259127">In <link target-id="eip-id18813477">Figure 1(b)</link>, the vectors <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>3</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math>, and <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>4</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> are
+mutually orthogonal, and the inner product between each pair is zero:</para>
+    <equation id="id2258192">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>3</m:mn>
+          <m:mo>(</m:mo>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>6</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259554">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>3</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>4</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2259612">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mo>-</m:mo>
+          <m:mn>2</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>6</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>+</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>(</m:mo>
+          <m:mn>4</m:mn>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    
+    <figure id="uid2"><subfigure id="eip-id18813477">
+<media id="uid11_media" alt="Figure one part a is a cartesian graph with x_1 as the horizontal axis and x_2 as the vertical axis. From the origin into the first quadrant is a vector labeled x with the 2 by 1 matrix 3, 1. From the origin into the second quadrant is a vector labeled y with the 2 by 1 matrix -2 6.">
+        <image mime-type="image/png" src="../../media/pic008-662b.png" id="uid11_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 134. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic008-550a.eps" id="uid11_printimage" print-width="2in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>
+
+
+<subfigure id="eip-id23314844">
+<media id="uid2_media" alt="Figure one part b is a three-dimensional graph with x_1 as the axis pointing out, x_2 pointing to the right, and x_3 pointing up. The vector z follows the x_3 axis upwards, and is labeled with the 3 by 1 matrix 0 0 4. The vector y points along the x_2 x_3 axis with a positive slope and is labeled with a 3 by 1 matrix, -2 6 0. The vector x points out and to the right on the x_1 x_2 plane and is labeled with the 3 by 1 matrix 3 1 0.">
+        <image mime-type="image/png" src="../../media/pic009-fda9.png" id="uid2_onlineimage" width="250"><!-- NOTE: attribute width changes image size online (pixels). original width is 158. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic009-533a.eps" id="uid2_printimage" print-width="2in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+    </subfigure>  
+    <caption>Orthogonality of Vectors</caption></figure>
+<exercise id="fs-id5714630">
+<problem id="fs-id5714632">
+    <para id="id2259706">Which of the following pairs of vectors is orthogonal:</para>
+<list id="fs-id5697767" list-type="enumerated" number-style="lower-alpha"><item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>,</m:mo><m:mspace width="4pt"/><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mn>3</m:mn></m:msub></m:mrow></m:math> ;</item>
+    <item><m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mi>a</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>b</m:mi></m:mtd></m:mtr></m:mtable></m:mfenced></m:mrow></m:math> , <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">y</m:mi><m:mo>=</m:mo><m:mfenced separators="" open="[" close="]"><m:mtable><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mi>b</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>a</m:mi></m:mtd></m:mtr></m:mtable></m:mfenced><m:mo>?</m:mo></m:mrow></m:math></item></list>
+</problem>
+</exercise>
+    <para id="id2260001">We can use the inner product to find the projection of
+one vector onto another as illustrated in <link target-id="uid3">Figure 2</link>. Geometrically we find
+the projection of <m:math>
+<m:mi>x</m:mi>
+</m:math> onto <m:math>
+<m:mi>y</m:mi>
+</m:math> by dropping a perpendicular from the head of <m:math>
+<m:mi>x</m:mi>
+</m:math>
+onto the line containing <m:math>
+<m:mi>y</m:mi>
+</m:math>. The perpendicular is the dashed line in the figure.
+The point where the perpendicular intersects <m:math>
+<m:mi>y</m:mi>
+</m:math> (or an extension of <m:math>
+<m:mi>y</m:mi>
+</m:math>) is the
+projection of <m:math>
+<m:mi>x</m:mi>
+</m:math> onto <m:math>
+<m:mi>y</m:mi>
+</m:math>, or the component of <m:math>
+<m:mi>x</m:mi>
+</m:math> along <m:math>
+<m:mi>y</m:mi>
+</m:math>. Let's call it <m:math>
+<m:mi>z</m:mi>
+</m:math>.</para>
+    <figure id="uid3"><media id="uid3_media" alt="Figure two is a two-dimensional graph containing three vectors in the first quadrant. The first, x, begins from the origin and has a steep positive slope. The second, z, also begins from the origin and has a more shallow positive slope. The angle between z and x is labeled as θ. The third, y, begins from the end of z and extends with the same slope as z further into the first quadrant.">
+        <image mime-type="image/png" src="../../media/pic010-9231.png" id="uid3_onlineimage" width="300"><!-- NOTE: attribute width changes image size online (pixels). original width is 196. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic010-147e.eps" id="uid3_printimage" print-width="2in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Component of One Vector along Another</caption></figure>
+<exercise id="fs-id3987923">
+<problem id="fs-id3620166">
+    <para id="id2260136">Draw a figure like <link target-id="uid3">Figure 2</link> showing the projection of <m:math>
+<m:mi>y</m:mi></m:math> onto
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">x</m:mi><m:mo>.</m:mo></m:mrow></m:math></para>
+</problem>
+</exercise>
+    <para id="id2260174">The vector <m:math>
+<m:mi>z</m:mi>
+</m:math> lies along <m:math>
+<m:mi>y</m:mi>
+</m:math>, so we may write it as the product of its norm
+<m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> and its direction vector <m:math>
+<m:msub>
+<m:mi>u</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> :</para>
+    <equation id="eip-418"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">u</m:mi><m:mi mathvariant="normal">y</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mfrac><m:mi mathvariant="normal">y</m:mi><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:mstyle></m:math>
+</equation><para id="id2260233">But what is norm <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math>? From <link target-id="uid3">Figure 2</link> we see that the vector <m:math>
+<m:mi>x</m:mi></m:math> is just <m:math>
+<m:mi>z</m:mi></m:math>,
+plus a vector <m:math>
+<m:mi>v</m:mi></m:math> that is orthogonal to <m:math>
+<m:mi>y</m:mi></m:math>:</para>
+    <equation id="id2260381">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>+</m:mo>
+          <m:mi mathvariant="normal">v</m:mi>
+          <m:mo>,</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">v</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2260434">Therefore we may write the inner product between <m:math>
+<m:mi>x</m:mi></m:math> and <m:math>
+<m:mi>y</m:mi></m:math> as</para>
+    <equation id="eip-763"><m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>+</m:mo><m:mi mathvariant="normal">v</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">v</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>(</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo><m:mo>.</m:mo></m:mrow></m:math>
+</equation><para id="id2260461">But because <m:math>
+<m:mi>z</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> both lie along <m:math>
+<m:mi>y</m:mi>
+</m:math>, we may write the inner product <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+as</para>
+    <equation id="id2260615"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">y</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>,</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">y</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">u</m:mi>
+              <m:mi mathvariant="normal">y</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">u</m:mi>
+              <m:mi mathvariant="normal">y</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+       </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">u</m:mi>
+            <m:mi mathvariant="normal">y</m:mi>
+          </m:msub>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mo>.</m:mo>
+          </m:mrow>
+       </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2260871">From this equation we may solve for <m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:mfrac></m:mrow></m:mstyle></m:math> and substitute <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> into
+<link target-id="eip-418">Equation 6</link> to write <m:math>
+<m:mi>z</m:mi>
+</m:math> as</para>
+    <equation id="id2260966"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mi mathvariant="normal">z</m:mi>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+            <m:mi mathvariant="normal">z</m:mi>
+            <m:mo>|</m:mo>
+            <m:mo>|</m:mo>
+          </m:mrow>
+          <m:mfrac>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mfrac>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></equation>
+    
+    <para id="id2261121"><link target-id="id2260966">Equation 10</link> is what we wanted–an expression for the projection of <m:math>
+<m:mi>x</m:mi>
+</m:math> onto
+<m:math>
+<m:mi>y</m:mi>
+</m:math> in terms of <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>.</para>
+<exercise id="fs-id4865663">
+<problem id="fs-id4865665">
+    <para id="id2261171">Show that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi mathvariant="normal">z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow></m:math> and <m:math>
+<m:mi>z</m:mi>
+</m:math> may be written in terms of <m:math overflow="scroll"><m:mrow><m:mo form="prefix">cos</m:mo><m:mi>θ</m:mi></m:mrow></m:math> for <m:math>
+<m:mi>θ</m:mi>
+</m:math> as
+illustrated in <link target-id="uid3">Figure 2</link>:</para>
+    <equation id="id2261236">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>=</m:mo>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>|</m:mo>
+          <m:mo>|</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>c</m:mi>
+          <m:mi>o</m:mi>
+          <m:mi>s</m:mi>
+          <m:mspace width="4.pt"/>
+          <m:mi>θ</m:mi>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <equation id="id2261289">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mi>θ</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+        </m:mrow>
+      </m:math>
+    </equation></problem>
+</exercise>
+    <para id="id2261353"><emphasis effect="bold">Orthogonal Decomposition.</emphasis> You already know how to decompose
+a vector in terms of the unit coordinate vectors,</para>
+    <equation id="id2261364">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mn>2</m:mn>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:mo>⋯</m:mo>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">e</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">e</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261486">In this equation, <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:msub><m:mi mathvariant="normal">e</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math> is the component of <m:math>
+<m:mi>x</m:mi>
+</m:math> along <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math>, or the projection
+of <m:math>
+<m:mi>x</m:mi>
+</m:math> onto <m:math>
+<m:msub>
+<m:mi>e</m:mi>
+<m:mi>k</m:mi>
+</m:msub>
+</m:math>, but the set of unit coordinate vectors is not the only possible
+basis for decomposing a vector. Let's consider an arbitrary pair of orthogonal
+vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>:</para>
+    <equation id="id2261614">
+      <m:math overflow="scroll" mode="display">
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>,</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2261645">The sum of <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> produces a new vector <m:math>
+<m:mi>w</m:mi>
+</m:math>, illustrated in <link target-id="uid4">Figure 3</link>, where
+we have used a two-dimensional drawing to represent <m:math>
+<m:mi>n</m:mi>
+</m:math> dimensions. The norm
+squared of <m:math>
+<m:mi>w</m:mi>
+</m:math> is</para>
+    <para id="id2261707"><m:math overflow="scroll">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>,</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>+</m:mo>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>,</m:mo>
+            <m:mi mathvariant="normal">y</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>+</m:mo>
+          <m:msup>
+            <m:mrow>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+              <m:mi mathvariant="normal">y</m:mi>
+              <m:mo>|</m:mo>
+              <m:mo>|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mo>.</m:mo>
+        </m:mtd>
+</m:mtr>
+</m:mtable>
+</m:math></para>
+    
+    <para id="id2261924">This is the Pythagorean theorem in <m:math>
+<m:mi>n</m:mi>
+</m:math> dimensions! The length squared of <m:math><m:mi>w</m:mi>
+</m:math> is
+just the sum of the squares of the lengths of its two orthogonal components.</para>
+    <figure id="uid4"><media id="uid4_media" alt="Figure three is a two-dimensional graph with three vectors beginning from the origin. The first is a vector, y, that extends with a strong negative slope into the second quadrant. The second is a vector, x, that extends with a shallow positive slope into the first quadrant. In between these two vectors, into the first quadrant, is a vector w = x + y, with a stronger positive slope than vector x.">
+        <image mime-type="image/png" src="../../media/pic011-2677.png" id="uid4_onlineimage" width="300"><!-- NOTE: attribute width changes image size online (pixels). original width is 171. --></image>
+        <image for="pdf" mime-type="application/postscript" src="../../media/pic011-dec4.eps" id="uid4_printimage" print-width="2.5in">
+<!--NOTE: attribute width changes image size in printed PDF (if specified in .tex file)-->
+        </image>
+      </media>
+      
+    <caption>Sum of Orthogonal Vectors</caption></figure>
+    <para id="id2261967">The projection of <m:math>
+<m:mi>w</m:mi>
+</m:math> onto <m:math>
+<m:mi>x</m:mi>
+</m:math> is <m:math>
+<m:mi>x</m:mi>
+</m:math>, and the projection of <m:math>
+<m:mi>w</m:mi>
+</m:math> onto <m:math>
+<m:mi>y</m:mi>
+</m:math> is <m:math>
+<m:mi>y</m:mi>
+</m:math>:</para>
+    
+    <equation id="eip-341"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">w</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>(</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>+</m:mo>
+          <m:mo>(</m:mo>
+          <m:mn>1</m:mn>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2262080">If we scale <m:math>
+<m:mi>w</m:mi>
+</m:math> by <m:math>
+<m:mi>a</m:mi>
+</m:math> to produce the vector 
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">z</m:mi><m:mo>=</m:mo><m:mi>a</m:mi><m:mi mathvariant="normal">w</m:mi></m:mrow></m:math>, the orthogonal decomposition
+of <m:math>
+<m:mi>z</m:mi>
+</m:math> is</para>
+    <equation id="eip-940"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">z</m:mi>
+          <m:mo>=</m:mo>
+          <m:mi>a</m:mi>
+          <m:mi mathvariant="normal">w</m:mi>
+          <m:mo>=</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">a</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">x</m:mi>
+          <m:mo>+</m:mo>
+          <m:mo>(</m:mo>
+          <m:mi mathvariant="normal">a</m:mi>
+          <m:mo>)</m:mo>
+          <m:mi mathvariant="normal">y</m:mi>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation>
+    <para id="id2262194">Let's turn this argument around. Instead of building <m:math><m:mi>w</m:mi></m:math> from orthogonal vectors <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math>, let's begin with arbitrary <m:math>
+<m:mi>w</m:mi>
+</m:math> and <m:math><m:mi>x</m:mi>
+</m:math> and see whether we can compute an orthogonal decomposition. The projection of <m:math>
+<m:mi>w</m:mi>
+</m:math> onto <m:math>
+<m:mi>x</m:mi>
+</m:math> is found from <link target-id="id2260966">Equation 10</link>:</para>
+    <equation id="eip-622"><m:math overflow="scroll"><m:mstyle scriptlevel="0" displaystyle="true"><m:mrow><m:msub><m:mi mathvariant="normal">w</m:mi><m:mi mathvariant="normal">x</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">w</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>,</m:mo><m:mi mathvariant="normal">x</m:mi><m:mo>)</m:mo></m:mrow></m:mfrac><m:mi mathvariant="normal">x</m:mi><m:mo>.</m:mo></m:mrow></m:mstyle></m:math></equation><para id="id2262280">But there must be another component of <m:math>
+<m:mi>w</m:mi>
+</m:math> such that <m:math>
+<m:mi>w</m:mi>
+</m:math> is equal to the sum
+of the components. Let's call the unknown component <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math>. Then</para>
+    
+    <equation id="eip-69"><m:math overflow="scroll">
+        <m:mrow>
+          <m:mi mathvariant="normal">w</m:mi>
+          <m:mo>=</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mi mathvariant="normal">x</m:mi>
+          </m:msub>
+          <m:mo>+</m:mo>
+          <m:msub>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mi mathvariant="normal">y</m:mi>
+          </m:msub>
+          <m:mo>.</m:mo>
+        </m:mrow>
+      </m:math>
+    </equation><para id="id2262437">Now, since we know <m:math>
+<m:mi>w</m:mi>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> already, we find <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>y</m:mi>
+</m:msub>
+</m:math> to be</para>
+    
+    <equation id="eip-301"><m:math overflow="scroll">
+        <m:mstyle scriptlevel="0" displaystyle="true">
+          <m:mrow>
+            <m:msub>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mi mathvariant="normal">y</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mi mathvariant="normal">x</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:mstyle>
+      </m:math>
+    </equation><para id="id2262587">Interestingly, the way we have decomposed <m:math>
+<m:mi>w</m:mi>
+</m:math> will always produce <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>x</m:mi>
+</m:msub>
+</m:math> and <m:math>
+<m:msub>
+<m:mi>w</m:mi>
+<m:mi>&gt;y</m:mi>
+</m:msub>
+</m:math>
+orthogonal to each other. Let's check this:</para>
+    <equation id="id2262641"><m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mi mathvariant="normal">x</m:mi>
+            </m:msub>
+            <m:mo>,</m:mo>
+            <m:msub>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mi mathvariant="normal">y</m:mi>
+            </m:msub>
+            <m:mo>)</m:mo>
+          </m:mrow>
+</m:mtd>
+<m:mtd>       
+   <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>       
+   <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>,</m:mo>
+            <m:mspace width="4.pt"/>
+            <m:mi mathvariant="normal">w</m:mi>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi mathvariant="normal">x</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+    </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+            <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+            <m:mfrac>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">w</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mfrac>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi mathvariant="normal">w</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mi mathvariant="normal">x</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi mathvariant="normal">x</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mi mathvariant="normal">x</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+         </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+          <m:mo>-</m:mo>
+          <m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mi mathvariant="normal">w</m:mi>
+                <m:mo>,</m:mo>
+                <m:mi mathvariant="normal">x</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi mathvariant="normal">x</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mfrac>
+        </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd>
+          <m:mo>=</m:mo>
+</m:mtd>
+<m:mtd>
+          <m:mn>0</m:mn>
+          <m:mo>.</m:mo>
+       </m:mtd>
+</m:mtr>
+
+</m:mtable>
+</m:math></equation>
+    
+    
+    
+    <para id="id2263024">To summarize, we have taken two arbitrary vectors, <m:math>
+<m:mi>w</m:mi>
+</m:math> and <m:math>
+<m:mi>x</m:mi>
+</m:math>, and decomposed
+<m:math>
+<m:mi>w</m:mi>
+</m:math> into a component in the direction of 
+<m:math>
+<m:mi>x</m:mi>
+</m:math> and a component orthogonal to 
+<m:math>
+<m:mi>x</m:mi>
+</m:math>.
+</para>
+  </content>
+</document>

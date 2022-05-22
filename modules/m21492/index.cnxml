@@ -1,0 +1,400 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Vector Graphics: Numerical Experiment (Star Field)</title>
+  <metadata>
+  <md:content-id>m21492</md:content-id><md:title>Vector Graphics: Numerical Experiment (Star Field)</md:title>
+  <md:abstract/>
+  <md:uuid>e9d6631c-e5b4-4ac5-921a-9911a1b952d4</md:uuid>
+</metadata>
+
+<content>
+    <note id="eip-383">This module is part of the collection, <emphasis effect="italics">A First Course in Electrical and Computer Engineering</emphasis>. The LaTeX source files for this collection were created using an optical character recognition technology, and because of this process there may be more errors than usual. Please contact us if you discover any errors.
+</note><para id="id2258263">With Earth at the origin, we may specify the star positions for the Big
+and Little Dippers in three-dimensional homogeneous coordinates. With light
+years as our units, we have <m:math overflow="scroll"><m:mrow><m:msup><m:mi mathvariant="normal">G</m:mi><m:mi>T</m:mi></m:msup><m:mo>=</m:mo></m:mrow></m:math></para>
+    <code id="id2258932" display="block">1.5441      -1.2064     153.0875    1.0000
+-1.0386     8.4588      142.7458    1.0000
+-8.7955     26.2870     198.0698    1.0000
+-12.8807    19.0964     106.5383    1.0000
+-18.8926    17.461      90.6185     1.0000
+-45.1364    54.2706     215.1148    1.0000
+-9.6222     20.1734     88.0062     1.0000
+-33.7097    -8.4048     64.6574     1.0000
+-33.7144    -8.7191     52.3806     1.0000
+-43.8531    -1.1483     59.7193     1.0000
+-36.1086    2.3667      55.7927     1.0000
+-34.2309    8.2181      52.1260     1.0000
+-30.7876    11.8182     46.9810     1.0000
+-61.8581    31.5183     80.7615     1.0000
+</code>
+    <para id="id2259114">To make use of this data, we need a function to display it. Enter and save
+the following generalization of the function from <link document="m21495" target-id="id2260447">Demo 1 in "Vector Graphics: Two Dimensional Image Representation"</link>. Call it <code>vhgraph.m</code>.</para>
+    <code id="id2259120" display="block">function vhgraph (P,L,A,ps,ls);
+% vhgraph(P,L,A,PS,LS) graphs images whose points are
+% stored in P and whose lines are stored in L. The points
+% in P must be in homogeneous coordinates in either 2 or 3
+% dimensions, with each column of P representing a point.
+% The lines are coded in L, with each column of L containing
+% 2 integers pointing to a pair of points in P to be
+% connected by a line segment. If A is present, the points
+% in P are transformed to A*P beforre graphing. For 3D data
+% points, only the first two coordinates are graphed, so A
+% should include the desired projection from 3D to 2D. The
+% point symbol may be specified in PS and the line type in
+% LS, if desired
+%
+% Richard T. Behrens, October 1989.
+%
+% The first dection of the program determines the sizes of
+% all the input matrices and chacks that they make sense.
+[mp,np] = size(P);
+if (nargin &gt; 1)
+   [ml,nl] = size(L);
+else
+    ml = 2; nl = 0;
+end
+if (nargin &lt;=2)
+    A = eye(mp);
+end
+[mA,nA] = size(A);
+if ((mp~= nA) | (ml~=2))
+    error('Incompatible sizes of input matrices.")
+end
+if (nargin &lt;= 3);
+    ps = '*';
+end
+
+P = A*P;    % Performs the transformation A on the points
+            % (effect is only local to this function).
+
+% The next section contains a loop that renormalizes the
+% homogeneous coordinates of the points if necessary.
+renorm = find((P(mA,:)~= 1));
+if~isempty(renorm)
+    for i = 1:length(renorm)
+        P(:,renorm(i)) = P(:,renorm(i))/P(mA,renorm(i));
+    end
+end
+ 
+% The next program line sets a fixed scale output window
+% from -50 to 50 in both x and y directions on the screen.
+% For automatic scaling to include all points of the
+% image, we could use instead the line q = min(min(P));
+% r = max(max(P));
+q = -50; r = 50;
+axis([q r q r])
+axis('square')
+plot(P(1,:),P(2,:),ps)  % Plots the points with symbol ps.
+hold on                 % Saves the points while we plot
+for i = 1:nl            % lines with line type LS.
+plot([P(1,L(1,i))P(1,L(2,i))],..
+     [P(2,L(1,i))P(2,L(2,i))],ls)
+end
+hold off
+</code>
+    <para id="id2259729">Enter the point matrix given at rhe beginning of this section (and take its
+transpose to put it in the usual form). Also enter the line matrix from
+<link document="m21495" target-id="id2260447">Demo 1 in "Vector Graphics: Two Dimensional Image Representation"</link>. Save these two matrices and try looking at the image</para>
+    <code id="eip-76" display="block">≫ save dip3d
+≫ vhgraph(G,H)</code>
+    
+    <para id="id2258197">No dippers in sight, right? Without specifying a transformation matrix <m:math>
+<m:mi>A</m:mi>
+</m:math>,
+we have defaulted to looking down on the <m:math>
+<m:mi>x</m:mi>
+<m:mo>-</m:mo>
+<m:mi>y</m:mi>
+</m:math> plane from <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mi>∞</m:mi></m:mrow></m:math> (a parallel
+projection). This is how the constellations would look from a distant galaxy
+(say, a billion light years north of here) through an enormous telescope. We
+need a perspective view from the origin (Earth), but first we need a set of
+functions to give us the fundamental operators with which we can build the
+desired projection.</para>
+    <para id="id2260091">Take <m:math overflow="scroll"><m:mrow><m:msub><m:mi mathvariant="normal">R</m:mi><m:mi>y</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>θ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> as an example. The function to build it looks like</para>
+    <code id="id2260119" display="block">    function Ry = vhry (theta) ;
+% Rotation matrix about y-axis for 3-D homogeneous
+% coordinates.
+    Ry = eye(4);
+    Ry(1,1) = cos(theta);
+    Ry(3,3) = cos(theta);
+    Ry(3,1) = -sin(theta);
+    Ry(1,3) = sin(theta);
+</code>
+    <para id="id2260197">Enter and save <code>hry.m</code> as given. Then write functions for</para>
+    <equation id="id2260202">
+      <m:math overflow="scroll" mode="display">
+<m:mtable>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>x</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mi>v</m:mi>
+          <m:mi>h</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>x</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">m</m:mi>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>       
+ <m:mrow>
+          <m:msub>
+            <m:mi mathvariant="normal">R</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mi>θ</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mspace width="4.pt"/>
+          <m:mi>v</m:mi>
+          <m:mi>h</m:mi>
+          <m:mi>r</m:mi>
+          <m:mi>z</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">m</m:mi>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">S</m:mi>
+          <m:mo>(</m:mo>
+          <m:msub>
+            <m:mi>s</m:mi>
+            <m:mi>x</m:mi>
+          </m:msub>
+          <m:mo>,</m:mo>
+          <m:msub>
+            <m:mi>s</m:mi>
+            <m:mi>y</m:mi>
+          </m:msub>
+          <m:mo>,</m:mo>
+          <m:msub>
+            <m:mi>s</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mo>)</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>v</m:mi>
+          <m:mi>h</m:mi>
+          <m:mi>s</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">m</m:mi>
+        </m:mrow>
+     </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">T</m:mi>
+          <m:mo>(</m:mo>
+          <m:msub>
+            <m:mi>t</m:mi>
+            <m:mi>x</m:mi>
+          </m:msub>
+          <m:mo>,</m:mo>
+          <m:msub>
+            <m:mi>t</m:mi>
+            <m:mi>y</m:mi>
+          </m:msub>
+          <m:mo>,</m:mo>
+          <m:msub>
+            <m:mi>t</m:mi>
+            <m:mi>z</m:mi>
+          </m:msub>
+          <m:mo>)</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>v</m:mi>
+          <m:mi>h</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">m</m:mi>
+        </m:mrow>
+      </m:mtd>
+</m:mtr>
+<m:mtr>
+<m:mtd>
+        <m:mrow>
+          <m:mi mathvariant="normal">M</m:mi>
+          <m:mo>(</m:mo>
+          <m:mi>d</m:mi>
+          <m:mo>)</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi>v</m:mi>
+          <m:mi>h</m:mi>
+          <m:mi>m</m:mi>
+          <m:mo>.</m:mo>
+          <m:mspace width="4.pt"/>
+          <m:mi mathvariant="normal">m</m:mi>
+        </m:mrow>
+</m:mtd>
+</m:mtr>
+</m:mtable>
+      </m:math>
+    </equation>
+
+    <para id="id2260463">Useful MATLAB functions for this task include <code>zeros</code>, <code>eye</code>, and <code>diag</code>.</para>
+    <para id="id2260469">Now build and use a perspective projection with viewpoint Earth and
+projection plane at <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1000</m:mn></m:mrow></m:math> behind the dippers:</para>
+<list id="fs-id9683665" list-type="enumerated" number-style="arabic"><item> translate Earth to <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>1000</m:mn></m:mrow></m:math> so that the projection plane coincides with the <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>-</m:mo><m:mi>y</m:mi></m:mrow></m:math> plane: <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">T</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">O</m:mi><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>1000</m:mn><m:mo>)</m:mo></m:mrow></m:math>;</item>
+    <item>use the fundamental perspective projection: <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">M</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1000</m:mn><m:mo>)</m:mo></m:mrow></m:math>; and</item>
+    <item>translate back: <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">T</m:mi><m:mo>(</m:mo><m:mi mathvariant="normal">O</m:mi><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1000</m:mn><m:mo>)</m:mo></m:mrow></m:math>.</item></list>
+    <code id="eip-538" display="block">≫ A = vht(0,0,1000) * vhm(-1000) * vht(0,0,-1000)
+≫ vhgraph(G,H,A)</code>
+    
+    <para id="id2260736">Oops! Now the image is too big; it's mostly off the screen. Scale it down and
+have another look:</para>
+    <code id="eip-647" display="block">≫ A = vhs(.06,.06,.06) * A
+≫ vhgraph(G,H,A)</code>
+    
+    <para id="id2260812">Now the view should look familiar. Leave <emphasis effect="italics">A</emphasis> as it is now:</para>
+    <code id="eip-220" display="block">≫ save dip3d</code>
+    <para id="id2260854">Experiment with scale and rotation about the z-axis. For example, try</para>
+    <code id="eip-547" display="block">≫ vhgraph(G,H,vhrz(pi/2) * A)</code>
+    <para id="id2260933">The two-dimensional star positions given in <link document="m21495" target-id="id2260447">Demo 1 in "Vector Graphics: Two Dimensional Image Representation"</link> were obtained from
+the three-dimensional positions with the composite operator A you are now
+using. To compare the two, type</para>
+    <code id="eip-253" display="block">≫ Gnew = A * G
+
+≫ for i = 1:14
+Gnew(;,i) = Gnew(:,i)/Gnew(4,i);
+end
+
+≫ Gnew</code>
+    
+    
+    
+    <para id="id2261116">and compare the <m:math>
+<m:mi>x</m:mi>
+</m:math> and <m:math>
+<m:mi>y</m:mi>
+</m:math> coordinates with those of <link document="m21495" target-id="id2260447">Demo 1 in "Vector Graphics: Two Dimensional Image Representation"</link>.</para>
+    <para id="id2261136">Astronomers give star positions in equatorial coordinates using right
+ascension, declination, and distance. The following function converts equatorial coordinates, which are spherical, to Cartesian coordinates with the z-axis pointing north, the x-axis pointing at the vernal (Spring) equinox in the constellation Pisces, and the y-axis pointing toward the Winter solstice in the constellation Opheuchus.</para>
+    <code id="id2261146" display="block">function v = starxyz(rah,ram,decd,decm,dist)
+% starxyz is the cartesian coordinates of a star whose
+% spherical coordinates ( e.g. from a star catalog) are
+%
+%          rah     right ascension hours
+%          ram     right ascension minutes
+%          decd    declination degrees
+%          decm    declination minutes (should be negative
+%                  if decd is negative)
+%          dist    distance (light years)
+%
+phi = (pi/180) * (decd + decm/60);
+theta = (pi/12) * (rah + ram/60);
+r = dist;
+v = [r * cos(phi) * cos(theta); -r * cos(phi) * sin(theta);
+    r * sin(phi)];
+</code>
+    <para id="id2261307">Have you ever wondered what the constellations would look like from
+other places in the galaxy? We will soon see the answer. First we will view
+the dippers from Alpha Centauri, the nearest star, whose coordinates are</para>
+    <code id="fs-id13490596" display="block"> -1.5680     1.3157      -3.6675.</code>
+    <para id="id2261320">We will look toward the <emphasis effect="italics">centroid</emphasis> of the fourteen stars in the dippers, located
+at</para>
+    <code id="fs-id13454826" display="block">-26.3632      12.8709      100.4714.</code>
+    <para id="id2261335">To get the desired view, we must</para>
+<list id="fs-id16716224" list-type="enumerated" number-style="arabic"><item>translate the viewpoint to the origin;</item>
+    <item>rotate the centroid (direction to look) to the z-axis–note that the centroid will have new coordinates after step (1); and</item>
+    <item>apply the composite <code>
+A=S(.06,.06,.06)*T(0,0,1000)*M(-1000)*T(0,0,-1000)</code> (as used to view from Earth).</item>
+</list>
+    <para id="id2261457">Write a function <code>vhz.m</code> based on <link document="m21494" target-id="fs-id19554987">Exercise 5 from "Vector Graphics: Three-Dimensional Homogeneous Coordinates"</link> to accomplish step (2). Test it on several random points to make sure it works right. Now write a general perspective projection function called <code>vhview.m</code>. The function <code>vhview</code> should
+accept as inputs two vectors, the first specifying the viewpoint and the second
+the point to look toward. Its output should be a composite operator that
+performs all three of the preceding steps.</para>
+    <para id="id2261467">Now we want to look toward the centroid of the dippers from Alpha Centauri. To do so, enter the vectors for the two points of interest and construct the view like this:</para>
+    <code id="eip-927" display="block">≫ acentauri = [-1.5680; 1.3157; -3.6675]
+≫ centroid = [-26.3632; 12.8709; 100.4714]
+≫ A = vhview(acentauri,centroid)
+≫ vhgraph(G,H,A)
+≫ title('From Alpha Centauri')</code>
+    
+    
+    
+    
+    <para id="id2261783">The farther we move from Earth, the more distorted the dippers will look
+in general. It should be easy now to view them from any desired location.
+Just choose a viewpoint, recalculate the composite operator for that viewpoint
+using <code>vhview</code>, and use <code>vhgraph</code>. Follow this procedure to view the dippers
+from each of the stars in the following list. You will need to use <code>starxyz</code> first
+to convert their coordinates.</para>
+    <table id="eip-92" summary="Star viewing chart outlining the right ascension, declination, distance for five different stars.">
+<tgroup cols="4"><thead>
+<row>
+<entry>Star</entry>
+<entry>Right Ascension</entry>
+<entry>Declination</entry>
+<entry>Distance (ly)</entry>
+</row>
+</thead>
+<tbody>
+  <row>
+    <entry>Alpha Centauri</entry>
+    <entry>14h 40m</entry>
+    <entry>-60° 50'</entry>
+    <entry>4.2</entry>
+  </row>
+  <row>
+    <entry>Sirius</entry>
+    <entry>6h 45m</entry>
+    <entry>-16°43'</entry>
+    <entry>9.5</entry>
+  </row>
+  <row>
+    <entry>Arcturus</entry>
+    <entry>14h 16m</entry>
+    <entry>19°11'</entry>
+    <entry>16.6</entry>
+  </row>
+  <row>
+    <entry>Pollux</entry>
+    <entry>7h 45m</entry>
+    <entry>28°02'</entry>
+    <entry>35.9</entry>
+  </row>
+  <row>
+    <entry>Betelgeuse</entry>
+    <entry>5h 55m</entry>
+    <entry>7°24'</entry>
+    <entry>313.5</entry>
+  </row>
+</tbody>
+
+</tgroup><caption>Table 1 is a six-row and four-column table with the first row as a header, the first column describing different stars, and the values in the second through fourth columns describing the corresponding right ascension, declination, and distance for each star.</caption>
+</table>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <para id="id2261996">Of course, star viewing is not the only application of vector graphics. Do
+some experiments with the unit cube (<link document="m21494" target-id="fs-id18587714">see Exercise 2 from "Vector Graphics: Three-Dimensional Homogeneous Coordinates"</link>). View the cube from
+location (4,3,2) looking toward the origin using the procedure just outlined
+for stars. You may need to adjust the scaling to get a meaningful view.</para>
+  </content>
+</document>
