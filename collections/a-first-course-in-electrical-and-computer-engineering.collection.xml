@@ -1,12 +1,13 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" authors="Louis Scharf">
   <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
     <md:content-id>col10685</md:content-id>
     <md:title>A First Course in Electrical and Computer Engineering</md:title>
     <md:language>en</md:language>
     <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</md:license>
     <md:uuid>7e991679-d461-4928-a810-bc3e7c0f21fa</md:uuid>
-<md:slug>a-first-course-in-electrical-and-computer-engineering</md:slug>
-</metadata>
+    <md:slug>a-first-course-in-electrical-and-computer-engineering</md:slug>
+  </metadata>
   <col:content>
     <col:module document="m21796"/>
     <col:module document="m21476"/>
@@ -23,7 +24,7 @@
       </col:content>
     </col:subcollection>
     <col:subcollection>
-      <md:title>The Functions e^x and e^jΘ</md:title>
+      <md:title>The Functions e^x and e^j&#x398;</md:title>
       <col:content>
         <col:module document="m21479"/>
         <col:module document="m21485"/>
